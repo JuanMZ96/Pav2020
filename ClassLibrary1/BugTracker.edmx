@@ -1,0 +1,2877 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="BugTrackerFinalModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Asignaciones">
+          <Key>
+            <PropertyRef Name="id_asignacion" />
+          </Key>
+          <Property Name="id_asignacion" Type="int" Nullable="false" />
+          <Property Name="n_asignacion" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="monto" Type="numeric" Precision="10" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AsistenciaUsuarios">
+          <Key>
+            <PropertyRef Name="id_usuario" />
+            <PropertyRef Name="fecha" />
+          </Key>
+          <Property Name="id_usuario" Type="int" Nullable="false" />
+          <Property Name="fecha" Type="date" Nullable="false" />
+          <Property Name="hora_ingreso" Type="time" Precision="7" />
+          <Property Name="hora_salida" Type="time" Precision="7" />
+          <Property Name="id_estado_asistencia" Type="int" />
+          <Property Name="comentario" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="Barrios">
+          <Key>
+            <PropertyRef Name="id_barrio" />
+          </Key>
+          <Property Name="id_barrio" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="50" />
+          <Property Name="borrado" Type="bit" />
+        </EntityType>
+        <EntityType Name="Bugs">
+          <Key>
+            <PropertyRef Name="id_bug" />
+          </Key>
+          <Property Name="id_bug" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="titulo" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="1000" />
+          <Property Name="fecha_alta" Type="date" Nullable="false" />
+          <Property Name="id_usuario_responsable" Type="int" />
+          <Property Name="id_usuario_asignado" Type="int" />
+          <Property Name="id_producto" Type="int" />
+          <Property Name="id_prioridad" Type="int" />
+          <Property Name="id_criticidad" Type="int" />
+          <Property Name="id_estado" Type="int" />
+          <Property Name="borrado" Type="bit" />
+        </EntityType>
+        <EntityType Name="BugsHistorico">
+          <Key>
+            <PropertyRef Name="id_bug_historico" />
+          </Key>
+          <Property Name="id_bug_historico" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fecha_historico" Type="date" />
+          <Property Name="titulo" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="1000" />
+          <Property Name="id_bug" Type="int" Nullable="false" />
+          <Property Name="id_usuario_responsable" Type="int" />
+          <Property Name="id_usuario_asignado" Type="int" />
+          <Property Name="id_producto" Type="int" />
+          <Property Name="id_prioridad" Type="int" />
+          <Property Name="id_criticidad" Type="int" />
+          <Property Name="id_estado" Type="int" Nullable="false" />
+          <Property Name="borrado" Type="bit" />
+        </EntityType>
+        <EntityType Name="CasosDePrueba">
+          <Key>
+            <PropertyRef Name="id_caso_prueba" />
+          </Key>
+          <Property Name="id_caso_prueba" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_plan_prueba" Type="int" Nullable="false" />
+          <Property Name="titulo" Type="varchar" MaxLength="50" />
+          <Property Name="descripcion" Type="varchar" MaxLength="200" />
+          <Property Name="id_responsable" Type="int" />
+          <Property Name="borrado" Type="bit" />
+        </EntityType>
+        <EntityType Name="Categorias">
+          <Key>
+            <PropertyRef Name="id_categoria" />
+          </Key>
+          <Property Name="id_categoria" Type="int" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="50" />
+          <Property Name="descripcion" Type="nvarchar" MaxLength="50" />
+          <Property Name="borrado" Type="bit" />
+        </EntityType>
+        <EntityType Name="CiclosPrueba">
+          <Key>
+            <PropertyRef Name="id_ciclo_prueba" />
+          </Key>
+          <Property Name="id_ciclo_prueba" Type="int" Nullable="false" />
+          <Property Name="fecha_inicio_ejecucion" Type="datetime" />
+          <Property Name="fecha_fin_ejecucion" Type="datetime" />
+          <Property Name="id_responsable" Type="int" />
+          <Property Name="id_plan_prueba" Type="int" />
+          <Property Name="aceptado" Type="bit" />
+          <Property Name="borrado" Type="bit" />
+        </EntityType>
+        <EntityType Name="CiclosPruebaDetalle">
+          <Key>
+            <PropertyRef Name="id_ciclo_prueba_detalle" />
+          </Key>
+          <Property Name="id_ciclo_prueba_detalle" Type="int" Nullable="false" />
+          <Property Name="id_ciclo_prueba" Type="int" />
+          <Property Name="id_caso_prueba" Type="int" />
+          <Property Name="id_usuario_tester" Type="int" />
+          <Property Name="cantidad_horas" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="fecha_ejecucion" Type="datetime" />
+          <Property Name="aceptado" Type="bit" />
+          <Property Name="borrado" Type="bit" />
+        </EntityType>
+        <EntityType Name="Clientes">
+          <Key>
+            <PropertyRef Name="id_cliente" />
+          </Key>
+          <Property Name="id_cliente" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cuit" Type="varchar" MaxLength="50" />
+          <Property Name="razon_social" Type="varchar" MaxLength="50" />
+          <Property Name="borrado" Type="bit" />
+          <Property Name="calle" Type="varchar" MaxLength="500" />
+          <Property Name="numero" Type="varchar" MaxLength="50" />
+          <Property Name="fecha_alta" Type="datetime" />
+          <Property Name="id_barrio" Type="int" />
+          <Property Name="id_contacto" Type="int" />
+        </EntityType>
+        <EntityType Name="Contactos">
+          <Key>
+            <PropertyRef Name="id_contacto" />
+          </Key>
+          <Property Name="id_contacto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="50" />
+          <Property Name="apellido" Type="varchar" MaxLength="50" />
+          <Property Name="email" Type="varchar" MaxLength="50" />
+          <Property Name="telefono" Type="varchar" MaxLength="50" />
+          <Property Name="borrado" Type="bit" />
+        </EntityType>
+        <EntityType Name="Criticidades">
+          <Key>
+            <PropertyRef Name="id_criticidad" />
+          </Key>
+          <Property Name="id_criticidad" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="borrado" Type="bit" />
+        </EntityType>
+        <EntityType Name="Cursos">
+          <Key>
+            <PropertyRef Name="id_curso" />
+          </Key>
+          <Property Name="id_curso" Type="int" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="50" />
+          <Property Name="descripcion" Type="nvarchar" MaxLength="50" />
+          <Property Name="fecha_vigencia" Type="datetime" />
+          <Property Name="id_categoria" Type="int" />
+          <Property Name="borrado" Type="bit" />
+        </EntityType>
+        <EntityType Name="Descuentos">
+          <Key>
+            <PropertyRef Name="id_descuento" />
+          </Key>
+          <Property Name="id_descuento" Type="int" Nullable="false" />
+          <Property Name="n_descuento" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="monto" Type="numeric" Precision="10" Scale="2" />
+        </EntityType>
+        <EntityType Name="Estados">
+          <Key>
+            <PropertyRef Name="id_estado" />
+          </Key>
+          <Property Name="id_estado" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="borrado" Type="bit" />
+        </EntityType>
+        <EntityType Name="EstadosAsistencia">
+          <Key>
+            <PropertyRef Name="id_estado_asistencia" />
+          </Key>
+          <Property Name="id_estado_asistencia" Type="int" Nullable="false" />
+          <Property Name="n_estados_asistencia" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EstadosUsuarios">
+          <Key>
+            <PropertyRef Name="id_estado_usuario" />
+          </Key>
+          <Property Name="id_estado_usuario" Type="int" Nullable="false" />
+          <Property Name="n_estado_usuario" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Facturas">
+          <Key>
+            <PropertyRef Name="id_factura" />
+          </Key>
+          <Property Name="id_factura" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="numero_factura" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="id_cliente" Type="int" Nullable="false" />
+          <Property Name="fecha" Type="datetime" Nullable="false" />
+          <Property Name="id_usuario_creador" Type="int" Nullable="false" />
+          <Property Name="borrado" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FacturasDetalle">
+          <Key>
+            <PropertyRef Name="id_detalle_factura" />
+          </Key>
+          <Property Name="id_detalle_factura" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_factura" Type="int" />
+          <Property Name="numero_orden" Type="int" />
+          <Property Name="id_producto" Type="int" />
+          <Property Name="id_proyecto" Type="int" />
+          <Property Name="id_ciclo_prueba" Type="int" />
+          <Property Name="precio" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="borrado" Type="bit" />
+        </EntityType>
+        <EntityType Name="Formularios">
+          <Key>
+            <PropertyRef Name="id_formulario" />
+          </Key>
+          <Property Name="id_formulario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="borrado" Type="bit" />
+        </EntityType>
+        <EntityType Name="Objetivos">
+          <Key>
+            <PropertyRef Name="id_objetivo" />
+          </Key>
+          <Property Name="id_objetivo" Type="int" Nullable="false" />
+          <Property Name="nombre_corto" Type="varchar" MaxLength="50" />
+          <Property Name="nombre_largo" Type="varchar" MaxLength="100" />
+          <Property Name="borrado" Type="bit" />
+        </EntityType>
+        <EntityType Name="ObjetivosCursos">
+          <Key>
+            <PropertyRef Name="id_objetivo" />
+            <PropertyRef Name="id_curso" />
+          </Key>
+          <Property Name="id_objetivo" Type="int" Nullable="false" />
+          <Property Name="id_curso" Type="int" Nullable="false" />
+          <Property Name="puntos" Type="int" />
+          <Property Name="borrado" Type="bit" />
+        </EntityType>
+        <EntityType Name="Perfiles">
+          <Key>
+            <PropertyRef Name="id_perfil" />
+          </Key>
+          <Property Name="id_perfil" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="borrado" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Permisos">
+          <Key>
+            <PropertyRef Name="id_formulario" />
+            <PropertyRef Name="id_perfil" />
+          </Key>
+          <Property Name="id_formulario" Type="int" Nullable="false" />
+          <Property Name="id_perfil" Type="int" Nullable="false" />
+          <Property Name="borrado" Type="int" />
+        </EntityType>
+        <EntityType Name="PlanesDePrueba">
+          <Key>
+            <PropertyRef Name="id_plan_prueba" />
+          </Key>
+          <Property Name="id_plan_prueba" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_proyecto" Type="int" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="50" />
+          <Property Name="id_responsable" Type="int" />
+          <Property Name="descripcion" Type="varchar" MaxLength="100" />
+          <Property Name="borrado" Type="bit" />
+        </EntityType>
+        <EntityType Name="Prioridades">
+          <Key>
+            <PropertyRef Name="id_prioridad" />
+          </Key>
+          <Property Name="id_prioridad" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="borrado" Type="bit" />
+        </EntityType>
+        <EntityType Name="Productos">
+          <Key>
+            <PropertyRef Name="id_producto" />
+          </Key>
+          <Property Name="id_producto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="50" />
+          <Property Name="borrado" Type="bit" />
+        </EntityType>
+        <EntityType Name="Proyectos">
+          <Key>
+            <PropertyRef Name="id_proyecto" />
+          </Key>
+          <Property Name="id_proyecto" Type="int" Nullable="false" />
+          <Property Name="id_producto" Type="int" />
+          <Property Name="descripcion" Type="varchar" MaxLength="50" />
+          <Property Name="version" Type="varchar" MaxLength="50" />
+          <Property Name="alcance" Type="varchar" MaxLength="50" />
+          <Property Name="id_responsable" Type="int" />
+          <Property Name="borrado" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="SueldoAsignaciones">
+          <Key>
+            <PropertyRef Name="id_usuario" />
+            <PropertyRef Name="fecha" />
+            <PropertyRef Name="id_asignacion" />
+          </Key>
+          <Property Name="id_usuario" Type="int" Nullable="false" />
+          <Property Name="fecha" Type="date" Nullable="false" />
+          <Property Name="id_asignacion" Type="int" Nullable="false" />
+          <Property Name="monto" Type="numeric" Precision="10" Scale="2" />
+          <Property Name="cantidad" Type="int" />
+        </EntityType>
+        <EntityType Name="SueldoDescuentos">
+          <Key>
+            <PropertyRef Name="id_usuario" />
+            <PropertyRef Name="fecha" />
+            <PropertyRef Name="id_descuento" />
+          </Key>
+          <Property Name="id_usuario" Type="int" Nullable="false" />
+          <Property Name="fecha" Type="date" Nullable="false" />
+          <Property Name="id_descuento" Type="int" Nullable="false" />
+          <Property Name="cantidad" Type="int" />
+          <Property Name="monto" Type="numeric" Precision="10" Scale="2" />
+        </EntityType>
+        <EntityType Name="SueldoPerfilHistorico">
+          <Key>
+            <PropertyRef Name="id_perfil" />
+            <PropertyRef Name="fecha" />
+          </Key>
+          <Property Name="id_perfil" Type="int" Nullable="false" />
+          <Property Name="fecha" Type="date" Nullable="false" />
+          <Property Name="sueldo" Type="numeric" Precision="10" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Sueldos">
+          <Key>
+            <PropertyRef Name="id_usuario" />
+            <PropertyRef Name="fecha" />
+          </Key>
+          <Property Name="id_usuario" Type="int" Nullable="false" />
+          <Property Name="fecha" Type="date" Nullable="false" />
+          <Property Name="sueldo_bruto" Type="numeric" Precision="10" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Usuarios">
+          <Key>
+            <PropertyRef Name="id_usuario" />
+          </Key>
+          <Property Name="id_usuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_perfil" Type="int" Nullable="false" />
+          <Property Name="usuario" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="password" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="estado" Type="varchar" MaxLength="1" Nullable="false" />
+          <Property Name="borrado" Type="bit" />
+        </EntityType>
+        <EntityType Name="UsuariosCurso">
+          <Key>
+            <PropertyRef Name="id_usuario" />
+            <PropertyRef Name="id_curso" />
+          </Key>
+          <Property Name="id_usuario" Type="int" Nullable="false" />
+          <Property Name="id_curso" Type="int" Nullable="false" />
+          <Property Name="puntuacion" Type="int" />
+          <Property Name="observaciones" Type="varchar" MaxLength="150" />
+          <Property Name="fecha_inicio" Type="datetime" />
+          <Property Name="fecha_fin" Type="datetime" />
+        </EntityType>
+        <EntityType Name="UsuariosCursoAvance">
+          <Key>
+            <PropertyRef Name="id_usuario" />
+            <PropertyRef Name="id_curso" />
+            <PropertyRef Name="inicio" />
+          </Key>
+          <Property Name="id_usuario" Type="int" Nullable="false" />
+          <Property Name="id_curso" Type="int" Nullable="false" />
+          <Property Name="inicio" Type="datetime" Nullable="false" />
+          <Property Name="fin" Type="datetime" />
+          <Property Name="porc_avance" Type="int" />
+        </EntityType>
+        <Association Name="FK_Bugs_Criticidades">
+          <End Role="Criticidades" Type="Self.Criticidades" Multiplicity="0..1" />
+          <End Role="Bugs" Type="Self.Bugs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Criticidades">
+              <PropertyRef Name="id_criticidad" />
+            </Principal>
+            <Dependent Role="Bugs">
+              <PropertyRef Name="id_criticidad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Bugs_Estados">
+          <End Role="Estados" Type="Self.Estados" Multiplicity="0..1" />
+          <End Role="Bugs" Type="Self.Bugs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estados">
+              <PropertyRef Name="id_estado" />
+            </Principal>
+            <Dependent Role="Bugs">
+              <PropertyRef Name="id_estado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Bugs_Prioridades">
+          <End Role="Prioridades" Type="Self.Prioridades" Multiplicity="0..1" />
+          <End Role="Bugs" Type="Self.Bugs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Prioridades">
+              <PropertyRef Name="id_prioridad" />
+            </Principal>
+            <Dependent Role="Bugs">
+              <PropertyRef Name="id_prioridad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Bugs_Productos">
+          <End Role="Productos" Type="Self.Productos" Multiplicity="0..1" />
+          <End Role="Bugs" Type="Self.Bugs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Productos">
+              <PropertyRef Name="id_producto" />
+            </Principal>
+            <Dependent Role="Bugs">
+              <PropertyRef Name="id_producto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Bugs_Usuarios">
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="0..1" />
+          <End Role="Bugs" Type="Self.Bugs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="id_usuario" />
+            </Principal>
+            <Dependent Role="Bugs">
+              <PropertyRef Name="id_usuario_asignado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Bugs_Usuarios1">
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="0..1" />
+          <End Role="Bugs" Type="Self.Bugs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="id_usuario" />
+            </Principal>
+            <Dependent Role="Bugs">
+              <PropertyRef Name="id_usuario_responsable" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BugsHistorico_Bugs">
+          <End Role="Bugs" Type="Self.Bugs" Multiplicity="1" />
+          <End Role="BugsHistorico" Type="Self.BugsHistorico" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bugs">
+              <PropertyRef Name="id_bug" />
+            </Principal>
+            <Dependent Role="BugsHistorico">
+              <PropertyRef Name="id_bug" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BugsHistorico_Criticidades">
+          <End Role="Criticidades" Type="Self.Criticidades" Multiplicity="0..1" />
+          <End Role="BugsHistorico" Type="Self.BugsHistorico" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Criticidades">
+              <PropertyRef Name="id_criticidad" />
+            </Principal>
+            <Dependent Role="BugsHistorico">
+              <PropertyRef Name="id_criticidad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BugsHistorico_Estados">
+          <End Role="Estados" Type="Self.Estados" Multiplicity="1" />
+          <End Role="BugsHistorico" Type="Self.BugsHistorico" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estados">
+              <PropertyRef Name="id_estado" />
+            </Principal>
+            <Dependent Role="BugsHistorico">
+              <PropertyRef Name="id_estado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BugsHistorico_Prioridades">
+          <End Role="Prioridades" Type="Self.Prioridades" Multiplicity="0..1" />
+          <End Role="BugsHistorico" Type="Self.BugsHistorico" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Prioridades">
+              <PropertyRef Name="id_prioridad" />
+            </Principal>
+            <Dependent Role="BugsHistorico">
+              <PropertyRef Name="id_prioridad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BugsHistorico_Productos">
+          <End Role="Productos" Type="Self.Productos" Multiplicity="0..1" />
+          <End Role="BugsHistorico" Type="Self.BugsHistorico" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Productos">
+              <PropertyRef Name="id_producto" />
+            </Principal>
+            <Dependent Role="BugsHistorico">
+              <PropertyRef Name="id_producto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BugsHistorico_Usuarios">
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="0..1" />
+          <End Role="BugsHistorico" Type="Self.BugsHistorico" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="id_usuario" />
+            </Principal>
+            <Dependent Role="BugsHistorico">
+              <PropertyRef Name="id_usuario_responsable" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BugsHistorico_Usuarios1">
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="0..1" />
+          <End Role="BugsHistorico" Type="Self.BugsHistorico" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="id_usuario" />
+            </Principal>
+            <Dependent Role="BugsHistorico">
+              <PropertyRef Name="id_usuario_asignado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CasosDePrueba_PlanesDePrueba">
+          <End Role="PlanesDePrueba" Type="Self.PlanesDePrueba" Multiplicity="1" />
+          <End Role="CasosDePrueba" Type="Self.CasosDePrueba" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PlanesDePrueba">
+              <PropertyRef Name="id_plan_prueba" />
+            </Principal>
+            <Dependent Role="CasosDePrueba">
+              <PropertyRef Name="id_plan_prueba" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CiclosPrueba_PlanesDePrueba">
+          <End Role="PlanesDePrueba" Type="Self.PlanesDePrueba" Multiplicity="0..1" />
+          <End Role="CiclosPrueba" Type="Self.CiclosPrueba" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PlanesDePrueba">
+              <PropertyRef Name="id_plan_prueba" />
+            </Principal>
+            <Dependent Role="CiclosPrueba">
+              <PropertyRef Name="id_plan_prueba" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CiclosPrueba_Usuarios">
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="0..1" />
+          <End Role="CiclosPrueba" Type="Self.CiclosPrueba" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="id_usuario" />
+            </Principal>
+            <Dependent Role="CiclosPrueba">
+              <PropertyRef Name="id_responsable" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CiclosPruebaDetalle_CasosDePrueba">
+          <End Role="CasosDePrueba" Type="Self.CasosDePrueba" Multiplicity="0..1" />
+          <End Role="CiclosPruebaDetalle" Type="Self.CiclosPruebaDetalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CasosDePrueba">
+              <PropertyRef Name="id_caso_prueba" />
+            </Principal>
+            <Dependent Role="CiclosPruebaDetalle">
+              <PropertyRef Name="id_caso_prueba" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CiclosPruebaDetalle_CiclosPrueba">
+          <End Role="CiclosPrueba" Type="Self.CiclosPrueba" Multiplicity="0..1" />
+          <End Role="CiclosPruebaDetalle" Type="Self.CiclosPruebaDetalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CiclosPrueba">
+              <PropertyRef Name="id_ciclo_prueba" />
+            </Principal>
+            <Dependent Role="CiclosPruebaDetalle">
+              <PropertyRef Name="id_ciclo_prueba" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CiclosPruebaDetalle_Usuarios">
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="0..1" />
+          <End Role="CiclosPruebaDetalle" Type="Self.CiclosPruebaDetalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="id_usuario" />
+            </Principal>
+            <Dependent Role="CiclosPruebaDetalle">
+              <PropertyRef Name="id_usuario_tester" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Clientes_Barrios">
+          <End Role="Barrios" Type="Self.Barrios" Multiplicity="0..1" />
+          <End Role="Clientes" Type="Self.Clientes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Barrios">
+              <PropertyRef Name="id_barrio" />
+            </Principal>
+            <Dependent Role="Clientes">
+              <PropertyRef Name="id_barrio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Clientes_Contactos">
+          <End Role="Contactos" Type="Self.Contactos" Multiplicity="0..1" />
+          <End Role="Clientes" Type="Self.Clientes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contactos">
+              <PropertyRef Name="id_contacto" />
+            </Principal>
+            <Dependent Role="Clientes">
+              <PropertyRef Name="id_contacto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cursos_Categorias">
+          <End Role="Categorias" Type="Self.Categorias" Multiplicity="0..1" />
+          <End Role="Cursos" Type="Self.Cursos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categorias">
+              <PropertyRef Name="id_categoria" />
+            </Principal>
+            <Dependent Role="Cursos">
+              <PropertyRef Name="id_categoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Facturas_Clientes">
+          <End Role="Clientes" Type="Self.Clientes" Multiplicity="1" />
+          <End Role="Facturas" Type="Self.Facturas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clientes">
+              <PropertyRef Name="id_cliente" />
+            </Principal>
+            <Dependent Role="Facturas">
+              <PropertyRef Name="id_cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Facturas_Usuarios">
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
+          <End Role="Facturas" Type="Self.Facturas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="id_usuario" />
+            </Principal>
+            <Dependent Role="Facturas">
+              <PropertyRef Name="id_usuario_creador" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FacturasDetalle_CiclosPrueba">
+          <End Role="CiclosPrueba" Type="Self.CiclosPrueba" Multiplicity="0..1" />
+          <End Role="FacturasDetalle" Type="Self.FacturasDetalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CiclosPrueba">
+              <PropertyRef Name="id_ciclo_prueba" />
+            </Principal>
+            <Dependent Role="FacturasDetalle">
+              <PropertyRef Name="id_ciclo_prueba" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FacturasDetalle_Facturas">
+          <End Role="Facturas" Type="Self.Facturas" Multiplicity="0..1" />
+          <End Role="FacturasDetalle" Type="Self.FacturasDetalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Facturas">
+              <PropertyRef Name="id_factura" />
+            </Principal>
+            <Dependent Role="FacturasDetalle">
+              <PropertyRef Name="id_factura" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FacturasDetalle_Productos">
+          <End Role="Productos" Type="Self.Productos" Multiplicity="0..1" />
+          <End Role="FacturasDetalle" Type="Self.FacturasDetalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Productos">
+              <PropertyRef Name="id_producto" />
+            </Principal>
+            <Dependent Role="FacturasDetalle">
+              <PropertyRef Name="id_producto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FacturasDetalle_Proyectos">
+          <End Role="Proyectos" Type="Self.Proyectos" Multiplicity="0..1" />
+          <End Role="FacturasDetalle" Type="Self.FacturasDetalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proyectos">
+              <PropertyRef Name="id_proyecto" />
+            </Principal>
+            <Dependent Role="FacturasDetalle">
+              <PropertyRef Name="id_proyecto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_id_estado_asistencia">
+          <End Role="EstadosAsistencia" Type="Self.EstadosAsistencia" Multiplicity="0..1" />
+          <End Role="AsistenciaUsuarios" Type="Self.AsistenciaUsuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EstadosAsistencia">
+              <PropertyRef Name="id_estado_asistencia" />
+            </Principal>
+            <Dependent Role="AsistenciaUsuarios">
+              <PropertyRef Name="id_estado_asistencia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ObjetivosCursos_Cursos">
+          <End Role="Cursos" Type="Self.Cursos" Multiplicity="1" />
+          <End Role="ObjetivosCursos" Type="Self.ObjetivosCursos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cursos">
+              <PropertyRef Name="id_curso" />
+            </Principal>
+            <Dependent Role="ObjetivosCursos">
+              <PropertyRef Name="id_curso" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ObjetivosCursos_Objetivos">
+          <End Role="Objetivos" Type="Self.Objetivos" Multiplicity="1" />
+          <End Role="ObjetivosCursos" Type="Self.ObjetivosCursos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Objetivos">
+              <PropertyRef Name="id_objetivo" />
+            </Principal>
+            <Dependent Role="ObjetivosCursos">
+              <PropertyRef Name="id_objetivo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Permisos_Formularios">
+          <End Role="Formularios" Type="Self.Formularios" Multiplicity="1" />
+          <End Role="Permisos" Type="Self.Permisos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Formularios">
+              <PropertyRef Name="id_formulario" />
+            </Principal>
+            <Dependent Role="Permisos">
+              <PropertyRef Name="id_formulario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Permisos_Perfiles">
+          <End Role="Perfiles" Type="Self.Perfiles" Multiplicity="1" />
+          <End Role="Permisos" Type="Self.Permisos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Perfiles">
+              <PropertyRef Name="id_perfil" />
+            </Principal>
+            <Dependent Role="Permisos">
+              <PropertyRef Name="id_perfil" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PlanesDePrueba_Proyectos">
+          <End Role="Proyectos" Type="Self.Proyectos" Multiplicity="1" />
+          <End Role="PlanesDePrueba" Type="Self.PlanesDePrueba" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proyectos">
+              <PropertyRef Name="id_proyecto" />
+            </Principal>
+            <Dependent Role="PlanesDePrueba">
+              <PropertyRef Name="id_proyecto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PlanesDePrueba_Usuarios">
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="0..1" />
+          <End Role="PlanesDePrueba" Type="Self.PlanesDePrueba" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="id_usuario" />
+            </Principal>
+            <Dependent Role="PlanesDePrueba">
+              <PropertyRef Name="id_responsable" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Proyectos_Producto">
+          <End Role="Productos" Type="Self.Productos" Multiplicity="0..1" />
+          <End Role="Proyectos" Type="Self.Proyectos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Productos">
+              <PropertyRef Name="id_producto" />
+            </Principal>
+            <Dependent Role="Proyectos">
+              <PropertyRef Name="id_producto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Proyectos_Responsable">
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="0..1" />
+          <End Role="Proyectos" Type="Self.Proyectos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="id_usuario" />
+            </Principal>
+            <Dependent Role="Proyectos">
+              <PropertyRef Name="id_responsable" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_seldoAsig_asignacion">
+          <End Role="Asignaciones" Type="Self.Asignaciones" Multiplicity="1" />
+          <End Role="SueldoAsignaciones" Type="Self.SueldoAsignaciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Asignaciones">
+              <PropertyRef Name="id_asignacion" />
+            </Principal>
+            <Dependent Role="SueldoAsignaciones">
+              <PropertyRef Name="id_asignacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_seldoDesc_descuento">
+          <End Role="Descuentos" Type="Self.Descuentos" Multiplicity="1" />
+          <End Role="SueldoDescuentos" Type="Self.SueldoDescuentos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Descuentos">
+              <PropertyRef Name="id_descuento" />
+            </Principal>
+            <Dependent Role="SueldoDescuentos">
+              <PropertyRef Name="id_descuento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_sueldo_asig">
+          <End Role="Sueldos" Type="Self.Sueldos" Multiplicity="1" />
+          <End Role="SueldoAsignaciones" Type="Self.SueldoAsignaciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sueldos">
+              <PropertyRef Name="id_usuario" />
+              <PropertyRef Name="fecha" />
+            </Principal>
+            <Dependent Role="SueldoAsignaciones">
+              <PropertyRef Name="id_usuario" />
+              <PropertyRef Name="fecha" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_sueldo_desc">
+          <End Role="Sueldos" Type="Self.Sueldos" Multiplicity="1" />
+          <End Role="SueldoDescuentos" Type="Self.SueldoDescuentos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sueldos">
+              <PropertyRef Name="id_usuario" />
+              <PropertyRef Name="fecha" />
+            </Principal>
+            <Dependent Role="SueldoDescuentos">
+              <PropertyRef Name="id_usuario" />
+              <PropertyRef Name="fecha" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_sueldo_usuarios">
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
+          <End Role="Sueldos" Type="Self.Sueldos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="id_usuario" />
+            </Principal>
+            <Dependent Role="Sueldos">
+              <PropertyRef Name="id_usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_sueldoPerfil_permfiles">
+          <End Role="Perfiles" Type="Self.Perfiles" Multiplicity="1" />
+          <End Role="SueldoPerfilHistorico" Type="Self.SueldoPerfilHistorico" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Perfiles">
+              <PropertyRef Name="id_perfil" />
+            </Principal>
+            <Dependent Role="SueldoPerfilHistorico">
+              <PropertyRef Name="id_perfil" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Usuarios_Perfiles">
+          <End Role="Perfiles" Type="Self.Perfiles" Multiplicity="1" />
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Perfiles">
+              <PropertyRef Name="id_perfil" />
+            </Principal>
+            <Dependent Role="Usuarios">
+              <PropertyRef Name="id_perfil" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UsuariosCurso_Cursos">
+          <End Role="Cursos" Type="Self.Cursos" Multiplicity="1" />
+          <End Role="UsuariosCurso" Type="Self.UsuariosCurso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cursos">
+              <PropertyRef Name="id_curso" />
+            </Principal>
+            <Dependent Role="UsuariosCurso">
+              <PropertyRef Name="id_curso" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UsuariosCurso_Usuarios">
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
+          <End Role="UsuariosCurso" Type="Self.UsuariosCurso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="id_usuario" />
+            </Principal>
+            <Dependent Role="UsuariosCurso">
+              <PropertyRef Name="id_usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UsuariosCursoAvance_UsuariosCurso">
+          <End Role="UsuariosCurso" Type="Self.UsuariosCurso" Multiplicity="1" />
+          <End Role="UsuariosCursoAvance" Type="Self.UsuariosCursoAvance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UsuariosCurso">
+              <PropertyRef Name="id_usuario" />
+              <PropertyRef Name="id_curso" />
+            </Principal>
+            <Dependent Role="UsuariosCursoAvance">
+              <PropertyRef Name="id_usuario" />
+              <PropertyRef Name="id_curso" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BugTrackerFinalModelStoreContainer">
+          <EntitySet Name="Asignaciones" EntityType="Self.Asignaciones" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AsistenciaUsuarios" EntityType="Self.AsistenciaUsuarios" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Barrios" EntityType="Self.Barrios" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Bugs" EntityType="Self.Bugs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BugsHistorico" EntityType="Self.BugsHistorico" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CasosDePrueba" EntityType="Self.CasosDePrueba" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Categorias" EntityType="Self.Categorias" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CiclosPrueba" EntityType="Self.CiclosPrueba" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CiclosPruebaDetalle" EntityType="Self.CiclosPruebaDetalle" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Clientes" EntityType="Self.Clientes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Contactos" EntityType="Self.Contactos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Criticidades" EntityType="Self.Criticidades" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cursos" EntityType="Self.Cursos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Descuentos" EntityType="Self.Descuentos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Estados" EntityType="Self.Estados" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EstadosAsistencia" EntityType="Self.EstadosAsistencia" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EstadosUsuarios" EntityType="Self.EstadosUsuarios" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Facturas" EntityType="Self.Facturas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FacturasDetalle" EntityType="Self.FacturasDetalle" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Formularios" EntityType="Self.Formularios" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Objetivos" EntityType="Self.Objetivos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ObjetivosCursos" EntityType="Self.ObjetivosCursos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Perfiles" EntityType="Self.Perfiles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Permisos" EntityType="Self.Permisos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PlanesDePrueba" EntityType="Self.PlanesDePrueba" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Prioridades" EntityType="Self.Prioridades" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Productos" EntityType="Self.Productos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Proyectos" EntityType="Self.Proyectos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SueldoAsignaciones" EntityType="Self.SueldoAsignaciones" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SueldoDescuentos" EntityType="Self.SueldoDescuentos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SueldoPerfilHistorico" EntityType="Self.SueldoPerfilHistorico" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sueldos" EntityType="Self.Sueldos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usuarios" EntityType="Self.Usuarios" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UsuariosCurso" EntityType="Self.UsuariosCurso" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UsuariosCursoAvance" EntityType="Self.UsuariosCursoAvance" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Bugs_Criticidades" Association="Self.FK_Bugs_Criticidades">
+            <End Role="Criticidades" EntitySet="Criticidades" />
+            <End Role="Bugs" EntitySet="Bugs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Bugs_Estados" Association="Self.FK_Bugs_Estados">
+            <End Role="Estados" EntitySet="Estados" />
+            <End Role="Bugs" EntitySet="Bugs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Bugs_Prioridades" Association="Self.FK_Bugs_Prioridades">
+            <End Role="Prioridades" EntitySet="Prioridades" />
+            <End Role="Bugs" EntitySet="Bugs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Bugs_Productos" Association="Self.FK_Bugs_Productos">
+            <End Role="Productos" EntitySet="Productos" />
+            <End Role="Bugs" EntitySet="Bugs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Bugs_Usuarios" Association="Self.FK_Bugs_Usuarios">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="Bugs" EntitySet="Bugs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Bugs_Usuarios1" Association="Self.FK_Bugs_Usuarios1">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="Bugs" EntitySet="Bugs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BugsHistorico_Bugs" Association="Self.FK_BugsHistorico_Bugs">
+            <End Role="Bugs" EntitySet="Bugs" />
+            <End Role="BugsHistorico" EntitySet="BugsHistorico" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BugsHistorico_Criticidades" Association="Self.FK_BugsHistorico_Criticidades">
+            <End Role="Criticidades" EntitySet="Criticidades" />
+            <End Role="BugsHistorico" EntitySet="BugsHistorico" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BugsHistorico_Estados" Association="Self.FK_BugsHistorico_Estados">
+            <End Role="Estados" EntitySet="Estados" />
+            <End Role="BugsHistorico" EntitySet="BugsHistorico" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BugsHistorico_Prioridades" Association="Self.FK_BugsHistorico_Prioridades">
+            <End Role="Prioridades" EntitySet="Prioridades" />
+            <End Role="BugsHistorico" EntitySet="BugsHistorico" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BugsHistorico_Productos" Association="Self.FK_BugsHistorico_Productos">
+            <End Role="Productos" EntitySet="Productos" />
+            <End Role="BugsHistorico" EntitySet="BugsHistorico" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BugsHistorico_Usuarios" Association="Self.FK_BugsHistorico_Usuarios">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="BugsHistorico" EntitySet="BugsHistorico" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BugsHistorico_Usuarios1" Association="Self.FK_BugsHistorico_Usuarios1">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="BugsHistorico" EntitySet="BugsHistorico" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CasosDePrueba_PlanesDePrueba" Association="Self.FK_CasosDePrueba_PlanesDePrueba">
+            <End Role="PlanesDePrueba" EntitySet="PlanesDePrueba" />
+            <End Role="CasosDePrueba" EntitySet="CasosDePrueba" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CiclosPrueba_PlanesDePrueba" Association="Self.FK_CiclosPrueba_PlanesDePrueba">
+            <End Role="PlanesDePrueba" EntitySet="PlanesDePrueba" />
+            <End Role="CiclosPrueba" EntitySet="CiclosPrueba" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CiclosPrueba_Usuarios" Association="Self.FK_CiclosPrueba_Usuarios">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="CiclosPrueba" EntitySet="CiclosPrueba" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CiclosPruebaDetalle_CasosDePrueba" Association="Self.FK_CiclosPruebaDetalle_CasosDePrueba">
+            <End Role="CasosDePrueba" EntitySet="CasosDePrueba" />
+            <End Role="CiclosPruebaDetalle" EntitySet="CiclosPruebaDetalle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CiclosPruebaDetalle_CiclosPrueba" Association="Self.FK_CiclosPruebaDetalle_CiclosPrueba">
+            <End Role="CiclosPrueba" EntitySet="CiclosPrueba" />
+            <End Role="CiclosPruebaDetalle" EntitySet="CiclosPruebaDetalle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CiclosPruebaDetalle_Usuarios" Association="Self.FK_CiclosPruebaDetalle_Usuarios">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="CiclosPruebaDetalle" EntitySet="CiclosPruebaDetalle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Clientes_Barrios" Association="Self.FK_Clientes_Barrios">
+            <End Role="Barrios" EntitySet="Barrios" />
+            <End Role="Clientes" EntitySet="Clientes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Clientes_Contactos" Association="Self.FK_Clientes_Contactos">
+            <End Role="Contactos" EntitySet="Contactos" />
+            <End Role="Clientes" EntitySet="Clientes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cursos_Categorias" Association="Self.FK_Cursos_Categorias">
+            <End Role="Categorias" EntitySet="Categorias" />
+            <End Role="Cursos" EntitySet="Cursos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Facturas_Clientes" Association="Self.FK_Facturas_Clientes">
+            <End Role="Clientes" EntitySet="Clientes" />
+            <End Role="Facturas" EntitySet="Facturas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Facturas_Usuarios" Association="Self.FK_Facturas_Usuarios">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="Facturas" EntitySet="Facturas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FacturasDetalle_CiclosPrueba" Association="Self.FK_FacturasDetalle_CiclosPrueba">
+            <End Role="CiclosPrueba" EntitySet="CiclosPrueba" />
+            <End Role="FacturasDetalle" EntitySet="FacturasDetalle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FacturasDetalle_Facturas" Association="Self.FK_FacturasDetalle_Facturas">
+            <End Role="Facturas" EntitySet="Facturas" />
+            <End Role="FacturasDetalle" EntitySet="FacturasDetalle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FacturasDetalle_Productos" Association="Self.FK_FacturasDetalle_Productos">
+            <End Role="Productos" EntitySet="Productos" />
+            <End Role="FacturasDetalle" EntitySet="FacturasDetalle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FacturasDetalle_Proyectos" Association="Self.FK_FacturasDetalle_Proyectos">
+            <End Role="Proyectos" EntitySet="Proyectos" />
+            <End Role="FacturasDetalle" EntitySet="FacturasDetalle" />
+          </AssociationSet>
+          <AssociationSet Name="fk_id_estado_asistencia" Association="Self.fk_id_estado_asistencia">
+            <End Role="EstadosAsistencia" EntitySet="EstadosAsistencia" />
+            <End Role="AsistenciaUsuarios" EntitySet="AsistenciaUsuarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ObjetivosCursos_Cursos" Association="Self.FK_ObjetivosCursos_Cursos">
+            <End Role="Cursos" EntitySet="Cursos" />
+            <End Role="ObjetivosCursos" EntitySet="ObjetivosCursos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ObjetivosCursos_Objetivos" Association="Self.FK_ObjetivosCursos_Objetivos">
+            <End Role="Objetivos" EntitySet="Objetivos" />
+            <End Role="ObjetivosCursos" EntitySet="ObjetivosCursos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Permisos_Formularios" Association="Self.FK_Permisos_Formularios">
+            <End Role="Formularios" EntitySet="Formularios" />
+            <End Role="Permisos" EntitySet="Permisos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Permisos_Perfiles" Association="Self.FK_Permisos_Perfiles">
+            <End Role="Perfiles" EntitySet="Perfiles" />
+            <End Role="Permisos" EntitySet="Permisos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PlanesDePrueba_Proyectos" Association="Self.FK_PlanesDePrueba_Proyectos">
+            <End Role="Proyectos" EntitySet="Proyectos" />
+            <End Role="PlanesDePrueba" EntitySet="PlanesDePrueba" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PlanesDePrueba_Usuarios" Association="Self.FK_PlanesDePrueba_Usuarios">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="PlanesDePrueba" EntitySet="PlanesDePrueba" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Proyectos_Producto" Association="Self.FK_Proyectos_Producto">
+            <End Role="Productos" EntitySet="Productos" />
+            <End Role="Proyectos" EntitySet="Proyectos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Proyectos_Responsable" Association="Self.FK_Proyectos_Responsable">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="Proyectos" EntitySet="Proyectos" />
+          </AssociationSet>
+          <AssociationSet Name="fk_seldoAsig_asignacion" Association="Self.fk_seldoAsig_asignacion">
+            <End Role="Asignaciones" EntitySet="Asignaciones" />
+            <End Role="SueldoAsignaciones" EntitySet="SueldoAsignaciones" />
+          </AssociationSet>
+          <AssociationSet Name="fk_seldoDesc_descuento" Association="Self.fk_seldoDesc_descuento">
+            <End Role="Descuentos" EntitySet="Descuentos" />
+            <End Role="SueldoDescuentos" EntitySet="SueldoDescuentos" />
+          </AssociationSet>
+          <AssociationSet Name="fk_sueldo_asig" Association="Self.fk_sueldo_asig">
+            <End Role="Sueldos" EntitySet="Sueldos" />
+            <End Role="SueldoAsignaciones" EntitySet="SueldoAsignaciones" />
+          </AssociationSet>
+          <AssociationSet Name="fk_sueldo_desc" Association="Self.fk_sueldo_desc">
+            <End Role="Sueldos" EntitySet="Sueldos" />
+            <End Role="SueldoDescuentos" EntitySet="SueldoDescuentos" />
+          </AssociationSet>
+          <AssociationSet Name="fk_sueldo_usuarios" Association="Self.fk_sueldo_usuarios">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="Sueldos" EntitySet="Sueldos" />
+          </AssociationSet>
+          <AssociationSet Name="fk_sueldoPerfil_permfiles" Association="Self.fk_sueldoPerfil_permfiles">
+            <End Role="Perfiles" EntitySet="Perfiles" />
+            <End Role="SueldoPerfilHistorico" EntitySet="SueldoPerfilHistorico" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Usuarios_Perfiles" Association="Self.FK_Usuarios_Perfiles">
+            <End Role="Perfiles" EntitySet="Perfiles" />
+            <End Role="Usuarios" EntitySet="Usuarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UsuariosCurso_Cursos" Association="Self.FK_UsuariosCurso_Cursos">
+            <End Role="Cursos" EntitySet="Cursos" />
+            <End Role="UsuariosCurso" EntitySet="UsuariosCurso" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UsuariosCurso_Usuarios" Association="Self.FK_UsuariosCurso_Usuarios">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="UsuariosCurso" EntitySet="UsuariosCurso" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UsuariosCursoAvance_UsuariosCurso" Association="Self.FK_UsuariosCursoAvance_UsuariosCurso">
+            <End Role="UsuariosCurso" EntitySet="UsuariosCurso" />
+            <End Role="UsuariosCursoAvance" EntitySet="UsuariosCursoAvance" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BugTrackerFinalModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Asignacione">
+          <Key>
+            <PropertyRef Name="id_asignacion" />
+          </Key>
+          <Property Name="id_asignacion" Type="Int32" Nullable="false" />
+          <Property Name="n_asignacion" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="monto" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <NavigationProperty Name="SueldoAsignaciones" Relationship="Self.fk_seldoAsig_asignacion" FromRole="Asignaciones" ToRole="SueldoAsignaciones" />
+        </EntityType>
+        <EntityType Name="AsistenciaUsuario">
+          <Key>
+            <PropertyRef Name="id_usuario" />
+            <PropertyRef Name="fecha" />
+          </Key>
+          <Property Name="id_usuario" Type="Int32" Nullable="false" />
+          <Property Name="fecha" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="hora_ingreso" Type="Time" Precision="7" />
+          <Property Name="hora_salida" Type="Time" Precision="7" />
+          <Property Name="id_estado_asistencia" Type="Int32" />
+          <Property Name="comentario" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="EstadosAsistencia" Relationship="Self.fk_id_estado_asistencia" FromRole="AsistenciaUsuarios" ToRole="EstadosAsistencia" />
+        </EntityType>
+        <EntityType Name="Barrio">
+          <Key>
+            <PropertyRef Name="id_barrio" />
+          </Key>
+          <Property Name="id_barrio" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="borrado" Type="Boolean" />
+          <NavigationProperty Name="Clientes" Relationship="Self.FK_Clientes_Barrios" FromRole="Barrios" ToRole="Clientes" />
+        </EntityType>
+        <EntityType Name="Bug">
+          <Key>
+            <PropertyRef Name="id_bug" />
+          </Key>
+          <Property Name="id_bug" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="titulo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="descripcion" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="fecha_alta" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="id_usuario_responsable" Type="Int32" />
+          <Property Name="id_usuario_asignado" Type="Int32" />
+          <Property Name="id_producto" Type="Int32" />
+          <Property Name="id_prioridad" Type="Int32" />
+          <Property Name="id_criticidad" Type="Int32" />
+          <Property Name="id_estado" Type="Int32" />
+          <Property Name="borrado" Type="Boolean" />
+          <NavigationProperty Name="Criticidade" Relationship="Self.FK_Bugs_Criticidades" FromRole="Bugs" ToRole="Criticidades" />
+          <NavigationProperty Name="Estado" Relationship="Self.FK_Bugs_Estados" FromRole="Bugs" ToRole="Estados" />
+          <NavigationProperty Name="Prioridade" Relationship="Self.FK_Bugs_Prioridades" FromRole="Bugs" ToRole="Prioridades" />
+          <NavigationProperty Name="Producto" Relationship="Self.FK_Bugs_Productos" FromRole="Bugs" ToRole="Productos" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK_Bugs_Usuarios" FromRole="Bugs" ToRole="Usuarios" />
+          <NavigationProperty Name="Usuario1" Relationship="Self.FK_Bugs_Usuarios1" FromRole="Bugs" ToRole="Usuarios" />
+          <NavigationProperty Name="BugsHistoricoes" Relationship="Self.FK_BugsHistorico_Bugs" FromRole="Bugs" ToRole="BugsHistorico" />
+        </EntityType>
+        <EntityType Name="BugsHistorico">
+          <Key>
+            <PropertyRef Name="id_bug_historico" />
+          </Key>
+          <Property Name="id_bug_historico" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fecha_historico" Type="DateTime" Precision="0" />
+          <Property Name="titulo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="descripcion" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="id_bug" Type="Int32" Nullable="false" />
+          <Property Name="id_usuario_responsable" Type="Int32" />
+          <Property Name="id_usuario_asignado" Type="Int32" />
+          <Property Name="id_producto" Type="Int32" />
+          <Property Name="id_prioridad" Type="Int32" />
+          <Property Name="id_criticidad" Type="Int32" />
+          <Property Name="id_estado" Type="Int32" Nullable="false" />
+          <Property Name="borrado" Type="Boolean" />
+          <NavigationProperty Name="Bug" Relationship="Self.FK_BugsHistorico_Bugs" FromRole="BugsHistorico" ToRole="Bugs" />
+          <NavigationProperty Name="Criticidade" Relationship="Self.FK_BugsHistorico_Criticidades" FromRole="BugsHistorico" ToRole="Criticidades" />
+          <NavigationProperty Name="Estado" Relationship="Self.FK_BugsHistorico_Estados" FromRole="BugsHistorico" ToRole="Estados" />
+          <NavigationProperty Name="Prioridade" Relationship="Self.FK_BugsHistorico_Prioridades" FromRole="BugsHistorico" ToRole="Prioridades" />
+          <NavigationProperty Name="Producto" Relationship="Self.FK_BugsHistorico_Productos" FromRole="BugsHistorico" ToRole="Productos" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK_BugsHistorico_Usuarios" FromRole="BugsHistorico" ToRole="Usuarios" />
+          <NavigationProperty Name="Usuario1" Relationship="Self.FK_BugsHistorico_Usuarios1" FromRole="BugsHistorico" ToRole="Usuarios" />
+        </EntityType>
+        <EntityType Name="CasosDePrueba">
+          <Key>
+            <PropertyRef Name="id_caso_prueba" />
+          </Key>
+          <Property Name="id_caso_prueba" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_plan_prueba" Type="Int32" Nullable="false" />
+          <Property Name="titulo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="descripcion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="id_responsable" Type="Int32" />
+          <Property Name="borrado" Type="Boolean" />
+          <NavigationProperty Name="PlanesDePrueba" Relationship="Self.FK_CasosDePrueba_PlanesDePrueba" FromRole="CasosDePrueba" ToRole="PlanesDePrueba" />
+          <NavigationProperty Name="CiclosPruebaDetalles" Relationship="Self.FK_CiclosPruebaDetalle_CasosDePrueba" FromRole="CasosDePrueba" ToRole="CiclosPruebaDetalle" />
+        </EntityType>
+        <EntityType Name="Categoria">
+          <Key>
+            <PropertyRef Name="id_categoria" />
+          </Key>
+          <Property Name="id_categoria" Type="Int32" Nullable="false" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="borrado" Type="Boolean" />
+          <NavigationProperty Name="Cursos" Relationship="Self.FK_Cursos_Categorias" FromRole="Categorias" ToRole="Cursos" />
+        </EntityType>
+        <EntityType Name="CiclosPrueba">
+          <Key>
+            <PropertyRef Name="id_ciclo_prueba" />
+          </Key>
+          <Property Name="id_ciclo_prueba" Type="Int32" Nullable="false" />
+          <Property Name="fecha_inicio_ejecucion" Type="DateTime" Precision="3" />
+          <Property Name="fecha_fin_ejecucion" Type="DateTime" Precision="3" />
+          <Property Name="id_responsable" Type="Int32" />
+          <Property Name="id_plan_prueba" Type="Int32" />
+          <Property Name="aceptado" Type="Boolean" />
+          <Property Name="borrado" Type="Boolean" />
+          <NavigationProperty Name="PlanesDePrueba" Relationship="Self.FK_CiclosPrueba_PlanesDePrueba" FromRole="CiclosPrueba" ToRole="PlanesDePrueba" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK_CiclosPrueba_Usuarios" FromRole="CiclosPrueba" ToRole="Usuarios" />
+          <NavigationProperty Name="CiclosPruebaDetalles" Relationship="Self.FK_CiclosPruebaDetalle_CiclosPrueba" FromRole="CiclosPrueba" ToRole="CiclosPruebaDetalle" />
+          <NavigationProperty Name="FacturasDetalles" Relationship="Self.FK_FacturasDetalle_CiclosPrueba" FromRole="CiclosPrueba" ToRole="FacturasDetalle" />
+        </EntityType>
+        <EntityType Name="CiclosPruebaDetalle">
+          <Key>
+            <PropertyRef Name="id_ciclo_prueba_detalle" />
+          </Key>
+          <Property Name="id_ciclo_prueba_detalle" Type="Int32" Nullable="false" />
+          <Property Name="id_ciclo_prueba" Type="Int32" />
+          <Property Name="id_caso_prueba" Type="Int32" />
+          <Property Name="id_usuario_tester" Type="Int32" />
+          <Property Name="cantidad_horas" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="fecha_ejecucion" Type="DateTime" Precision="3" />
+          <Property Name="aceptado" Type="Boolean" />
+          <Property Name="borrado" Type="Boolean" />
+          <NavigationProperty Name="CasosDePrueba" Relationship="Self.FK_CiclosPruebaDetalle_CasosDePrueba" FromRole="CiclosPruebaDetalle" ToRole="CasosDePrueba" />
+          <NavigationProperty Name="CiclosPrueba" Relationship="Self.FK_CiclosPruebaDetalle_CiclosPrueba" FromRole="CiclosPruebaDetalle" ToRole="CiclosPrueba" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK_CiclosPruebaDetalle_Usuarios" FromRole="CiclosPruebaDetalle" ToRole="Usuarios" />
+        </EntityType>
+        <EntityType Name="Cliente">
+          <Key>
+            <PropertyRef Name="id_cliente" />
+          </Key>
+          <Property Name="id_cliente" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cuit" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="razon_social" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="borrado" Type="Boolean" />
+          <Property Name="calle" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="numero" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="fecha_alta" Type="DateTime" Precision="3" />
+          <Property Name="id_barrio" Type="Int32" />
+          <Property Name="id_contacto" Type="Int32" />
+          <NavigationProperty Name="Barrio" Relationship="Self.FK_Clientes_Barrios" FromRole="Clientes" ToRole="Barrios" />
+          <NavigationProperty Name="Contacto" Relationship="Self.FK_Clientes_Contactos" FromRole="Clientes" ToRole="Contactos" />
+          <NavigationProperty Name="Facturas" Relationship="Self.FK_Facturas_Clientes" FromRole="Clientes" ToRole="Facturas" />
+        </EntityType>
+        <EntityType Name="Contacto">
+          <Key>
+            <PropertyRef Name="id_contacto" />
+          </Key>
+          <Property Name="id_contacto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="apellido" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="telefono" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="borrado" Type="Boolean" />
+          <NavigationProperty Name="Clientes" Relationship="Self.FK_Clientes_Contactos" FromRole="Contactos" ToRole="Clientes" />
+        </EntityType>
+        <EntityType Name="Criticidade">
+          <Key>
+            <PropertyRef Name="id_criticidad" />
+          </Key>
+          <Property Name="id_criticidad" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="borrado" Type="Boolean" />
+          <NavigationProperty Name="Bugs" Relationship="Self.FK_Bugs_Criticidades" FromRole="Criticidades" ToRole="Bugs" />
+          <NavigationProperty Name="BugsHistoricoes" Relationship="Self.FK_BugsHistorico_Criticidades" FromRole="Criticidades" ToRole="BugsHistorico" />
+        </EntityType>
+        <EntityType Name="Curso">
+          <Key>
+            <PropertyRef Name="id_curso" />
+          </Key>
+          <Property Name="id_curso" Type="Int32" Nullable="false" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="fecha_vigencia" Type="DateTime" Precision="3" />
+          <Property Name="id_categoria" Type="Int32" />
+          <Property Name="borrado" Type="Boolean" />
+          <NavigationProperty Name="Categoria" Relationship="Self.FK_Cursos_Categorias" FromRole="Cursos" ToRole="Categorias" />
+          <NavigationProperty Name="ObjetivosCursos" Relationship="Self.FK_ObjetivosCursos_Cursos" FromRole="Cursos" ToRole="ObjetivosCursos" />
+          <NavigationProperty Name="UsuariosCursoes" Relationship="Self.FK_UsuariosCurso_Cursos" FromRole="Cursos" ToRole="UsuariosCurso" />
+        </EntityType>
+        <EntityType Name="Descuento">
+          <Key>
+            <PropertyRef Name="id_descuento" />
+          </Key>
+          <Property Name="id_descuento" Type="Int32" Nullable="false" />
+          <Property Name="n_descuento" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="monto" Type="Decimal" Precision="10" Scale="2" />
+          <NavigationProperty Name="SueldoDescuentos" Relationship="Self.fk_seldoDesc_descuento" FromRole="Descuentos" ToRole="SueldoDescuentos" />
+        </EntityType>
+        <EntityType Name="Estado">
+          <Key>
+            <PropertyRef Name="id_estado" />
+          </Key>
+          <Property Name="id_estado" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="borrado" Type="Boolean" />
+          <NavigationProperty Name="Bugs" Relationship="Self.FK_Bugs_Estados" FromRole="Estados" ToRole="Bugs" />
+          <NavigationProperty Name="BugsHistoricoes" Relationship="Self.FK_BugsHistorico_Estados" FromRole="Estados" ToRole="BugsHistorico" />
+        </EntityType>
+        <EntityType Name="EstadosAsistencia">
+          <Key>
+            <PropertyRef Name="id_estado_asistencia" />
+          </Key>
+          <Property Name="id_estado_asistencia" Type="Int32" Nullable="false" />
+          <Property Name="n_estados_asistencia" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="AsistenciaUsuarios" Relationship="Self.fk_id_estado_asistencia" FromRole="EstadosAsistencia" ToRole="AsistenciaUsuarios" />
+        </EntityType>
+        <EntityType Name="EstadosUsuario">
+          <Key>
+            <PropertyRef Name="id_estado_usuario" />
+          </Key>
+          <Property Name="id_estado_usuario" Type="Int32" Nullable="false" />
+          <Property Name="n_estado_usuario" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Factura">
+          <Key>
+            <PropertyRef Name="id_factura" />
+          </Key>
+          <Property Name="id_factura" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="numero_factura" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="id_cliente" Type="Int32" Nullable="false" />
+          <Property Name="fecha" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="id_usuario_creador" Type="Int32" Nullable="false" />
+          <Property Name="borrado" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Cliente" Relationship="Self.FK_Facturas_Clientes" FromRole="Facturas" ToRole="Clientes" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK_Facturas_Usuarios" FromRole="Facturas" ToRole="Usuarios" />
+          <NavigationProperty Name="FacturasDetalles" Relationship="Self.FK_FacturasDetalle_Facturas" FromRole="Facturas" ToRole="FacturasDetalle" />
+        </EntityType>
+        <EntityType Name="FacturasDetalle">
+          <Key>
+            <PropertyRef Name="id_detalle_factura" />
+          </Key>
+          <Property Name="id_detalle_factura" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_factura" Type="Int32" />
+          <Property Name="numero_orden" Type="Int32" />
+          <Property Name="id_producto" Type="Int32" />
+          <Property Name="id_proyecto" Type="Int32" />
+          <Property Name="id_ciclo_prueba" Type="Int32" />
+          <Property Name="precio" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="borrado" Type="Boolean" />
+          <NavigationProperty Name="CiclosPrueba" Relationship="Self.FK_FacturasDetalle_CiclosPrueba" FromRole="FacturasDetalle" ToRole="CiclosPrueba" />
+          <NavigationProperty Name="Factura" Relationship="Self.FK_FacturasDetalle_Facturas" FromRole="FacturasDetalle" ToRole="Facturas" />
+          <NavigationProperty Name="Producto" Relationship="Self.FK_FacturasDetalle_Productos" FromRole="FacturasDetalle" ToRole="Productos" />
+          <NavigationProperty Name="Proyecto" Relationship="Self.FK_FacturasDetalle_Proyectos" FromRole="FacturasDetalle" ToRole="Proyectos" />
+        </EntityType>
+        <EntityType Name="Formulario">
+          <Key>
+            <PropertyRef Name="id_formulario" />
+          </Key>
+          <Property Name="id_formulario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="borrado" Type="Boolean" />
+          <NavigationProperty Name="Permisos" Relationship="Self.FK_Permisos_Formularios" FromRole="Formularios" ToRole="Permisos" />
+        </EntityType>
+        <EntityType Name="Objetivo">
+          <Key>
+            <PropertyRef Name="id_objetivo" />
+          </Key>
+          <Property Name="id_objetivo" Type="Int32" Nullable="false" />
+          <Property Name="nombre_corto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="nombre_largo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="borrado" Type="Boolean" />
+          <NavigationProperty Name="ObjetivosCursos" Relationship="Self.FK_ObjetivosCursos_Objetivos" FromRole="Objetivos" ToRole="ObjetivosCursos" />
+        </EntityType>
+        <EntityType Name="ObjetivosCurso">
+          <Key>
+            <PropertyRef Name="id_objetivo" />
+            <PropertyRef Name="id_curso" />
+          </Key>
+          <Property Name="id_objetivo" Type="Int32" Nullable="false" />
+          <Property Name="id_curso" Type="Int32" Nullable="false" />
+          <Property Name="puntos" Type="Int32" />
+          <Property Name="borrado" Type="Boolean" />
+          <NavigationProperty Name="Curso" Relationship="Self.FK_ObjetivosCursos_Cursos" FromRole="ObjetivosCursos" ToRole="Cursos" />
+          <NavigationProperty Name="Objetivo" Relationship="Self.FK_ObjetivosCursos_Objetivos" FromRole="ObjetivosCursos" ToRole="Objetivos" />
+        </EntityType>
+        <EntityType Name="Perfile">
+          <Key>
+            <PropertyRef Name="id_perfil" />
+          </Key>
+          <Property Name="id_perfil" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="borrado" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Permisos" Relationship="Self.FK_Permisos_Perfiles" FromRole="Perfiles" ToRole="Permisos" />
+          <NavigationProperty Name="SueldoPerfilHistoricoes" Relationship="Self.fk_sueldoPerfil_permfiles" FromRole="Perfiles" ToRole="SueldoPerfilHistorico" />
+          <NavigationProperty Name="Usuarios" Relationship="Self.FK_Usuarios_Perfiles" FromRole="Perfiles" ToRole="Usuarios" />
+        </EntityType>
+        <EntityType Name="Permiso">
+          <Key>
+            <PropertyRef Name="id_formulario" />
+            <PropertyRef Name="id_perfil" />
+          </Key>
+          <Property Name="id_formulario" Type="Int32" Nullable="false" />
+          <Property Name="id_perfil" Type="Int32" Nullable="false" />
+          <Property Name="borrado" Type="Int32" />
+          <NavigationProperty Name="Formulario" Relationship="Self.FK_Permisos_Formularios" FromRole="Permisos" ToRole="Formularios" />
+          <NavigationProperty Name="Perfile" Relationship="Self.FK_Permisos_Perfiles" FromRole="Permisos" ToRole="Perfiles" />
+        </EntityType>
+        <EntityType Name="PlanesDePrueba">
+          <Key>
+            <PropertyRef Name="id_plan_prueba" />
+          </Key>
+          <Property Name="id_plan_prueba" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_proyecto" Type="Int32" Nullable="false" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="id_responsable" Type="Int32" />
+          <Property Name="descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="borrado" Type="Boolean" />
+          <NavigationProperty Name="CasosDePruebas" Relationship="Self.FK_CasosDePrueba_PlanesDePrueba" FromRole="PlanesDePrueba" ToRole="CasosDePrueba" />
+          <NavigationProperty Name="CiclosPruebas" Relationship="Self.FK_CiclosPrueba_PlanesDePrueba" FromRole="PlanesDePrueba" ToRole="CiclosPrueba" />
+          <NavigationProperty Name="Proyecto" Relationship="Self.FK_PlanesDePrueba_Proyectos" FromRole="PlanesDePrueba" ToRole="Proyectos" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK_PlanesDePrueba_Usuarios" FromRole="PlanesDePrueba" ToRole="Usuarios" />
+        </EntityType>
+        <EntityType Name="Prioridade">
+          <Key>
+            <PropertyRef Name="id_prioridad" />
+          </Key>
+          <Property Name="id_prioridad" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="borrado" Type="Boolean" />
+          <NavigationProperty Name="Bugs" Relationship="Self.FK_Bugs_Prioridades" FromRole="Prioridades" ToRole="Bugs" />
+          <NavigationProperty Name="BugsHistoricoes" Relationship="Self.FK_BugsHistorico_Prioridades" FromRole="Prioridades" ToRole="BugsHistorico" />
+        </EntityType>
+        <EntityType Name="Producto">
+          <Key>
+            <PropertyRef Name="id_producto" />
+          </Key>
+          <Property Name="id_producto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="borrado" Type="Boolean" />
+          <NavigationProperty Name="Bugs" Relationship="Self.FK_Bugs_Productos" FromRole="Productos" ToRole="Bugs" />
+          <NavigationProperty Name="BugsHistoricoes" Relationship="Self.FK_BugsHistorico_Productos" FromRole="Productos" ToRole="BugsHistorico" />
+          <NavigationProperty Name="FacturasDetalles" Relationship="Self.FK_FacturasDetalle_Productos" FromRole="Productos" ToRole="FacturasDetalle" />
+          <NavigationProperty Name="Proyectos" Relationship="Self.FK_Proyectos_Producto" FromRole="Productos" ToRole="Proyectos" />
+        </EntityType>
+        <EntityType Name="Proyecto">
+          <Key>
+            <PropertyRef Name="id_proyecto" />
+          </Key>
+          <Property Name="id_proyecto" Type="Int32" Nullable="false" />
+          <Property Name="id_producto" Type="Int32" />
+          <Property Name="descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="version" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="alcance" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="id_responsable" Type="Int32" />
+          <Property Name="borrado" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="FacturasDetalles" Relationship="Self.FK_FacturasDetalle_Proyectos" FromRole="Proyectos" ToRole="FacturasDetalle" />
+          <NavigationProperty Name="PlanesDePruebas" Relationship="Self.FK_PlanesDePrueba_Proyectos" FromRole="Proyectos" ToRole="PlanesDePrueba" />
+          <NavigationProperty Name="Producto" Relationship="Self.FK_Proyectos_Producto" FromRole="Proyectos" ToRole="Productos" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK_Proyectos_Responsable" FromRole="Proyectos" ToRole="Usuarios" />
+        </EntityType>
+        <EntityType Name="SueldoAsignacione">
+          <Key>
+            <PropertyRef Name="id_usuario" />
+            <PropertyRef Name="fecha" />
+            <PropertyRef Name="id_asignacion" />
+          </Key>
+          <Property Name="id_usuario" Type="Int32" Nullable="false" />
+          <Property Name="fecha" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="id_asignacion" Type="Int32" Nullable="false" />
+          <Property Name="monto" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="cantidad" Type="Int32" />
+          <NavigationProperty Name="Asignacione" Relationship="Self.fk_seldoAsig_asignacion" FromRole="SueldoAsignaciones" ToRole="Asignaciones" />
+          <NavigationProperty Name="Sueldo" Relationship="Self.fk_sueldo_asig" FromRole="SueldoAsignaciones" ToRole="Sueldos" />
+        </EntityType>
+        <EntityType Name="SueldoDescuento">
+          <Key>
+            <PropertyRef Name="id_usuario" />
+            <PropertyRef Name="fecha" />
+            <PropertyRef Name="id_descuento" />
+          </Key>
+          <Property Name="id_usuario" Type="Int32" Nullable="false" />
+          <Property Name="fecha" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="id_descuento" Type="Int32" Nullable="false" />
+          <Property Name="cantidad" Type="Int32" />
+          <Property Name="monto" Type="Decimal" Precision="10" Scale="2" />
+          <NavigationProperty Name="Descuento" Relationship="Self.fk_seldoDesc_descuento" FromRole="SueldoDescuentos" ToRole="Descuentos" />
+          <NavigationProperty Name="Sueldo" Relationship="Self.fk_sueldo_desc" FromRole="SueldoDescuentos" ToRole="Sueldos" />
+        </EntityType>
+        <EntityType Name="SueldoPerfilHistorico">
+          <Key>
+            <PropertyRef Name="id_perfil" />
+            <PropertyRef Name="fecha" />
+          </Key>
+          <Property Name="id_perfil" Type="Int32" Nullable="false" />
+          <Property Name="fecha" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="sueldo" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <NavigationProperty Name="Perfile" Relationship="Self.fk_sueldoPerfil_permfiles" FromRole="SueldoPerfilHistorico" ToRole="Perfiles" />
+        </EntityType>
+        <EntityType Name="Sueldo">
+          <Key>
+            <PropertyRef Name="id_usuario" />
+            <PropertyRef Name="fecha" />
+          </Key>
+          <Property Name="id_usuario" Type="Int32" Nullable="false" />
+          <Property Name="fecha" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="sueldo_bruto" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <NavigationProperty Name="SueldoAsignaciones" Relationship="Self.fk_sueldo_asig" FromRole="Sueldos" ToRole="SueldoAsignaciones" />
+          <NavigationProperty Name="SueldoDescuentos" Relationship="Self.fk_sueldo_desc" FromRole="Sueldos" ToRole="SueldoDescuentos" />
+          <NavigationProperty Name="Usuario" Relationship="Self.fk_sueldo_usuarios" FromRole="Sueldos" ToRole="Usuarios" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="id_usuario" />
+          </Key>
+          <Property Name="id_usuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_perfil" Type="Int32" Nullable="false" />
+          <Property Name="usuario1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="estado" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="borrado" Type="Boolean" />
+          <NavigationProperty Name="Bugs" Relationship="Self.FK_Bugs_Usuarios" FromRole="Usuarios" ToRole="Bugs" />
+          <NavigationProperty Name="Bugs1" Relationship="Self.FK_Bugs_Usuarios1" FromRole="Usuarios" ToRole="Bugs" />
+          <NavigationProperty Name="BugsHistoricoes" Relationship="Self.FK_BugsHistorico_Usuarios" FromRole="Usuarios" ToRole="BugsHistorico" />
+          <NavigationProperty Name="BugsHistoricoes1" Relationship="Self.FK_BugsHistorico_Usuarios1" FromRole="Usuarios" ToRole="BugsHistorico" />
+          <NavigationProperty Name="CiclosPruebas" Relationship="Self.FK_CiclosPrueba_Usuarios" FromRole="Usuarios" ToRole="CiclosPrueba" />
+          <NavigationProperty Name="CiclosPruebaDetalles" Relationship="Self.FK_CiclosPruebaDetalle_Usuarios" FromRole="Usuarios" ToRole="CiclosPruebaDetalle" />
+          <NavigationProperty Name="Facturas" Relationship="Self.FK_Facturas_Usuarios" FromRole="Usuarios" ToRole="Facturas" />
+          <NavigationProperty Name="Perfile" Relationship="Self.FK_Usuarios_Perfiles" FromRole="Usuarios" ToRole="Perfiles" />
+          <NavigationProperty Name="PlanesDePruebas" Relationship="Self.FK_PlanesDePrueba_Usuarios" FromRole="Usuarios" ToRole="PlanesDePrueba" />
+          <NavigationProperty Name="Proyectos" Relationship="Self.FK_Proyectos_Responsable" FromRole="Usuarios" ToRole="Proyectos" />
+          <NavigationProperty Name="Sueldos" Relationship="Self.fk_sueldo_usuarios" FromRole="Usuarios" ToRole="Sueldos" />
+          <NavigationProperty Name="UsuariosCursoes" Relationship="Self.FK_UsuariosCurso_Usuarios" FromRole="Usuarios" ToRole="UsuariosCurso" />
+        </EntityType>
+        <EntityType Name="UsuariosCurso">
+          <Key>
+            <PropertyRef Name="id_usuario" />
+            <PropertyRef Name="id_curso" />
+          </Key>
+          <Property Name="id_usuario" Type="Int32" Nullable="false" />
+          <Property Name="id_curso" Type="Int32" Nullable="false" />
+          <Property Name="puntuacion" Type="Int32" />
+          <Property Name="observaciones" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="fecha_inicio" Type="DateTime" Precision="3" />
+          <Property Name="fecha_fin" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Curso" Relationship="Self.FK_UsuariosCurso_Cursos" FromRole="UsuariosCurso" ToRole="Cursos" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK_UsuariosCurso_Usuarios" FromRole="UsuariosCurso" ToRole="Usuarios" />
+          <NavigationProperty Name="UsuariosCursoAvances" Relationship="Self.FK_UsuariosCursoAvance_UsuariosCurso" FromRole="UsuariosCurso" ToRole="UsuariosCursoAvance" />
+        </EntityType>
+        <EntityType Name="UsuariosCursoAvance">
+          <Key>
+            <PropertyRef Name="id_usuario" />
+            <PropertyRef Name="id_curso" />
+            <PropertyRef Name="inicio" />
+          </Key>
+          <Property Name="id_usuario" Type="Int32" Nullable="false" />
+          <Property Name="id_curso" Type="Int32" Nullable="false" />
+          <Property Name="inicio" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="fin" Type="DateTime" Precision="3" />
+          <Property Name="porc_avance" Type="Int32" />
+          <NavigationProperty Name="UsuariosCurso" Relationship="Self.FK_UsuariosCursoAvance_UsuariosCurso" FromRole="UsuariosCursoAvance" ToRole="UsuariosCurso" />
+        </EntityType>
+        <Association Name="fk_seldoAsig_asignacion">
+          <End Role="Asignaciones" Type="Self.Asignacione" Multiplicity="1" />
+          <End Role="SueldoAsignaciones" Type="Self.SueldoAsignacione" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Asignaciones">
+              <PropertyRef Name="id_asignacion" />
+            </Principal>
+            <Dependent Role="SueldoAsignaciones">
+              <PropertyRef Name="id_asignacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_id_estado_asistencia">
+          <End Role="EstadosAsistencia" Type="Self.EstadosAsistencia" Multiplicity="0..1" />
+          <End Role="AsistenciaUsuarios" Type="Self.AsistenciaUsuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EstadosAsistencia">
+              <PropertyRef Name="id_estado_asistencia" />
+            </Principal>
+            <Dependent Role="AsistenciaUsuarios">
+              <PropertyRef Name="id_estado_asistencia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Clientes_Barrios">
+          <End Role="Barrios" Type="Self.Barrio" Multiplicity="0..1" />
+          <End Role="Clientes" Type="Self.Cliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Barrios">
+              <PropertyRef Name="id_barrio" />
+            </Principal>
+            <Dependent Role="Clientes">
+              <PropertyRef Name="id_barrio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Bugs_Criticidades">
+          <End Role="Criticidades" Type="Self.Criticidade" Multiplicity="0..1" />
+          <End Role="Bugs" Type="Self.Bug" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Criticidades">
+              <PropertyRef Name="id_criticidad" />
+            </Principal>
+            <Dependent Role="Bugs">
+              <PropertyRef Name="id_criticidad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Bugs_Estados">
+          <End Role="Estados" Type="Self.Estado" Multiplicity="0..1" />
+          <End Role="Bugs" Type="Self.Bug" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estados">
+              <PropertyRef Name="id_estado" />
+            </Principal>
+            <Dependent Role="Bugs">
+              <PropertyRef Name="id_estado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Bugs_Prioridades">
+          <End Role="Prioridades" Type="Self.Prioridade" Multiplicity="0..1" />
+          <End Role="Bugs" Type="Self.Bug" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Prioridades">
+              <PropertyRef Name="id_prioridad" />
+            </Principal>
+            <Dependent Role="Bugs">
+              <PropertyRef Name="id_prioridad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Bugs_Productos">
+          <End Role="Productos" Type="Self.Producto" Multiplicity="0..1" />
+          <End Role="Bugs" Type="Self.Bug" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Productos">
+              <PropertyRef Name="id_producto" />
+            </Principal>
+            <Dependent Role="Bugs">
+              <PropertyRef Name="id_producto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Bugs_Usuarios">
+          <End Role="Usuarios" Type="Self.Usuario" Multiplicity="0..1" />
+          <End Role="Bugs" Type="Self.Bug" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="id_usuario" />
+            </Principal>
+            <Dependent Role="Bugs">
+              <PropertyRef Name="id_usuario_asignado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Bugs_Usuarios1">
+          <End Role="Usuarios" Type="Self.Usuario" Multiplicity="0..1" />
+          <End Role="Bugs" Type="Self.Bug" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="id_usuario" />
+            </Principal>
+            <Dependent Role="Bugs">
+              <PropertyRef Name="id_usuario_responsable" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BugsHistorico_Bugs">
+          <End Role="Bugs" Type="Self.Bug" Multiplicity="1" />
+          <End Role="BugsHistorico" Type="Self.BugsHistorico" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bugs">
+              <PropertyRef Name="id_bug" />
+            </Principal>
+            <Dependent Role="BugsHistorico">
+              <PropertyRef Name="id_bug" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BugsHistorico_Criticidades">
+          <End Role="Criticidades" Type="Self.Criticidade" Multiplicity="0..1" />
+          <End Role="BugsHistorico" Type="Self.BugsHistorico" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Criticidades">
+              <PropertyRef Name="id_criticidad" />
+            </Principal>
+            <Dependent Role="BugsHistorico">
+              <PropertyRef Name="id_criticidad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BugsHistorico_Estados">
+          <End Role="Estados" Type="Self.Estado" Multiplicity="1" />
+          <End Role="BugsHistorico" Type="Self.BugsHistorico" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estados">
+              <PropertyRef Name="id_estado" />
+            </Principal>
+            <Dependent Role="BugsHistorico">
+              <PropertyRef Name="id_estado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BugsHistorico_Prioridades">
+          <End Role="Prioridades" Type="Self.Prioridade" Multiplicity="0..1" />
+          <End Role="BugsHistorico" Type="Self.BugsHistorico" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Prioridades">
+              <PropertyRef Name="id_prioridad" />
+            </Principal>
+            <Dependent Role="BugsHistorico">
+              <PropertyRef Name="id_prioridad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BugsHistorico_Productos">
+          <End Role="Productos" Type="Self.Producto" Multiplicity="0..1" />
+          <End Role="BugsHistorico" Type="Self.BugsHistorico" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Productos">
+              <PropertyRef Name="id_producto" />
+            </Principal>
+            <Dependent Role="BugsHistorico">
+              <PropertyRef Name="id_producto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BugsHistorico_Usuarios">
+          <End Role="Usuarios" Type="Self.Usuario" Multiplicity="0..1" />
+          <End Role="BugsHistorico" Type="Self.BugsHistorico" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="id_usuario" />
+            </Principal>
+            <Dependent Role="BugsHistorico">
+              <PropertyRef Name="id_usuario_responsable" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BugsHistorico_Usuarios1">
+          <End Role="Usuarios" Type="Self.Usuario" Multiplicity="0..1" />
+          <End Role="BugsHistorico" Type="Self.BugsHistorico" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="id_usuario" />
+            </Principal>
+            <Dependent Role="BugsHistorico">
+              <PropertyRef Name="id_usuario_asignado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CasosDePrueba_PlanesDePrueba">
+          <End Role="PlanesDePrueba" Type="Self.PlanesDePrueba" Multiplicity="1" />
+          <End Role="CasosDePrueba" Type="Self.CasosDePrueba" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PlanesDePrueba">
+              <PropertyRef Name="id_plan_prueba" />
+            </Principal>
+            <Dependent Role="CasosDePrueba">
+              <PropertyRef Name="id_plan_prueba" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CiclosPruebaDetalle_CasosDePrueba">
+          <End Role="CasosDePrueba" Type="Self.CasosDePrueba" Multiplicity="0..1" />
+          <End Role="CiclosPruebaDetalle" Type="Self.CiclosPruebaDetalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CasosDePrueba">
+              <PropertyRef Name="id_caso_prueba" />
+            </Principal>
+            <Dependent Role="CiclosPruebaDetalle">
+              <PropertyRef Name="id_caso_prueba" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cursos_Categorias">
+          <End Role="Categorias" Type="Self.Categoria" Multiplicity="0..1" />
+          <End Role="Cursos" Type="Self.Curso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categorias">
+              <PropertyRef Name="id_categoria" />
+            </Principal>
+            <Dependent Role="Cursos">
+              <PropertyRef Name="id_categoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CiclosPrueba_PlanesDePrueba">
+          <End Role="PlanesDePrueba" Type="Self.PlanesDePrueba" Multiplicity="0..1" />
+          <End Role="CiclosPrueba" Type="Self.CiclosPrueba" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PlanesDePrueba">
+              <PropertyRef Name="id_plan_prueba" />
+            </Principal>
+            <Dependent Role="CiclosPrueba">
+              <PropertyRef Name="id_plan_prueba" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CiclosPrueba_Usuarios">
+          <End Role="Usuarios" Type="Self.Usuario" Multiplicity="0..1" />
+          <End Role="CiclosPrueba" Type="Self.CiclosPrueba" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="id_usuario" />
+            </Principal>
+            <Dependent Role="CiclosPrueba">
+              <PropertyRef Name="id_responsable" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CiclosPruebaDetalle_CiclosPrueba">
+          <End Role="CiclosPrueba" Type="Self.CiclosPrueba" Multiplicity="0..1" />
+          <End Role="CiclosPruebaDetalle" Type="Self.CiclosPruebaDetalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CiclosPrueba">
+              <PropertyRef Name="id_ciclo_prueba" />
+            </Principal>
+            <Dependent Role="CiclosPruebaDetalle">
+              <PropertyRef Name="id_ciclo_prueba" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FacturasDetalle_CiclosPrueba">
+          <End Role="CiclosPrueba" Type="Self.CiclosPrueba" Multiplicity="0..1" />
+          <End Role="FacturasDetalle" Type="Self.FacturasDetalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CiclosPrueba">
+              <PropertyRef Name="id_ciclo_prueba" />
+            </Principal>
+            <Dependent Role="FacturasDetalle">
+              <PropertyRef Name="id_ciclo_prueba" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CiclosPruebaDetalle_Usuarios">
+          <End Role="Usuarios" Type="Self.Usuario" Multiplicity="0..1" />
+          <End Role="CiclosPruebaDetalle" Type="Self.CiclosPruebaDetalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="id_usuario" />
+            </Principal>
+            <Dependent Role="CiclosPruebaDetalle">
+              <PropertyRef Name="id_usuario_tester" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Clientes_Contactos">
+          <End Role="Contactos" Type="Self.Contacto" Multiplicity="0..1" />
+          <End Role="Clientes" Type="Self.Cliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contactos">
+              <PropertyRef Name="id_contacto" />
+            </Principal>
+            <Dependent Role="Clientes">
+              <PropertyRef Name="id_contacto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Facturas_Clientes">
+          <End Role="Clientes" Type="Self.Cliente" Multiplicity="1" />
+          <End Role="Facturas" Type="Self.Factura" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clientes">
+              <PropertyRef Name="id_cliente" />
+            </Principal>
+            <Dependent Role="Facturas">
+              <PropertyRef Name="id_cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ObjetivosCursos_Cursos">
+          <End Role="Cursos" Type="Self.Curso" Multiplicity="1" />
+          <End Role="ObjetivosCursos" Type="Self.ObjetivosCurso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cursos">
+              <PropertyRef Name="id_curso" />
+            </Principal>
+            <Dependent Role="ObjetivosCursos">
+              <PropertyRef Name="id_curso" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UsuariosCurso_Cursos">
+          <End Role="Cursos" Type="Self.Curso" Multiplicity="1" />
+          <End Role="UsuariosCurso" Type="Self.UsuariosCurso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cursos">
+              <PropertyRef Name="id_curso" />
+            </Principal>
+            <Dependent Role="UsuariosCurso">
+              <PropertyRef Name="id_curso" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_seldoDesc_descuento">
+          <End Role="Descuentos" Type="Self.Descuento" Multiplicity="1" />
+          <End Role="SueldoDescuentos" Type="Self.SueldoDescuento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Descuentos">
+              <PropertyRef Name="id_descuento" />
+            </Principal>
+            <Dependent Role="SueldoDescuentos">
+              <PropertyRef Name="id_descuento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Facturas_Usuarios">
+          <End Role="Usuarios" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="Facturas" Type="Self.Factura" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="id_usuario" />
+            </Principal>
+            <Dependent Role="Facturas">
+              <PropertyRef Name="id_usuario_creador" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FacturasDetalle_Facturas">
+          <End Role="Facturas" Type="Self.Factura" Multiplicity="0..1" />
+          <End Role="FacturasDetalle" Type="Self.FacturasDetalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Facturas">
+              <PropertyRef Name="id_factura" />
+            </Principal>
+            <Dependent Role="FacturasDetalle">
+              <PropertyRef Name="id_factura" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FacturasDetalle_Productos">
+          <End Role="Productos" Type="Self.Producto" Multiplicity="0..1" />
+          <End Role="FacturasDetalle" Type="Self.FacturasDetalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Productos">
+              <PropertyRef Name="id_producto" />
+            </Principal>
+            <Dependent Role="FacturasDetalle">
+              <PropertyRef Name="id_producto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FacturasDetalle_Proyectos">
+          <End Role="Proyectos" Type="Self.Proyecto" Multiplicity="0..1" />
+          <End Role="FacturasDetalle" Type="Self.FacturasDetalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proyectos">
+              <PropertyRef Name="id_proyecto" />
+            </Principal>
+            <Dependent Role="FacturasDetalle">
+              <PropertyRef Name="id_proyecto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Permisos_Formularios">
+          <End Role="Formularios" Type="Self.Formulario" Multiplicity="1" />
+          <End Role="Permisos" Type="Self.Permiso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Formularios">
+              <PropertyRef Name="id_formulario" />
+            </Principal>
+            <Dependent Role="Permisos">
+              <PropertyRef Name="id_formulario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ObjetivosCursos_Objetivos">
+          <End Role="Objetivos" Type="Self.Objetivo" Multiplicity="1" />
+          <End Role="ObjetivosCursos" Type="Self.ObjetivosCurso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Objetivos">
+              <PropertyRef Name="id_objetivo" />
+            </Principal>
+            <Dependent Role="ObjetivosCursos">
+              <PropertyRef Name="id_objetivo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Permisos_Perfiles">
+          <End Role="Perfiles" Type="Self.Perfile" Multiplicity="1" />
+          <End Role="Permisos" Type="Self.Permiso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Perfiles">
+              <PropertyRef Name="id_perfil" />
+            </Principal>
+            <Dependent Role="Permisos">
+              <PropertyRef Name="id_perfil" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_sueldoPerfil_permfiles">
+          <End Role="Perfiles" Type="Self.Perfile" Multiplicity="1" />
+          <End Role="SueldoPerfilHistorico" Type="Self.SueldoPerfilHistorico" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Perfiles">
+              <PropertyRef Name="id_perfil" />
+            </Principal>
+            <Dependent Role="SueldoPerfilHistorico">
+              <PropertyRef Name="id_perfil" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Usuarios_Perfiles">
+          <End Role="Perfiles" Type="Self.Perfile" Multiplicity="1" />
+          <End Role="Usuarios" Type="Self.Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Perfiles">
+              <PropertyRef Name="id_perfil" />
+            </Principal>
+            <Dependent Role="Usuarios">
+              <PropertyRef Name="id_perfil" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PlanesDePrueba_Proyectos">
+          <End Role="Proyectos" Type="Self.Proyecto" Multiplicity="1" />
+          <End Role="PlanesDePrueba" Type="Self.PlanesDePrueba" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proyectos">
+              <PropertyRef Name="id_proyecto" />
+            </Principal>
+            <Dependent Role="PlanesDePrueba">
+              <PropertyRef Name="id_proyecto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PlanesDePrueba_Usuarios">
+          <End Role="Usuarios" Type="Self.Usuario" Multiplicity="0..1" />
+          <End Role="PlanesDePrueba" Type="Self.PlanesDePrueba" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="id_usuario" />
+            </Principal>
+            <Dependent Role="PlanesDePrueba">
+              <PropertyRef Name="id_responsable" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Proyectos_Producto">
+          <End Role="Productos" Type="Self.Producto" Multiplicity="0..1" />
+          <End Role="Proyectos" Type="Self.Proyecto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Productos">
+              <PropertyRef Name="id_producto" />
+            </Principal>
+            <Dependent Role="Proyectos">
+              <PropertyRef Name="id_producto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Proyectos_Responsable">
+          <End Role="Usuarios" Type="Self.Usuario" Multiplicity="0..1" />
+          <End Role="Proyectos" Type="Self.Proyecto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="id_usuario" />
+            </Principal>
+            <Dependent Role="Proyectos">
+              <PropertyRef Name="id_responsable" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_sueldo_asig">
+          <End Role="Sueldos" Type="Self.Sueldo" Multiplicity="1" />
+          <End Role="SueldoAsignaciones" Type="Self.SueldoAsignacione" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sueldos">
+              <PropertyRef Name="id_usuario" />
+              <PropertyRef Name="fecha" />
+            </Principal>
+            <Dependent Role="SueldoAsignaciones">
+              <PropertyRef Name="id_usuario" />
+              <PropertyRef Name="fecha" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_sueldo_desc">
+          <End Role="Sueldos" Type="Self.Sueldo" Multiplicity="1" />
+          <End Role="SueldoDescuentos" Type="Self.SueldoDescuento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sueldos">
+              <PropertyRef Name="id_usuario" />
+              <PropertyRef Name="fecha" />
+            </Principal>
+            <Dependent Role="SueldoDescuentos">
+              <PropertyRef Name="id_usuario" />
+              <PropertyRef Name="fecha" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_sueldo_usuarios">
+          <End Role="Usuarios" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="Sueldos" Type="Self.Sueldo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="id_usuario" />
+            </Principal>
+            <Dependent Role="Sueldos">
+              <PropertyRef Name="id_usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UsuariosCurso_Usuarios">
+          <End Role="Usuarios" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="UsuariosCurso" Type="Self.UsuariosCurso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="id_usuario" />
+            </Principal>
+            <Dependent Role="UsuariosCurso">
+              <PropertyRef Name="id_usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UsuariosCursoAvance_UsuariosCurso">
+          <End Role="UsuariosCurso" Type="Self.UsuariosCurso" Multiplicity="1" />
+          <End Role="UsuariosCursoAvance" Type="Self.UsuariosCursoAvance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UsuariosCurso">
+              <PropertyRef Name="id_usuario" />
+              <PropertyRef Name="id_curso" />
+            </Principal>
+            <Dependent Role="UsuariosCursoAvance">
+              <PropertyRef Name="id_usuario" />
+              <PropertyRef Name="id_curso" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BugTrackerFinalEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Asignaciones" EntityType="Self.Asignacione" />
+          <EntitySet Name="AsistenciaUsuarios" EntityType="Self.AsistenciaUsuario" />
+          <EntitySet Name="Barrios" EntityType="Self.Barrio" />
+          <EntitySet Name="Bugs" EntityType="Self.Bug" />
+          <EntitySet Name="BugsHistoricoes" EntityType="Self.BugsHistorico" />
+          <EntitySet Name="CasosDePruebas" EntityType="Self.CasosDePrueba" />
+          <EntitySet Name="Categorias" EntityType="Self.Categoria" />
+          <EntitySet Name="CiclosPruebas" EntityType="Self.CiclosPrueba" />
+          <EntitySet Name="CiclosPruebaDetalles" EntityType="Self.CiclosPruebaDetalle" />
+          <EntitySet Name="Clientes" EntityType="Self.Cliente" />
+          <EntitySet Name="Contactos" EntityType="Self.Contacto" />
+          <EntitySet Name="Criticidades" EntityType="Self.Criticidade" />
+          <EntitySet Name="Cursos" EntityType="Self.Curso" />
+          <EntitySet Name="Descuentos" EntityType="Self.Descuento" />
+          <EntitySet Name="Estados" EntityType="Self.Estado" />
+          <EntitySet Name="EstadosAsistencias" EntityType="Self.EstadosAsistencia" />
+          <EntitySet Name="EstadosUsuarios" EntityType="Self.EstadosUsuario" />
+          <EntitySet Name="Facturas" EntityType="Self.Factura" />
+          <EntitySet Name="FacturasDetalles" EntityType="Self.FacturasDetalle" />
+          <EntitySet Name="Formularios" EntityType="Self.Formulario" />
+          <EntitySet Name="Objetivos" EntityType="Self.Objetivo" />
+          <EntitySet Name="ObjetivosCursos" EntityType="Self.ObjetivosCurso" />
+          <EntitySet Name="Perfiles" EntityType="Self.Perfile" />
+          <EntitySet Name="Permisos" EntityType="Self.Permiso" />
+          <EntitySet Name="PlanesDePruebas" EntityType="Self.PlanesDePrueba" />
+          <EntitySet Name="Prioridades" EntityType="Self.Prioridade" />
+          <EntitySet Name="Productos" EntityType="Self.Producto" />
+          <EntitySet Name="Proyectos" EntityType="Self.Proyecto" />
+          <EntitySet Name="SueldoAsignaciones" EntityType="Self.SueldoAsignacione" />
+          <EntitySet Name="SueldoDescuentos" EntityType="Self.SueldoDescuento" />
+          <EntitySet Name="SueldoPerfilHistoricoes" EntityType="Self.SueldoPerfilHistorico" />
+          <EntitySet Name="Sueldos" EntityType="Self.Sueldo" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="Usuarios" EntityType="Self.Usuario" />
+          <EntitySet Name="UsuariosCursoes" EntityType="Self.UsuariosCurso" />
+          <EntitySet Name="UsuariosCursoAvances" EntityType="Self.UsuariosCursoAvance" />
+          <AssociationSet Name="fk_seldoAsig_asignacion" Association="Self.fk_seldoAsig_asignacion">
+            <End Role="Asignaciones" EntitySet="Asignaciones" />
+            <End Role="SueldoAsignaciones" EntitySet="SueldoAsignaciones" />
+          </AssociationSet>
+          <AssociationSet Name="fk_id_estado_asistencia" Association="Self.fk_id_estado_asistencia">
+            <End Role="EstadosAsistencia" EntitySet="EstadosAsistencias" />
+            <End Role="AsistenciaUsuarios" EntitySet="AsistenciaUsuarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Clientes_Barrios" Association="Self.FK_Clientes_Barrios">
+            <End Role="Barrios" EntitySet="Barrios" />
+            <End Role="Clientes" EntitySet="Clientes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Bugs_Criticidades" Association="Self.FK_Bugs_Criticidades">
+            <End Role="Criticidades" EntitySet="Criticidades" />
+            <End Role="Bugs" EntitySet="Bugs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Bugs_Estados" Association="Self.FK_Bugs_Estados">
+            <End Role="Estados" EntitySet="Estados" />
+            <End Role="Bugs" EntitySet="Bugs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Bugs_Prioridades" Association="Self.FK_Bugs_Prioridades">
+            <End Role="Prioridades" EntitySet="Prioridades" />
+            <End Role="Bugs" EntitySet="Bugs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Bugs_Productos" Association="Self.FK_Bugs_Productos">
+            <End Role="Productos" EntitySet="Productos" />
+            <End Role="Bugs" EntitySet="Bugs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Bugs_Usuarios" Association="Self.FK_Bugs_Usuarios">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="Bugs" EntitySet="Bugs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Bugs_Usuarios1" Association="Self.FK_Bugs_Usuarios1">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="Bugs" EntitySet="Bugs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BugsHistorico_Bugs" Association="Self.FK_BugsHistorico_Bugs">
+            <End Role="Bugs" EntitySet="Bugs" />
+            <End Role="BugsHistorico" EntitySet="BugsHistoricoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BugsHistorico_Criticidades" Association="Self.FK_BugsHistorico_Criticidades">
+            <End Role="Criticidades" EntitySet="Criticidades" />
+            <End Role="BugsHistorico" EntitySet="BugsHistoricoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BugsHistorico_Estados" Association="Self.FK_BugsHistorico_Estados">
+            <End Role="Estados" EntitySet="Estados" />
+            <End Role="BugsHistorico" EntitySet="BugsHistoricoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BugsHistorico_Prioridades" Association="Self.FK_BugsHistorico_Prioridades">
+            <End Role="Prioridades" EntitySet="Prioridades" />
+            <End Role="BugsHistorico" EntitySet="BugsHistoricoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BugsHistorico_Productos" Association="Self.FK_BugsHistorico_Productos">
+            <End Role="Productos" EntitySet="Productos" />
+            <End Role="BugsHistorico" EntitySet="BugsHistoricoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BugsHistorico_Usuarios" Association="Self.FK_BugsHistorico_Usuarios">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="BugsHistorico" EntitySet="BugsHistoricoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BugsHistorico_Usuarios1" Association="Self.FK_BugsHistorico_Usuarios1">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="BugsHistorico" EntitySet="BugsHistoricoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CasosDePrueba_PlanesDePrueba" Association="Self.FK_CasosDePrueba_PlanesDePrueba">
+            <End Role="PlanesDePrueba" EntitySet="PlanesDePruebas" />
+            <End Role="CasosDePrueba" EntitySet="CasosDePruebas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CiclosPruebaDetalle_CasosDePrueba" Association="Self.FK_CiclosPruebaDetalle_CasosDePrueba">
+            <End Role="CasosDePrueba" EntitySet="CasosDePruebas" />
+            <End Role="CiclosPruebaDetalle" EntitySet="CiclosPruebaDetalles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cursos_Categorias" Association="Self.FK_Cursos_Categorias">
+            <End Role="Categorias" EntitySet="Categorias" />
+            <End Role="Cursos" EntitySet="Cursos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CiclosPrueba_PlanesDePrueba" Association="Self.FK_CiclosPrueba_PlanesDePrueba">
+            <End Role="PlanesDePrueba" EntitySet="PlanesDePruebas" />
+            <End Role="CiclosPrueba" EntitySet="CiclosPruebas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CiclosPrueba_Usuarios" Association="Self.FK_CiclosPrueba_Usuarios">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="CiclosPrueba" EntitySet="CiclosPruebas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CiclosPruebaDetalle_CiclosPrueba" Association="Self.FK_CiclosPruebaDetalle_CiclosPrueba">
+            <End Role="CiclosPrueba" EntitySet="CiclosPruebas" />
+            <End Role="CiclosPruebaDetalle" EntitySet="CiclosPruebaDetalles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FacturasDetalle_CiclosPrueba" Association="Self.FK_FacturasDetalle_CiclosPrueba">
+            <End Role="CiclosPrueba" EntitySet="CiclosPruebas" />
+            <End Role="FacturasDetalle" EntitySet="FacturasDetalles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CiclosPruebaDetalle_Usuarios" Association="Self.FK_CiclosPruebaDetalle_Usuarios">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="CiclosPruebaDetalle" EntitySet="CiclosPruebaDetalles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Clientes_Contactos" Association="Self.FK_Clientes_Contactos">
+            <End Role="Contactos" EntitySet="Contactos" />
+            <End Role="Clientes" EntitySet="Clientes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Facturas_Clientes" Association="Self.FK_Facturas_Clientes">
+            <End Role="Clientes" EntitySet="Clientes" />
+            <End Role="Facturas" EntitySet="Facturas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ObjetivosCursos_Cursos" Association="Self.FK_ObjetivosCursos_Cursos">
+            <End Role="Cursos" EntitySet="Cursos" />
+            <End Role="ObjetivosCursos" EntitySet="ObjetivosCursos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UsuariosCurso_Cursos" Association="Self.FK_UsuariosCurso_Cursos">
+            <End Role="Cursos" EntitySet="Cursos" />
+            <End Role="UsuariosCurso" EntitySet="UsuariosCursoes" />
+          </AssociationSet>
+          <AssociationSet Name="fk_seldoDesc_descuento" Association="Self.fk_seldoDesc_descuento">
+            <End Role="Descuentos" EntitySet="Descuentos" />
+            <End Role="SueldoDescuentos" EntitySet="SueldoDescuentos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Facturas_Usuarios" Association="Self.FK_Facturas_Usuarios">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="Facturas" EntitySet="Facturas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FacturasDetalle_Facturas" Association="Self.FK_FacturasDetalle_Facturas">
+            <End Role="Facturas" EntitySet="Facturas" />
+            <End Role="FacturasDetalle" EntitySet="FacturasDetalles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FacturasDetalle_Productos" Association="Self.FK_FacturasDetalle_Productos">
+            <End Role="Productos" EntitySet="Productos" />
+            <End Role="FacturasDetalle" EntitySet="FacturasDetalles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FacturasDetalle_Proyectos" Association="Self.FK_FacturasDetalle_Proyectos">
+            <End Role="Proyectos" EntitySet="Proyectos" />
+            <End Role="FacturasDetalle" EntitySet="FacturasDetalles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Permisos_Formularios" Association="Self.FK_Permisos_Formularios">
+            <End Role="Formularios" EntitySet="Formularios" />
+            <End Role="Permisos" EntitySet="Permisos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ObjetivosCursos_Objetivos" Association="Self.FK_ObjetivosCursos_Objetivos">
+            <End Role="Objetivos" EntitySet="Objetivos" />
+            <End Role="ObjetivosCursos" EntitySet="ObjetivosCursos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Permisos_Perfiles" Association="Self.FK_Permisos_Perfiles">
+            <End Role="Perfiles" EntitySet="Perfiles" />
+            <End Role="Permisos" EntitySet="Permisos" />
+          </AssociationSet>
+          <AssociationSet Name="fk_sueldoPerfil_permfiles" Association="Self.fk_sueldoPerfil_permfiles">
+            <End Role="Perfiles" EntitySet="Perfiles" />
+            <End Role="SueldoPerfilHistorico" EntitySet="SueldoPerfilHistoricoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Usuarios_Perfiles" Association="Self.FK_Usuarios_Perfiles">
+            <End Role="Perfiles" EntitySet="Perfiles" />
+            <End Role="Usuarios" EntitySet="Usuarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PlanesDePrueba_Proyectos" Association="Self.FK_PlanesDePrueba_Proyectos">
+            <End Role="Proyectos" EntitySet="Proyectos" />
+            <End Role="PlanesDePrueba" EntitySet="PlanesDePruebas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PlanesDePrueba_Usuarios" Association="Self.FK_PlanesDePrueba_Usuarios">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="PlanesDePrueba" EntitySet="PlanesDePruebas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Proyectos_Producto" Association="Self.FK_Proyectos_Producto">
+            <End Role="Productos" EntitySet="Productos" />
+            <End Role="Proyectos" EntitySet="Proyectos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Proyectos_Responsable" Association="Self.FK_Proyectos_Responsable">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="Proyectos" EntitySet="Proyectos" />
+          </AssociationSet>
+          <AssociationSet Name="fk_sueldo_asig" Association="Self.fk_sueldo_asig">
+            <End Role="Sueldos" EntitySet="Sueldos" />
+            <End Role="SueldoAsignaciones" EntitySet="SueldoAsignaciones" />
+          </AssociationSet>
+          <AssociationSet Name="fk_sueldo_desc" Association="Self.fk_sueldo_desc">
+            <End Role="Sueldos" EntitySet="Sueldos" />
+            <End Role="SueldoDescuentos" EntitySet="SueldoDescuentos" />
+          </AssociationSet>
+          <AssociationSet Name="fk_sueldo_usuarios" Association="Self.fk_sueldo_usuarios">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="Sueldos" EntitySet="Sueldos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UsuariosCurso_Usuarios" Association="Self.FK_UsuariosCurso_Usuarios">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="UsuariosCurso" EntitySet="UsuariosCursoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UsuariosCursoAvance_UsuariosCurso" Association="Self.FK_UsuariosCursoAvance_UsuariosCurso">
+            <End Role="UsuariosCurso" EntitySet="UsuariosCursoes" />
+            <End Role="UsuariosCursoAvance" EntitySet="UsuariosCursoAvances" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BugTrackerFinalModelStoreContainer" CdmEntityContainer="BugTrackerFinalEntities">
+          <EntitySetMapping Name="Asignaciones">
+            <EntityTypeMapping TypeName="BugTrackerFinalModel.Asignacione">
+              <MappingFragment StoreEntitySet="Asignaciones">
+                <ScalarProperty Name="id_asignacion" ColumnName="id_asignacion" />
+                <ScalarProperty Name="n_asignacion" ColumnName="n_asignacion" />
+                <ScalarProperty Name="monto" ColumnName="monto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AsistenciaUsuarios">
+            <EntityTypeMapping TypeName="BugTrackerFinalModel.AsistenciaUsuario">
+              <MappingFragment StoreEntitySet="AsistenciaUsuarios">
+                <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="hora_ingreso" ColumnName="hora_ingreso" />
+                <ScalarProperty Name="hora_salida" ColumnName="hora_salida" />
+                <ScalarProperty Name="id_estado_asistencia" ColumnName="id_estado_asistencia" />
+                <ScalarProperty Name="comentario" ColumnName="comentario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Barrios">
+            <EntityTypeMapping TypeName="BugTrackerFinalModel.Barrio">
+              <MappingFragment StoreEntitySet="Barrios">
+                <ScalarProperty Name="id_barrio" ColumnName="id_barrio" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="borrado" ColumnName="borrado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Bugs">
+            <EntityTypeMapping TypeName="BugTrackerFinalModel.Bug">
+              <MappingFragment StoreEntitySet="Bugs">
+                <ScalarProperty Name="id_bug" ColumnName="id_bug" />
+                <ScalarProperty Name="titulo" ColumnName="titulo" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="fecha_alta" ColumnName="fecha_alta" />
+                <ScalarProperty Name="id_usuario_responsable" ColumnName="id_usuario_responsable" />
+                <ScalarProperty Name="id_usuario_asignado" ColumnName="id_usuario_asignado" />
+                <ScalarProperty Name="id_producto" ColumnName="id_producto" />
+                <ScalarProperty Name="id_prioridad" ColumnName="id_prioridad" />
+                <ScalarProperty Name="id_criticidad" ColumnName="id_criticidad" />
+                <ScalarProperty Name="id_estado" ColumnName="id_estado" />
+                <ScalarProperty Name="borrado" ColumnName="borrado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BugsHistoricoes">
+            <EntityTypeMapping TypeName="BugTrackerFinalModel.BugsHistorico">
+              <MappingFragment StoreEntitySet="BugsHistorico">
+                <ScalarProperty Name="id_bug_historico" ColumnName="id_bug_historico" />
+                <ScalarProperty Name="fecha_historico" ColumnName="fecha_historico" />
+                <ScalarProperty Name="titulo" ColumnName="titulo" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="id_bug" ColumnName="id_bug" />
+                <ScalarProperty Name="id_usuario_responsable" ColumnName="id_usuario_responsable" />
+                <ScalarProperty Name="id_usuario_asignado" ColumnName="id_usuario_asignado" />
+                <ScalarProperty Name="id_producto" ColumnName="id_producto" />
+                <ScalarProperty Name="id_prioridad" ColumnName="id_prioridad" />
+                <ScalarProperty Name="id_criticidad" ColumnName="id_criticidad" />
+                <ScalarProperty Name="id_estado" ColumnName="id_estado" />
+                <ScalarProperty Name="borrado" ColumnName="borrado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CasosDePruebas">
+            <EntityTypeMapping TypeName="BugTrackerFinalModel.CasosDePrueba">
+              <MappingFragment StoreEntitySet="CasosDePrueba">
+                <ScalarProperty Name="id_caso_prueba" ColumnName="id_caso_prueba" />
+                <ScalarProperty Name="id_plan_prueba" ColumnName="id_plan_prueba" />
+                <ScalarProperty Name="titulo" ColumnName="titulo" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="id_responsable" ColumnName="id_responsable" />
+                <ScalarProperty Name="borrado" ColumnName="borrado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Categorias">
+            <EntityTypeMapping TypeName="BugTrackerFinalModel.Categoria">
+              <MappingFragment StoreEntitySet="Categorias">
+                <ScalarProperty Name="id_categoria" ColumnName="id_categoria" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="borrado" ColumnName="borrado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CiclosPruebas">
+            <EntityTypeMapping TypeName="BugTrackerFinalModel.CiclosPrueba">
+              <MappingFragment StoreEntitySet="CiclosPrueba">
+                <ScalarProperty Name="id_ciclo_prueba" ColumnName="id_ciclo_prueba" />
+                <ScalarProperty Name="fecha_inicio_ejecucion" ColumnName="fecha_inicio_ejecucion" />
+                <ScalarProperty Name="fecha_fin_ejecucion" ColumnName="fecha_fin_ejecucion" />
+                <ScalarProperty Name="id_responsable" ColumnName="id_responsable" />
+                <ScalarProperty Name="id_plan_prueba" ColumnName="id_plan_prueba" />
+                <ScalarProperty Name="aceptado" ColumnName="aceptado" />
+                <ScalarProperty Name="borrado" ColumnName="borrado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CiclosPruebaDetalles">
+            <EntityTypeMapping TypeName="BugTrackerFinalModel.CiclosPruebaDetalle">
+              <MappingFragment StoreEntitySet="CiclosPruebaDetalle">
+                <ScalarProperty Name="id_ciclo_prueba_detalle" ColumnName="id_ciclo_prueba_detalle" />
+                <ScalarProperty Name="id_ciclo_prueba" ColumnName="id_ciclo_prueba" />
+                <ScalarProperty Name="id_caso_prueba" ColumnName="id_caso_prueba" />
+                <ScalarProperty Name="id_usuario_tester" ColumnName="id_usuario_tester" />
+                <ScalarProperty Name="cantidad_horas" ColumnName="cantidad_horas" />
+                <ScalarProperty Name="fecha_ejecucion" ColumnName="fecha_ejecucion" />
+                <ScalarProperty Name="aceptado" ColumnName="aceptado" />
+                <ScalarProperty Name="borrado" ColumnName="borrado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Clientes">
+            <EntityTypeMapping TypeName="BugTrackerFinalModel.Cliente">
+              <MappingFragment StoreEntitySet="Clientes">
+                <ScalarProperty Name="id_cliente" ColumnName="id_cliente" />
+                <ScalarProperty Name="cuit" ColumnName="cuit" />
+                <ScalarProperty Name="razon_social" ColumnName="razon_social" />
+                <ScalarProperty Name="borrado" ColumnName="borrado" />
+                <ScalarProperty Name="calle" ColumnName="calle" />
+                <ScalarProperty Name="numero" ColumnName="numero" />
+                <ScalarProperty Name="fecha_alta" ColumnName="fecha_alta" />
+                <ScalarProperty Name="id_barrio" ColumnName="id_barrio" />
+                <ScalarProperty Name="id_contacto" ColumnName="id_contacto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Contactos">
+            <EntityTypeMapping TypeName="BugTrackerFinalModel.Contacto">
+              <MappingFragment StoreEntitySet="Contactos">
+                <ScalarProperty Name="id_contacto" ColumnName="id_contacto" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="apellido" ColumnName="apellido" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+                <ScalarProperty Name="borrado" ColumnName="borrado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Criticidades">
+            <EntityTypeMapping TypeName="BugTrackerFinalModel.Criticidade">
+              <MappingFragment StoreEntitySet="Criticidades">
+                <ScalarProperty Name="id_criticidad" ColumnName="id_criticidad" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="borrado" ColumnName="borrado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cursos">
+            <EntityTypeMapping TypeName="BugTrackerFinalModel.Curso">
+              <MappingFragment StoreEntitySet="Cursos">
+                <ScalarProperty Name="id_curso" ColumnName="id_curso" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="fecha_vigencia" ColumnName="fecha_vigencia" />
+                <ScalarProperty Name="id_categoria" ColumnName="id_categoria" />
+                <ScalarProperty Name="borrado" ColumnName="borrado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Descuentos">
+            <EntityTypeMapping TypeName="BugTrackerFinalModel.Descuento">
+              <MappingFragment StoreEntitySet="Descuentos">
+                <ScalarProperty Name="id_descuento" ColumnName="id_descuento" />
+                <ScalarProperty Name="n_descuento" ColumnName="n_descuento" />
+                <ScalarProperty Name="monto" ColumnName="monto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Estados">
+            <EntityTypeMapping TypeName="BugTrackerFinalModel.Estado">
+              <MappingFragment StoreEntitySet="Estados">
+                <ScalarProperty Name="id_estado" ColumnName="id_estado" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="borrado" ColumnName="borrado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EstadosAsistencias">
+            <EntityTypeMapping TypeName="BugTrackerFinalModel.EstadosAsistencia">
+              <MappingFragment StoreEntitySet="EstadosAsistencia">
+                <ScalarProperty Name="id_estado_asistencia" ColumnName="id_estado_asistencia" />
+                <ScalarProperty Name="n_estados_asistencia" ColumnName="n_estados_asistencia" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EstadosUsuarios">
+            <EntityTypeMapping TypeName="BugTrackerFinalModel.EstadosUsuario">
+              <MappingFragment StoreEntitySet="EstadosUsuarios">
+                <ScalarProperty Name="id_estado_usuario" ColumnName="id_estado_usuario" />
+                <ScalarProperty Name="n_estado_usuario" ColumnName="n_estado_usuario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Facturas">
+            <EntityTypeMapping TypeName="BugTrackerFinalModel.Factura">
+              <MappingFragment StoreEntitySet="Facturas">
+                <ScalarProperty Name="id_factura" ColumnName="id_factura" />
+                <ScalarProperty Name="numero_factura" ColumnName="numero_factura" />
+                <ScalarProperty Name="id_cliente" ColumnName="id_cliente" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="id_usuario_creador" ColumnName="id_usuario_creador" />
+                <ScalarProperty Name="borrado" ColumnName="borrado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FacturasDetalles">
+            <EntityTypeMapping TypeName="BugTrackerFinalModel.FacturasDetalle">
+              <MappingFragment StoreEntitySet="FacturasDetalle">
+                <ScalarProperty Name="id_detalle_factura" ColumnName="id_detalle_factura" />
+                <ScalarProperty Name="id_factura" ColumnName="id_factura" />
+                <ScalarProperty Name="numero_orden" ColumnName="numero_orden" />
+                <ScalarProperty Name="id_producto" ColumnName="id_producto" />
+                <ScalarProperty Name="id_proyecto" ColumnName="id_proyecto" />
+                <ScalarProperty Name="id_ciclo_prueba" ColumnName="id_ciclo_prueba" />
+                <ScalarProperty Name="precio" ColumnName="precio" />
+                <ScalarProperty Name="borrado" ColumnName="borrado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Formularios">
+            <EntityTypeMapping TypeName="BugTrackerFinalModel.Formulario">
+              <MappingFragment StoreEntitySet="Formularios">
+                <ScalarProperty Name="id_formulario" ColumnName="id_formulario" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="borrado" ColumnName="borrado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Objetivos">
+            <EntityTypeMapping TypeName="BugTrackerFinalModel.Objetivo">
+              <MappingFragment StoreEntitySet="Objetivos">
+                <ScalarProperty Name="id_objetivo" ColumnName="id_objetivo" />
+                <ScalarProperty Name="nombre_corto" ColumnName="nombre_corto" />
+                <ScalarProperty Name="nombre_largo" ColumnName="nombre_largo" />
+                <ScalarProperty Name="borrado" ColumnName="borrado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ObjetivosCursos">
+            <EntityTypeMapping TypeName="BugTrackerFinalModel.ObjetivosCurso">
+              <MappingFragment StoreEntitySet="ObjetivosCursos">
+                <ScalarProperty Name="id_objetivo" ColumnName="id_objetivo" />
+                <ScalarProperty Name="id_curso" ColumnName="id_curso" />
+                <ScalarProperty Name="puntos" ColumnName="puntos" />
+                <ScalarProperty Name="borrado" ColumnName="borrado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Perfiles">
+            <EntityTypeMapping TypeName="BugTrackerFinalModel.Perfile">
+              <MappingFragment StoreEntitySet="Perfiles">
+                <ScalarProperty Name="id_perfil" ColumnName="id_perfil" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="borrado" ColumnName="borrado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Permisos">
+            <EntityTypeMapping TypeName="BugTrackerFinalModel.Permiso">
+              <MappingFragment StoreEntitySet="Permisos">
+                <ScalarProperty Name="id_formulario" ColumnName="id_formulario" />
+                <ScalarProperty Name="id_perfil" ColumnName="id_perfil" />
+                <ScalarProperty Name="borrado" ColumnName="borrado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PlanesDePruebas">
+            <EntityTypeMapping TypeName="BugTrackerFinalModel.PlanesDePrueba">
+              <MappingFragment StoreEntitySet="PlanesDePrueba">
+                <ScalarProperty Name="id_plan_prueba" ColumnName="id_plan_prueba" />
+                <ScalarProperty Name="id_proyecto" ColumnName="id_proyecto" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="id_responsable" ColumnName="id_responsable" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="borrado" ColumnName="borrado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Prioridades">
+            <EntityTypeMapping TypeName="BugTrackerFinalModel.Prioridade">
+              <MappingFragment StoreEntitySet="Prioridades">
+                <ScalarProperty Name="id_prioridad" ColumnName="id_prioridad" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="borrado" ColumnName="borrado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Productos">
+            <EntityTypeMapping TypeName="BugTrackerFinalModel.Producto">
+              <MappingFragment StoreEntitySet="Productos">
+                <ScalarProperty Name="id_producto" ColumnName="id_producto" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="borrado" ColumnName="borrado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Proyectos">
+            <EntityTypeMapping TypeName="BugTrackerFinalModel.Proyecto">
+              <MappingFragment StoreEntitySet="Proyectos">
+                <ScalarProperty Name="id_proyecto" ColumnName="id_proyecto" />
+                <ScalarProperty Name="id_producto" ColumnName="id_producto" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="alcance" ColumnName="alcance" />
+                <ScalarProperty Name="id_responsable" ColumnName="id_responsable" />
+                <ScalarProperty Name="borrado" ColumnName="borrado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SueldoAsignaciones">
+            <EntityTypeMapping TypeName="BugTrackerFinalModel.SueldoAsignacione">
+              <MappingFragment StoreEntitySet="SueldoAsignaciones">
+                <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="id_asignacion" ColumnName="id_asignacion" />
+                <ScalarProperty Name="monto" ColumnName="monto" />
+                <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SueldoDescuentos">
+            <EntityTypeMapping TypeName="BugTrackerFinalModel.SueldoDescuento">
+              <MappingFragment StoreEntitySet="SueldoDescuentos">
+                <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="id_descuento" ColumnName="id_descuento" />
+                <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+                <ScalarProperty Name="monto" ColumnName="monto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SueldoPerfilHistoricoes">
+            <EntityTypeMapping TypeName="BugTrackerFinalModel.SueldoPerfilHistorico">
+              <MappingFragment StoreEntitySet="SueldoPerfilHistorico">
+                <ScalarProperty Name="id_perfil" ColumnName="id_perfil" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="sueldo" ColumnName="sueldo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sueldos">
+            <EntityTypeMapping TypeName="BugTrackerFinalModel.Sueldo">
+              <MappingFragment StoreEntitySet="Sueldos">
+                <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="sueldo_bruto" ColumnName="sueldo_bruto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="BugTrackerFinalModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usuarios">
+            <EntityTypeMapping TypeName="BugTrackerFinalModel.Usuario">
+              <MappingFragment StoreEntitySet="Usuarios">
+                <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+                <ScalarProperty Name="id_perfil" ColumnName="id_perfil" />
+                <ScalarProperty Name="usuario1" ColumnName="usuario" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="borrado" ColumnName="borrado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UsuariosCursoes">
+            <EntityTypeMapping TypeName="BugTrackerFinalModel.UsuariosCurso">
+              <MappingFragment StoreEntitySet="UsuariosCurso">
+                <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+                <ScalarProperty Name="id_curso" ColumnName="id_curso" />
+                <ScalarProperty Name="puntuacion" ColumnName="puntuacion" />
+                <ScalarProperty Name="observaciones" ColumnName="observaciones" />
+                <ScalarProperty Name="fecha_inicio" ColumnName="fecha_inicio" />
+                <ScalarProperty Name="fecha_fin" ColumnName="fecha_fin" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UsuariosCursoAvances">
+            <EntityTypeMapping TypeName="BugTrackerFinalModel.UsuariosCursoAvance">
+              <MappingFragment StoreEntitySet="UsuariosCursoAvance">
+                <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+                <ScalarProperty Name="id_curso" ColumnName="id_curso" />
+                <ScalarProperty Name="inicio" ColumnName="inicio" />
+                <ScalarProperty Name="fin" ColumnName="fin" />
+                <ScalarProperty Name="porc_avance" ColumnName="porc_avance" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

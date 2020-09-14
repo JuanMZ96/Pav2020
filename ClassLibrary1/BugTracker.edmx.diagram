@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="d9a8c331d7fb4c259b363d3c01c2240f" Name="Diagram1">
+        <EntityTypeShape EntityType="BugTrackerFinalModel.Asignacione" Width="1.5" PointX="5.25" PointY="42.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BugTrackerFinalModel.AsistenciaUsuario" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="BugTrackerFinalModel.Barrio" Width="1.5" PointX="3.75" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BugTrackerFinalModel.Bug" Width="1.5" PointX="5.25" PointY="23.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BugTrackerFinalModel.BugsHistorico" Width="1.5" PointX="10.5" PointY="22.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BugTrackerFinalModel.CasosDePrueba" Width="1.5" PointX="10.5" PointY="28.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BugTrackerFinalModel.Categoria" Width="1.5" PointX="0.75" PointY="38.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BugTrackerFinalModel.CiclosPrueba" Width="1.5" PointX="8.25" PointY="24.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BugTrackerFinalModel.CiclosPruebaDetalle" Width="1.5" PointX="12.75" PointY="26" IsExpanded="true" />
+        <EntityTypeShape EntityType="BugTrackerFinalModel.Cliente" Width="1.5" PointX="6" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BugTrackerFinalModel.Contacto" Width="1.5" PointX="3.75" PointY="11.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BugTrackerFinalModel.Criticidade" Width="1.5" PointX="3" PointY="29.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BugTrackerFinalModel.Curso" Width="1.5" PointX="3" PointY="37.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BugTrackerFinalModel.Descuento" Width="1.5" PointX="8.25" PointY="42.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BugTrackerFinalModel.Estado" Width="1.5" PointX="3" PointY="32.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BugTrackerFinalModel.EstadosAsistencia" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BugTrackerFinalModel.EstadosUsuario" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BugTrackerFinalModel.Factura" Width="1.5" PointX="8.25" PointY="20.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BugTrackerFinalModel.FacturasDetalle" Width="1.5" PointX="13.5" PointY="22" IsExpanded="true" />
+        <EntityTypeShape EntityType="BugTrackerFinalModel.Formulario" Width="1.5" PointX="0.75" PointY="18.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BugTrackerFinalModel.Objetivo" Width="1.5" PointX="3" PointY="42.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BugTrackerFinalModel.ObjetivosCurso" Width="1.5" PointX="5.25" PointY="38" IsExpanded="true" />
+        <EntityTypeShape EntityType="BugTrackerFinalModel.Perfile" Width="1.5" PointX="0.75" PointY="21" IsExpanded="true" />
+        <EntityTypeShape EntityType="BugTrackerFinalModel.Permiso" Width="1.5" PointX="3" PointY="18.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BugTrackerFinalModel.PlanesDePrueba" Width="1.5" PointX="8.25" PointY="28.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BugTrackerFinalModel.Prioridade" Width="1.5" PointX="3" PointY="34.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BugTrackerFinalModel.Producto" Width="1.5" PointX="3" PointY="14.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BugTrackerFinalModel.Proyecto" Width="1.5" PointX="5.25" PointY="19.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BugTrackerFinalModel.SueldoAsignacione" Width="1.5" PointX="7.5" PointY="45.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BugTrackerFinalModel.SueldoDescuento" Width="1.5" PointX="10.5" PointY="45.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BugTrackerFinalModel.SueldoPerfilHistorico" Width="1.5" PointX="3" PointY="21.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BugTrackerFinalModel.Sueldo" Width="1.5" PointX="5.25" PointY="45.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BugTrackerFinalModel.sysdiagram" Width="1.5" PointX="2.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BugTrackerFinalModel.Usuario" Width="1.5" PointX="3" PointY="23.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BugTrackerFinalModel.UsuariosCurso" Width="1.5" PointX="5.25" PointY="29.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BugTrackerFinalModel.UsuariosCursoAvance" Width="1.5" PointX="7.5" PointY="33" IsExpanded="true" />
+        <AssociationConnector Association="BugTrackerFinalModel.fk_seldoAsig_asignacion" ManuallyRouted="false" />
+        <AssociationConnector Association="BugTrackerFinalModel.fk_id_estado_asistencia" ManuallyRouted="false" />
+        <AssociationConnector Association="BugTrackerFinalModel.FK_Clientes_Barrios" ManuallyRouted="false" />
+        <AssociationConnector Association="BugTrackerFinalModel.FK_Bugs_Criticidades" ManuallyRouted="false" />
+        <AssociationConnector Association="BugTrackerFinalModel.FK_Bugs_Estados" ManuallyRouted="false" />
+        <AssociationConnector Association="BugTrackerFinalModel.FK_Bugs_Prioridades" ManuallyRouted="false" />
+        <AssociationConnector Association="BugTrackerFinalModel.FK_Bugs_Productos" ManuallyRouted="false" />
+        <AssociationConnector Association="BugTrackerFinalModel.FK_Bugs_Usuarios" ManuallyRouted="false" />
+        <AssociationConnector Association="BugTrackerFinalModel.FK_Bugs_Usuarios1" ManuallyRouted="false" />
+        <AssociationConnector Association="BugTrackerFinalModel.FK_BugsHistorico_Bugs" ManuallyRouted="false" />
+        <AssociationConnector Association="BugTrackerFinalModel.FK_BugsHistorico_Criticidades" ManuallyRouted="false" />
+        <AssociationConnector Association="BugTrackerFinalModel.FK_BugsHistorico_Estados" ManuallyRouted="false" />
+        <AssociationConnector Association="BugTrackerFinalModel.FK_BugsHistorico_Prioridades" ManuallyRouted="false" />
+        <AssociationConnector Association="BugTrackerFinalModel.FK_BugsHistorico_Productos" ManuallyRouted="false" />
+        <AssociationConnector Association="BugTrackerFinalModel.FK_BugsHistorico_Usuarios" ManuallyRouted="false" />
+        <AssociationConnector Association="BugTrackerFinalModel.FK_BugsHistorico_Usuarios1" ManuallyRouted="false" />
+        <AssociationConnector Association="BugTrackerFinalModel.FK_CasosDePrueba_PlanesDePrueba" ManuallyRouted="false" />
+        <AssociationConnector Association="BugTrackerFinalModel.FK_CiclosPruebaDetalle_CasosDePrueba" ManuallyRouted="false" />
+        <AssociationConnector Association="BugTrackerFinalModel.FK_Cursos_Categorias" ManuallyRouted="false" />
+        <AssociationConnector Association="BugTrackerFinalModel.FK_CiclosPrueba_PlanesDePrueba" ManuallyRouted="false" />
+        <AssociationConnector Association="BugTrackerFinalModel.FK_CiclosPrueba_Usuarios" ManuallyRouted="false" />
+        <AssociationConnector Association="BugTrackerFinalModel.FK_CiclosPruebaDetalle_CiclosPrueba" ManuallyRouted="false" />
+        <AssociationConnector Association="BugTrackerFinalModel.FK_FacturasDetalle_CiclosPrueba" ManuallyRouted="false" />
+        <AssociationConnector Association="BugTrackerFinalModel.FK_CiclosPruebaDetalle_Usuarios" ManuallyRouted="false" />
+        <AssociationConnector Association="BugTrackerFinalModel.FK_Clientes_Contactos" ManuallyRouted="false" />
+        <AssociationConnector Association="BugTrackerFinalModel.FK_Facturas_Clientes" ManuallyRouted="false" />
+        <AssociationConnector Association="BugTrackerFinalModel.FK_ObjetivosCursos_Cursos" ManuallyRouted="false" />
+        <AssociationConnector Association="BugTrackerFinalModel.FK_UsuariosCurso_Cursos" ManuallyRouted="false" />
+        <AssociationConnector Association="BugTrackerFinalModel.fk_seldoDesc_descuento" ManuallyRouted="false" />
+        <AssociationConnector Association="BugTrackerFinalModel.FK_Facturas_Usuarios" ManuallyRouted="false" />
+        <AssociationConnector Association="BugTrackerFinalModel.FK_FacturasDetalle_Facturas" ManuallyRouted="false" />
+        <AssociationConnector Association="BugTrackerFinalModel.FK_FacturasDetalle_Productos" ManuallyRouted="false" />
+        <AssociationConnector Association="BugTrackerFinalModel.FK_FacturasDetalle_Proyectos" ManuallyRouted="false" />
+        <AssociationConnector Association="BugTrackerFinalModel.FK_Permisos_Formularios" ManuallyRouted="false" />
+        <AssociationConnector Association="BugTrackerFinalModel.FK_ObjetivosCursos_Objetivos" ManuallyRouted="false" />
+        <AssociationConnector Association="BugTrackerFinalModel.FK_Permisos_Perfiles" ManuallyRouted="false" />
+        <AssociationConnector Association="BugTrackerFinalModel.fk_sueldoPerfil_permfiles" ManuallyRouted="false" />
+        <AssociationConnector Association="BugTrackerFinalModel.FK_Usuarios_Perfiles" ManuallyRouted="false" />
+        <AssociationConnector Association="BugTrackerFinalModel.FK_PlanesDePrueba_Proyectos" ManuallyRouted="false" />
+        <AssociationConnector Association="BugTrackerFinalModel.FK_PlanesDePrueba_Usuarios" ManuallyRouted="false" />
+        <AssociationConnector Association="BugTrackerFinalModel.FK_Proyectos_Producto" ManuallyRouted="false" />
+        <AssociationConnector Association="BugTrackerFinalModel.FK_Proyectos_Responsable" ManuallyRouted="false" />
+        <AssociationConnector Association="BugTrackerFinalModel.fk_sueldo_asig" ManuallyRouted="false" />
+        <AssociationConnector Association="BugTrackerFinalModel.fk_sueldo_desc" ManuallyRouted="false" />
+        <AssociationConnector Association="BugTrackerFinalModel.fk_sueldo_usuarios" ManuallyRouted="false" />
+        <AssociationConnector Association="BugTrackerFinalModel.FK_UsuariosCurso_Usuarios" ManuallyRouted="false" />
+        <AssociationConnector Association="BugTrackerFinalModel.FK_UsuariosCursoAvance_UsuariosCurso" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
