@@ -34,8 +34,10 @@ namespace Pav2.Presentacion
 
         private void Principal_Load(object sender, EventArgs e)
         {
-            Login ventana1 = new Login();
+            
+            Login ventana1 = new Login();            
             ventana1.ShowDialog();
+            
         }
 
         private void button1_Click(object sender, EventArgs e)

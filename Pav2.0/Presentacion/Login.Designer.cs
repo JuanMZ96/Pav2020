@@ -59,6 +59,7 @@
             // 
             this.txt_pwd.Location = new System.Drawing.Point(84, 57);
             this.txt_pwd.Name = "txt_pwd";
+            this.txt_pwd.PasswordChar = '*';
             this.txt_pwd.Size = new System.Drawing.Size(232, 20);
             this.txt_pwd.TabIndex = 9;
             // 
@@ -81,7 +82,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(35, 21);
+            this.label1.Location = new System.Drawing.Point(25, 21);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(43, 13);
             this.label1.TabIndex = 6;
@@ -101,6 +102,12 @@
             this.Name = "Login";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Iniciar sesión";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Login_FormClosing);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Login_FormClosed);
+            this.Load += new System.EventHandler(this.Login_Load);
+            this.VisibleChanged += new System.EventHandler(this.Login_VisibleChanged);
+            this.Enter += new System.EventHandler(this.btnIngresar_Click);
+            this.Leave += new System.EventHandler(this.Login_Leave);
             this.ResumeLayout(false);
             this.PerformLayout();
 
