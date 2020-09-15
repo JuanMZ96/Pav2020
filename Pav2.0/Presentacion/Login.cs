@@ -27,9 +27,7 @@ namespace Pav2.Presentacion
                 if (Logica.Usuarios.ValidarCredenciales(txt_nameid.Text, txt_pwd.Text))
                 {
                     Principal ventanaprin = new Principal();
-                    this.Hide();
-                    ventanaprin.ShowDialog();
-                    this.Show();
+                    this.Close();
 
 
                 }

@@ -33,14 +33,16 @@
             this.btn_borrar = new System.Windows.Forms.Button();
             this.txt_name = new System.Windows.Forms.TextBox();
             this.txt_descripcion = new System.Windows.Forms.TextBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgv_categorias = new System.Windows.Forms.DataGridView();
             this.txt_value = new System.Windows.Forms.TextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.lbl_nombre = new System.Windows.Forms.Label();
+            this.lbl_descripcion = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_categorias)).BeginInit();
             this.SuspendLayout();
             // 
             // btn_guardar
             // 
-            this.btn_guardar.Location = new System.Drawing.Point(486, 31);
+            this.btn_guardar.Location = new System.Drawing.Point(302, 129);
             this.btn_guardar.Name = "btn_guardar";
             this.btn_guardar.Size = new System.Drawing.Size(75, 23);
             this.btn_guardar.TabIndex = 0;
@@ -50,7 +52,7 @@
             // 
             // btn_modificar
             // 
-            this.btn_modificar.Location = new System.Drawing.Point(486, 82);
+            this.btn_modificar.Location = new System.Drawing.Point(396, 129);
             this.btn_modificar.Name = "btn_modificar";
             this.btn_modificar.Size = new System.Drawing.Size(75, 23);
             this.btn_modificar.TabIndex = 1;
@@ -70,25 +72,26 @@
             // 
             // txt_name
             // 
-            this.txt_name.Location = new System.Drawing.Point(380, 82);
+            this.txt_name.Location = new System.Drawing.Point(371, 35);
             this.txt_name.Name = "txt_name";
             this.txt_name.Size = new System.Drawing.Size(100, 20);
             this.txt_name.TabIndex = 3;
             // 
             // txt_descripcion
             // 
-            this.txt_descripcion.Location = new System.Drawing.Point(380, 129);
+            this.txt_descripcion.Location = new System.Drawing.Point(371, 82);
             this.txt_descripcion.Name = "txt_descripcion";
             this.txt_descripcion.Size = new System.Drawing.Size(100, 20);
             this.txt_descripcion.TabIndex = 4;
             // 
-            // dataGridView1
+            // dgv_categorias
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 12);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(240, 150);
-            this.dataGridView1.TabIndex = 5;
+            this.dgv_categorias.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_categorias.Location = new System.Drawing.Point(12, 12);
+            this.dgv_categorias.Name = "dgv_categorias";
+            this.dgv_categorias.Size = new System.Drawing.Size(240, 150);
+            this.dgv_categorias.TabIndex = 5;
+            this.dgv_categorias.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // txt_value
             // 
@@ -99,22 +102,43 @@
             this.txt_value.Visible = false;
             this.txt_value.TextChanged += new System.EventHandler(this.txt_value_TextChanged);
             // 
+            // lbl_nombre
+            // 
+            this.lbl_nombre.AutoSize = true;
+            this.lbl_nombre.Location = new System.Drawing.Point(299, 40);
+            this.lbl_nombre.Name = "lbl_nombre";
+            this.lbl_nombre.Size = new System.Drawing.Size(47, 13);
+            this.lbl_nombre.TabIndex = 7;
+            this.lbl_nombre.Text = "Nombre:";
+            // 
+            // lbl_descripcion
+            // 
+            this.lbl_descripcion.AutoSize = true;
+            this.lbl_descripcion.Location = new System.Drawing.Point(299, 85);
+            this.lbl_descripcion.Name = "lbl_descripcion";
+            this.lbl_descripcion.Size = new System.Drawing.Size(66, 13);
+            this.lbl_descripcion.TabIndex = 8;
+            this.lbl_descripcion.Text = "Descripción:";
+            // 
             // Categorias
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(602, 217);
+            this.ClientSize = new System.Drawing.Size(602, 209);
+            this.Controls.Add(this.lbl_descripcion);
+            this.Controls.Add(this.lbl_nombre);
             this.Controls.Add(this.txt_value);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dgv_categorias);
             this.Controls.Add(this.txt_descripcion);
             this.Controls.Add(this.txt_name);
             this.Controls.Add(this.btn_borrar);
             this.Controls.Add(this.btn_modificar);
             this.Controls.Add(this.btn_guardar);
             this.Name = "Categorias";
-            this.Text = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Categorías";
             this.Load += new System.EventHandler(this.Categorias_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_categorias)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -127,7 +151,9 @@
         private System.Windows.Forms.Button btn_borrar;
         private System.Windows.Forms.TextBox txt_name;
         private System.Windows.Forms.TextBox txt_descripcion;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgv_categorias;
         private System.Windows.Forms.TextBox txt_value;
+        private System.Windows.Forms.Label lbl_nombre;
+        private System.Windows.Forms.Label lbl_descripcion;
     }
 }

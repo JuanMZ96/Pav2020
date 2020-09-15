@@ -30,6 +30,7 @@ namespace Pav2.Logica
                     cat1.id_categoria = q;
                     Contex.Categorias.Add(cat1);
                     Contex.SaveChanges();
+                    guardar = true;
                 }
             }
 
@@ -57,6 +58,7 @@ namespace Pav2.Logica
 
                 
                 Contex.SaveChanges();
+                modificar = true; 
             }
 
             return modificar;
@@ -74,7 +76,7 @@ namespace Pav2.Logica
                 {
                     q.borrado = true;
                     Contex.SaveChanges();
-
+                    eliminar = true; 
                 }
 
                 

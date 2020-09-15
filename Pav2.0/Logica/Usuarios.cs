@@ -12,14 +12,14 @@ namespace Pav2.Logica
 {
     public class Usuarios
     {
-        public static bool ValidarCredenciales(string namneUsuario, string pwdUsuario)
+        public static bool ValidarCredenciales(string nameUsuario, string pwdUsuario)
 
         {
             bool User = false;
 
             using (var Contex = new BugTrackerFinalEntities())
             {
-                var q = Contex.Usuarios.Where(x => x.usuario1 == namneUsuario).FirstOrDefault();
+                var q = Contex.Usuarios.Where(x => x.usuario1 == nameUsuario).FirstOrDefault();
                 if (q != null)
                 {
                     User = q.password == pwdUsuario;
