@@ -16,17 +16,21 @@ namespace Pav2.Logica
         {
             bool guardar = false;
             Categoria cat1 = new Categoria();
-            cat1.nombre = name;
-            cat1.descripcion = descripcion;
-            cat1.borrado = false;
+           
 
             using (var Contex = new BugTrackerFinalEntities())
             {
-                var q = Contex.Categorias.Max(x => x.id_categoria) + 1;
-                cat1.id_categoria = q;
-                Contex.Categorias.Add(cat1);
-                Contex.SaveChanges();
+                if (name != String.Empty && descripcion != String.Empty) {
 
+                    cat1.nombre = name;
+                    cat1.descripcion = descripcion;
+                    cat1.borrado = false;
+
+                    var q = Contex.Categorias.Max(x => x.id_categoria) + 1;
+                    cat1.id_categoria = q;
+                    Contex.Categorias.Add(cat1);
+                    Contex.SaveChanges();
+                }
             }
 
 
