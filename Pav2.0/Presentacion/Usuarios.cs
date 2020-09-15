@@ -20,9 +20,9 @@ namespace Pav2.Presentacion
         private void Usuarios_Load(object sender, EventArgs e)
         {
             System.Collections.IList T = Logica.Usuarios.MostrarCombo();
-            comboBox1.DataSource = T;
-            comboBox1.ValueMember = "id";
-            comboBox1.DisplayMember = "Nombre";
+            cmb_perfiles.DataSource = T;
+            cmb_perfiles.ValueMember = "id";
+            cmb_perfiles.DisplayMember = "Nombre";
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -32,7 +32,7 @@ namespace Pav2.Presentacion
 
         private void btn_guardar_Click(object sender, EventArgs e)
         {
-            int id = (int)comboBox1.SelectedValue;
+            int id = (int)cmb_perfiles.SelectedValue;
             Logica.Usuarios.CrearUsuarios(id,txt_nombre.Text, txt_pw.Text,txt_mail.Text);
         }
     }
