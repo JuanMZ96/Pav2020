@@ -89,13 +89,16 @@
             this.dgv_categorias.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_categorias.Location = new System.Drawing.Point(12, 12);
             this.dgv_categorias.Name = "dgv_categorias";
-            this.dgv_categorias.Size = new System.Drawing.Size(240, 150);
+            this.dgv_categorias.ReadOnly = true;
+            this.dgv_categorias.Size = new System.Drawing.Size(261, 171);
             this.dgv_categorias.TabIndex = 5;
+            this.dgv_categorias.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             this.dgv_categorias.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.dgv_categorias.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // txt_value
             // 
-            this.txt_value.Location = new System.Drawing.Point(486, 185);
+            this.txt_value.Location = new System.Drawing.Point(49, 129);
             this.txt_value.Name = "txt_value";
             this.txt_value.Size = new System.Drawing.Size(100, 20);
             this.txt_value.TabIndex = 6;
@@ -125,10 +128,10 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(602, 209);
+            this.Controls.Add(this.dgv_categorias);
             this.Controls.Add(this.lbl_descripcion);
             this.Controls.Add(this.lbl_nombre);
             this.Controls.Add(this.txt_value);
-            this.Controls.Add(this.dgv_categorias);
             this.Controls.Add(this.txt_descripcion);
             this.Controls.Add(this.txt_name);
             this.Controls.Add(this.btn_borrar);

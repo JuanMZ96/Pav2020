@@ -43,31 +43,24 @@ namespace Pav2.Presentacion
 
         }
 
-        private void Login_Load(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void Login_Leave(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void Login_VisibleChanged(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void Login_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            
-        }
-
         private void Login_FormClosing(object sender, FormClosingEventArgs e)
         {
             if ( Cerrar == true)
             {
                 Environment.Exit(0);
+            }
+        }
+
+        private void txt_pwd_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+            if (e.KeyChar == Convert.ToChar(Keys.Enter))
+            {
+                btnIngresar_Click(sender,e);
+            }
+            if(e.KeyChar == Convert.ToChar(Keys.Escape))
+            {
+                Login_FormClosing(sender, null);
             }
         }
     }

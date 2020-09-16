@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data.Entity.Core.Metadata.Edm;
 using System.Linq;
@@ -12,11 +13,17 @@ namespace Pav2.Logica
 {
     class Categorias
     {
+        public int id{ get; set; }
+        public string nombre { get; set; }
+        public string descripcion { get; set; }
+
+
+
         public static bool GuardarCategoria(string name, string descripcion)
         {
             bool guardar = false;
             Categoria cat1 = new Categoria();
-           
+
 
             using (var Contex = new BugTrackerFinalEntities())
             {
@@ -38,12 +45,12 @@ namespace Pav2.Logica
             return guardar;
         }
 
-      
-       public static bool ModificarCategoria(int id, string name, string descripcion)
+
+        public static bool ModificarCategoria(int id, string name, string descripcion)
         {
             bool modificar = false;
 
-            using(var Contex = new BugTrackerFinalEntities())
+            using (var Contex = new BugTrackerFinalEntities())
             {
                 var q = Contex.Categorias.Where(x => x.id_categoria == id).FirstOrDefault();
 
@@ -56,9 +63,9 @@ namespace Pav2.Logica
                     q.descripcion = descripcion;
                 }
 
-                
+
                 Contex.SaveChanges();
-                modificar = true; 
+                modificar = true;
             }
 
             return modificar;
@@ -76,15 +83,29 @@ namespace Pav2.Logica
                 {
                     q.borrado = true;
                     Contex.SaveChanges();
-                    eliminar = true; 
+                    eliminar = true;
                 }
 
-                
+
 
             }
 
             return eliminar;
         }
-     
+
+        public static List<Categoria> MostrarDgv()
+        {
+
+
+            var Contex = new BugTrackerFinalEntities();
+            var lista = from categorias in Contex.Categorias
+                        where categorias.borrado != true
+                        select categorias;
+
+            return lista.ToList();
+           
+        }
+
+
     }
 }

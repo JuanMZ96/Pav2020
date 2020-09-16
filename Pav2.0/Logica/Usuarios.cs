@@ -23,15 +23,9 @@ namespace Pav2.Logica
                 if (q != null)
                 {
                     User = q.password == pwdUsuario;
-
-
                 }
-
-
             }
-
             return User;
-
         }
 
         public static bool CrearUsuarios(int perfil, string name, string pw, String mail)
@@ -48,9 +42,7 @@ namespace Pav2.Logica
                 {
 
                     if (name != String.Empty && pw != String.Empty && mail != String.Empty)
-                    {
-
-                        //int id = Int32.Parse(perfil);
+                    { 
                         user1.usuario1 = name;
                         user1.password = pw;
                         user1.id_perfil = perfil;
@@ -60,25 +52,15 @@ namespace Pav2.Logica
                         Contex.Usuarios.Add(user1);
                         Contex.SaveChanges();
 
-
                         user = true;
-                    }
-                    
-                    
+                    } 
                 }
-                
-
             }
-
             return user;
-
         }
-
-
 
         public static IList MostrarCombo()
         {
-
             List<Perfiles> ListPerfil = new List<Perfiles>();
 
             using ( var Contex = new BugTrackerFinalEntities())
@@ -89,15 +71,8 @@ namespace Pav2.Logica
                                   id = d.id_perfil,
                                   nombre = d.nombre
                               }).ToList();
-
-
             }
-
             return ListPerfil;
-
         }
-
-    }
-
-    
+    }   
 }

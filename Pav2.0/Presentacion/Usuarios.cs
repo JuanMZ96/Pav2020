@@ -19,10 +19,7 @@ namespace Pav2.Presentacion
 
         private void Usuarios_Load(object sender, EventArgs e)
         {
-            System.Collections.IList T = Logica.Usuarios.MostrarCombo();
-            cmb_perfiles.DataSource = T;
-            cmb_perfiles.ValueMember = "id";
-            cmb_perfiles.DisplayMember = "Nombre";
+            CargarCombo();
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -35,5 +32,16 @@ namespace Pav2.Presentacion
             int id = (int)cmb_perfiles.SelectedValue;
             Logica.Usuarios.CrearUsuarios(id,txt_nombre.Text, txt_pw.Text,txt_mail.Text);
         }
+
+        private void CargarCombo()
+        {
+
+            System.Collections.IList T = Logica.Usuarios.MostrarCombo();
+            cmb_perfiles.DataSource = T;
+            cmb_perfiles.ValueMember = "id";
+            cmb_perfiles.DisplayMember = "Nombre";
+
+        }
     }
+        
 }

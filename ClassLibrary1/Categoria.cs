@@ -27,5 +27,6 @@ namespace ClassLibrary1
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Curso> Cursos { get; set; }
+        public int id { get; set; }
     }
 }

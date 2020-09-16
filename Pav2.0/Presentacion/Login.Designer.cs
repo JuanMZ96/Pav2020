@@ -62,6 +62,7 @@
             this.txt_pwd.PasswordChar = '*';
             this.txt_pwd.Size = new System.Drawing.Size(232, 20);
             this.txt_pwd.TabIndex = 9;
+            this.txt_pwd.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_pwd_KeyPress);
             // 
             // txt_nameid
             // 
@@ -103,11 +104,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Iniciar sesión";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Login_FormClosing);
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Login_FormClosed);
-            this.Load += new System.EventHandler(this.Login_Load);
-            this.VisibleChanged += new System.EventHandler(this.Login_VisibleChanged);
-            this.Enter += new System.EventHandler(this.btnIngresar_Click);
-            this.Leave += new System.EventHandler(this.Login_Leave);
             this.ResumeLayout(false);
             this.PerformLayout();
 
