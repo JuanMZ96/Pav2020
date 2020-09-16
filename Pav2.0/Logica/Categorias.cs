@@ -93,7 +93,7 @@ namespace Pav2.Logica
             return eliminar;
         }
 
-        public static List<Categoria> MostrarDgv()
+        public static List<Categoria> MostrarDataCategorias()
         {
 
 

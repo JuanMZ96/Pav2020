@@ -6,12 +6,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.Entity.Validation;
-
+using System.Data.Entity;
 
 namespace Pav2.Logica
 {
     public class Usuarios
     {
+
+
         public static bool ValidarCredenciales(string nameUsuario, string pwdUsuario)
 
         {
@@ -38,11 +40,11 @@ namespace Pav2.Logica
             using (var Contex = new BugTrackerFinalEntities())
             {
 
-                
+
                 {
 
                     if (name != String.Empty && pw != String.Empty && mail != String.Empty)
-                    { 
+                    {
                         user1.usuario1 = name;
                         user1.password = pw;
                         user1.id_perfil = perfil;
@@ -53,7 +55,7 @@ namespace Pav2.Logica
                         Contex.SaveChanges();
 
                         user = true;
-                    } 
+                    }
                 }
             }
             return user;
@@ -63,7 +65,7 @@ namespace Pav2.Logica
         {
             List<Perfiles> ListPerfil = new List<Perfiles>();
 
-            using ( var Contex = new BugTrackerFinalEntities())
+            using (var Contex = new BugTrackerFinalEntities())
             {
                 ListPerfil = (from d in Contex.Perfiles
                               select new Perfiles
@@ -74,5 +76,44 @@ namespace Pav2.Logica
             }
             return ListPerfil;
         }
-    }   
+
+        public static List<Usuario> MostrarDataUsuarios(bool estado)
+        {
+
+
+            var Contex = new BugTrackerFinalEntities();
+            var lista = from usuario in Contex.Usuarios
+                        select usuario;
+            //lista.Include(x => x.Perfile);
+
+
+            if (!estado)
+            {
+                lista.Where(x => x.borrado == true).ToList();
+            }
+            return lista.ToList();
+        }
+
+        public static bool EliminarUsuario(int id)
+        {
+            bool eliminar = false;
+
+            using (var Contex = new BugTrackerFinalEntities())
+            {
+                var q = Contex.Usuarios.Where(x => x.id_usuario == id).FirstOrDefault();
+                if (q != null)
+                {
+                    q.borrado = true;
+                    Contex.SaveChanges();
+                    eliminar = true;
+                }
+
+
+
+            }
+
+            return eliminar;
+
+        }
+    }
 }

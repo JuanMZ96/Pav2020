@@ -99,7 +99,7 @@ namespace Pav2.Presentacion
         {
             //dgv_categorias.Rows.Clear();
 
-            List<Categoria> T = Logica.Categorias.MostrarDgv();
+            List<Categoria> T = Logica.Categorias.MostrarDataCategorias();
             dgv_categorias.DataSource = T;
             dgv_categorias.Columns[0].Visible = false;
             dgv_categorias.Columns[3].Visible = false;
