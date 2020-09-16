@@ -37,12 +37,17 @@
             this.txt_value = new System.Windows.Forms.TextBox();
             this.lbl_nombre = new System.Windows.Forms.Label();
             this.lbl_descripcion = new System.Windows.Forms.Label();
+            this.lbl_x = new System.Windows.Forms.Label();
+            this.chk_todo = new System.Windows.Forms.CheckBox();
+            this.lbl_estado = new System.Windows.Forms.Label();
+            this.chk_estado = new System.Windows.Forms.CheckBox();
+            this.chk_borrado = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_categorias)).BeginInit();
             this.SuspendLayout();
             // 
             // btn_guardar
             // 
-            this.btn_guardar.Location = new System.Drawing.Point(302, 129);
+            this.btn_guardar.Location = new System.Drawing.Point(490, 88);
             this.btn_guardar.Name = "btn_guardar";
             this.btn_guardar.Size = new System.Drawing.Size(75, 23);
             this.btn_guardar.TabIndex = 0;
@@ -52,7 +57,7 @@
             // 
             // btn_modificar
             // 
-            this.btn_modificar.Location = new System.Drawing.Point(396, 129);
+            this.btn_modificar.Location = new System.Drawing.Point(490, 117);
             this.btn_modificar.Name = "btn_modificar";
             this.btn_modificar.Size = new System.Drawing.Size(75, 23);
             this.btn_modificar.TabIndex = 1;
@@ -62,7 +67,7 @@
             // 
             // btn_borrar
             // 
-            this.btn_borrar.Location = new System.Drawing.Point(486, 129);
+            this.btn_borrar.Location = new System.Drawing.Point(490, 146);
             this.btn_borrar.Name = "btn_borrar";
             this.btn_borrar.Size = new System.Drawing.Size(75, 23);
             this.btn_borrar.TabIndex = 2;
@@ -72,25 +77,29 @@
             // 
             // txt_name
             // 
-            this.txt_name.Location = new System.Drawing.Point(371, 35);
+            this.txt_name.Location = new System.Drawing.Point(465, 5);
             this.txt_name.Name = "txt_name";
             this.txt_name.Size = new System.Drawing.Size(100, 20);
             this.txt_name.TabIndex = 3;
             // 
             // txt_descripcion
             // 
-            this.txt_descripcion.Location = new System.Drawing.Point(371, 82);
+            this.txt_descripcion.Location = new System.Drawing.Point(465, 36);
             this.txt_descripcion.Name = "txt_descripcion";
             this.txt_descripcion.Size = new System.Drawing.Size(100, 20);
             this.txt_descripcion.TabIndex = 4;
             // 
             // dgv_categorias
             // 
+            this.dgv_categorias.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgv_categorias.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dgv_categorias.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgv_categorias.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_categorias.Location = new System.Drawing.Point(12, 12);
+            this.dgv_categorias.Location = new System.Drawing.Point(12, 5);
             this.dgv_categorias.Name = "dgv_categorias";
             this.dgv_categorias.ReadOnly = true;
-            this.dgv_categorias.Size = new System.Drawing.Size(261, 171);
+            this.dgv_categorias.Size = new System.Drawing.Size(280, 171);
             this.dgv_categorias.TabIndex = 5;
             this.dgv_categorias.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             this.dgv_categorias.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
@@ -98,7 +107,7 @@
             // 
             // txt_value
             // 
-            this.txt_value.Location = new System.Drawing.Point(49, 129);
+            this.txt_value.Location = new System.Drawing.Point(12, 156);
             this.txt_value.Name = "txt_value";
             this.txt_value.Size = new System.Drawing.Size(100, 20);
             this.txt_value.TabIndex = 6;
@@ -108,7 +117,7 @@
             // lbl_nombre
             // 
             this.lbl_nombre.AutoSize = true;
-            this.lbl_nombre.Location = new System.Drawing.Point(299, 40);
+            this.lbl_nombre.Location = new System.Drawing.Point(393, 12);
             this.lbl_nombre.Name = "lbl_nombre";
             this.lbl_nombre.Size = new System.Drawing.Size(47, 13);
             this.lbl_nombre.TabIndex = 7;
@@ -117,17 +126,71 @@
             // lbl_descripcion
             // 
             this.lbl_descripcion.AutoSize = true;
-            this.lbl_descripcion.Location = new System.Drawing.Point(299, 85);
+            this.lbl_descripcion.Location = new System.Drawing.Point(393, 43);
             this.lbl_descripcion.Name = "lbl_descripcion";
             this.lbl_descripcion.Size = new System.Drawing.Size(66, 13);
             this.lbl_descripcion.TabIndex = 8;
             this.lbl_descripcion.Text = "Descripción:";
+            // 
+            // lbl_x
+            // 
+            this.lbl_x.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_x.Location = new System.Drawing.Point(571, 36);
+            this.lbl_x.Name = "lbl_x";
+            this.lbl_x.Size = new System.Drawing.Size(26, 20);
+            this.lbl_x.TabIndex = 10;
+            this.lbl_x.Text = "X";
+            this.lbl_x.Click += new System.EventHandler(this.lbl_x_Click);
+            // 
+            // chk_todo
+            // 
+            this.chk_todo.AutoSize = true;
+            this.chk_todo.Location = new System.Drawing.Point(12, 189);
+            this.chk_todo.Name = "chk_todo";
+            this.chk_todo.Size = new System.Drawing.Size(51, 17);
+            this.chk_todo.TabIndex = 11;
+            this.chk_todo.Text = "Todo";
+            this.chk_todo.UseVisualStyleBackColor = true;
+            this.chk_todo.CheckedChanged += new System.EventHandler(this.chk_estado_CheckedChanged);
+            // 
+            // lbl_estado
+            // 
+            this.lbl_estado.AutoSize = true;
+            this.lbl_estado.Location = new System.Drawing.Point(393, 65);
+            this.lbl_estado.Name = "lbl_estado";
+            this.lbl_estado.Size = new System.Drawing.Size(43, 13);
+            this.lbl_estado.TabIndex = 12;
+            this.lbl_estado.Text = "Estado:";
+            // 
+            // chk_estado
+            // 
+            this.chk_estado.AutoSize = true;
+            this.chk_estado.Location = new System.Drawing.Point(465, 65);
+            this.chk_estado.Name = "chk_estado";
+            this.chk_estado.Size = new System.Drawing.Size(15, 14);
+            this.chk_estado.TabIndex = 13;
+            this.chk_estado.UseVisualStyleBackColor = true;
+            // 
+            // chk_borrado
+            // 
+            this.chk_borrado.AutoSize = true;
+            this.chk_borrado.Location = new System.Drawing.Point(69, 189);
+            this.chk_borrado.Name = "chk_borrado";
+            this.chk_borrado.Size = new System.Drawing.Size(63, 17);
+            this.chk_borrado.TabIndex = 14;
+            this.chk_borrado.Text = "Borrado";
+            this.chk_borrado.UseVisualStyleBackColor = true;
             // 
             // Categorias
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(602, 209);
+            this.Controls.Add(this.chk_borrado);
+            this.Controls.Add(this.chk_estado);
+            this.Controls.Add(this.lbl_estado);
+            this.Controls.Add(this.chk_todo);
+            this.Controls.Add(this.lbl_x);
             this.Controls.Add(this.dgv_categorias);
             this.Controls.Add(this.lbl_descripcion);
             this.Controls.Add(this.lbl_nombre);
@@ -158,5 +221,10 @@
         private System.Windows.Forms.TextBox txt_value;
         private System.Windows.Forms.Label lbl_nombre;
         private System.Windows.Forms.Label lbl_descripcion;
+        private System.Windows.Forms.Label lbl_x;
+        private System.Windows.Forms.CheckBox chk_todo;
+        private System.Windows.Forms.Label lbl_estado;
+        private System.Windows.Forms.CheckBox chk_estado;
+        private System.Windows.Forms.CheckBox chk_borrado;
     }
 }

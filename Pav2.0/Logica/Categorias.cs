@@ -46,7 +46,7 @@ namespace Pav2.Logica
         }
 
 
-        public static bool ModificarCategoria(int id, string name, string descripcion)
+        public static bool ModificarCategoria(int id, string name, string descripcion, bool estado)
         {
             bool modificar = false;
 
@@ -62,7 +62,10 @@ namespace Pav2.Logica
                 {
                     q.descripcion = descripcion;
                 }
-
+                if(q.borrado != estado)
+                {
+                    q.borrado = estado;
+                }
 
                 Contex.SaveChanges();
                 modificar = true;
@@ -72,38 +75,73 @@ namespace Pav2.Logica
 
         }
 
-        public static bool EliminarCategoria(int id)
+        public static bool EliminarCategoria(int id, bool borrado)
         {
             bool eliminar = false;
 
             using (var Contex = new BugTrackerFinalEntities())
             {
-                var q = Contex.Categorias.Where(x => x.id_categoria == id).FirstOrDefault();
-                if (q != null)
+                if (borrado == false)
                 {
-                    q.borrado = true;
+                    var q = Contex.Categorias.Where(x => x.id_categoria == id).FirstOrDefault();
+                    if (q != null)
+                    {
+                        q.borrado = true;
+                        Contex.SaveChanges();
+                        eliminar = true;
+                    }
+                }
+                else
+                {
+                    var q = Contex.Categorias.Where(x => x.id_categoria == id).FirstOrDefault();
+
+                    Contex.Categorias.Remove(q);
                     Contex.SaveChanges();
                     eliminar = true;
+
                 }
+            }
+           return eliminar;
+        }
 
+            public static List<Categoria> MostrarDataCategorias(bool estado)
+        {
+            //var Contex = new BugTrackerFinalEntities();
+            //var lista = from categorias in Contex.Categorias
+            //            where categorias.borrado != true
+            //            select categorias;
 
+            //if (!estado)
+            //{
+            //    lista.Where(x => x.borrado == true).ToList();
+            //}
+
+            //return lista.ToList();
+
+            if (estado == false)
+
+            {
+                var Contex = new BugTrackerFinalEntities();
+                var lista = from categorias in Contex.Categorias
+                            where categorias.borrado != true
+                            select categorias;
+                return lista.ToList();
+
+            }
+            else
+            {
+
+                var Contex = new BugTrackerFinalEntities();
+                var lista = from categorias in Contex.Categorias
+
+                            select categorias;
+                return lista.ToList();
 
             }
 
-            return eliminar;
-        }
-
-        public static List<Categoria> MostrarDataCategorias()
-        {
 
 
-            var Contex = new BugTrackerFinalEntities();
-            var lista = from categorias in Contex.Categorias
-                        where categorias.borrado != true
-                        select categorias;
 
-            return lista.ToList();
-           
         }
 
 

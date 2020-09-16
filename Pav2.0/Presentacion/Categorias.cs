@@ -23,6 +23,10 @@ namespace Pav2.Presentacion
         private void Categorias_Load(object sender, EventArgs e)
         {
             CargarGrilla();
+            btn_borrar.Enabled = false;
+            btn_modificar.Enabled = false;
+            lbl_estado.Visible = false;
+            chk_estado.Visible = false;
         }
 
         private void btn_guardar_Click(object sender, EventArgs e)
@@ -51,7 +55,7 @@ namespace Pav2.Presentacion
             int id = Int32.Parse(txt_value.Text);
             if (txt_name.Text != null && txt_descripcion.Text != null)
             {
-                if (Logica.Categorias.ModificarCategoria(id, txt_name.Text, txt_descripcion.Text) == false)
+                if (Logica.Categorias.ModificarCategoria(id, txt_name.Text, txt_descripcion.Text, chk_estado.Checked) == false)
                 {
                     MessageBox.Show("No se pudo modificar.");
                 }
@@ -68,7 +72,7 @@ namespace Pav2.Presentacion
             int id = Int32.Parse(txt_value.Text);
             if (txt_name.Text != null && txt_descripcion.Text != null)
             {
-                if (Logica.Categorias.EliminarCategoria(id) == false)
+                if (Logica.Categorias.EliminarCategoria(id, chk_borrado.Checked) == false)
                 {
                     MessageBox.Show("No se pudo eliminar.");
                 }
@@ -91,7 +95,10 @@ namespace Pav2.Presentacion
                 txt_name.Text = var1.nombre;
                 txt_descripcion.Text = var1.descripcion;
                 txt_value.Text = var1.id_categoria.ToString();
-            
+            //chk_estado.Checked = (bool)var1.borrado;
+            btn_guardar.Enabled = false;
+            btn_borrar.Enabled = true;
+            btn_modificar.Enabled = true;
         }
 
 
@@ -99,13 +106,17 @@ namespace Pav2.Presentacion
         {
             //dgv_categorias.Rows.Clear();
 
-            List<Categoria> T = Logica.Categorias.MostrarDataCategorias();
+            List<Categoria> T = Logica.Categorias.MostrarDataCategorias(chk_todo.Checked);
             dgv_categorias.DataSource = T;
             dgv_categorias.Columns[0].Visible = false;
             dgv_categorias.Columns[3].Visible = false;
             dgv_categorias.Columns[4].Visible = false;
             dgv_categorias.Columns[5].Visible = false;
+            if (chk_todo.Checked)
+            {
+             dgv_categorias.Columns[3].Visible = true;
 
+            }
 
             txt_name.Text = "";
             txt_descripcion.Text = "";
@@ -113,5 +124,24 @@ namespace Pav2.Presentacion
 
         }
 
+        private void lbl_x_Click(object sender, EventArgs e)
+        {
+            btn_guardar.Enabled = true;
+            btn_modificar.Enabled = false;
+            btn_borrar.Enabled = false;
+            txt_descripcion.Clear();
+            txt_name.Clear();
+            txt_value.Clear();
+
+        }
+
+        private void chk_estado_CheckedChanged(object sender, EventArgs e)
+        {
+            CargarGrilla();
+            lbl_estado.Visible = chk_todo.Checked;
+            chk_estado.Visible = chk_todo.Checked;
+        }
     }
 }
+
+            
