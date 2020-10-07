@@ -15,6 +15,7 @@ namespace Pav2.Presentacion
         public Principal()
         {
             InitializeComponent();
+            
         }
 
         private void btn_Perfiles_Click(object sender, EventArgs e)
@@ -44,6 +45,18 @@ namespace Pav2.Presentacion
         {
             Usuarios ventana2 = new Usuarios();
             ventana2.ShowDialog();
+        }
+
+        private void Principal_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((btn_Perfiles.Focused)||(btn_categorias.Focused)||(btn_usuarios.Focused)) 
+            {
+                if (e.KeyChar == Convert.ToChar(Keys.Escape))
+                {
+                    Environment.Exit(0);
+                }
+            }
+            
         }
     }
 }

@@ -42,6 +42,7 @@
             this.btn_Perfiles.Text = "Perfiles";
             this.btn_Perfiles.UseVisualStyleBackColor = true;
             this.btn_Perfiles.Click += new System.EventHandler(this.btn_Perfiles_Click);
+            this.btn_Perfiles.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Principal_KeyPress);
             // 
             // btn_categorias
             // 
@@ -52,6 +53,7 @@
             this.btn_categorias.Text = "Categorias";
             this.btn_categorias.UseVisualStyleBackColor = true;
             this.btn_categorias.Click += new System.EventHandler(this.btn_categorias_Click);
+            this.btn_categorias.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Principal_KeyPress);
             // 
             // btn_usuarios
             // 
@@ -62,6 +64,7 @@
             this.btn_usuarios.Text = "Usuarios";
             this.btn_usuarios.UseVisualStyleBackColor = true;
             this.btn_usuarios.Click += new System.EventHandler(this.button1_Click);
+            this.btn_usuarios.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Principal_KeyPress);
             // 
             // Principal
             // 
@@ -76,6 +79,7 @@
             this.Text = "Principal";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Principal_Load);
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Principal_KeyPress);
             this.ResumeLayout(false);
 
         }

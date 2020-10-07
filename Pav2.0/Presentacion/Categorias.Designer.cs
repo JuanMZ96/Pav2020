@@ -96,7 +96,7 @@
             this.dgv_categorias.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dgv_categorias.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgv_categorias.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_categorias.Location = new System.Drawing.Point(12, 5);
+            this.dgv_categorias.Location = new System.Drawing.Point(12, 12);
             this.dgv_categorias.Name = "dgv_categorias";
             this.dgv_categorias.ReadOnly = true;
             this.dgv_categorias.Size = new System.Drawing.Size(280, 171);
@@ -107,7 +107,7 @@
             // 
             // txt_value
             // 
-            this.txt_value.Location = new System.Drawing.Point(12, 156);
+            this.txt_value.Location = new System.Drawing.Point(12, 163);
             this.txt_value.Name = "txt_value";
             this.txt_value.Size = new System.Drawing.Size(100, 20);
             this.txt_value.TabIndex = 6;
@@ -147,9 +147,9 @@
             this.chk_todo.AutoSize = true;
             this.chk_todo.Location = new System.Drawing.Point(12, 189);
             this.chk_todo.Name = "chk_todo";
-            this.chk_todo.Size = new System.Drawing.Size(51, 17);
+            this.chk_todo.Size = new System.Drawing.Size(98, 17);
             this.chk_todo.TabIndex = 11;
-            this.chk_todo.Text = "Todo";
+            this.chk_todo.Text = "Incluir borrados";
             this.chk_todo.UseVisualStyleBackColor = true;
             this.chk_todo.CheckedChanged += new System.EventHandler(this.chk_estado_CheckedChanged);
             // 
@@ -174,11 +174,11 @@
             // chk_borrado
             // 
             this.chk_borrado.AutoSize = true;
-            this.chk_borrado.Location = new System.Drawing.Point(69, 189);
+            this.chk_borrado.Location = new System.Drawing.Point(490, 189);
             this.chk_borrado.Name = "chk_borrado";
-            this.chk_borrado.Size = new System.Drawing.Size(63, 17);
+            this.chk_borrado.Size = new System.Drawing.Size(77, 17);
             this.chk_borrado.TabIndex = 14;
-            this.chk_borrado.Text = "Borrado";
+            this.chk_borrado.Text = "EliminarDB";
             this.chk_borrado.UseVisualStyleBackColor = true;
             // 
             // Categorias

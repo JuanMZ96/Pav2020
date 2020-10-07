@@ -30,11 +30,7 @@ namespace Pav2.Presentacion
                     Cerrar = false;
                     Principal ventanaprin = new Principal();                   
                     this.Close();
-
-
                 }
-                
-
             }
             else
             {

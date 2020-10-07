@@ -52,14 +52,16 @@ namespace Pav2.Presentacion
 
         private void btn_modificar_Click(object sender, EventArgs e)
         {
-            int id = Int32.Parse(txt_value.Text);
-            if (txt_name.Text != null && txt_descripcion.Text != null)
+            
+            if (txt_name.Text != "" && txt_descripcion.Text != "")
             {
+                int id = Int32.Parse(txt_value.Text);
                 if (Logica.Categorias.ModificarCategoria(id, txt_name.Text, txt_descripcion.Text, chk_estado.Checked) == false)
                 {
                     MessageBox.Show("No se pudo modificar.");
                 }
                 CargarGrilla();
+                limpiarcampos();
             }
             else
             {
@@ -69,14 +71,16 @@ namespace Pav2.Presentacion
 
         private void btn_borrar_Click(object sender, EventArgs e)
         {
-            int id = Int32.Parse(txt_value.Text);
-            if (txt_name.Text != null && txt_descripcion.Text != null)
+
+            if (txt_name.Text != "" && txt_descripcion.Text != "")
             {
+                int id = Int32.Parse(txt_value.Text);
                 if (Logica.Categorias.EliminarCategoria(id, chk_borrado.Checked) == false)
                 {
                     MessageBox.Show("No se pudo eliminar.");
                 }
                 CargarGrilla();
+                limpiarcampos();
             }
             else
             {
@@ -95,7 +99,7 @@ namespace Pav2.Presentacion
                 txt_name.Text = var1.nombre;
                 txt_descripcion.Text = var1.descripcion;
                 txt_value.Text = var1.id_categoria.ToString();
-            //chk_estado.Checked = (bool)var1.borrado;
+                chk_estado.Checked = (bool)var1.borrado;
             btn_guardar.Enabled = false;
             btn_borrar.Enabled = true;
             btn_modificar.Enabled = true;
@@ -129,9 +133,7 @@ namespace Pav2.Presentacion
             btn_guardar.Enabled = true;
             btn_modificar.Enabled = false;
             btn_borrar.Enabled = false;
-            txt_descripcion.Clear();
-            txt_name.Clear();
-            txt_value.Clear();
+            limpiarcampos();
 
         }
 
@@ -141,7 +143,15 @@ namespace Pav2.Presentacion
             lbl_estado.Visible = chk_todo.Checked;
             chk_estado.Visible = chk_todo.Checked;
         }
-    }
+        private void limpiarcampos()
+        {
+            txt_descripcion.Clear();
+            txt_name.Clear();
+            txt_value.Clear();
+            chk_estado.Checked = false;
+        }
+    }   
+
 }
 
             

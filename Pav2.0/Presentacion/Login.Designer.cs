@@ -70,6 +70,7 @@
             this.txt_nameid.Name = "txt_nameid";
             this.txt_nameid.Size = new System.Drawing.Size(232, 20);
             this.txt_nameid.TabIndex = 8;
+            this.txt_nameid.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_pwd_KeyPress);
             // 
             // label2
             // 
