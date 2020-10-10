@@ -1,35 +1,39 @@
-﻿using System;
-using System.Collections;
+﻿using ClassLibrary1;
+using System;
 using System.Collections.Generic;
-using System.Data.Entity.Core.Metadata.Edm;
 using System.Linq;
-using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
-using ClassLibrary1;
-using Microsoft.SqlServer.Server;
 
 namespace Pav2.Logica
 {
-    class Categorias
+    class Objetivos
     {
-        public static bool GuardarCategoria(string name, string descripcion)
+        public static bool GuardarObjetivo(string nombreCorto, string nombreLargo)
         {
             bool guardar = false;
-            Categoria cat1 = new Categoria();
-
+            Objetivo obj1 = new Objetivo();
+            
 
             using (var Contex = new BugTrackerFinalEntities())
             {
-                if (name != String.Empty && descripcion != String.Empty) 
+                if (!String.IsNullOrWhiteSpace(nombreCorto) && !String.IsNullOrWhiteSpace(nombreLargo))
                 {
-                    cat1.nombre = name;
-                    cat1.descripcion = descripcion;
-                    cat1.borrado = false;
+                    obj1.nombre_corto = nombreCorto;
+                    obj1.nombre_largo = nombreLargo;
+                    obj1.borrado = false;
 
-                    var q = Contex.Categorias.Max(x => x.id_categoria) + 1;
-                    cat1.id_categoria = q;
-                    Contex.Categorias.Add(cat1);
+                    var q = Contex.Objetivos.Max(x => (int?) x.id_objetivo);
+                    if (q.HasValue)
+                    { 
+                        q += 1;
+                    } 
+                    else { 
+                        q = 0;
+                    }
+
+                    obj1.id_objetivo = q.Value;
+                    Contex.Objetivos.Add(obj1);
                     Contex.SaveChanges();
                     guardar = true;
                 }
@@ -37,7 +41,7 @@ namespace Pav2.Logica
 
             return guardar;
         }
-
+        /*
 
         public static bool ModificarCategoria(int id, string name, string descripcion, bool estado)
         {
@@ -55,7 +59,7 @@ namespace Pav2.Logica
                 {
                     q.descripcion = descripcion;
                 }
-                if(q.borrado != estado)
+                if (q.borrado != estado)
                 {
                     q.borrado = estado;
                 }
@@ -94,10 +98,10 @@ namespace Pav2.Logica
 
                 }
             }
-           return eliminar;
+            return eliminar;
         }
 
-            public static List<Categoria> MostrarDataCategorias(bool estado)
+        public static List<Categoria> MostrarDataCategorias(bool estado)
         {
             //var Contex = new BugTrackerFinalEntities();
             //var lista = from categorias in Contex.Categorias
@@ -131,11 +135,11 @@ namespace Pav2.Logica
                 return lista.ToList();
 
             }
+            */
 
 
 
-
-        }
+        //}
 
 
     }
