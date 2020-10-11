@@ -62,6 +62,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Logica\Categorias.cs" />
+    <Compile Include="Logica\Objetivos.cs" />
     <Compile Include="Logica\Perfiles.cs" />
     <Compile Include="Logica\Usuarios.cs" />
     <Compile Include="Presentacion\AltaPerfil.cs">
@@ -88,6 +89,13 @@
     <Compile Include="Presentacion\GestionUsuario.Designer.cs">
       <DependentUpon>GestionUsuario.cs</DependentUpon>
     </Compile>
+    <Compile Include="Presentacion\Objetivos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Objetivos.Designer.cs">
+      <DependentUpon>Objetivos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Usuarios.cs">
     <Compile Include="Presentacion\AltaUsuarios.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -128,6 +136,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\Objetivos.resx">
+      <DependentUpon>Objetivos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\Principal.resx">
       <DependentUpon>Principal.cs</DependentUpon>
