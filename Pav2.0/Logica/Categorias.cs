@@ -104,7 +104,7 @@ namespace Pav2.Logica
            return eliminar;
         }
 
-            public static List<Categoria> MostrarDataCategorias(bool estado)
+        public static List<Categoria> MostrarDataCategorias(bool estado)
         {
             //var Contex = new BugTrackerFinalEntities();
             //var lista = from categorias in Contex.Categorias
@@ -119,7 +119,6 @@ namespace Pav2.Logica
             //return lista.ToList();
 
             if (estado == false)
-
             {
                 var Contex = new BugTrackerFinalEntities();
                 var lista = from categorias in Contex.Categorias
@@ -130,20 +129,14 @@ namespace Pav2.Logica
             }
             else
             {
-
                 var Contex = new BugTrackerFinalEntities();
                 var lista = from categorias in Contex.Categorias
 
                             select categorias;
                 return lista.ToList();
-
             }
 
-
-
-
         }
-
 
     }
 }

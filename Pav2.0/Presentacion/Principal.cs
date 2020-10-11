@@ -43,7 +43,7 @@ namespace Pav2.Presentacion
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Usuarios ventana2 = new Usuarios();
+            AltaUsuarios ventana2 = new AltaUsuarios();
             ventana2.ShowDialog();
         }
 

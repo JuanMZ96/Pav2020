@@ -100,9 +100,9 @@ namespace Pav2.Presentacion
                 txt_descripcion.Text = var1.descripcion;
                 txt_value.Text = var1.id_categoria.ToString();
                 chk_estado.Checked = (bool)var1.borrado;
-            btn_guardar.Enabled = false;
-            btn_borrar.Enabled = true;
-            btn_modificar.Enabled = true;
+                btn_guardar.Enabled = false;
+                btn_borrar.Enabled = true;
+                btn_modificar.Enabled = true;
         }
 
 
