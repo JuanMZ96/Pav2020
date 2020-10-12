@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ClassLibrary1;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -11,11 +12,17 @@ using System.Windows.Forms;
 namespace Pav2.Presentacion
 {
     public partial class Principal : Form
-    {
+    {   
+        private Usuario _usuariologueado { get; set; }
+        public Principal(Usuario usuario)
+        {
+            this._usuariologueado = usuario;
+            InitializeComponent();
+        }
+
         public Principal()
         {
             InitializeComponent();
-            
         }
 
         private void btn_Perfiles_Click(object sender, EventArgs e)
@@ -43,7 +50,7 @@ namespace Pav2.Presentacion
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Usuarios ventana2 = new Usuarios();
+            AltaUsuarios ventana2 = new AltaUsuarios();
             ventana2.ShowDialog();
         }
 

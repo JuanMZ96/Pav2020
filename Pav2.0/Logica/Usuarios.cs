@@ -7,27 +7,44 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.Entity.Validation;
 using System.Data.Entity;
+using System.Windows.Forms;
+using static Pav2.Logica.CustomClass;
 
 namespace Pav2.Logica
 {
     public class Usuarios
     {
-
-
-        public static bool ValidarCredenciales(string nameUsuario, string pwdUsuario)
+        public static ReturnValue<Usuario> ValidarCredenciales(string nameUsuario, string pwdUsuario)
 
         {
-            bool User = false;
 
+            ReturnValue<Usuario> var1 = new ReturnValue<Usuario>() {isSuccess=false};
+           
             using (var Contex = new BugTrackerFinalEntities())
             {
-                var q = Contex.Usuarios.Where(x => x.usuario1 == nameUsuario).FirstOrDefault();
-                if (q != null)
-                {
-                    User = q.password == pwdUsuario;
+                try {
+                    var q = Contex.Usuarios.Where(x => x.usuario1 == nameUsuario).FirstOrDefault();
+                    if (q != null)
+                    {
+                        if (!(bool)q.borrado)
+                        {
+                            if(q.password == pwdUsuario)
+                            {
+                                var1.isSuccess = true;
+                                var1.Data = q;
+                            }
+                            else { var1.ErrorMessage = "Contraseña Incorrecta"; }
+                        }
+                        else
+                        { var1.ErrorMessage = "Usuario no habilitado";}
+                    }
+                    else { var1.ErrorMessage = "Usuario no encontrado";}
+                }
+                catch(Exception ex) {
+                    var1.ErrorMessage = ex.Message;
                 }
             }
-            return User;
+            return var1;
         }
 
         public static bool CrearUsuarios(int perfil, string name, string pw, String mail)
@@ -63,12 +80,12 @@ namespace Pav2.Logica
 
         public static IList MostrarCombo()
         {
-            List<Perfiles> ListPerfil = new List<Perfiles>();
+            List<PerfilCustom> ListPerfil = new List<PerfilCustom>();
 
             using (var Contex = new BugTrackerFinalEntities())
             {
                 ListPerfil = (from d in Contex.Perfiles
-                              select new Perfiles
+                              select new PerfilCustom
                               {
                                   id = d.id_perfil,
                                   nombre = d.nombre
@@ -79,41 +96,105 @@ namespace Pav2.Logica
 
         public static List<Usuario> MostrarDataUsuarios(bool estado)
         {
-
-
-            var Contex = new BugTrackerFinalEntities();
-            var lista = from usuario in Contex.Usuarios
-                        select usuario;
-            //lista.Include(x => x.Perfile);
-
-
-            if (!estado)
+            if (estado == false)
             {
-                lista.Where(x => x.borrado == true).ToList();
+                var Contex = new BugTrackerFinalEntities();
+                var lista = from Usuarios in Contex.Usuarios
+                            where Usuarios.borrado != true
+                            select Usuarios;
+                return lista.ToList();
+
             }
-            return lista.ToList();
+            else
+            {
+                var Contex = new BugTrackerFinalEntities();
+                var lista = from Usuarios in Contex.Usuarios
+
+                            select Usuarios;
+                return lista.ToList();
+            }
         }
 
-        public static bool EliminarUsuario(int id)
+        public static List<UsuarioCustom> MostarDatosUsuarioCustom(bool borrado)
+        {
+            using (var contex = new BugTrackerFinalEntities())
+            {
+                var lista = from Usuarios in contex.Usuarios
+                            select Usuarios;
+
+                if (!borrado)
+                {
+                    lista = lista.Where(x => (bool)x.borrado == false);
+                }
+                var temp = lista.Join(contex.Perfiles,
+                    usuario => usuario.id_perfil,
+                    perfil => perfil.id_perfil,
+                    (usuario,perfil) => new UsuarioCustom() {
+                        id_perfil = perfil.id_perfil, 
+                        id_usuario = usuario.id_usuario,
+                        perfil = perfil.nombre,
+                        usuario= usuario.usuario1, 
+                        passw = usuario.password, 
+                        mail = usuario.email, 
+                        borrado = (bool)usuario.borrado 
+                    });
+                return temp.ToList();
+            }
+        }
+        public static bool EliminarUsuario(int id, bool borrado)
         {
             bool eliminar = false;
 
             using (var Contex = new BugTrackerFinalEntities())
             {
-                var q = Contex.Usuarios.Where(x => x.id_usuario == id).FirstOrDefault();
-                if (q != null)
+                if (borrado == false)
                 {
-                    q.borrado = true;
+                    var q = Contex.Usuarios.Where(x => x.id_usuario == id).FirstOrDefault();
+                    if (q != null)
+                    {
+                        q.borrado = true;
+                        Contex.SaveChanges();
+                        eliminar = true;
+                    }
+                }
+                else
+                {
+                    var q = Contex.Usuarios.Where(x => x.id_usuario == id).FirstOrDefault();
+                    Contex.Usuarios.Remove(q);
                     Contex.SaveChanges();
                     eliminar = true;
                 }
+            }
+            return eliminar;
+        }
 
+        public static bool ModificarUsuario(int idperfil, int id, bool estado, string name, string password, string mail)
+        {
+            bool modificar = false;
 
+            using (var Contex = new BugTrackerFinalEntities())
+            {
+                var q = Contex.Usuarios.Where(x => x.id_usuario == id).FirstOrDefault();
 
+                if (q.id_perfil != idperfil)
+                    q.id_perfil = idperfil;
+
+                if (q.usuario1 != name)
+                    q.usuario1 = name;
+               
+                if (q.password != password)
+                    q.password = password;
+
+                if (q.borrado != estado)
+                    q.borrado = estado;
+
+                Contex.SaveChanges();
+                modificar = true;
             }
 
-            return eliminar;
+            return modificar;
 
         }
+
     }
 }

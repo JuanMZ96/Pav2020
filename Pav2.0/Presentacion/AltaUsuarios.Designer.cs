@@ -1,6 +1,6 @@
 ﻿namespace Pav2.Presentacion
 {
-    partial class Usuarios
+    partial class AltaUsuarios
     {
         /// <summary>
         /// Required designer variable.

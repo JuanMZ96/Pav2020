@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ClassLibrary1;
 using Pav2.Logica;
 
 
@@ -25,11 +26,18 @@ namespace Pav2.Presentacion
 
             if (txt_nameid.Text != String.Empty && txt_pwd.Text != String.Empty)
             {
-                if (Logica.Usuarios.ValidarCredenciales(txt_nameid.Text, txt_pwd.Text))
+                ReturnValue<Usuario> valido = Logica.Usuarios.ValidarCredenciales(txt_nameid.Text, txt_pwd.Text);
+                if (valido.isSuccess)
                 {
                     Cerrar = false;
-                    Principal ventanaprin = new Principal();                   
+                    Principal ventanaprin = new Principal(valido.Data);                   
                     this.Close();
+                }
+                else 
+                { 
+                    MessageBox.Show(valido.ErrorMessage,"Alerta", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    txt_nameid.Clear(); 
+                    txt_pwd.Clear();
                 }
             }
             else
@@ -58,6 +66,11 @@ namespace Pav2.Presentacion
             {
                 Login_FormClosing(sender, null);
             }
+        }
+
+        private void Login_Load(object sender, EventArgs e)
+        {
+
         }
     }
     

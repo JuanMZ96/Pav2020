@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Pav2.Presentacion
 {
-    public partial class Usuarios : Form
+    public partial class AltaUsuarios : Form
     {
-        public Usuarios()
+        public AltaUsuarios()
         {
             InitializeComponent();
         }
