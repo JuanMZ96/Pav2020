@@ -17,7 +17,7 @@ namespace Pav2.Logica
         {
             bool guardar = false;
             Categoria cat1 = new Categoria();
-
+            
 
             using (var Contex = new BugTrackerFinalEntities())
             {

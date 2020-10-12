@@ -8,27 +8,43 @@ using System.Threading.Tasks;
 using System.Data.Entity.Validation;
 using System.Data.Entity;
 using System.Windows.Forms;
+using static Pav2.Logica.CustomClass;
 
 namespace Pav2.Logica
 {
     public class Usuarios
     {
-
-
-        public static bool ValidarCredenciales(string nameUsuario, string pwdUsuario)
+        public static ReturnValue<Usuario> ValidarCredenciales(string nameUsuario, string pwdUsuario)
 
         {
-            bool User = false;
 
+            ReturnValue<Usuario> var1 = new ReturnValue<Usuario>() {isSuccess=false};
+           
             using (var Contex = new BugTrackerFinalEntities())
             {
-                var q = Contex.Usuarios.Where(x => x.usuario1 == nameUsuario).FirstOrDefault();
-                if (q != null)
-                {
-                    User = q.password == pwdUsuario;
+                try {
+                    var q = Contex.Usuarios.Where(x => x.usuario1 == nameUsuario).FirstOrDefault();
+                    if (q != null)
+                    {
+                        if (!(bool)q.borrado)
+                        {
+                            if(q.password == pwdUsuario)
+                            {
+                                var1.isSuccess = true;
+                                var1.Data = q;
+                            }
+                            else { var1.ErrorMessage = "Contraseña Incorrecta"; }
+                        }
+                        else
+                        { var1.ErrorMessage = "Usuario no habilitado";}
+                    }
+                    else { var1.ErrorMessage = "Usuario no encontrado";}
+                }
+                catch(Exception ex) {
+                    var1.ErrorMessage = ex.Message;
                 }
             }
-            return User;
+            return var1;
         }
 
         public static bool CrearUsuarios(int perfil, string name, string pw, String mail)
@@ -64,12 +80,12 @@ namespace Pav2.Logica
 
         public static IList MostrarCombo()
         {
-            List<Perfiles> ListPerfil = new List<Perfiles>();
+            List<PerfilCustom> ListPerfil = new List<PerfilCustom>();
 
             using (var Contex = new BugTrackerFinalEntities())
             {
                 ListPerfil = (from d in Contex.Perfiles
-                              select new Perfiles
+                              select new PerfilCustom
                               {
                                   id = d.id_perfil,
                                   nombre = d.nombre
@@ -124,22 +140,7 @@ namespace Pav2.Logica
                     });
                 return temp.ToList();
             }
-
-            
         }
-
-        public class UsuarioCustom
-        {
-            public int id_perfil { get;  set; }
-            public int id_usuario { get; set; }
-            public string perfil { get; set; }
-            public string usuario { get; set; }
-            public string passw { get; set; }
-            public string mail { get; set;}
-            public bool borrado { get; set; }
-        }
-
-
         public static bool EliminarUsuario(int id, bool borrado)
         {
             bool eliminar = false;

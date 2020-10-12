@@ -28,12 +28,12 @@ namespace Pav2.Presentacion
         private void CargarGrilla()
         {
 
-            List<Logica.Usuarios.UsuarioCustom> T = Logica.Usuarios.MostarDatosUsuarioCustom(chk_todo.Checked);
+            List<Logica.CustomClass.UsuarioCustom> T = Logica.Usuarios.MostarDatosUsuarioCustom(chk_todo.Checked);
             dgv_usuarios.DataSource = T;
-
+            
             foreach (DataGridViewColumn columns in dgv_usuarios.Columns)
             {
-                if (columns.Index < 2)
+                if ((columns.Index < 2) && (columns.Index < 4))
                 {
                     columns.Visible = false;
                 }
@@ -44,13 +44,14 @@ namespace Pav2.Presentacion
                    DataGridView dgv = sender as DataGridView;
                    if (dgv == null)
                    return;
-                  Logica.Usuarios.UsuarioCustom var1 = (Logica.Usuarios.UsuarioCustom)dgv.CurrentRow.DataBoundItem;
+                  Logica.CustomClass.UsuarioCustom var1 = (Logica.CustomClass.UsuarioCustom)dgv.CurrentRow.DataBoundItem;
                   cmb_perfiles.SelectedValue = var1.id_perfil;
                   txt_name.Text = var1.usuario;
                   txt_password.Text = var1.passw;
                   txt_value.Text = var1.id_usuario.ToString();
                   txt_mail.Text = var1.mail;
                   chk_estado.Checked = (bool)var1.borrado;
+            
 
 
             }

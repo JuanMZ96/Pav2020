@@ -62,6 +62,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Logica\Categorias.cs" />
+    <Compile Include="Logica\CustomClass.cs" />
+    <Compile Include="Logica\Formularios.cs" />
     <Compile Include="Logica\Objetivos.cs" />
     <Compile Include="Logica\Perfiles.cs" />
     <Compile Include="Logica\Usuarios.cs" />
@@ -83,6 +85,12 @@
     <Compile Include="Presentacion\Categorias.Designer.cs">
       <DependentUpon>Categorias.cs</DependentUpon>
     </Compile>
+    <Compile Include="Presentacion\GestionPermisos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\GestionPermisos.Designer.cs">
+      <DependentUpon>GestionPermisos.cs</DependentUpon>
+    </Compile>
     <Compile Include="Presentacion\GestionUsuario.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -95,7 +103,6 @@
     <Compile Include="Presentacion\Objetivos.Designer.cs">
       <DependentUpon>Objetivos.cs</DependentUpon>
     </Compile>
-    <Compile Include="Presentacion\Usuarios.cs">
     <Compile Include="Presentacion\AltaUsuarios.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -130,6 +137,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\GestionPerfiles.resx">
       <DependentUpon>GestionPerfiles.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\GestionPermisos.resx">
+      <DependentUpon>GestionPermisos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\GestionUsuario.resx">
       <DependentUpon>GestionUsuario.cs</DependentUpon>

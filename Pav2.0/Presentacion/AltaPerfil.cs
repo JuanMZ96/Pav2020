@@ -16,5 +16,10 @@ namespace Pav2.Presentacion
         {
             InitializeComponent();
         }
+
+        private void AltaPerfil_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
