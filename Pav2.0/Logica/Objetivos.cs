@@ -41,23 +41,23 @@ namespace Pav2.Logica
 
             return guardar;
         }
-        /*
+        
 
-        public static bool ModificarCategoria(int id, string name, string descripcion, bool estado)
+        public static bool ModificarObjetivo(int id, string nombreCorto, string nombreLargo, bool estado)
         {
             bool modificar = false;
 
             using (var Contex = new BugTrackerFinalEntities())
             {
-                var q = Contex.Categorias.Where(x => x.id_categoria == id).FirstOrDefault();
+                var q = Contex.Objetivos.Where(x => x.id_objetivo == id).FirstOrDefault();
 
-                if (q.nombre != name)
+                if (q.nombre_corto != nombreCorto)
                 {
-                    q.nombre = name;
+                    q.nombre_corto = nombreCorto;
                 }
-                if (q.descripcion != descripcion)
+                if (q.nombre_largo != nombreLargo)
                 {
-                    q.descripcion = descripcion;
+                    q.nombre_largo = nombreLargo;
                 }
                 if (q.borrado != estado)
                 {
@@ -72,7 +72,7 @@ namespace Pav2.Logica
 
         }
 
-        public static bool EliminarCategoria(int id, bool borrado)
+        public static bool EliminarObjetivo(int id, bool borrado)
         {
             bool eliminar = false;
 
@@ -80,7 +80,7 @@ namespace Pav2.Logica
             {
                 if (borrado == false)
                 {
-                    var q = Contex.Categorias.Where(x => x.id_categoria == id).FirstOrDefault();
+                    var q = Contex.Objetivos.Where(x => x.id_objetivo == id).FirstOrDefault();
                     if (q != null)
                     {
                         q.borrado = true;
@@ -90,9 +90,9 @@ namespace Pav2.Logica
                 }
                 else
                 {
-                    var q = Contex.Categorias.Where(x => x.id_categoria == id).FirstOrDefault();
+                    var q = Contex.Objetivos.Where(x => x.id_objetivo == id).FirstOrDefault();
 
-                    Contex.Categorias.Remove(q);
+                    Contex.Objetivos.Remove(q);
                     Contex.SaveChanges();
                     eliminar = true;
 
@@ -101,7 +101,7 @@ namespace Pav2.Logica
             return eliminar;
         }
 
-        public static List<Categoria> MostrarDataCategorias(bool estado)
+        public static List<Objetivo> MostrarDataObjetivos(bool estado)
         {
             //var Contex = new BugTrackerFinalEntities();
             //var lista = from categorias in Contex.Categorias
@@ -119,9 +119,9 @@ namespace Pav2.Logica
 
             {
                 var Contex = new BugTrackerFinalEntities();
-                var lista = from categorias in Contex.Categorias
-                            where categorias.borrado != true
-                            select categorias;
+                var lista = from objetivos in Contex.Objetivos
+                            where objetivos.borrado != true
+                            select objetivos;
                 return lista.ToList();
 
             }
@@ -129,17 +129,16 @@ namespace Pav2.Logica
             {
 
                 var Contex = new BugTrackerFinalEntities();
-                var lista = from categorias in Contex.Categorias
+                var lista = from objetivos in Contex.Objetivos
 
-                            select categorias;
+                            select objetivos;
                 return lista.ToList();
 
             }
-            */
 
 
 
-        //}
+        }
 
 
     }

@@ -142,5 +142,10 @@ namespace Pav2.Presentacion
             txt_value.Clear();
             chk_estado.Checked = false;
         }
+
+        private void btn_guardar_Click_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }

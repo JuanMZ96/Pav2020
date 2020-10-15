@@ -107,7 +107,7 @@
             this.btn_eliminar.Name = "btn_eliminar";
             this.btn_eliminar.Size = new System.Drawing.Size(75, 23);
             this.btn_eliminar.TabIndex = 6;
-            this.btn_eliminar.Text = "eliminar";
+            this.btn_eliminar.Text = "Eliminar";
             this.btn_eliminar.UseVisualStyleBackColor = true;
             this.btn_eliminar.Click += new System.EventHandler(this.btn_eliminar_Click);
             // 
@@ -124,9 +124,9 @@
             this.chk_borrado.AutoSize = true;
             this.chk_borrado.Location = new System.Drawing.Point(633, 216);
             this.chk_borrado.Name = "chk_borrado";
-            this.chk_borrado.Size = new System.Drawing.Size(69, 17);
+            this.chk_borrado.Size = new System.Drawing.Size(72, 17);
             this.chk_borrado.TabIndex = 9;
-            this.chk_borrado.Text = "BorrarDB";
+            this.chk_borrado.Text = "Borrar DB";
             this.chk_borrado.UseVisualStyleBackColor = true;
             // 
             // chk_estado
