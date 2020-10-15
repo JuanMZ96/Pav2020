@@ -59,9 +59,9 @@
             // 
             this.txt_pwd.Location = new System.Drawing.Point(84, 57);
             this.txt_pwd.Name = "txt_pwd";
-            this.txt_pwd.PasswordChar = '*';
             this.txt_pwd.Size = new System.Drawing.Size(232, 20);
             this.txt_pwd.TabIndex = 9;
+            this.txt_pwd.UseSystemPasswordChar = true;
             this.txt_pwd.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_pwd_KeyPress);
             // 
             // txt_nameid

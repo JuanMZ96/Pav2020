@@ -57,7 +57,7 @@ namespace Pav2.Presentacion
                     MessageBox.Show("No se pudo modificar.");
                 }
                 CargarGrilla();
-                //limpiarcampos();
+                limpiarcampos();
             }
             else
             {
@@ -75,7 +75,7 @@ namespace Pav2.Presentacion
                     MessageBox.Show("No se pudo eliminar.");
                 }
                 CargarGrilla();
-                //limpiarcampos();
+                limpiarcampos();
             }
             else
             {
@@ -85,7 +85,6 @@ namespace Pav2.Presentacion
 
         private void CargarGrilla()
         {
-            //dgv_categorias.Rows.Clear();
 
             List<Objetivo> T = Logica.Objetivos.MostrarDataObjetivos(chk_todo.Checked);
             dgv_objetivos.DataSource = T;
@@ -139,6 +138,23 @@ namespace Pav2.Presentacion
         private void btn_cancelar_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void limpiarcampos()
+        {
+            txt_nombreCorto.Clear();
+            txt_nombreLargo.Clear();
+            txt_value.Clear();
+            chk_estado.Checked = false;
+        }
+
+        private void lbl_equis_Click(object sender, EventArgs e)
+        {
+            btn_guardar.Enabled = true;
+            btn_Modificar.Enabled = false;
+            btn_Eliminar.Enabled = false;
+            limpiarcampos();
+
         }
     }
 }

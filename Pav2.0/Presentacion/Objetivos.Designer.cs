@@ -35,16 +35,17 @@
             this.txt_nombreCorto = new System.Windows.Forms.TextBox();
             this.txt_nombreLargo = new System.Windows.Forms.TextBox();
             this.dgv_objetivos = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NomCorto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.btn_Modificar = new System.Windows.Forms.Button();
             this.txt_value = new System.Windows.Forms.TextBox();
             this.chk_estado = new System.Windows.Forms.CheckBox();
             this.btn_Eliminar = new System.Windows.Forms.Button();
             this.chk_borrado = new System.Windows.Forms.CheckBox();
             this.chk_todo = new System.Windows.Forms.CheckBox();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NomCorto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.lbl_equis = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_objetivos)).BeginInit();
             this.SuspendLayout();
             // 
@@ -115,6 +116,36 @@
             this.dgv_objetivos.TabIndex = 6;
             this.dgv_objetivos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_objetivos_CellContentClick);
             // 
+            // Column1
+            // 
+            this.Column1.DataPropertyName = "id_objetivo";
+            this.Column1.HeaderText = "ID ";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            // 
+            // NomCorto
+            // 
+            this.NomCorto.DataPropertyName = "nombre_corto";
+            this.NomCorto.HeaderText = "Nombre corto";
+            this.NomCorto.Name = "NomCorto";
+            this.NomCorto.ReadOnly = true;
+            // 
+            // Column2
+            // 
+            this.Column2.DataPropertyName = "nombre_largo";
+            this.Column2.HeaderText = "Nombre largo";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            // 
+            // Column3
+            // 
+            this.Column3.DataPropertyName = "borrado";
+            this.Column3.FalseValue = "false";
+            this.Column3.HeaderText = "Borrado";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            this.Column3.TrueValue = "true";
+            // 
             // btn_Modificar
             // 
             this.btn_Modificar.Location = new System.Drawing.Point(140, 229);
@@ -174,41 +205,22 @@
             this.chk_todo.UseVisualStyleBackColor = true;
             this.chk_todo.CheckedChanged += new System.EventHandler(this.chk_todo_CheckedChanged);
             // 
-            // Column1
+            // lbl_equis
             // 
-            this.Column1.DataPropertyName = "id_objetivo";
-            this.Column1.HeaderText = "ID ";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            // 
-            // NomCorto
-            // 
-            this.NomCorto.DataPropertyName = "nombre_corto";
-            this.NomCorto.HeaderText = "Nombre corto";
-            this.NomCorto.Name = "NomCorto";
-            this.NomCorto.ReadOnly = true;
-            // 
-            // Column2
-            // 
-            this.Column2.DataPropertyName = "nombre_largo";
-            this.Column2.HeaderText = "Nombre largo";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            // 
-            // Column3
-            // 
-            this.Column3.DataPropertyName = "borrado";
-            this.Column3.FalseValue = "false";
-            this.Column3.HeaderText = "Borrado";
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            this.Column3.TrueValue = "true";
+            this.lbl_equis.AutoSize = true;
+            this.lbl_equis.Location = new System.Drawing.Point(253, 117);
+            this.lbl_equis.Name = "lbl_equis";
+            this.lbl_equis.Size = new System.Drawing.Size(14, 13);
+            this.lbl_equis.TabIndex = 13;
+            this.lbl_equis.Text = "X";
+            this.lbl_equis.Click += new System.EventHandler(this.lbl_equis_Click);
             // 
             // Objetivos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.lbl_equis);
             this.Controls.Add(this.chk_todo);
             this.Controls.Add(this.chk_borrado);
             this.Controls.Add(this.btn_Eliminar);
@@ -250,5 +262,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn NomCorto;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Column3;
+        private System.Windows.Forms.Label lbl_equis;
     }
 }
