@@ -14,24 +14,34 @@ namespace Pav2.Logica
 {
     public class Usuarios
     {
-        public static ReturnValue<Usuario> ValidarCredenciales(string nameUsuario, string pwdUsuario)
-
+        public static ReturnValue<CustomClass.UsuarioCustom> ValidarCredenciales(string nameUsuario, string pwdUsuario)
         {
-
-            ReturnValue<Usuario> var1 = new ReturnValue<Usuario>() {isSuccess=false};
-           
+            ReturnValue<CustomClass.UsuarioCustom> var1 = new ReturnValue<CustomClass.UsuarioCustom>() {isSuccess=false};
             using (var Contex = new BugTrackerFinalEntities())
             {
                 try {
-                    var q = Contex.Usuarios.Where(x => x.usuario1 == nameUsuario).FirstOrDefault();
-                    if (q != null)
+                    var user = Contex.Usuarios.Where(x => x.usuario1 == nameUsuario);
+                    var temp = user.Join(Contex.Perfiles,
+                                        usuario => usuario.id_perfil,
+                                        perfil => perfil.id_perfil,
+                                        (usuario, perfil) => new UsuarioCustom()
+                                        {
+                                            id_perfil = perfil.id_perfil,
+                                            id_usuario = usuario.id_usuario,
+                                            perfil = perfil.nombre,
+                                            usuario = usuario.usuario1,
+                                            passw = usuario.password,
+                                            mail = usuario.email,
+                                            borrado = (bool)usuario.borrado
+                                        }).FirstOrDefault();
+                    if (user != null)
                     {
-                        if (!(bool)q.borrado)
+                        if (!(bool)temp.borrado)
                         {
-                            if(q.password == pwdUsuario)
+                            if (temp.passw== pwdUsuario)
                             {
                                 var1.isSuccess = true;
-                                var1.Data = q;
+                                var1.Data = temp;
                             }
                             else { var1.ErrorMessage = "Contraseña Incorrecta"; }
                         }
@@ -51,15 +61,9 @@ namespace Pav2.Logica
         {
             bool user = false;
             Usuario user1 = new Usuario();
-
-
-
             using (var Contex = new BugTrackerFinalEntities())
             {
-
-
                 {
-
                     if (name != String.Empty && pw != String.Empty && mail != String.Empty)
                     {
                         user1.usuario1 = name;
@@ -94,6 +98,8 @@ namespace Pav2.Logica
             return ListPerfil;
         }
 
+
+        //Esta función ya quedo sin uso, se puede borrar
         public static List<Usuario> MostrarDataUsuarios(bool estado)
         {
             if (estado == false)
@@ -114,14 +120,13 @@ namespace Pav2.Logica
                 return lista.ToList();
             }
         }
-
+        ///
         public static List<UsuarioCustom> MostarDatosUsuarioCustom(bool borrado)
         {
             using (var contex = new BugTrackerFinalEntities())
             {
                 var lista = from Usuarios in contex.Usuarios
                             select Usuarios;
-
                 if (!borrado)
                 {
                     lista = lista.Where(x => (bool)x.borrado == false);
@@ -167,7 +172,6 @@ namespace Pav2.Logica
             }
             return eliminar;
         }
-
         public static bool ModificarUsuario(int idperfil, int id, bool estado, string name, string password, string mail)
         {
             bool modificar = false;

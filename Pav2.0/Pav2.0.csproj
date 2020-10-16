@@ -61,6 +61,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Logica\ObjetivosxCurso.cs" />
     <Compile Include="Logica\Cursos.cs" />
     <Compile Include="Logica\Categorias.cs" />
     <Compile Include="Logica\CustomClass.cs" />
@@ -85,6 +86,18 @@
     </Compile>
     <Compile Include="Presentacion\Categorias.Designer.cs">
       <DependentUpon>Categorias.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\AltaObjetivosxCurso.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\AltaObjetivosxCurso.Designer.cs">
+      <DependentUpon>AltaObjetivosxCurso.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\GestionObjetivoxCurso.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\GestionObjetivoxCurso.Designer.cs">
+      <DependentUpon>GestionObjetivoxCurso.cs</DependentUpon>
     </Compile>
     <Compile Include="Presentacion\GestionPermisos.cs">
       <SubType>Form</SubType>
@@ -135,6 +148,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\Cursos.resx">
       <DependentUpon>Cursos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\AltaObjetivosxCurso.resx">
+      <DependentUpon>AltaObjetivosxCurso.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\GestionObjetivoxCurso.resx">
+      <DependentUpon>GestionObjetivoxCurso.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\GestionPerfiles.resx">
       <DependentUpon>GestionPerfiles.cs</DependentUpon>

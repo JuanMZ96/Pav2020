@@ -87,13 +87,13 @@ namespace Pav2.Presentacion
         {
 
             List<Objetivo> T = Logica.Objetivos.MostrarDataObjetivos(chk_todo.Checked);
-            dgv_objetivos.DataSource = T;
-            dgv_objetivos.Columns[0].Visible = false; //Oculta la columna id_objetivo
+            datagridview.DataSource = T;
+            datagridview.Columns[0].Visible = false; //Oculta la columna id_objetivo
             //dgv_objetivos.Columns[3].Visible = false;
-            dgv_objetivos.Columns[4].Visible = false;
+            datagridview.Columns[4].Visible = false;
             if (chk_todo.Checked)
             {
-                dgv_objetivos.Columns[3].Visible = true;
+                datagridview.Columns[3].Visible = true;
 
             }
 
@@ -156,5 +156,12 @@ namespace Pav2.Presentacion
             limpiarcampos();
 
         }
-    }
+
+       
+
+   
+    } 
 }
+
+
+

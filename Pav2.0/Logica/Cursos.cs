@@ -8,20 +8,16 @@ using System.Text;
 using System.Threading.Tasks;
 using ClassLibrary1;
 using Microsoft.SqlServer.Server;
+using static Pav2.Logica.CustomClass;
 
 namespace Pav2.Logica
 {
     class Cursos
     {
-        
-
-
-
         public static bool GuardarCursos(string name, string descripcion,int categoria)
         {
             bool guardar = false;
             Curso cur1 = new Curso();
-
             using (var Contex = new BugTrackerFinalEntities())
             {
                 if (name != String.Empty && descripcion != String.Empty) {
@@ -38,8 +34,6 @@ namespace Pav2.Logica
                     guardar = true;
                 }
             }
-
-
             return guardar;
         }
 
@@ -102,7 +96,7 @@ namespace Pav2.Logica
            return eliminar;
         }
 
-            public static List<Curso> MostrarDataCursos(bool estado)
+        public static List<Curso> MostrarDataCursos(bool estado)
         {
             //var Contex = new BugTrackerFinalEntities();
             //var lista = from cursos in Contex.Cursos
@@ -136,11 +130,26 @@ namespace Pav2.Logica
                 return lista.ToList();
 
             }
-
-
-
-
         }
+        public static List<CustomClass.CursosCustom> MostrarCombo()
+        {
+            using (var contex = new BugTrackerFinalEntities())
+            {
+                var q = (from s in contex.Cursos
+                        where s.borrado ==false
+                        select new CustomClass.CursosCustom 
+                        { 
+                        id = s.id_curso,
+                        name = s.nombre
+                        }).ToList();
+                return q;
+            }
+        }
+
+
+
+
+
 
 
     }

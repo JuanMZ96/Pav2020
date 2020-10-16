@@ -31,6 +31,8 @@
             this.btn_Perfiles = new System.Windows.Forms.Button();
             this.btn_categorias = new System.Windows.Forms.Button();
             this.btn_usuarios = new System.Windows.Forms.Button();
+            this.lbl_perfil = new System.Windows.Forms.Label();
+            this.lbl_usuario = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btn_Perfiles
@@ -66,11 +68,35 @@
             this.btn_usuarios.Click += new System.EventHandler(this.button1_Click);
             this.btn_usuarios.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Principal_KeyPress);
             // 
+            // lbl_perfil
+            // 
+            this.lbl_perfil.AutoSize = true;
+            this.lbl_perfil.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_perfil.Location = new System.Drawing.Point(7, 391);
+            this.lbl_perfil.Name = "lbl_perfil";
+            this.lbl_perfil.Size = new System.Drawing.Size(65, 25);
+            this.lbl_perfil.TabIndex = 4;
+            this.lbl_perfil.Text = "Label";
+            this.lbl_perfil.Visible = false;
+            // 
+            // lbl_usuario
+            // 
+            this.lbl_usuario.AutoSize = true;
+            this.lbl_usuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_usuario.Location = new System.Drawing.Point(7, 416);
+            this.lbl_usuario.Name = "lbl_usuario";
+            this.lbl_usuario.Size = new System.Drawing.Size(65, 25);
+            this.lbl_usuario.TabIndex = 5;
+            this.lbl_usuario.Text = "Label";
+            this.lbl_usuario.Visible = false;
+            // 
             // Principal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.lbl_usuario);
+            this.Controls.Add(this.lbl_perfil);
             this.Controls.Add(this.btn_usuarios);
             this.Controls.Add(this.btn_categorias);
             this.Controls.Add(this.btn_Perfiles);
@@ -81,6 +107,7 @@
             this.Load += new System.EventHandler(this.Principal_Load);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Principal_KeyPress);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -89,5 +116,7 @@
         private System.Windows.Forms.Button btn_Perfiles;
         private System.Windows.Forms.Button btn_categorias;
         private System.Windows.Forms.Button btn_usuarios;
+        private System.Windows.Forms.Label lbl_perfil;
+        private System.Windows.Forms.Label lbl_usuario;
     }
 }

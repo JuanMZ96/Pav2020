@@ -15,10 +15,12 @@ namespace Pav2.Presentacion
 {
     public partial class Login : Form
     {
+        Principal principal1 { get; set; }
         bool Cerrar = true;
-        public Login()
+        public  Login(Principal data)
         {
             InitializeComponent();
+            this.principal1 = data;
         }
 
         private void btnIngresar_Click(object sender, EventArgs e)
@@ -26,11 +28,11 @@ namespace Pav2.Presentacion
 
             if (txt_nameid.Text != String.Empty && txt_pwd.Text != String.Empty)
             {
-                ReturnValue<Usuario> valido = Logica.Usuarios.ValidarCredenciales(txt_nameid.Text, txt_pwd.Text);
+                ReturnValue<CustomClass.UsuarioCustom> valido = Logica.Usuarios.ValidarCredenciales(txt_nameid.Text, txt_pwd.Text);
                 if (valido.isSuccess)
                 {
                     Cerrar = false;
-                    Principal ventanaprin = new Principal(valido.Data);                   
+                    principal1.guardarUsuario(valido.Data);
                     this.Close();
                 }
                 else 

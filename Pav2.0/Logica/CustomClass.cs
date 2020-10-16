@@ -19,6 +19,15 @@ namespace Pav2.Logica
             public bool borrado { get; set; }
         }
 
+        public class ObjetivoxCursoCustom
+        {
+            public int id_objetivo { get; set; }
+            public int id_curso { get; set; }
+            public string objetivo_corto{ get; set; }
+            public string objetivo_largo { get; set; }
+            public int puntos { get; set; }
+            public bool borrado { get; set; }
+        }
         public class PerfilCustom
         {
             public int id { get; set; }
@@ -26,6 +35,12 @@ namespace Pav2.Logica
 
         }
 
+        public class CursosCustom
+        {
+           public int id { get; set; }
+           public string name { get; set; }
+
+        }
     }
     public class ReturnValue<T>
     {

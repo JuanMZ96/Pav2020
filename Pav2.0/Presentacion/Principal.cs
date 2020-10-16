@@ -8,18 +8,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Pav2.Logica;
 
 namespace Pav2.Presentacion
 {
     public partial class Principal : Form
     {   
-        private Usuario _usuariologueado { get; set; }
-        public Principal(Usuario usuario)
-        {
-            this._usuariologueado = usuario;
-            InitializeComponent();
-        }
-
+        private CustomClass.UsuarioCustom user { get; set; }
         public Principal()
         {
             InitializeComponent();
@@ -42,10 +37,14 @@ namespace Pav2.Presentacion
 
         private void Principal_Load(object sender, EventArgs e)
         {
-            
-            Login ventana1 = new Login();            
+            Login ventana1 = new Login(this);
             ventana1.ShowDialog();
-            
+            lbl_perfil.Visible = true;
+            lbl_perfil.Text = "Logueado como " + user.perfil;
+            lbl_usuario.Visible = true;
+            lbl_usuario.Text = "Nombre: " + user.usuario;
+
+
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -63,7 +62,9 @@ namespace Pav2.Presentacion
                     Environment.Exit(0);
                 }
             }
-            
+        }
+        public void guardarUsuario(CustomClass.UsuarioCustom data) {
+            this.user = data;
         }
     }
 }

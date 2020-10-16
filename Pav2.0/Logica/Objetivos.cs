@@ -140,6 +140,16 @@ namespace Pav2.Logica
 
         }
 
+        public static List<Objetivo> MostrarCombo()
+        {
+            using (var contex = new ClassLibrary1.BugTrackerFinalEntities())
+            {
+                var q = from s in contex.Objetivos
+                        where s.borrado == false
+                        select s;
+                return q.ToList();
+            }
+        }
 
     }
 }
