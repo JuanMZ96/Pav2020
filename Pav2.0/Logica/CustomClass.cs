@@ -34,6 +34,16 @@ namespace Pav2.Logica
             public string nombre { get; set; }
 
         }
+        public class CursosCustomdgv
+        {
+            public int id_curso { get; set; }
+            public int id_categoria { get; set; }
+            public string nombre { get; set; }
+            public string descripcion { get; set; }
+            public string name_categoria { get; set; }
+            public DateTime fecha { get; set; }
+            public bool borrado { get; set; }
+        }
 
         public class CursosCustom
         {

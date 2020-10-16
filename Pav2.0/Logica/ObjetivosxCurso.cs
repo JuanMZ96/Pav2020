@@ -76,6 +76,45 @@ namespace Pav2.Logica
 
         }
 
+        public static ReturnValue ModificarObjetivosxCurso(int idcurso, int idObjetivo, int puntaje, bool estado)
+        {
+            ReturnValue validador = new ReturnValue() { isSuccess = false };
+            ObjetivosCurso objcurso = new ObjetivosCurso();
+            using (var Contex = new BugTrackerFinalEntities())
+            {
+                try
+                {
+                    var cursos = Contex.Cursos.Where(x => x.id_curso == idcurso && x.borrado == false).FirstOrDefault();
+                    var objetivos = Contex.Objetivos.Where(x => x.id_objetivo == idObjetivo && x.borrado == false).FirstOrDefault();
+                    if (cursos != null && objetivos != null)
+                    {
+                        var cursos1 = Contex.ObjetivosCursos.Where(x => x.id_curso == idcurso
+                                                                   && x.id_objetivo == idObjetivo).FirstOrDefault();
+                        if (cursos1 == null)
+                        {
+                            //seteo OBJCURSO que es la entidad con los get y set
+                            if (objcurso.id_objetivo != idObjetivo) objcurso.id_objetivo = idObjetivo;
+                            if (objcurso.puntos != puntaje) objcurso.puntos = puntaje;
+                            if (objcurso.borrado != estado) objcurso.borrado = estado;
+                            Contex.SaveChanges();
+                            validador.isSuccess = true;
+                        }
+                        else { validador.ErrorMessage = "Erro1"; }
+                    }
+                    else { validador.ErrorMessage = "Erro2"; }
+                }
+                catch (Exception ex)
+                {
+                    validador.ErrorMessage = ex.Message;
+                }
+            }
+            return validador;
+
+
+
+
+        }
+
     }
 
     

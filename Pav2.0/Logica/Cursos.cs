@@ -14,143 +14,148 @@ namespace Pav2.Logica
 {
     class Cursos
     {
-        public static bool GuardarCursos(string name, string descripcion,int categoria)
+        public static ReturnValue GuardarCursos(string name, string descripcion, int categoria, DateTime fecha)
         {
-            bool guardar = false;
+            ReturnValue var1 = new ReturnValue() { isSuccess = false };
             Curso cur1 = new Curso();
             using (var Contex = new BugTrackerFinalEntities())
             {
-                if (name != String.Empty && descripcion != String.Empty) {
+                try {
+                    if (name != String.Empty && descripcion != String.Empty)
+                    {
+                        cur1.nombre = name;
+                        cur1.descripcion = descripcion;
+                        cur1.borrado = false;
+                        cur1.id_categoria = categoria;
+                        cur1.fecha_vigencia = fecha;
 
-                    cur1.nombre = name;
-                    cur1.descripcion = descripcion;
-                    cur1.borrado = false;
-                    cur1.id_categoria = categoria;
+                        var q = Contex.Cursos.Max(x => x.id_curso) + 1;
+                        cur1.id_curso = q;
+                        Contex.Cursos.Add(cur1);
+                        Contex.SaveChanges();
+                        var1.isSuccess = true;
 
-                    var q = Contex.Cursos.Max(x => x.id_curso) + 1;
-                    cur1.id_curso = q;
-                    Contex.Cursos.Add(cur1);
-                    Contex.SaveChanges();
-                    guardar = true;
+                    }
+                    else { var1.ErrorMessage = "Campos vacios"; }
+
                 }
+                catch (Exception ex) { var1.ErrorMessage = ex.Message; }
+
             }
-            return guardar;
+            return var1;
         }
 
 
-        public static bool ModificarCursos(int id, string name, string descripcion, bool estado)
+        public static ReturnValue ModificarCursos(int id, string name, string descripcion, bool estado, int categoria, DateTime fecha)
         {
-            bool modificar = false;
 
+            ReturnValue var1 = new ReturnValue() { isSuccess = false };
             using (var Contex = new BugTrackerFinalEntities())
             {
-                var q = Contex.Cursos.Where(x => x.id_curso == id).FirstOrDefault();
-
-                if (q.nombre != name)
-                {
-                    q.nombre = name;
-                }
-                if (q.descripcion != descripcion)
-                {
-                    q.descripcion = descripcion;
-                }
-                if(q.borrado != estado)
-                {
-                    q.borrado = estado;
-                }
-
-                Contex.SaveChanges();
-                modificar = true;
-            }
-
-            return modificar;
-
-        }
-
-        public static bool EliminarCursos(int id, bool borrado)
-        {
-            bool eliminar = false;
-
-            using (var Contex = new BugTrackerFinalEntities())
-            {
-                if (borrado == false)
-                {
+                try {
                     var q = Contex.Cursos.Where(x => x.id_curso == id).FirstOrDefault();
                     if (q != null)
                     {
-                        q.borrado = true;
+                        if (q.nombre != name) q.nombre = name;
+                        if (q.descripcion != descripcion) q.descripcion = descripcion;
+                        if (q.borrado != estado) q.borrado = estado;
+                        if (q.id_categoria != categoria) q.id_categoria = categoria;
+                        if (q.fecha_vigencia != fecha) q.fecha_vigencia = fecha;
                         Contex.SaveChanges();
-                        eliminar = true;
+                        var1.isSuccess = true;
+                    }
+                    else { var1.ErrorMessage = "Curso no encontrado"; }
+                }
+                catch (Exception ex) { var1.ErrorMessage = ex.Message; }
+            }
+            return var1;
+
+        }
+
+        public static ReturnValue EliminarCursos(int id, bool borrado)
+        {
+
+            ReturnValue var1 = new ReturnValue() { isSuccess = false };
+            using (var Contex = new BugTrackerFinalEntities())
+            {
+                try {
+                    if (borrado == false)
+                    {
+                        var q = Contex.Cursos.Where(x => x.id_curso == id).FirstOrDefault();
+                        if (q != null)
+                        {
+                            q.borrado = true;
+                            Contex.SaveChanges();
+                            var1.isSuccess = true;
+
+                        }
+                    }
+                    else
+                    {
+                        var q = Contex.Cursos.Where(x => x.id_curso == id).FirstOrDefault();
+
+                        Contex.Cursos.Remove(q);
+                        Contex.SaveChanges();
+                        var1.isSuccess = true;
+
                     }
                 }
-                else
-                {
-                    var q = Contex.Cursos.Where(x => x.id_curso == id).FirstOrDefault();
+                catch (Exception ex) { var1.ErrorMessage = ex.Message; }
 
-                    Contex.Cursos.Remove(q);
-                    Contex.SaveChanges();
-                    eliminar = true;
-
-                }
             }
-           return eliminar;
+            return var1;
         }
 
-        public static List<Curso> MostrarDataCursos(bool estado)
+        public static List<CursosCustomdgv> CargarGrilla(bool borrado)
         {
-            //var Contex = new BugTrackerFinalEntities();
-            //var lista = from cursos in Contex.Cursos
-            //            where cursos.borrado != true
-            //            select cursos;
 
-            //if (!estado)
-            //{
-            //    lista.Where(x => x.borrado == true).ToList();
-            //}
-
-            //return lista.ToList();
-
-            if (estado == false)
-
+            using (var contex = new BugTrackerFinalEntities())
             {
-                var Contex = new BugTrackerFinalEntities();
-                var lista = from cursos in Contex.Cursos
-                            where cursos.borrado != true
-                            select cursos;
-                return lista.ToList();
+                var lista = from Curso in contex.Cursos
+                            select Curso;
+                if (!borrado)
+                {
+                    lista = lista.Where(x => (bool)x.borrado == false);
+                }
+                var temp = lista.Join(contex.Categorias,
+                    Curso => Curso.id_categoria,
+                    Categoria => Categoria.id_categoria,
+                    (Curso, Categoria) => new CursosCustomdgv()
+                    {
+                        id_curso = Curso.id_curso,
+                        id_categoria = (int)Curso.id_categoria,
+                        nombre = Curso.nombre,
+                        descripcion = Curso.descripcion,
+                        name_categoria = Categoria.nombre,
+                        fecha = (DateTime)Curso.fecha_vigencia,
+                        borrado = (bool)Curso.borrado
 
-            }
-            else
-            {
-
-                var Contex = new BugTrackerFinalEntities();
-                var lista = from cursos in Contex.Cursos
-
-                            select cursos;
-                return lista.ToList();
-
+                    });
+                return temp.ToList();
             }
         }
+
         public static List<CustomClass.CursosCustom> MostrarCombo()
         {
             using (var contex = new BugTrackerFinalEntities())
             {
                 var q = (from s in contex.Cursos
-                        where s.borrado ==false
-                        select new CustomClass.CursosCustom 
-                        { 
-                        id = s.id_curso,
-                        name = s.nombre
-                        }).ToList();
+                         where s.borrado == false
+                         select new CustomClass.CursosCustom
+                         {
+                             id = s.id_curso,
+                             name = s.nombre
+                         }).ToList();
                 return q;
             }
         }
-
-
-
-
-
-
-
     }
+   
 }
+
+
+
+
+
+
+    

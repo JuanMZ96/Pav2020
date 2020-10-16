@@ -15,7 +15,7 @@ namespace Pav2.Logica
     {
         public static List<Perfile> MostrarCombo(){
 
-           using(var contex = new ClassLibrary1.BugTrackerFinalEntities()){
+           using(var contex = new BugTrackerFinalEntities()){
                 var q = from s in contex.Perfiles
                     select s;
                 return q.ToList();

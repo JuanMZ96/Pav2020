@@ -129,6 +129,17 @@ namespace Pav2.Logica
             }
 
         }
+        public static List<Categoria> CargarCombo()
+        {
+            using (var contex = new BugTrackerFinalEntities())
+            {
+                var q = from s in contex.Categorias
+                        select s;
+                return q.ToList();
 
+
+
+            }
+        }
     }
 }

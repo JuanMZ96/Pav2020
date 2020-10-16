@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using Pav2.Logica;
 using System.Collections;
 using ClassLibrary1;
+using static Pav2.Logica.CustomClass;
 
 namespace Pav2.Presentacion
 {
@@ -20,132 +21,83 @@ namespace Pav2.Presentacion
             InitializeComponent();
         }
 
+        
+
+        private void btn_guardar_Click_1(object sender, EventArgs e)
+        {
+            ReturnValue valido = Logica.Cursos.GuardarCursos(txt_name.Text, txt_descripcion.Text, (int)cmb_categoria.SelectedValue, dtp_datatime.Value);
+            if (valido.isSuccess) { MessageBox.Show("Se creo correctamente"); CargarGrilla(); }
+            else { MessageBox.Show(valido.ErrorMessage, "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
+        }
+
+        private void btn_modificar_Click_1(object sender, EventArgs e)
+        {
+            int id = Int32.Parse(txt_value.Text);
+            ReturnValue valido = Logica.Cursos.ModificarCursos(id, txt_name.Text, txt_descripcion.Text,chk_estado.Checked, (int)cmb_categoria.SelectedValue, dtp_datatime.Value);
+            if (valido.isSuccess) { MessageBox.Show("Se creo correctamente"); CargarGrilla(); }
+            else { MessageBox.Show(valido.ErrorMessage, "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
+
+        }
+
+        private void btn_borrar_Click_1(object sender, EventArgs e)
+        {
+            int id = Int32.Parse(txt_value.Text);
+            ReturnValue valido = Logica.Cursos.EliminarCursos(id, chk_borrado.Checked);
+            if (valido.isSuccess) { MessageBox.Show("Se creo correctamente"); CargarGrilla(); }
+            else { MessageBox.Show(valido.ErrorMessage, "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
+        }
+
         private void Cursos_Load(object sender, EventArgs e)
         {
+            CargarCombo();
             CargarGrilla();
-            btn_borrar.Enabled = false;
-            btn_modificar.Enabled = false;
-            lbl_estado.Visible = false;
-            chk_estado.Visible = false;
+
+
         }
 
-        private void btn_guardar_Click(object sender, EventArgs e)
+        private void CargarCombo()
         {
-            if (txt_name.Text != null && txt_descripcion.Text != null)
-            {
-                if (Logica.Categorias.GuardarCategoria(txt_name.Text, txt_descripcion.Text) == false)
-                {
-                    MessageBox.Show("No se pudo guardar.");
-                }
-                CargarGrilla();
-            }
-            else
-            {
-                MessageBox.Show("Los campos no pueden estar vacios.");
-            }
-        }
+            System.Collections.IList t = Logica.Categorias.CargarCombo();
+            cmb_categoria.DataSource = t;
+            cmb_categoria.ValueMember = "id_categoria";
+            cmb_categoria.DisplayMember = "nombre";
 
-        private void btn_modificar_Click(object sender, EventArgs e)
+        }
+        private void CargarGrilla()
         {
-
-            if (txt_name.Text != "" && txt_descripcion.Text != "")
+            List<CustomClass.CursosCustomdgv> T = Logica.Cursos.CargarGrilla(chk_todo.Checked);
+            dgv_cursos.DataSource = T;
+            foreach (DataGridViewColumn columns in dgv_cursos.Columns)
             {
-                int id = Int32.Parse(txt_value.Text);
-                if (Logica.Cursos.ModificarCursos(id, txt_name.Text, txt_descripcion.Text, chk_estado.Checked) == false)
+                if ((columns.Index < 2))
                 {
-                    MessageBox.Show("No se pudo modificar.");
+                    columns.Visible = false;
                 }
-                CargarGrilla();
-                limpiarcampos();
             }
-            else
-            {
-                MessageBox.Show("Los campos no pueden estar vacios.");
-            }
+
+
+
         }
-
-        private void btn_borrar_Click(object sender, EventArgs e)
-        {
-
-            if (txt_name.Text != "" && txt_descripcion.Text != "")
-            {
-                int id = Int32.Parse(txt_value.Text);
-                if (Logica.Cursos.EliminarCursos(id, chk_borrado.Checked) == false)
-                {
-                    MessageBox.Show("No se pudo eliminar.");
-                }
-                CargarGrilla();
-                limpiarcampos();
-            }
-            else
-            {
-                MessageBox.Show("Los campos no pueden estar vacios.");
-            }
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dgv_cursos_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             DataGridView dgv = sender as DataGridView;
             if (dgv == null)
                 return;
-
-
-            Categoria var1 = (Categoria)dgv.CurrentRow.DataBoundItem;
+            CursosCustomdgv var1 = (CursosCustomdgv)dgv.CurrentRow.DataBoundItem;
+            txt_value.Text = var1.id_curso.ToString();
             txt_name.Text = var1.nombre;
             txt_descripcion.Text = var1.descripcion;
-            txt_value.Text = var1.id_categoria.ToString();
-            chk_estado.Checked = (bool)var1.borrado;
-            btn_guardar.Enabled = false;
-            btn_borrar.Enabled = true;
-            btn_modificar.Enabled = true;
-        }
+            dtp_datatime.Value = var1.fecha;
+            chk_estado.Checked = var1.borrado;
+            cmb_categoria.SelectedValue = var1.id_categoria;
 
-        private void CargarGrilla()
-        {
-            //dgv_categorias.Rows.Clear();
-
-            List<Curso> T = Logica.Cursos.MostrarDataCursos(chk_todo.Checked);
-            dgv_cursos.DataSource = T;
-            dgv_cursos.Columns[0].Visible = false;
-            dgv_cursos.Columns[3].Visible = false;
-            dgv_cursos.Columns[4].Visible = false;
-            dgv_cursos.Columns[5].Visible = false;
-            if (chk_todo.Checked)
-            {
-                dgv_cursos.Columns[3].Visible = true;
-
-            }
-
-            txt_name.Text = "";
-            txt_descripcion.Text = "";
-        }
-        private void lbl_x_Click(object sender, EventArgs e)
-        {
-            btn_guardar.Enabled = true;
-            btn_modificar.Enabled = false;
-            btn_borrar.Enabled = false;
-            limpiarcampos();
 
         }
 
-        private void chk_estado_CheckedChanged(object sender, EventArgs e)
+        private void chk_todo_CheckedChanged(object sender, EventArgs e)
         {
             CargarGrilla();
-            lbl_estado.Visible = chk_todo.Checked;
-            chk_estado.Visible = chk_todo.Checked;
-        }
-
-        private void limpiarcampos()
-        {
-            txt_descripcion.Clear();
-            txt_name.Clear();
-            txt_value.Clear();
-            chk_estado.Checked = false;
-        }
-
-        private void btn_guardar_Click_1(object sender, EventArgs e)
-        {
-
         }
     }
+
 }
