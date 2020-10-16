@@ -55,7 +55,8 @@
             // 
             // btn_cancelar
             // 
-            this.btn_cancelar.Location = new System.Drawing.Point(212, 315);
+            this.btn_cancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_cancelar.Location = new System.Drawing.Point(656, 402);
             this.btn_cancelar.Name = "btn_cancelar";
             this.btn_cancelar.Size = new System.Drawing.Size(75, 23);
             this.btn_cancelar.TabIndex = 0;
@@ -65,7 +66,8 @@
             // 
             // btn_guardar
             // 
-            this.btn_guardar.Location = new System.Drawing.Point(103, 207);
+            this.btn_guardar.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btn_guardar.Location = new System.Drawing.Point(419, 20);
             this.btn_guardar.Name = "btn_guardar";
             this.btn_guardar.Size = new System.Drawing.Size(75, 23);
             this.btn_guardar.TabIndex = 1;
@@ -76,7 +78,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(23, 51);
+            this.label1.Location = new System.Drawing.Point(22, 22);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(74, 13);
             this.label1.TabIndex = 2;
@@ -85,7 +87,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(23, 97);
+            this.label2.Location = new System.Drawing.Point(22, 48);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(73, 13);
             this.label2.TabIndex = 3;
@@ -93,21 +95,26 @@
             // 
             // txt_nombreCorto
             // 
-            this.txt_nombreCorto.Location = new System.Drawing.Point(103, 48);
+            this.txt_nombreCorto.Location = new System.Drawing.Point(102, 19);
+            this.txt_nombreCorto.MaxLength = 50;
             this.txt_nombreCorto.Name = "txt_nombreCorto";
-            this.txt_nombreCorto.Size = new System.Drawing.Size(100, 20);
+            this.txt_nombreCorto.Size = new System.Drawing.Size(162, 20);
             this.txt_nombreCorto.TabIndex = 4;
             // 
             // txt_nombreLargo
             // 
-            this.txt_nombreLargo.Location = new System.Drawing.Point(103, 94);
+            this.txt_nombreLargo.Location = new System.Drawing.Point(102, 45);
+            this.txt_nombreLargo.MaxLength = 100;
             this.txt_nombreLargo.Multiline = true;
             this.txt_nombreLargo.Name = "txt_nombreLargo";
-            this.txt_nombreLargo.Size = new System.Drawing.Size(180, 92);
+            this.txt_nombreLargo.Size = new System.Drawing.Size(162, 74);
             this.txt_nombreLargo.TabIndex = 5;
             // 
             // datagridview
             // 
+            this.datagridview.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.datagridview.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.datagridview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.datagridview.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -115,10 +122,10 @@
             this.Column2,
             this.Column3,
             this.Column4});
-            this.datagridview.Location = new System.Drawing.Point(312, 48);
+            this.datagridview.Location = new System.Drawing.Point(12, 125);
             this.datagridview.Name = "datagridview";
             this.datagridview.ReadOnly = true;
-            this.datagridview.Size = new System.Drawing.Size(463, 274);
+            this.datagridview.Size = new System.Drawing.Size(763, 271);
             this.datagridview.TabIndex = 6;
             this.datagridview.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_objetivos_CellContentClick);
             this.datagridview.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_objetivos_CellContentClick);
@@ -126,7 +133,8 @@
             // 
             // btn_Modificar
             // 
-            this.btn_Modificar.Location = new System.Drawing.Point(103, 258);
+            this.btn_Modificar.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btn_Modificar.Location = new System.Drawing.Point(540, 20);
             this.btn_Modificar.Name = "btn_Modificar";
             this.btn_Modificar.Size = new System.Drawing.Size(75, 23);
             this.btn_Modificar.TabIndex = 7;
@@ -141,12 +149,13 @@
             this.txt_value.Name = "txt_value";
             this.txt_value.Size = new System.Drawing.Size(100, 20);
             this.txt_value.TabIndex = 8;
+            this.txt_value.Visible = false;
             // 
             // chk_estado
             // 
-            this.chk_estado.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.chk_estado.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.chk_estado.AutoSize = true;
-            this.chk_estado.Location = new System.Drawing.Point(475, 408);
+            this.chk_estado.Location = new System.Drawing.Point(540, 57);
             this.chk_estado.Name = "chk_estado";
             this.chk_estado.Size = new System.Drawing.Size(59, 17);
             this.chk_estado.TabIndex = 9;
@@ -156,7 +165,8 @@
             // 
             // btn_Eliminar
             // 
-            this.btn_Eliminar.Location = new System.Drawing.Point(103, 315);
+            this.btn_Eliminar.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btn_Eliminar.Location = new System.Drawing.Point(656, 20);
             this.btn_Eliminar.Name = "btn_Eliminar";
             this.btn_Eliminar.Size = new System.Drawing.Size(75, 23);
             this.btn_Eliminar.TabIndex = 10;
@@ -166,9 +176,9 @@
             // 
             // chk_borrado
             // 
-            this.chk_borrado.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.chk_borrado.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.chk_borrado.AutoSize = true;
-            this.chk_borrado.Location = new System.Drawing.Point(562, 408);
+            this.chk_borrado.Location = new System.Drawing.Point(651, 57);
             this.chk_borrado.Name = "chk_borrado";
             this.chk_borrado.Size = new System.Drawing.Size(80, 17);
             this.chk_borrado.TabIndex = 11;
@@ -177,9 +187,9 @@
             // 
             // chk_todo
             // 
-            this.chk_todo.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.chk_todo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.chk_todo.AutoSize = true;
-            this.chk_todo.Location = new System.Drawing.Point(677, 408);
+            this.chk_todo.Location = new System.Drawing.Point(25, 406);
             this.chk_todo.Name = "chk_todo";
             this.chk_todo.Size = new System.Drawing.Size(98, 17);
             this.chk_todo.TabIndex = 12;
@@ -190,7 +200,7 @@
             // lbl_equis
             // 
             this.lbl_equis.AutoSize = true;
-            this.lbl_equis.Location = new System.Drawing.Point(224, 51);
+            this.lbl_equis.Location = new System.Drawing.Point(274, 20);
             this.lbl_equis.Name = "lbl_equis";
             this.lbl_equis.Size = new System.Drawing.Size(14, 13);
             this.lbl_equis.TabIndex = 13;
@@ -229,35 +239,43 @@
             // 
             // Column1
             // 
+            this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.Column1.DataPropertyName = "id_objetivo";
+            this.Column1.Frozen = true;
             this.Column1.HeaderText = "ID ";
             this.Column1.Name = "Column1";
             this.Column1.ReadOnly = true;
+            this.Column1.Width = 208;
             // 
             // Column2
             // 
+            this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.Column2.DataPropertyName = "nombre_corto";
+            this.Column2.Frozen = true;
             this.Column2.HeaderText = "Nombre corto";
             this.Column2.Name = "Column2";
             this.Column2.ReadOnly = true;
+            this.Column2.Width = 96;
             // 
             // Column3
             // 
-            this.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Column3.DataPropertyName = "nombre_largo";
             this.Column3.HeaderText = "Nombre largo";
             this.Column3.Name = "Column3";
             this.Column3.ReadOnly = true;
-            this.Column3.Width = 95;
+            this.Column3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
             // 
             // Column4
             // 
+            this.Column4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.Column4.DataPropertyName = "borrado";
             this.Column4.FalseValue = "false";
             this.Column4.HeaderText = "Borrado";
             this.Column4.Name = "Column4";
             this.Column4.ReadOnly = true;
             this.Column4.TrueValue = "true";
+            this.Column4.Width = 50;
             // 
             // Objetivos
             // 
