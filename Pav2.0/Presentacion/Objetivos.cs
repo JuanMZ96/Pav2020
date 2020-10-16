@@ -25,25 +25,38 @@ namespace Pav2.Presentacion
             CargarGrilla();
             btn_Eliminar.Enabled = false;
             btn_Modificar.Enabled = false;
-            //lbl_estado.Visible = false;
             chk_estado.Visible = false;
         }
 
 
         private void btn_guardar_Click(object sender, EventArgs e)
         {
-            if (txt_nombreCorto.Text != null && txt_nombreLargo.Text != null)
+            if (Logica.Objetivos.GuardarObjetivo(txt_nombreCorto.Text, txt_nombreLargo.Text) == false)
             {
-                if (Logica.Objetivos.GuardarObjetivo(txt_nombreCorto.Text, txt_nombreLargo.Text) == false)
-                {
-                    MessageBox.Show("No se pudo guardar.");
-                }
-                CargarGrilla();
+                    MessageBox.Show("Los campos no pueden estar vacios o el objetivo ya existe.", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else
-            {
-                MessageBox.Show("Los campos no pueden estar vacios.");
-            }
+            CargarGrilla();
+            
+            //if (txt_nombreLargo.TextLength < 101)
+            //{
+            //    if (txt_nombreCorto.Text != "" && txt_nombreLargo.Text != "")
+            //    {
+            //        if (Logica.Objetivos.GuardarObjetivo(txt_nombreCorto.Text, txt_nombreLargo.Text) == false)
+            //        {
+            //            MessageBox.Show("No se pudo guardar.");
+            //        }
+            //        CargarGrilla();
+            //    }
+            //    else
+            //    {
+            //        MessageBox.Show("Los campos no pueden estar vacios.","Alerta", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    }
+            //}
+            //else
+            //{
+            //    MessageBox.Show("Nombre largo supera el tamaño permitido.", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //}
+            
         }
 
         private void btn_Modificar_Click(object sender, EventArgs e)
@@ -54,14 +67,14 @@ namespace Pav2.Presentacion
                 int id = Int32.Parse(txt_value.Text);
                 if (Logica.Objetivos.ModificarObjetivo(id, txt_nombreCorto.Text, txt_nombreLargo.Text, chk_estado.Checked) == false)
                 {
-                    MessageBox.Show("No se pudo modificar.");
+                    MessageBox.Show("No se pudo modificar.","Alerta", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 CargarGrilla();
                 limpiarcampos();
             }
             else
             {
-                MessageBox.Show("Los campos no pueden estar vacios.");
+                MessageBox.Show("Los campos no pueden estar vacios.", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -123,15 +136,13 @@ namespace Pav2.Presentacion
 
         private void chk_estado_CheckedChanged(object sender, EventArgs e)
         {
-            CargarGrilla();
-            //lbl_estado.Visible = chk_todo.Checked;
+            //CargarGrilla();
             chk_estado.Visible = chk_todo.Checked;
         }
 
         private void chk_todo_CheckedChanged(object sender, EventArgs e)
         {
             CargarGrilla();
-            //lbl_estado.Visible = chk_todo.Checked;
             chk_estado.Visible = chk_todo.Checked;
         }
 

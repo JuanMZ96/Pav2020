@@ -17,26 +17,34 @@ namespace Pav2.Logica
 
             using (var Contex = new BugTrackerFinalEntities())
             {
-                if (!String.IsNullOrWhiteSpace(nombreCorto) && !String.IsNullOrWhiteSpace(nombreLargo))
+                var idem = Contex.Objetivos.Where(x => x.nombre_corto == nombreCorto || x.nombre_largo == nombreLargo).FirstOrDefault();
+                if (idem == null)
                 {
-                    obj1.nombre_corto = nombreCorto;
-                    obj1.nombre_largo = nombreLargo;
-                    obj1.borrado = false;
+                    if (!String.IsNullOrWhiteSpace(nombreCorto) && !String.IsNullOrWhiteSpace(nombreLargo))
+                    {
+                        obj1.nombre_corto = nombreCorto;
+                        obj1.nombre_largo = nombreLargo;
+                        obj1.borrado = false;
 
-                    var q = Contex.Objetivos.Max(x => (int?) x.id_objetivo);
-                    if (q.HasValue)
-                    { 
-                        q += 1;
-                    } 
-                    else { 
-                        q = 0;
+                        var q = Contex.Objetivos.Max(x => (int?)x.id_objetivo);
+                        if (q.HasValue)
+                        {
+                            q += 1;
+                        }
+                        else
+                        {
+                            q = 0;
+                        }
+
+                        obj1.id_objetivo = q.Value;
+                        Contex.Objetivos.Add(obj1);
+                        Contex.SaveChanges();
+                        guardar = true;
                     }
 
-                    obj1.id_objetivo = q.Value;
-                    Contex.Objetivos.Add(obj1);
-                    Contex.SaveChanges();
-                    guardar = true;
                 }
+                                 
+                
             }
 
             return guardar;
@@ -49,23 +57,26 @@ namespace Pav2.Logica
 
             using (var Contex = new BugTrackerFinalEntities())
             {
-                var q = Contex.Objetivos.Where(x => x.id_objetivo == id).FirstOrDefault();
+                if (!String.IsNullOrWhiteSpace(nombreCorto) && !String.IsNullOrWhiteSpace(nombreLargo))
+                {
+                    var q = Contex.Objetivos.Where(x => x.id_objetivo == id).FirstOrDefault();
 
-                if (q.nombre_corto != nombreCorto)
-                {
-                    q.nombre_corto = nombreCorto;
-                }
-                if (q.nombre_largo != nombreLargo)
-                {
-                    q.nombre_largo = nombreLargo;
-                }
-                if (q.borrado != estado)
-                {
-                    q.borrado = estado;
-                }
+                    if (q.nombre_corto != nombreCorto)
+                    {
+                        q.nombre_corto = nombreCorto;
+                    }
+                    if (q.nombre_largo != nombreLargo)
+                    {
+                        q.nombre_largo = nombreLargo;
+                    }
+                    if (q.borrado != estado)
+                    {
+                        q.borrado = estado;
+                    }
 
-                Contex.SaveChanges();
-                modificar = true;
+                    Contex.SaveChanges();
+                    modificar = true;
+                }
             }
 
             return modificar;
