@@ -13,7 +13,7 @@ namespace Pav2.Logica
 {
     class ObjetivosxCurso
     {
-        public static ReturnValue GuardarObjetivosxCurso(int idcurso, int idObjetivo, int puntaje)
+        public static ReturnValue GuardarObjetivosxCurso(int idcurso, int idobjetivo, int puntaje)
         {
 
             ReturnValue  validador = new ReturnValue() {isSuccess=false};
@@ -22,15 +22,15 @@ namespace Pav2.Logica
             {
                 try {
                     var cursos = Contex.Cursos.Where(x => x.id_curso == idcurso && x.borrado == false).FirstOrDefault();
-                    var objetivos = Contex.Objetivos.Where(x => x.id_objetivo == idObjetivo && x.borrado == false).FirstOrDefault();
+                    var objetivos = Contex.Objetivos.Where(x => x.id_objetivo == idobjetivo && x.borrado == false).FirstOrDefault();
                     if (cursos != null && objetivos != null)
                     {
                         var cursos1 = Contex.ObjetivosCursos.Where(x => x.id_curso == idcurso
-                                                                   && x.id_objetivo == idObjetivo).FirstOrDefault();
+                                                                   && x.id_objetivo == idobjetivo).FirstOrDefault();
                         if(cursos1 == null) { 
                             //seteo OBJCURSO que es la entidad con los get y set
                             objcurso.id_curso = idcurso;
-                            objcurso.id_objetivo = idObjetivo;
+                            objcurso.id_objetivo = idobjetivo;
                             objcurso.puntos = puntaje;
                             objcurso.borrado = false;
                             Contex.ObjetivosCursos.Add(objcurso);
@@ -76,26 +76,24 @@ namespace Pav2.Logica
 
         }
 
-        public static ReturnValue ModificarObjetivosxCurso(int idcurso, int idObjetivo, int puntaje, bool estado)
+        public static ReturnValue ModificarObjetivosxCurso(int idcurso, int idobjetivo, int puntaje, bool estado)
         {
             ReturnValue validador = new ReturnValue() { isSuccess = false };
-            ObjetivosCurso objcurso = new ObjetivosCurso();
             using (var Contex = new BugTrackerFinalEntities())
             {
                 try
                 {
                     var cursos = Contex.Cursos.Where(x => x.id_curso == idcurso && x.borrado == false).FirstOrDefault();
-                    var objetivos = Contex.Objetivos.Where(x => x.id_objetivo == idObjetivo && x.borrado == false).FirstOrDefault();
+                    var objetivos = Contex.Objetivos.Where(x => x.id_objetivo == idobjetivo && x.borrado == false).FirstOrDefault();
                     if (cursos != null && objetivos != null)
                     {
-                        var cursos1 = Contex.ObjetivosCursos.Where(x => x.id_curso == idcurso
-                                                                   && x.id_objetivo == idObjetivo).FirstOrDefault();
-                        if (cursos1 == null)
+                        var cursos1 = Contex.ObjetivosCursos.Where(x => x.id_curso == idcurso).FirstOrDefault();
+
+                        if (cursos1 != null)
                         {
                             //seteo OBJCURSO que es la entidad con los get y set
-                            if (objcurso.id_objetivo != idObjetivo) objcurso.id_objetivo = idObjetivo;
-                            if (objcurso.puntos != puntaje) objcurso.puntos = puntaje;
-                            if (objcurso.borrado != estado) objcurso.borrado = estado;
+                            if (cursos1.puntos != puntaje) cursos1.puntos = puntaje;
+                            if (cursos1.borrado != estado) cursos1.borrado = estado;
                             Contex.SaveChanges();
                             validador.isSuccess = true;
                         }
@@ -115,6 +113,42 @@ namespace Pav2.Logica
 
         }
 
+        public static ReturnValue EliminarObjetivosxCurso(int idcurso,int idobjetivo, bool borrado)
+        {
+            ReturnValue var1 = new ReturnValue() { isSuccess = false };
+            using (var Contex = new BugTrackerFinalEntities())
+            {
+                try
+                {
+                    if (borrado == false)
+                    {
+                        var cursos1 = Contex.ObjetivosCursos.Where(x => x.id_curso == idcurso
+                                                                   && x.id_objetivo == idobjetivo).FirstOrDefault();
+                        if (cursos1 != null)
+                        {
+                            cursos1.borrado = true;
+                            Contex.SaveChanges();
+                            var1.isSuccess = true;
+
+                        }
+                    }
+                    else
+                    {
+                        var cursos1 = Contex.ObjetivosCursos.Where(x => x.id_curso == idcurso
+                                                                   && x.id_objetivo == idobjetivo).FirstOrDefault();
+
+                        Contex.ObjetivosCursos.Remove(cursos1);
+                        Contex.SaveChanges();
+                        var1.isSuccess = true;
+
+                    }
+                }
+                catch (Exception ex) { var1.ErrorMessage = ex.Message; }
+
+            }
+            return var1;
+
+        }
     }
 
     

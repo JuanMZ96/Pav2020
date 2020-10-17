@@ -30,17 +30,19 @@
         {
             this.dgv_ObjetivosxCurso = new System.Windows.Forms.DataGridView();
             this.cmb_cursos = new System.Windows.Forms.ComboBox();
-            this.cmb_objetivos = new System.Windows.Forms.ComboBox();
             this.btn_modificar = new System.Windows.Forms.Button();
             this.btn_eliminar = new System.Windows.Forms.Button();
-            this.chk_borrado = new System.Windows.Forms.CheckBox();
+            this.chk_todo = new System.Windows.Forms.CheckBox();
             this.txt_puntaje = new System.Windows.Forms.TextBox();
             this.chk_estado = new System.Windows.Forms.CheckBox();
+            this.cmb_objetivos = new System.Windows.Forms.ComboBox();
+            this.chk_borrado = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_ObjetivosxCurso)).BeginInit();
             this.SuspendLayout();
             // 
             // dgv_ObjetivosxCurso
             // 
+            this.dgv_ObjetivosxCurso.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgv_ObjetivosxCurso.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_ObjetivosxCurso.Location = new System.Drawing.Point(12, 51);
             this.dgv_ObjetivosxCurso.Name = "dgv_ObjetivosxCurso";
@@ -54,22 +56,12 @@
             this.cmb_cursos.FormattingEnabled = true;
             this.cmb_cursos.Items.AddRange(new object[] {
             "-"});
-            this.cmb_cursos.Location = new System.Drawing.Point(51, 10);
+            this.cmb_cursos.Location = new System.Drawing.Point(44, 12);
             this.cmb_cursos.Name = "cmb_cursos";
             this.cmb_cursos.Size = new System.Drawing.Size(121, 21);
             this.cmb_cursos.TabIndex = 1;
             this.cmb_cursos.SelectedValueChanged += new System.EventHandler(this.cmb_cursos_ValueMemberChanged);
             this.cmb_cursos.Click += new System.EventHandler(this.cmb_cursos_Click);
-            // 
-            // cmb_objetivos
-            // 
-            this.cmb_objetivos.FormattingEnabled = true;
-            this.cmb_objetivos.Items.AddRange(new object[] {
-            "-"});
-            this.cmb_objetivos.Location = new System.Drawing.Point(203, 10);
-            this.cmb_objetivos.Name = "cmb_objetivos";
-            this.cmb_objetivos.Size = new System.Drawing.Size(121, 21);
-            this.cmb_objetivos.TabIndex = 2;
             // 
             // btn_modificar
             // 
@@ -89,16 +81,19 @@
             this.btn_eliminar.TabIndex = 4;
             this.btn_eliminar.Text = "Eliminar";
             this.btn_eliminar.UseVisualStyleBackColor = true;
+            this.btn_eliminar.Click += new System.EventHandler(this.btn_eliminar_Click);
             // 
-            // chk_borrado
+            // chk_todo
             // 
-            this.chk_borrado.AutoSize = true;
-            this.chk_borrado.Location = new System.Drawing.Point(586, 78);
-            this.chk_borrado.Name = "chk_borrado";
-            this.chk_borrado.Size = new System.Drawing.Size(99, 17);
-            this.chk_borrado.TabIndex = 5;
-            this.chk_borrado.Text = "Incluir Borrados";
-            this.chk_borrado.UseVisualStyleBackColor = true;
+            this.chk_todo.AutoSize = true;
+            this.chk_todo.Enabled = false;
+            this.chk_todo.Location = new System.Drawing.Point(586, 78);
+            this.chk_todo.Name = "chk_todo";
+            this.chk_todo.Size = new System.Drawing.Size(99, 17);
+            this.chk_todo.TabIndex = 5;
+            this.chk_todo.Text = "Incluir Borrados";
+            this.chk_todo.UseVisualStyleBackColor = true;
+            this.chk_todo.CheckedChanged += new System.EventHandler(this.chk_borrado_CheckedChanged);
             // 
             // txt_puntaje
             // 
@@ -117,14 +112,36 @@
             this.chk_estado.Text = "Estado";
             this.chk_estado.UseVisualStyleBackColor = true;
             // 
+            // cmb_objetivos
+            // 
+            this.cmb_objetivos.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmb_objetivos.FormattingEnabled = true;
+            this.cmb_objetivos.Items.AddRange(new object[] {
+            "-"});
+            this.cmb_objetivos.Location = new System.Drawing.Point(228, 11);
+            this.cmb_objetivos.Name = "cmb_objetivos";
+            this.cmb_objetivos.Size = new System.Drawing.Size(121, 21);
+            this.cmb_objetivos.TabIndex = 2;
+            // 
+            // chk_borrado
+            // 
+            this.chk_borrado.AutoSize = true;
+            this.chk_borrado.Location = new System.Drawing.Point(586, 110);
+            this.chk_borrado.Name = "chk_borrado";
+            this.chk_borrado.Size = new System.Drawing.Size(69, 17);
+            this.chk_borrado.TabIndex = 8;
+            this.chk_borrado.Text = "BorrarDB";
+            this.chk_borrado.UseVisualStyleBackColor = true;
+            // 
             // GestionObjetivoxCurso
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(697, 450);
+            this.Controls.Add(this.chk_borrado);
             this.Controls.Add(this.chk_estado);
             this.Controls.Add(this.txt_puntaje);
-            this.Controls.Add(this.chk_borrado);
+            this.Controls.Add(this.chk_todo);
             this.Controls.Add(this.btn_eliminar);
             this.Controls.Add(this.btn_modificar);
             this.Controls.Add(this.cmb_objetivos);
@@ -143,11 +160,12 @@
 
         private System.Windows.Forms.DataGridView dgv_ObjetivosxCurso;
         private System.Windows.Forms.ComboBox cmb_cursos;
-        private System.Windows.Forms.ComboBox cmb_objetivos;
         private System.Windows.Forms.Button btn_modificar;
         private System.Windows.Forms.Button btn_eliminar;
-        private System.Windows.Forms.CheckBox chk_borrado;
+        private System.Windows.Forms.CheckBox chk_todo;
         private System.Windows.Forms.TextBox txt_puntaje;
         private System.Windows.Forms.CheckBox chk_estado;
+        private System.Windows.Forms.ComboBox cmb_objetivos;
+        private System.Windows.Forms.CheckBox chk_borrado;
     }
 }
