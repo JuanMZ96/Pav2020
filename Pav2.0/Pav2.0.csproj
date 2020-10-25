@@ -69,6 +69,7 @@
     <Compile Include="Logica\Objetivos.cs" />
     <Compile Include="Logica\Perfiles.cs" />
     <Compile Include="Logica\Usuarios.cs" />
+    <Compile Include="Logica\UsuariosxCurso.cs" />
     <Compile Include="Presentacion\AltaPerfil.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -141,8 +142,17 @@
     <Compile Include="Presentacion\Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
+    <Compile Include="Presentacion\AltaUsuariosxCurso.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\AltaUsuariosxCurso.Designer.cs">
+      <DependentUpon>AltaUsuariosxCurso.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Presentacion\AltaUsuariosxCurso.resx">
+      <DependentUpon>AltaUsuariosxCurso.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\Categorias.resx">
       <DependentUpon>Categorias.cs</DependentUpon>
     </EmbeddedResource>
