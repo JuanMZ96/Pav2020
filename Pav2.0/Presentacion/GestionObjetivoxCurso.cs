@@ -39,7 +39,7 @@ namespace Pav2.Presentacion
             try 
             {
                 int curso = (int)cmb_cursos.SelectedValue;
-                List<Logica.CustomClass.ObjetivoxCursoCustom> T = Logica.ObjetivosxCurso.MostrarGrilla(chk_todo.Checked, curso);
+                List<Logica.CustomClass.ObjetivoxCursoCustom> T = Logica.ObjetivosxCurso.MostrarGrilla(chk_IncluirBorrados.Checked,curso);
                 dgv_ObjetivosxCurso.DataSource = T;
                 foreach (DataGridViewColumn columns in dgv_ObjetivosxCurso.Columns)
                 {
@@ -81,13 +81,18 @@ namespace Pav2.Presentacion
 
         private void dgv_ObjetivosxCurso_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            DataGridView dgv = sender as DataGridView;
-            if (dgv == null) return;
-            ObjetivoxCursoCustom var1 = (ObjetivoxCursoCustom)dgv.CurrentRow.DataBoundItem;
-            cmb_objetivos.SelectedValue = var1.id_objetivo;
-            txt_puntaje.Text = var1.puntos.ToString();
-            chk_estado.Checked = (bool)var1.borrado;
-            chk_todo.Enabled = true;
+            try
+            {
+                DataGridView dgv = sender as DataGridView;
+                if (dgv == null) return;
+                ObjetivoxCursoCustom var1 = (ObjetivoxCursoCustom)dgv.CurrentRow.DataBoundItem;
+                cmb_objetivos.SelectedValue = var1.id_objetivo;
+                txt_puntaje.Text = var1.puntos.ToString();
+                chk_estado.Checked = (bool)var1.borrado;
+            }
+            catch {
+            }
+            
 
         }
 
@@ -100,7 +105,7 @@ namespace Pav2.Presentacion
         {
             int idCurso = (int)cmb_cursos.SelectedValue;
             int idobjetivo = (int)cmb_objetivos.SelectedValue;
-            ReturnValue valido = Logica.ObjetivosxCurso.EliminarObjetivosxCurso(idCurso, idobjetivo, chk_estado.Checked);
+            ReturnValue valido = Logica.ObjetivosxCurso.EliminarObjetivosxCurso(idCurso, idobjetivo, chk_borrado.Checked);
             if (valido.isSuccess) { MessageBox.Show("Se borro correctamente"); CargarGrilla(); }
             else { MessageBox.Show(valido.ErrorMessage); }
 

@@ -32,7 +32,7 @@
             this.cmb_cursos = new System.Windows.Forms.ComboBox();
             this.btn_modificar = new System.Windows.Forms.Button();
             this.btn_eliminar = new System.Windows.Forms.Button();
-            this.chk_todo = new System.Windows.Forms.CheckBox();
+            this.chk_IncluirBorrados = new System.Windows.Forms.CheckBox();
             this.txt_puntaje = new System.Windows.Forms.TextBox();
             this.chk_estado = new System.Windows.Forms.CheckBox();
             this.cmb_objetivos = new System.Windows.Forms.ComboBox();
@@ -83,17 +83,16 @@
             this.btn_eliminar.UseVisualStyleBackColor = true;
             this.btn_eliminar.Click += new System.EventHandler(this.btn_eliminar_Click);
             // 
-            // chk_todo
+            // chk_IncluirBorrados
             // 
-            this.chk_todo.AutoSize = true;
-            this.chk_todo.Enabled = false;
-            this.chk_todo.Location = new System.Drawing.Point(586, 78);
-            this.chk_todo.Name = "chk_todo";
-            this.chk_todo.Size = new System.Drawing.Size(99, 17);
-            this.chk_todo.TabIndex = 5;
-            this.chk_todo.Text = "Incluir Borrados";
-            this.chk_todo.UseVisualStyleBackColor = true;
-            this.chk_todo.CheckedChanged += new System.EventHandler(this.chk_borrado_CheckedChanged);
+            this.chk_IncluirBorrados.AutoSize = true;
+            this.chk_IncluirBorrados.Location = new System.Drawing.Point(586, 78);
+            this.chk_IncluirBorrados.Name = "chk_IncluirBorrados";
+            this.chk_IncluirBorrados.Size = new System.Drawing.Size(99, 17);
+            this.chk_IncluirBorrados.TabIndex = 5;
+            this.chk_IncluirBorrados.Text = "Incluir Borrados";
+            this.chk_IncluirBorrados.UseVisualStyleBackColor = true;
+            this.chk_IncluirBorrados.CheckedChanged += new System.EventHandler(this.chk_borrado_CheckedChanged);
             // 
             // txt_puntaje
             // 
@@ -141,7 +140,7 @@
             this.Controls.Add(this.chk_borrado);
             this.Controls.Add(this.chk_estado);
             this.Controls.Add(this.txt_puntaje);
-            this.Controls.Add(this.chk_todo);
+            this.Controls.Add(this.chk_IncluirBorrados);
             this.Controls.Add(this.btn_eliminar);
             this.Controls.Add(this.btn_modificar);
             this.Controls.Add(this.cmb_objetivos);
@@ -162,7 +161,7 @@
         private System.Windows.Forms.ComboBox cmb_cursos;
         private System.Windows.Forms.Button btn_modificar;
         private System.Windows.Forms.Button btn_eliminar;
-        private System.Windows.Forms.CheckBox chk_todo;
+        private System.Windows.Forms.CheckBox chk_IncluirBorrados;
         private System.Windows.Forms.TextBox txt_puntaje;
         private System.Windows.Forms.CheckBox chk_estado;
         private System.Windows.Forms.ComboBox cmb_objetivos;

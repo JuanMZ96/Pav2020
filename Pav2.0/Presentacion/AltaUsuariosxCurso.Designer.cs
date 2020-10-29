@@ -101,6 +101,7 @@
             // txt_Observaciones
             // 
             this.txt_Observaciones.Location = new System.Drawing.Point(187, 155);
+            this.txt_Observaciones.MaxLength = 150;
             this.txt_Observaciones.Multiline = true;
             this.txt_Observaciones.Name = "txt_Observaciones";
             this.txt_Observaciones.Size = new System.Drawing.Size(139, 52);
@@ -169,7 +170,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(750, 288);
+            this.ClientSize = new System.Drawing.Size(750, 285);
             this.Controls.Add(this.btn_Gestionar);
             this.Controls.Add(this.btn_Agregar);
             this.Controls.Add(this.cmb_Curso);

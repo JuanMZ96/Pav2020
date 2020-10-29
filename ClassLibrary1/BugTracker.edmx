@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="BugTrackerFinalModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="BugTrackerFinalModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Asignaciones">
           <Key>
             <PropertyRef Name="id_asignacion" />
@@ -367,6 +367,7 @@
           <Property Name="observaciones" Type="varchar" MaxLength="150" />
           <Property Name="fecha_inicio" Type="datetime" />
           <Property Name="fecha_fin" Type="datetime" />
+          <Property Name="borrado" Type="bit" />
         </EntityType>
         <EntityType Name="UsuariosCursoAvance">
           <Key>
@@ -629,18 +630,6 @@
             </Principal>
             <Dependent Role="Clientes">
               <PropertyRef Name="id_contacto" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Cursos_Categorias">
-          <End Role="Categorias" Type="Self.Categorias" Multiplicity="0..1" />
-          <End Role="Cursos" Type="Self.Cursos" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Categorias">
-              <PropertyRef Name="id_categoria" />
-            </Principal>
-            <Dependent Role="Cursos">
-              <PropertyRef Name="id_categoria" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1071,10 +1060,6 @@
             <End Role="Contactos" EntitySet="Contactos" />
             <End Role="Clientes" EntitySet="Clientes" />
           </AssociationSet>
-          <AssociationSet Name="FK_Cursos_Categorias" Association="Self.FK_Cursos_Categorias">
-            <End Role="Categorias" EntitySet="Categorias" />
-            <End Role="Cursos" EntitySet="Cursos" />
-          </AssociationSet>
           <AssociationSet Name="FK_Facturas_Clientes" Association="Self.FK_Facturas_Clientes">
             <End Role="Clientes" EntitySet="Clientes" />
             <End Role="Facturas" EntitySet="Facturas" />
@@ -1176,8 +1161,7 @@
             <End Role="UsuariosCursoAvance" EntitySet="UsuariosCursoAvance" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="BugTrackerFinalModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -1636,6 +1620,7 @@
           <NavigationProperty Name="Curso" Relationship="Self.FK_UsuariosCurso_Cursos" FromRole="UsuariosCurso" ToRole="Cursos" />
           <NavigationProperty Name="Usuario" Relationship="Self.FK_UsuariosCurso_Usuarios" FromRole="UsuariosCurso" ToRole="Usuarios" />
           <NavigationProperty Name="UsuariosCursoAvances" Relationship="Self.FK_UsuariosCursoAvance_UsuariosCurso" FromRole="UsuariosCurso" ToRole="UsuariosCursoAvance" />
+          <Property Name="borrado" Type="Boolean" />
         </EntityType>
         <EntityType Name="UsuariosCursoAvance">
           <Key>
@@ -2831,6 +2816,7 @@
           <EntitySetMapping Name="UsuariosCursoes">
             <EntityTypeMapping TypeName="BugTrackerFinalModel.UsuariosCurso">
               <MappingFragment StoreEntitySet="UsuariosCurso">
+                <ScalarProperty Name="borrado" ColumnName="borrado" />
                 <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
                 <ScalarProperty Name="id_curso" ColumnName="id_curso" />
                 <ScalarProperty Name="puntuacion" ColumnName="puntuacion" />

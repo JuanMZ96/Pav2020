@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static Pav2.Logica.CustomClass;
 
 namespace Pav2.Logica
 {
@@ -48,6 +49,75 @@ namespace Pav2.Logica
             }
             return validador;
         }
-    
+        //Veer
+        public static List<UsuarioxCursoCustom> MostrarGrilla(bool borrado, int usuario)
+        {
+            using (var Contex = new BugTrackerFinalEntities())
+            {
+                var lista = from Usuario in Contex.UsuariosCursoes 
+                            where Usuario.id_usuario == usuario 
+                            select Usuario;
+                if (!borrado)
+                {
+                    lista = lista.Where(x => (bool)x.borrado == false);
+                }
+                var temp = lista.Join(Contex.Cursos,
+                    UsuariosCurso => UsuariosCurso.id_curso,
+                    Curso => Curso.id_curso,
+                    (UsuariosCurso, Curso) => new UsuarioxCursoCustom()
+                    {
+                        id_usuario = UsuariosCurso.id_usuario,
+                        id_curso = UsuariosCurso.id_curso,
+                        nombre = Curso.nombre,
+                        puntuacion = (int)UsuariosCurso.puntuacion,
+                        observaciones = UsuariosCurso.observaciones,
+                        fecha_inicio = (DateTime)UsuariosCurso.fecha_inicio,
+                        fecha_fin = (DateTime)UsuariosCurso.fecha_fin,
+                        borrado = (bool)UsuariosCurso.borrado
+
+
+                    }) ;
+                return temp.ToList();
+            }
+
+        }
+        public static ReturnValue EliminarUsuariosxCurso(int idcurso, int idusuario, bool borrado)
+        {
+            ReturnValue var1 = new ReturnValue() { isSuccess = false };
+            using (var Contex = new BugTrackerFinalEntities())
+            {
+                try
+                {
+                    if (borrado == false)
+                    {
+                        var UsuarioCurso = Contex.UsuariosCursoes.Where(x => x.id_curso == idcurso
+                                                                   && x.id_usuario == idusuario).FirstOrDefault();
+                        if (UsuarioCurso != null)
+                        {
+                            UsuarioCurso.borrado = true;
+                            Contex.SaveChanges();
+                            var1.isSuccess = true;
+
+                        }
+                    }
+                    else
+                    {
+                        var UsuarioCurso = Contex.UsuariosCursoes.Where(x => x.id_curso == idcurso
+                                                                   && x.id_usuario == idusuario).FirstOrDefault();
+
+                        Contex.UsuariosCursoes.Remove(UsuarioCurso);
+                        Contex.SaveChanges();
+                        var1.isSuccess = true;
+
+                    }
+                }
+                catch (Exception ex) { var1.ErrorMessage = ex.Message; }
+
+            }
+            return var1;
+
+        }
+
+
     }
 }
