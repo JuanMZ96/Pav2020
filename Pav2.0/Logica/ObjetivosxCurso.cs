@@ -87,7 +87,8 @@ namespace Pav2.Logica
                     var objetivos = Contex.Objetivos.Where(x => x.id_objetivo == idobjetivo && x.borrado == false).FirstOrDefault();
                     if (cursos != null && objetivos != null)
                     {
-                        var cursos1 = Contex.ObjetivosCursos.Where(x => x.id_curso == idcurso).FirstOrDefault();
+                        var cursos1 = Contex.ObjetivosCursos.Where(x => x.id_curso == idcurso &&
+                                                                    x.id_objetivo == idobjetivo).FirstOrDefault();
 
                         if (cursos1 != null)
                         {
