@@ -34,8 +34,9 @@ namespace Pav2.Logica
                             usuariocurso.observaciones = observaciones;
                             usuariocurso.fecha_inicio = fecha_inicio;
                             usuariocurso.fecha_fin = fecha_fin;
+                            usuariocurso.borrado = false;
                             Contex.UsuariosCursoes.Add(usuariocurso);
-                            Contex.SaveChanges();
+                            Contex.SaveChanges(); 
                             validador.isSuccess = true;
                         }
                         else { validador.ErrorMessage = "Ya existe el usuario para ese curso"; }
@@ -54,8 +55,8 @@ namespace Pav2.Logica
         {
             using (var Contex = new BugTrackerFinalEntities())
             {
-                var lista = from Usuario in Contex.UsuariosCursoes 
-                            where Usuario.id_usuario == usuario 
+                var lista = from Usuario in Contex.UsuariosCursoes
+                            where Usuario.id_usuario == usuario
                             select Usuario;
                 if (!borrado)
                 {
@@ -76,7 +77,7 @@ namespace Pav2.Logica
                         borrado = (bool)UsuariosCurso.borrado
 
 
-                    }) ;
+                    });
                 return temp.ToList();
             }
 
@@ -118,6 +119,39 @@ namespace Pav2.Logica
 
         }
 
+        public static ReturnValue ModificarUsuariosxCurso(int idcurso, int idusuario, int puntuacion, string observaciones, DateTime fechaInicio, DateTime fechaFin)
+        {
+            ReturnValue validador = new ReturnValue() { isSuccess = false };
+            using (var Contex = new BugTrackerFinalEntities())
+            {
+                try
+                {
+                    var curso = Contex.Cursos.Where(x => x.id_curso == idcurso && x.borrado == false).FirstOrDefault();
+                    var usuario = Contex.Usuarios.Where(x => x.id_usuario == idusuario && x.borrado == false).FirstOrDefault();
+                    if (curso != null && usuario != null)
+                    {
+                        var cursos1 = Contex.UsuariosCursoes.Where(x => x.id_usuario == idusuario && x.id_curso == idcurso).FirstOrDefault();
 
+                        if (cursos1 != null)
+                        {
+                            //seteo cursos1 que es la entidad con los get y set
+                            if (cursos1.puntuacion != puntuacion) cursos1.puntuacion = puntuacion;
+                            if (cursos1.observaciones != observaciones) cursos1.observaciones = observaciones;
+                            if (cursos1.fecha_inicio != fechaInicio) cursos1.fecha_inicio = fechaInicio;
+                            if (cursos1.fecha_fin != fechaFin) cursos1.fecha_fin = fechaFin;
+                            Contex.SaveChanges();
+                            validador.isSuccess = true;
+                        }
+                        else { validador.ErrorMessage = "El usuario no existe en el curso."; }
+                    }
+                    else { validador.ErrorMessage = "El usuario o curso seleccionado no exsite."; }
+                }
+                catch (Exception ex)
+                {
+                    validador.ErrorMessage = ex.Message;
+                }
+            }
+            return validador;
+        }
     }
 }

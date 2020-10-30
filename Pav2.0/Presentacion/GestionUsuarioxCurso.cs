@@ -89,10 +89,13 @@ namespace Pav2.Presentacion
 
         private void btn_Modificar_Click(object sender, EventArgs e)
         {
-            //int idCurso = (int)cmb_Curso.SelectedValue;
-            //int idUsuario = (int)cmb_Usuario.SelectedValue;
-            //int puntuacion = Int32.Parse(txt_puntuacion.Text);
-            
+            int idCurso = (int)cmb_Curso.SelectedValue;
+            int idUsuario = (int)cmb_Usuario.SelectedValue;
+            int puntuacion = Int32.Parse(txt_puntuacion.Text);
+            ReturnValue valido = Logica.UsuariosxCurso.ModificarUsuariosxCurso(idCurso, idUsuario, puntuacion, txt_observaciones.Text, dtp_FechaInicio.Value, dtp_FechaFin.Value);
+            if (valido.isSuccess) { MessageBox.Show("Se modifico correctamente"); CargarGrilla(); }
+            else { MessageBox.Show(valido.ErrorMessage); }
+
         }
     }
 }
