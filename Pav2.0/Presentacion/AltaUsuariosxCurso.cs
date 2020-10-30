@@ -55,6 +55,11 @@ namespace Pav2.Presentacion
             CargarComboUsuarios();
             CargarComboCursos();
         }
+
+        private void btn_Gestionar_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 
 

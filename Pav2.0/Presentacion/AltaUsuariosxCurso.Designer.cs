@@ -163,6 +163,7 @@
             this.btn_Gestionar.TabIndex = 13;
             this.btn_Gestionar.Text = "Gestionar";
             this.btn_Gestionar.UseVisualStyleBackColor = true;
+            this.btn_Gestionar.Click += new System.EventHandler(this.btn_Gestionar_Click);
             // 
             // AltaUsuariosxCurso
             // 

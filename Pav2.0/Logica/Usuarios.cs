@@ -82,24 +82,6 @@ namespace Pav2.Logica
             return user;
         }
 
-        public static IList MostrarCombo()
-        {
-            List<PerfilCustom> ListPerfil = new List<PerfilCustom>();
-
-            using (var Contex = new BugTrackerFinalEntities())
-            {
-                ListPerfil = (from d in Contex.Perfiles
-                              select new PerfilCustom
-                              {
-                                  id = d.id_perfil,
-                                  nombre = d.nombre
-                              }).ToList();
-            }
-            return ListPerfil;
-        }
-
-
-        //Esta función ya quedo sin uso, se puede borrar
         public static List<Usuario> MostrarDataUsuarios(bool estado)
         {
             if (estado == false)

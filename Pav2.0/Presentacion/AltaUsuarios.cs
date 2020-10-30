@@ -36,10 +36,10 @@ namespace Pav2.Presentacion
         private void CargarCombo()
         {
 
-            System.Collections.IList T = Logica.Usuarios.MostrarCombo();
+            System.Collections.IList T = Logica.Perfiles.MostrarCombo();
             cmb_perfiles.DataSource = T;
-            cmb_perfiles.ValueMember = "id";
-            cmb_perfiles.DisplayMember = "Nombre";
+            cmb_perfiles.ValueMember = "id_perfil";
+            cmb_perfiles.DisplayMember = "nombre";
 
         }
     }
