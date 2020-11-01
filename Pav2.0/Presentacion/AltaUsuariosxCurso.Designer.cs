@@ -187,7 +187,8 @@
             this.Controls.Add(this.lbl_Observaciones);
             this.Controls.Add(this.lbl_Usuario);
             this.Name = "AltaUsuariosxCurso";
-            this.Text = "UsuariosxCurso";
+            this.ShowIcon = false;
+            this.Text = "Alta de usuario por curso";
             this.Load += new System.EventHandler(this.AltaUsuariosxCurso_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

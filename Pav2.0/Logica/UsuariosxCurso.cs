@@ -153,5 +153,35 @@ namespace Pav2.Logica
             }
             return validador;
         }
+        public static ReturnValue HabilitarUsuarioCurso(int idcurso, int idusuario,bool borrado)
+        {
+            ReturnValue validador = new ReturnValue() { isSuccess = false };
+            using (var Contex = new BugTrackerFinalEntities())
+            {
+                try
+                {
+                    var curso = Contex.Cursos.Where(x => x.id_curso == idcurso && x.borrado == false).FirstOrDefault();
+                    var usuario = Contex.Usuarios.Where(x => x.id_usuario == idusuario && x.borrado == false).FirstOrDefault();
+                    if (curso != null && usuario != null)
+                    {
+                        var cursos1 = Contex.UsuariosCursoes.Where(x => x.id_usuario == idusuario && x.id_curso == idcurso).FirstOrDefault();
+
+                        if (cursos1 != null)
+                        {
+                            if (cursos1.borrado != borrado) cursos1.borrado = borrado;
+                            Contex.SaveChanges();
+                            validador.isSuccess = true;
+                        }
+                        else { validador.ErrorMessage = "El curso que quiere habilitar no existe."; }
+                    }
+                    else { validador.ErrorMessage = "Seleccionar el curso correcto."; }
+                }
+                catch (Exception ex)
+                {
+                    validador.ErrorMessage = ex.Message;
+                }
+            }
+            return validador;
+        }
     }
 }

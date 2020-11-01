@@ -45,12 +45,13 @@
             this.cmb_Curso = new System.Windows.Forms.ComboBox();
             this.chk_IncluirBorrados = new System.Windows.Forms.CheckBox();
             this.chk_BorrarDB = new System.Windows.Forms.CheckBox();
+            this.btn_habilitar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_UsuarioCurso)).BeginInit();
             this.SuspendLayout();
             // 
             // btn_Modificar
             // 
-            this.btn_Modificar.Location = new System.Drawing.Point(550, 121);
+            this.btn_Modificar.Location = new System.Drawing.Point(654, 128);
             this.btn_Modificar.Name = "btn_Modificar";
             this.btn_Modificar.Size = new System.Drawing.Size(75, 23);
             this.btn_Modificar.TabIndex = 0;
@@ -77,10 +78,11 @@
             // 
             // dgv_UsuarioCurso
             // 
+            this.dgv_UsuarioCurso.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgv_UsuarioCurso.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_UsuarioCurso.Location = new System.Drawing.Point(26, 121);
             this.dgv_UsuarioCurso.Name = "dgv_UsuarioCurso";
-            this.dgv_UsuarioCurso.Size = new System.Drawing.Size(507, 276);
+            this.dgv_UsuarioCurso.Size = new System.Drawing.Size(599, 260);
             this.dgv_UsuarioCurso.TabIndex = 4;
             this.dgv_UsuarioCurso.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_UsuarioCurso_CellContentClick);
             this.dgv_UsuarioCurso.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_UsuarioCurso_CellContentClick);
@@ -157,7 +159,7 @@
             // 
             // btn_Eliminar
             // 
-            this.btn_Eliminar.Location = new System.Drawing.Point(550, 166);
+            this.btn_Eliminar.Location = new System.Drawing.Point(654, 173);
             this.btn_Eliminar.Name = "btn_Eliminar";
             this.btn_Eliminar.Size = new System.Drawing.Size(75, 23);
             this.btn_Eliminar.TabIndex = 14;
@@ -185,7 +187,7 @@
             // chk_IncluirBorrados
             // 
             this.chk_IncluirBorrados.AutoSize = true;
-            this.chk_IncluirBorrados.Location = new System.Drawing.Point(26, 403);
+            this.chk_IncluirBorrados.Location = new System.Drawing.Point(26, 387);
             this.chk_IncluirBorrados.Name = "chk_IncluirBorrados";
             this.chk_IncluirBorrados.Size = new System.Drawing.Size(101, 17);
             this.chk_IncluirBorrados.TabIndex = 17;
@@ -196,18 +198,31 @@
             // chk_BorrarDB
             // 
             this.chk_BorrarDB.AutoSize = true;
-            this.chk_BorrarDB.Location = new System.Drawing.Point(550, 195);
+            this.chk_BorrarDB.Location = new System.Drawing.Point(654, 202);
             this.chk_BorrarDB.Name = "chk_BorrarDB";
             this.chk_BorrarDB.Size = new System.Drawing.Size(72, 17);
             this.chk_BorrarDB.TabIndex = 18;
             this.chk_BorrarDB.Text = "Borrar DB";
             this.chk_BorrarDB.UseVisualStyleBackColor = true;
+            this.chk_BorrarDB.Visible = false;
+            // 
+            // btn_habilitar
+            // 
+            this.btn_habilitar.Location = new System.Drawing.Point(550, 387);
+            this.btn_habilitar.Name = "btn_habilitar";
+            this.btn_habilitar.Size = new System.Drawing.Size(75, 23);
+            this.btn_habilitar.TabIndex = 19;
+            this.btn_habilitar.Text = "Habilitar";
+            this.btn_habilitar.UseVisualStyleBackColor = true;
+            this.btn_habilitar.Visible = false;
+            this.btn_habilitar.Click += new System.EventHandler(this.btn_habilitar_Click);
             // 
             // GestionUsuarioxCurso
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(641, 427);
+            this.ClientSize = new System.Drawing.Size(770, 427);
+            this.Controls.Add(this.btn_habilitar);
             this.Controls.Add(this.chk_BorrarDB);
             this.Controls.Add(this.chk_IncluirBorrados);
             this.Controls.Add(this.cmb_Curso);
@@ -226,6 +241,8 @@
             this.Controls.Add(this.lbl_usuario);
             this.Controls.Add(this.btn_Modificar);
             this.Name = "GestionUsuarioxCurso";
+            this.ShowIcon = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Gestion de usuario por curso";
             this.Load += new System.EventHandler(this.GestionUsuarioxCurso_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_UsuarioCurso)).EndInit();
@@ -253,5 +270,6 @@
         private System.Windows.Forms.ComboBox cmb_Curso;
         private System.Windows.Forms.CheckBox chk_IncluirBorrados;
         private System.Windows.Forms.CheckBox chk_BorrarDB;
+        private System.Windows.Forms.Button btn_habilitar;
     }
 }

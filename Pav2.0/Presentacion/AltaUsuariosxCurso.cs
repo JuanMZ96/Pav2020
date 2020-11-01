@@ -32,7 +32,7 @@ namespace Pav2.Presentacion
                 if (valido.isSuccess) { MessageBox.Show("Se creo correctamente"); }
                 else { MessageBox.Show(valido.ErrorMessage, "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
             }
-            else { MessageBox.Show("Complete el campo correspondiente"); }
+            else { MessageBox.Show("Complete el campo correspondiente", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Exclamation); }
         }
 
         private void CargarComboUsuarios()
@@ -58,7 +58,8 @@ namespace Pav2.Presentacion
 
         private void btn_Gestionar_Click(object sender, EventArgs e)
         {
-
+            GestionUsuarioxCurso gestion = new GestionUsuarioxCurso();
+            gestion.ShowDialog();
         }
     }
 

@@ -46,6 +46,9 @@ namespace Pav2.Presentacion
                         columns.Visible = false;
                     }
                 }
+                if (chk_IncluirBorrados.Checked){dgv_UsuarioCurso.Columns[7].Visible = true;}
+                else { dgv_UsuarioCurso.Columns[7].Visible = false;}
+                btn_habilitar.Visible = false; 
             }
             catch { }
         }
@@ -70,9 +73,14 @@ namespace Pav2.Presentacion
         {
             int idCurso = (int)cmb_Curso.SelectedValue;
             int idUsuario = (int)cmb_Usuario.SelectedValue;
-            ReturnValue valido = Logica.UsuariosxCurso.EliminarUsuariosxCurso(idCurso, idUsuario, chk_BorrarDB.Checked);
-            if (valido.isSuccess) { MessageBox.Show("Se borro correctamente."); CargarGrilla(); }
-            else { MessageBox.Show(valido.ErrorMessage); }
+            DialogResult result = MessageBox.Show("¿Esta seguro que desea eliminar ? ","Alerta",MessageBoxButtons.OKCancel,MessageBoxIcon.Question);
+            if (result == DialogResult.OK)
+            {
+                ReturnValue valido = Logica.UsuariosxCurso.EliminarUsuariosxCurso(idCurso, idUsuario, chk_BorrarDB.Checked);
+                if (valido.isSuccess) { MessageBox.Show("Se eliminó correctamente.","", MessageBoxButtons.OK, MessageBoxIcon.Information); CargarGrilla(); }
+                else { MessageBox.Show(valido.ErrorMessage); }
+            }
+            limpiarCampos();
         }
 
         private void dgv_UsuarioCurso_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -85,6 +93,8 @@ namespace Pav2.Presentacion
             txt_observaciones.Text = var.observaciones;
             dtp_FechaInicio.Value = var.fecha_inicio;
             dtp_FechaFin.Value = var.fecha_fin;
+            if (var.borrado == true) { btn_habilitar.Visible = true; btn_Modificar.Enabled = false; } 
+            else { btn_habilitar.Visible = false; btn_Modificar.Enabled = true; }  //Hacer visible "habilitar" deshabilita el modificar
         }
 
         private void btn_Modificar_Click(object sender, EventArgs e)
@@ -93,9 +103,27 @@ namespace Pav2.Presentacion
             int idUsuario = (int)cmb_Usuario.SelectedValue;
             int puntuacion = Int32.Parse(txt_puntuacion.Text);
             ReturnValue valido = Logica.UsuariosxCurso.ModificarUsuariosxCurso(idCurso, idUsuario, puntuacion, txt_observaciones.Text, dtp_FechaInicio.Value, dtp_FechaFin.Value);
-            if (valido.isSuccess) { MessageBox.Show("Se modifico correctamente"); CargarGrilla(); }
+            if (valido.isSuccess) { MessageBox.Show("Se modifico correctamente","",MessageBoxButtons.OK,MessageBoxIcon.Information); CargarGrilla(); }
             else { MessageBox.Show(valido.ErrorMessage); }
+            limpiarCampos();
 
+        }
+        private void limpiarCampos()
+        {
+            txt_puntuacion.Text = "";
+            txt_observaciones.Text = "";
+            btn_habilitar.Visible = false;
+        }
+
+        private void btn_habilitar_Click(object sender, EventArgs e)
+        {
+            int idCurso = (int)cmb_Curso.SelectedValue;
+            int idUsuario = (int)cmb_Usuario.SelectedValue;
+            bool borrado = false;
+            ReturnValue valido = Logica.UsuariosxCurso.HabilitarUsuarioCurso(idCurso, idUsuario, borrado);
+            if (valido.isSuccess) { MessageBox.Show("Curso habilitado.","",MessageBoxButtons.OK,MessageBoxIcon.Information); CargarGrilla(); }
+            else { MessageBox.Show(valido.ErrorMessage); }
+            limpiarCampos();
         }
     }
 }
