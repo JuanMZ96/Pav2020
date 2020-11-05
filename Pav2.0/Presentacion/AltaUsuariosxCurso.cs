@@ -21,18 +21,26 @@ namespace Pav2.Presentacion
 
         private void btn_Agregar_Click(object sender, EventArgs e)
         {
-            int idCurso = (int)cmb_Curso.SelectedValue;
-            int idUsuario = (int)cmb_Usuario.SelectedValue;
-            
-            if (txt_Puntuacion.Text != "" && txt_Observaciones.Text != "")
+            try
             {
-                int puntuacion = Int32.Parse(txt_Puntuacion.Text);
-                string observaciones = txt_Observaciones.Text;
-                ReturnValue valido = UsuariosxCurso.GuardarUsuariosxCurso(idCurso, idUsuario, puntuacion, observaciones, dtp_FechaInicio.Value ,dtp_FechaFin.Value);
-                if (valido.isSuccess) { MessageBox.Show("Se creo correctamente"); }
-                else { MessageBox.Show(valido.ErrorMessage, "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
+                int idCurso = (int)cmb_Curso.SelectedValue;
+                int idUsuario = (int)cmb_Usuario.SelectedValue;
+
+                if (txt_Puntuacion.Text != "" && txt_Observaciones.Text != "")
+                {
+                    int puntuacion = Int32.Parse(txt_Puntuacion.Text);
+                    string observaciones = txt_Observaciones.Text;
+                    ReturnValue valido = UsuariosxCurso.GuardarUsuariosxCurso(idCurso, idUsuario, puntuacion, observaciones, dtp_FechaInicio.Value, dtp_FechaFin.Value);
+                    if (valido.isSuccess) { MessageBox.Show("Se creo correctamente.", "", MessageBoxButtons.OK, MessageBoxIcon.Information); }
+                    else { MessageBox.Show(valido.ErrorMessage, "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
+                }
+                else { MessageBox.Show("Complete el campo correspondiente.", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Exclamation); }
+                limpiarCampos();
             }
-            else { MessageBox.Show("Complete el campo correspondiente", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Exclamation); }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: "+ ex);
+            }
         }
 
         private void CargarComboUsuarios()
@@ -54,8 +62,15 @@ namespace Pav2.Presentacion
         {
             CargarComboUsuarios();
             CargarComboCursos();
+            
         }
 
+        private void limpiarCampos()
+        {
+            txt_Puntuacion.Text = "";
+            txt_Observaciones.Text = "";
+            cmb_Usuario.Focus();
+        }
         private void btn_Gestionar_Click(object sender, EventArgs e)
         {
             GestionUsuarioxCurso gestion = new GestionUsuarioxCurso();

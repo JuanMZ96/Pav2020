@@ -50,38 +50,7 @@ namespace Pav2.Logica
             }
             return validador;
         }
-        //Veer
-        public static List<UsuarioxCursoCustom> MostrarGrilla(bool borrado, int usuario)
-        {
-            using (var Contex = new BugTrackerFinalEntities())
-            {
-                var lista = from Usuario in Contex.UsuariosCursoes
-                            where Usuario.id_usuario == usuario
-                            select Usuario;
-                if (!borrado)
-                {
-                    lista = lista.Where(x => (bool)x.borrado == false);
-                }
-                var temp = lista.Join(Contex.Cursos,
-                    UsuariosCurso => UsuariosCurso.id_curso,
-                    Curso => Curso.id_curso,
-                    (UsuariosCurso, Curso) => new UsuarioxCursoCustom()
-                    {
-                        id_usuario = UsuariosCurso.id_usuario,
-                        id_curso = UsuariosCurso.id_curso,
-                        nombre = Curso.nombre,
-                        puntuacion = (int)UsuariosCurso.puntuacion,
-                        observaciones = UsuariosCurso.observaciones,
-                        fecha_inicio = (DateTime)UsuariosCurso.fecha_inicio,
-                        fecha_fin = (DateTime)UsuariosCurso.fecha_fin,
-                        borrado = (bool)UsuariosCurso.borrado
-
-
-                    });
-                return temp.ToList();
-            }
-
-        }
+        
         public static ReturnValue EliminarUsuariosxCurso(int idcurso, int idusuario, bool borrado)
         {
             ReturnValue var1 = new ReturnValue() { isSuccess = false };
@@ -183,5 +152,63 @@ namespace Pav2.Logica
             }
             return validador;
         }
+        //Nuevo
+        public static List<UsuarioxCursoCustom> MostrarGrilla(bool borrado, int param, string tipo)
+        {
+            using (var Contex = new BugTrackerFinalEntities())
+            { 
+                var result = from usucurso in Contex.UsuariosCursoes
+                             select new UsuarioxCursoCustom();
+                // ----------------------
+                if(tipo == "Usuario")
+                {
+                    result = from usuarioCurso in Contex.UsuariosCursoes
+                                 join usuarios in Contex.Usuarios
+                                 on usuarioCurso.id_usuario equals usuarios.id_usuario
+                                 join cursos in Contex.Cursos
+                                 on usuarioCurso.id_curso equals cursos.id_curso
+                                 where usuarioCurso.id_usuario == param
+                                 select new UsuarioxCursoCustom()
+                                 {
+                                     id_usuario = usuarioCurso.id_usuario,
+                                     id_curso = usuarioCurso.id_curso,
+                                     nombre = cursos.nombre,
+                                     puntuacion = (int)usuarioCurso.puntuacion,
+                                     observaciones = usuarioCurso.observaciones,
+                                     fecha_inicio = (DateTime)usuarioCurso.fecha_inicio,
+                                     fecha_fin = (DateTime)usuarioCurso.fecha_fin,
+                                     borrado = (bool)usuarioCurso.borrado,
+                                     usuario = usuarios.usuario1,
+                                 };
+                }
+                else if (tipo == "Curso")
+                {
+                    result = from usuarioCurso in Contex.UsuariosCursoes
+                                 join usuarios in Contex.Usuarios
+                                 on usuarioCurso.id_usuario equals usuarios.id_usuario
+                                 join cursos in Contex.Cursos
+                                 on usuarioCurso.id_curso equals cursos.id_curso
+                                 where usuarioCurso.id_curso == param
+                                 select new UsuarioxCursoCustom()
+                                 {
+                                     id_usuario = usuarioCurso.id_usuario,
+                                     id_curso = usuarioCurso.id_curso,
+                                     nombre = cursos.nombre,
+                                     puntuacion = (int)usuarioCurso.puntuacion,
+                                     observaciones = usuarioCurso.observaciones,
+                                     fecha_inicio = (DateTime)usuarioCurso.fecha_inicio,
+                                     fecha_fin = (DateTime)usuarioCurso.fecha_fin,
+                                     borrado = (bool)usuarioCurso.borrado,
+                                     usuario = usuarios.usuario1,
+                                 };
+                }
+                if (!borrado) { result = result.Where(x => (bool)x.borrado == false); }
+                // ----------------------
+                
+                return result.ToList();
+            }
+
+        }
+
     }
 }
