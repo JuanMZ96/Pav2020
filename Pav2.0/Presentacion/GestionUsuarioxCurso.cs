@@ -37,7 +37,7 @@ namespace Pav2.Presentacion
             try
             {
                 int usuario = (int)cmb_Usuario.SelectedValue;
-                List<CustomClass.UsuarioxCursoCustom> T = UsuariosxCurso.MostrarGrilla(chk_IncluirBorrados.Checked,usuario);
+                List<CustomClass.UsuarioxCursoCustom> T = UsuariosxCurso.MostrarGrillaCustom(chk_IncluirBorrados.Checked,usuario);
                 dgv_UsuarioCurso.DataSource = T;
                 foreach (DataGridViewColumn columns in dgv_UsuarioCurso.Columns)
                 {

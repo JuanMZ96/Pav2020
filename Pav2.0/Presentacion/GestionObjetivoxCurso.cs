@@ -39,7 +39,7 @@ namespace Pav2.Presentacion
             try 
             {
                 int curso = (int)cmb_cursos.SelectedValue;
-                List<Logica.CustomClass.ObjetivoxCursoCustom> T = Logica.ObjetivosxCurso.MostrarGrilla(chk_IncluirBorrados.Checked,curso);
+                List<ObjetivoxCursoCustom> T = ObjetivosxCurso.MostrarGrilla(chk_IncluirBorrados.Checked,curso);
                 dgv_ObjetivosxCurso.DataSource = T;
                 foreach (DataGridViewColumn columns in dgv_ObjetivosxCurso.Columns)
                 {

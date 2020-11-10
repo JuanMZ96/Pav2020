@@ -35,21 +35,15 @@ namespace Pav2.Logica
                         {
                             q = 0;
                         }
-
                         obj1.id_objetivo = q.Value;
                         Contex.Objetivos.Add(obj1);
                         Contex.SaveChanges();
                         guardar = true;
                     }
-
                 }
-                                 
-                
             }
-
             return guardar;
         }
-        
 
         public static bool ModificarObjetivo(int id, string nombreCorto, string nombreLargo, bool estado)
         {
