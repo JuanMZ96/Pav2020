@@ -134,7 +134,7 @@ namespace Pav2.Logica
                     var usuario = Contex.Usuarios.Where(x => x.id_usuario == idusuario && x.borrado == false).FirstOrDefault();
                     if (curso != null && usuario != null)
                     {
-                        var cursos1 = Contex.UsuariosCursoes.Where(x => x.id_usuario == idusuario && x.id_curso == idcurso).FirstOrDefault();
+                        var cursos1 = Contex.UsuariosCursos.Where(x => x.id_usuario == idusuario && x.id_curso == idcurso).FirstOrDefault();
 
                         if (cursos1 != null)
                         {
@@ -158,12 +158,12 @@ namespace Pav2.Logica
         {
             using (var Contex = new BugTrackerFinalEntities())
             { 
-                var result = from usucurso in Contex.UsuariosCursoes
+                var result = from usucurso in Contex.UsuariosCursos
                              select new UsuarioxCursoCustom();
                 // ----------------------
                 if(tipo == "Usuario")
                 {
-                    result = from usuarioCurso in Contex.UsuariosCursoes
+                    result = from usuarioCurso in Contex.UsuariosCursos
                                  join usuarios in Contex.Usuarios
                                  on usuarioCurso.id_usuario equals usuarios.id_usuario
                                  join cursos in Contex.Cursos
@@ -184,7 +184,7 @@ namespace Pav2.Logica
                 }
                 else if (tipo == "Curso")
                 {
-                    result = from usuarioCurso in Contex.UsuariosCursoes
+                    result = from usuarioCurso in Contex.UsuariosCursos
                                  join usuarios in Contex.Usuarios
                                  on usuarioCurso.id_usuario equals usuarios.id_usuario
                                  join cursos in Contex.Cursos

@@ -21,7 +21,7 @@ Acá vamos a ir anotando las cosas que tengamos que validar y vamos a resolviend
 17. - [ ] GestiónUsuario Desing hacer que los botones modificar/eliminar solo se habiliten cuando toque la grilla
 18. - [ ] Juan mira Gestion de objetivos x curso diseño dgv click ERROR en el Header
 19. - [ ] Modificar la condición de carrera(Preguntar a mati).
-
+20.-  [ ] Verificar duplicados en las entidades
 
 
 
