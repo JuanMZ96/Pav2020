@@ -118,6 +118,8 @@ namespace Pav2.Presentacion
         {
             dgv_avanceCurso.Visible = accion;
             btn_modificar.Visible = accion;
+            cmb_cursos.Visible = accion;
+            lbl_seleccionarCurso.Visible = accion;
             if (!primeraVez)
             {
                 lbl_buscarUsuario.Visible = accion;

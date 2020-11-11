@@ -14,28 +14,34 @@ namespace Pav2.Logica
             using (var context = new BugTrackerFinalEntities())
             {
                 try {
-                    var usuario = context.Usuarios.Where(x => x.id_usuario == idusuario && x.borrado == false).FirstOrDefault();
-                    var curso = context.Cursos.Where(x => x.id_curso == idcurso && x.borrado == false).FirstOrDefault();
-                    if(usuario !=null && curso != null)
+                    var usuarioCurso = context.UsuariosCursos.Where(x => x.id_usuario == idusuario &&
+                                                                         x.id_curso == idcurso && 
+                                                                         x.borrado == false).FirstOrDefault();
+                    if(usuarioCurso != null)
                     {
                         var check = context.UsuariosCursoAvances.Where(x => x.id_usuario == idusuario &&
                                                                                      x.id_curso == idcurso).ToList();
                         ReturnValue check2 = validarPorcentaje(check, porcentaje);
-                        if (check2.isSuccess)
+                        ReturnValue check3 = validarFechas(usuarioCurso, fechainicio);
+                        if (check3.isSuccess)
                         {
-                            AvanceNuevo.id_usuario = idusuario;
-                            AvanceNuevo.id_curso = idcurso;
-                            AvanceNuevo.inicio = fechainicio;
-                            AvanceNuevo.fin = fechafin;
-                            AvanceNuevo.porc_avance = porcentaje;
-                            AvanceNuevo.borrado = false;
-                            context.UsuariosCursoAvances.Add(AvanceNuevo);
-                            context.SaveChanges();
-                            validador.isSuccess = true;
+                            if (check2.isSuccess)
+                            {
+                                AvanceNuevo.id_usuario = idusuario;
+                                AvanceNuevo.id_curso = idcurso;
+                                AvanceNuevo.inicio = fechainicio;
+                                AvanceNuevo.fin = fechafin;
+                                AvanceNuevo.porc_avance = porcentaje;
+                                AvanceNuevo.borrado = false;
+                                context.UsuariosCursoAvances.Add(AvanceNuevo);
+                                context.SaveChanges();
+                                validador.isSuccess = true;
+                            }
+                            else { validador.ErrorMessage = check2.ErrorMessage; }
                         }
-                        else { validador.ErrorMessage = check2.ErrorMessage;}
+                        else { validador.ErrorMessage = check3.ErrorMessage; }
                     }
-                    else { validador.ErrorMessage = "No existen esos cursos y usuario"; }
+                    else { validador.ErrorMessage = "No existe ese usuario para ese curso"; }
                 }
                 catch (Exception ex) { validador.ErrorMessage = ex.Message; }
             }
@@ -61,9 +67,18 @@ namespace Pav2.Logica
 
         }
 
+        public static ReturnValue validarFechas(dynamic clase, DateTime fechainicio) {
+            ReturnValue validador = new ReturnValue { isSuccess = true };
+            int resultado = DateTime.Compare(fechainicio, (DateTime)clase.fecha_fin);
+            if(resultado >= 0)
+            {
+                validador.isSuccess = false;
+                validador.ErrorMessage = "El curso ya termino";
+            }
+            return validador;
+        }
         public static List<UsuarioxCursoAvanceCustom> MostrarGrilla(int idUsuario, int idCurso) 
         {
-           
             using (var Contex = new BugTrackerFinalEntities()){
                 var lista = from avance in Contex.UsuariosCursoAvances
                             join usuarios in Contex.Usuarios
@@ -102,13 +117,20 @@ namespace Pav2.Logica
                         var AvanceModificar = context.UsuariosCursoAvances.Where(x => x.id_usuario == idusuario &&
                                                                                      x.id_curso == idcurso &&
                                                                                      x.inicio == fechainicio).FirstOrDefault();
-                        if (AvanceModificar != null)
+                        var check = context.UsuariosCursoAvances.Where(x => x.id_usuario == idusuario &&
+                                                                                      x.id_curso == idcurso).ToList();
+                        ReturnValue check2 = validarPorcentaje(check, porcentaje);
+                        if (check2.isSuccess)
                         {
-                            if (AvanceModificar.porc_avance != porcentaje) AvanceModificar.porc_avance = porcentaje;
-                            context.SaveChanges();
-                            validador.isSuccess = true;
+                            if (AvanceModificar != null)
+                            {
+                                if (AvanceModificar.porc_avance != porcentaje) AvanceModificar.porc_avance = porcentaje;
+                                context.SaveChanges();
+                                validador.isSuccess = true;
+                            }
+                            else { validador.ErrorMessage = "No existe ese Avance"; }
                         }
-                        else { validador.ErrorMessage = "No existe ese Avance"; }
+                        else validador.ErrorMessage = check2.ErrorMessage;
                     }
                     else { validador.ErrorMessage = "No existen esos cursos y usuario"; }
                 }

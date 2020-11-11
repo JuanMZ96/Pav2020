@@ -47,7 +47,7 @@
             this.btn_modificar = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.cmb_cursos = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lbl_seleccionarCurso = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_usuarios)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_cursos)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -102,14 +102,14 @@
             this.dgv_cursos.Location = new System.Drawing.Point(166, 63);
             this.dgv_cursos.Name = "dgv_cursos";
             this.dgv_cursos.ReadOnly = true;
-            this.dgv_cursos.Size = new System.Drawing.Size(240, 201);
+            this.dgv_cursos.Size = new System.Drawing.Size(324, 201);
             this.dgv_cursos.TabIndex = 5;
             this.dgv_cursos.Visible = false;
             this.dgv_cursos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_cursos_CellClick);
             // 
             // btn_guardar
             // 
-            this.btn_guardar.Location = new System.Drawing.Point(465, 28);
+            this.btn_guardar.Location = new System.Drawing.Point(415, 33);
             this.btn_guardar.Name = "btn_guardar";
             this.btn_guardar.Size = new System.Drawing.Size(75, 23);
             this.btn_guardar.TabIndex = 6;
@@ -121,7 +121,7 @@
             // lbl_porcentaje
             // 
             this.lbl_porcentaje.AutoSize = true;
-            this.lbl_porcentaje.Location = new System.Drawing.Point(348, 33);
+            this.lbl_porcentaje.Location = new System.Drawing.Point(293, 36);
             this.lbl_porcentaje.Name = "lbl_porcentaje";
             this.lbl_porcentaje.Size = new System.Drawing.Size(58, 13);
             this.lbl_porcentaje.TabIndex = 8;
@@ -157,7 +157,7 @@
             // 
             // txt_porcentaje
             // 
-            this.txt_porcentaje.Location = new System.Drawing.Point(412, 30);
+            this.txt_porcentaje.Location = new System.Drawing.Point(357, 33);
             this.txt_porcentaje.Mask = "999";
             this.txt_porcentaje.Name = "txt_porcentaje";
             this.txt_porcentaje.Size = new System.Drawing.Size(24, 20);
@@ -196,7 +196,7 @@
             this.dgv_avanceCurso.Location = new System.Drawing.Point(166, 63);
             this.dgv_avanceCurso.Name = "dgv_avanceCurso";
             this.dgv_avanceCurso.ReadOnly = true;
-            this.dgv_avanceCurso.Size = new System.Drawing.Size(240, 201);
+            this.dgv_avanceCurso.Size = new System.Drawing.Size(324, 201);
             this.dgv_avanceCurso.TabIndex = 18;
             this.dgv_avanceCurso.Visible = false;
             this.dgv_avanceCurso.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_avanceCurso_CellContentClick);
@@ -212,7 +212,7 @@
             // 
             // btn_modificar
             // 
-            this.btn_modificar.Location = new System.Drawing.Point(465, 28);
+            this.btn_modificar.Location = new System.Drawing.Point(415, 33);
             this.btn_modificar.Name = "btn_modificar";
             this.btn_modificar.Size = new System.Drawing.Size(75, 23);
             this.btn_modificar.TabIndex = 20;
@@ -225,7 +225,7 @@
             // 
             this.groupBox1.Controls.Add(this.dgv_usuarios);
             this.groupBox1.Controls.Add(this.cmb_cursos);
-            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.lbl_seleccionarCurso);
             this.groupBox1.Controls.Add(this.txt_usuario);
             this.groupBox1.Controls.Add(this.txt_curso);
             this.groupBox1.Controls.Add(this.btn_modificar);
@@ -254,18 +254,19 @@
             this.cmb_cursos.Name = "cmb_cursos";
             this.cmb_cursos.Size = new System.Drawing.Size(121, 21);
             this.cmb_cursos.TabIndex = 22;
+            this.cmb_cursos.Visible = false;
             this.cmb_cursos.SelectedIndexChanged += new System.EventHandler(this.cmb_cursos_SelectedIndexChanged);
             // 
-            // label1
+            // lbl_seleccionarCurso
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(163, 22);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(93, 13);
-            this.label1.TabIndex = 21;
-            this.label1.Text = "Seleccionar Curso";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.label1.Visible = false;
+            this.lbl_seleccionarCurso.AutoSize = true;
+            this.lbl_seleccionarCurso.Location = new System.Drawing.Point(163, 22);
+            this.lbl_seleccionarCurso.Name = "lbl_seleccionarCurso";
+            this.lbl_seleccionarCurso.Size = new System.Drawing.Size(93, 13);
+            this.lbl_seleccionarCurso.TabIndex = 21;
+            this.lbl_seleccionarCurso.Text = "Seleccionar Curso";
+            this.lbl_seleccionarCurso.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.lbl_seleccionarCurso.Visible = false;
             // 
             // AltaUsuarioxCursoAvance
             // 
@@ -309,6 +310,6 @@
         private System.Windows.Forms.Button btn_modificar;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.ComboBox cmb_cursos;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lbl_seleccionarCurso;
     }
 }
