@@ -34,8 +34,8 @@ namespace Pav2.Presentacion
         {
             System.Collections.IList T = Logica.Cursos.MostrarCombo();
             cmb_cursos.DataSource = T;
-            cmb_cursos.ValueMember = "id_curso";
-            cmb_cursos.DisplayMember = "nombre";
+            cmb_cursos.ValueMember = "id";
+            cmb_cursos.DisplayMember = "name";
         }
 
         private void ObjetivosxCurso_Load(object sender, EventArgs e)

@@ -33,6 +33,7 @@
             this.btn_usuarios = new System.Windows.Forms.Button();
             this.lbl_perfil = new System.Windows.Forms.Label();
             this.lbl_usuario = new System.Windows.Forms.Label();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.SuspendLayout();
             // 
             // btn_Perfiles
@@ -118,5 +119,6 @@
         private System.Windows.Forms.Button btn_usuarios;
         private System.Windows.Forms.Label lbl_perfil;
         private System.Windows.Forms.Label lbl_usuario;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }
