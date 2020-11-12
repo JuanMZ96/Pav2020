@@ -58,14 +58,19 @@ namespace Pav2.Logica
             return var1;
         }
 
-        public static bool CrearUsuarios(int perfil, string name, string pw, String mail)
+        public static ReturnValue CrearUsuarios(int perfil, string name, string pw, String mail) 
         {
-            bool user = false;
+            ReturnValue validador = new ReturnValue() { isSuccess = false};
             Usuario user1 = new Usuario();
             using (var Contex = new BugTrackerFinalEntities())
             {
+                if (name != String.Empty && pw != String.Empty && mail != String.Empty) 
                 {
-                    if (name != String.Empty && pw != String.Empty && mail != String.Empty)
+                    var check = from Usuario in Contex.Usuarios
+                                where Usuario.borrado != true
+                                && Usuario.usuario1.IndexOf(name) >= 0
+                                select Usuario;
+                    if (check == null)
                     {
                         user1.usuario1 = name;
                         user1.password = pw;
@@ -75,12 +80,16 @@ namespace Pav2.Logica
                         user1.borrado = false;
                         Contex.Usuarios.Add(user1);
                         Contex.SaveChanges();
+                        validador.isSuccess = true;
+                        validador.ErrorMessage = "Creado Correctamente";
 
-                        user = true;
                     }
+                    else { validador.isSuccess = false; validador.ErrorMessage = "Ese usuario ya existe"; }
                 }
+                else { validador.isSuccess = false; validador.ErrorMessage = "Campos vacios"; }
+                
             }
-            return user;
+            return validador;
         }
 
         public static List<Usuario> MostrarDataUsuarios(bool estado)

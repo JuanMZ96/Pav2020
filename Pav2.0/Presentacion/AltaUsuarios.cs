@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Pav2.Logica;
 
 namespace Pav2.Presentacion
 {
@@ -27,11 +28,6 @@ namespace Pav2.Presentacion
 
         }
 
-        private void btn_guardar_Click(object sender, EventArgs e)
-        {
-            int id = (int)cmb_perfiles.SelectedValue;
-            Logica.Usuarios.CrearUsuarios(id,txt_nombre.Text, txt_pw.Text,txt_mail.Text);
-        }
 
         private void CargarCombo()
         {
@@ -41,6 +37,14 @@ namespace Pav2.Presentacion
             cmb_perfiles.ValueMember = "id_perfil";
             cmb_perfiles.DisplayMember = "nombre";
 
+        }
+
+        private void btn_guardar_Click_1(object sender, EventArgs e)
+        {
+            int id = (int)cmb_perfiles.SelectedValue;
+            ReturnValue validador = Usuarios.CrearUsuarios(id, txt_nombre.Text, txt_pw.Text, txt_mail.Text);
+            if (validador.isSuccess) MessageBox.Show(validador.ErrorMessage);
+            else { MessageBox.Show(validador.ErrorMessage); }
         }
     }
         

@@ -89,6 +89,7 @@
             // chk_IncluirBorrados
             // 
             this.chk_IncluirBorrados.AutoSize = true;
+            this.chk_IncluirBorrados.Enabled = false;
             this.chk_IncluirBorrados.Location = new System.Drawing.Point(15, 405);
             this.chk_IncluirBorrados.Name = "chk_IncluirBorrados";
             this.chk_IncluirBorrados.Size = new System.Drawing.Size(99, 17);
