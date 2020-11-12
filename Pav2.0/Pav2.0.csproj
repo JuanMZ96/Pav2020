@@ -191,11 +191,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Reports\ObjetivosCurso.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ObjetivosCurso.xsd</DependentUpon>
-    </Compile>
     <Compile Include="Reports\ReportUsuarioCurso.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -207,11 +202,6 @@
     </Compile>
     <Compile Include="Reports\ReportUsuarioCursoAvance.Designer.cs">
       <DependentUpon>ReportUsuarioCursoAvance.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Reports\UsuarioCursoAvance.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>UsuarioCursoAvance.xsd</DependentUpon>
     </Compile>
     <Compile Include="SqlServerTypes\Loader.cs" />
     <EmbeddedResource Include="Presentacion\AltaUsuariosxCurso.resx">
@@ -266,6 +256,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="Properties\DataSources\Pav2.Logica.CustomClass+UsuarioxCursoAvanceCustom.datasource" />
     <EmbeddedResource Include="Reports\Report1.rdlc" />
     <EmbeddedResource Include="Reports\ReportUsuarioCurso.resx">
       <DependentUpon>ReportUsuarioCurso.cs</DependentUpon>
@@ -307,28 +298,6 @@
     <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <None Include="Reports\ObjetivosCurso.xsc">
-      <DependentUpon>ObjetivosCurso.xsd</DependentUpon>
-    </None>
-    <None Include="Reports\ObjetivosCurso.xsd">
-      <SubType>Designer</SubType>
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>ObjetivosCurso.Designer.cs</LastGenOutput>
-    </None>
-    <None Include="Reports\ObjetivosCurso.xss">
-      <DependentUpon>ObjetivosCurso.xsd</DependentUpon>
-    </None>
-    <None Include="Reports\UsuarioCursoAvance.xsc">
-      <DependentUpon>UsuarioCursoAvance.xsd</DependentUpon>
-    </None>
-    <None Include="Reports\UsuarioCursoAvance.xsd">
-      <SubType>Designer</SubType>
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>UsuarioCursoAvance.Designer.cs</LastGenOutput>
-    </None>
-    <None Include="Reports\UsuarioCursoAvance.xss">
-      <DependentUpon>UsuarioCursoAvance.xsd</DependentUpon>
-    </None>
     <None Include="Resources\barr2a1.png" />
     <None Include="Resources\barr2a.png" />
     <None Include="Resources\iconfinder_jee-74_2180663 %281%29.png" />

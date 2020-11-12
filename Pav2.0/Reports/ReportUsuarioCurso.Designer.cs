@@ -39,12 +39,12 @@
             this.dgv_usuarios = new System.Windows.Forms.DataGridView();
             this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gp_usuarios = new System.Windows.Forms.GroupBox();
-            this.txt_param = new System.Windows.Forms.TextBox();
             this.lbl_seleccionar = new System.Windows.Forms.Label();
             this.txt_FiltroUsuario = new System.Windows.Forms.TextBox();
+            this.txt_param = new System.Windows.Forms.TextBox();
             this.dtp_inicio = new System.Windows.Forms.DateTimePicker();
             this.dtp_fin = new System.Windows.Forms.DateTimePicker();
-            this.gp_curos = new System.Windows.Forms.GroupBox();
+            this.gp_cursos = new System.Windows.Forms.GroupBox();
             this.dgv_curso = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label2 = new System.Windows.Forms.Label();
@@ -57,7 +57,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.usuarioxCursoCustomBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_usuarios)).BeginInit();
             this.gp_usuarios.SuspendLayout();
-            this.gp_curos.SuspendLayout();
+            this.gp_cursos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_curso)).BeginInit();
             this.gp_fechas.SuspendLayout();
             this.SuspendLayout();
@@ -159,13 +159,6 @@
             this.gp_usuarios.TabStop = false;
             this.gp_usuarios.Text = "Usuarios";
             // 
-            // txt_param
-            // 
-            this.txt_param.Location = new System.Drawing.Point(6, 41);
-            this.txt_param.Name = "txt_param";
-            this.txt_param.Size = new System.Drawing.Size(43, 20);
-            this.txt_param.TabIndex = 11;
-            // 
             // lbl_seleccionar
             // 
             this.lbl_seleccionar.AutoSize = true;
@@ -184,6 +177,13 @@
             this.txt_FiltroUsuario.TabIndex = 9;
             this.txt_FiltroUsuario.TextChanged += new System.EventHandler(this.txt_FiltroUsuario_TextChanged);
             // 
+            // txt_param
+            // 
+            this.txt_param.Location = new System.Drawing.Point(6, 41);
+            this.txt_param.Name = "txt_param";
+            this.txt_param.Size = new System.Drawing.Size(43, 20);
+            this.txt_param.TabIndex = 11;
+            // 
             // dtp_inicio
             // 
             this.dtp_inicio.Location = new System.Drawing.Point(41, 54);
@@ -198,18 +198,18 @@
             this.dtp_fin.Size = new System.Drawing.Size(159, 20);
             this.dtp_fin.TabIndex = 10;
             // 
-            // gp_curos
+            // gp_cursos
             // 
-            this.gp_curos.Controls.Add(this.dgv_curso);
-            this.gp_curos.Controls.Add(this.label2);
-            this.gp_curos.Controls.Add(this.txt_FiltroCurso);
-            this.gp_curos.Controls.Add(this.lbl_curso);
-            this.gp_curos.Location = new System.Drawing.Point(185, 59);
-            this.gp_curos.Name = "gp_curos";
-            this.gp_curos.Size = new System.Drawing.Size(165, 227);
-            this.gp_curos.TabIndex = 12;
-            this.gp_curos.TabStop = false;
-            this.gp_curos.Text = "Cursos";
+            this.gp_cursos.Controls.Add(this.dgv_curso);
+            this.gp_cursos.Controls.Add(this.label2);
+            this.gp_cursos.Controls.Add(this.txt_FiltroCurso);
+            this.gp_cursos.Controls.Add(this.lbl_curso);
+            this.gp_cursos.Location = new System.Drawing.Point(185, 59);
+            this.gp_cursos.Name = "gp_cursos";
+            this.gp_cursos.Size = new System.Drawing.Size(165, 227);
+            this.gp_cursos.TabIndex = 12;
+            this.gp_cursos.TabStop = false;
+            this.gp_cursos.Text = "Cursos";
             // 
             // dgv_curso
             // 
@@ -306,7 +306,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1236, 625);
             this.Controls.Add(this.reportViewer1);
-            this.Controls.Add(this.gp_curos);
+            this.Controls.Add(this.gp_cursos);
             this.Controls.Add(this.btn_report);
             this.Controls.Add(this.cmb_tipo);
             this.Controls.Add(this.label1);
@@ -319,8 +319,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgv_usuarios)).EndInit();
             this.gp_usuarios.ResumeLayout(false);
             this.gp_usuarios.PerformLayout();
-            this.gp_curos.ResumeLayout(false);
-            this.gp_curos.PerformLayout();
+            this.gp_cursos.ResumeLayout(false);
+            this.gp_cursos.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_curso)).EndInit();
             this.gp_fechas.ResumeLayout(false);
             this.gp_fechas.PerformLayout();
@@ -345,7 +345,7 @@
         private System.Windows.Forms.DateTimePicker dtp_inicio;
         private System.Windows.Forms.DateTimePicker dtp_fin;
         private System.Windows.Forms.TextBox txt_param;
-        private System.Windows.Forms.GroupBox gp_curos;
+        private System.Windows.Forms.GroupBox gp_cursos;
         private System.Windows.Forms.DataGridView dgv_curso;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txt_FiltroCurso;

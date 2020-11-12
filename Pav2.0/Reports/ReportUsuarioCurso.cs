@@ -53,7 +53,7 @@ namespace Pav2.Reports
                          on usuarioCurso.id_usuario equals usuario.id_usuario
                          join cursos in Contex.Cursos
                          on usuarioCurso.id_curso equals cursos.id_curso
-                         where usuarioCurso.borrado == false
+                         where usuarioCurso.borrado == false 
                          select new UsuarioxCursoCustom()
                          {
                              nombre = cursos.nombre,
@@ -222,7 +222,7 @@ namespace Pav2.Reports
             switch (cmb_tipo.SelectedItem)
             {
                 case "Usuario":
-                    gp_curos.Enabled = false;
+                    gp_cursos.Enabled = false;
                     gp_fechas.Enabled = false;
                     dgv_curso.Visible = false;
                     dgv_usuarios.Visible = true;
@@ -234,12 +234,12 @@ namespace Pav2.Reports
                     gp_usuarios.Enabled = false;
                     dgv_curso.Visible = true;
                     dgv_usuarios.Visible = false;
-                    gp_curos.Enabled = true;
+                    gp_cursos.Enabled = true;
                     btn_report.Enabled = false;
                     break;
                 case "Fecha":
                     gp_usuarios.Enabled = false;
-                    gp_curos.Enabled = false;
+                    gp_cursos.Enabled = false;
                     gp_fechas.Enabled = true;
                     dgv_curso.Visible = false;
                     dgv_usuarios.Visible = false;
@@ -247,7 +247,7 @@ namespace Pav2.Reports
                     btn_report.Enabled = false;
                     break;
                 case "Todo":
-                    gp_curos.Enabled = false;
+                    gp_cursos.Enabled = false;
                     gp_fechas.Enabled = false;
                     gp_usuarios.Enabled = false;
                     dgv_curso.Visible = false;
