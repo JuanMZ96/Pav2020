@@ -77,6 +77,7 @@
             this.dgv_usuarios.TabIndex = 3;
             this.dgv_usuarios.Visible = false;
             this.dgv_usuarios.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_usuarios_CellClick);
+           
             // 
             // usuario1
             // 

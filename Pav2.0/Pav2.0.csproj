@@ -277,6 +277,7 @@
     <None Include="packages.config" />
     <None Include="Properties\DataSources\ClassLibrary1.UsuariosCurso.datasource" />
     <None Include="Properties\DataSources\ClassLibrary1.UsuariosCursoAvance.datasource" />
+    <None Include="Properties\DataSources\Pav2.Logica.CustomClass+UsuarioxCursoCustom.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

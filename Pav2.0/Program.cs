@@ -1,5 +1,6 @@
 ﻿
 using Pav2.Presentacion;
+using Pav2.Reports;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,7 +20,7 @@ namespace Pav2
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new GestionUsuarioxCurso());
+            Application.Run(new ReportUsuarioCurso());
         }
     }
 }
