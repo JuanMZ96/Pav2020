@@ -222,6 +222,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="QUEHACER.txt" />
+    <None Include="Resources\barr2a1.png" />
+    <None Include="Resources\barr2a.png" />
+    <None Include="Resources\iconfinder_jee-74_2180663 %281%29.png" />
+    <None Include="Resources\iconfinder_Sed-01_2232337.png" />
     <None Include="Resources\iconfinder_More_372914.png" />
   </ItemGroup>
   <ItemGroup>

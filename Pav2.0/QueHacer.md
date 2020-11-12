@@ -3,7 +3,7 @@ Acá vamos a ir anotando las cosas que tengamos que validar y vamos a resolviend
 
 
 1. - [x] Limitar los botones de categorías de modificar e eliminar a solo si toca al grid para no tenér errores innecesarios
-2. - [ ] Implementar try y cach en todos los evento de guardado,eliminado y modificado
+2. - [x] Implementar try y cach en todos los evento de guardado,eliminado y modificado
 3. - [ ] Mejorar el dataGridView para que esté acorde a solo las dos columnas que hay(Investigar)
 4. - [ ] Empezar con las interfaz de Gestión de usuario(Solo parte grafica)- 
 5. - [ ] Mejorar la ventana de AltaPerfil, se abre en narnia
