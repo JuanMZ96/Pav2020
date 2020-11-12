@@ -28,6 +28,8 @@ public partial class UsuariosCursoAvance
 
     public Nullable<int> porc_avance { get; set; }
 
+    public Nullable<bool> borrado { get; set; }
+
 
 
     public virtual UsuariosCurso UsuariosCurso { get; set; }

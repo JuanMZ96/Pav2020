@@ -17,7 +17,6 @@ namespace Pav2.Logica
         {
 
             ReturnValue  validador = new ReturnValue() {isSuccess=false};
-            ObjetivosCurso objcurso =  new ObjetivosCurso();
             using (var Contex = new BugTrackerFinalEntities())
             {
                 try {
@@ -25,9 +24,9 @@ namespace Pav2.Logica
                     var objetivos = Contex.Objetivos.Where(x => x.id_objetivo == idobjetivo && x.borrado == false).FirstOrDefault();
                     if (cursos != null && objetivos != null)
                     {
-                        var cursos1 = Contex.ObjetivosCursos.Where(x => x.id_curso == idcurso
+                        var objcurso = Contex.ObjetivosCursos.Where(x => x.id_curso == idcurso
                                                                    && x.id_objetivo == idobjetivo).FirstOrDefault();
-                        if(cursos1 == null) { 
+                        if(objcurso == null) { 
                             //seteo OBJCURSO que es la entidad con los get y set
                             objcurso.id_curso = idcurso;
                             objcurso.id_objetivo = idobjetivo;
@@ -119,36 +118,28 @@ namespace Pav2.Logica
             ReturnValue var1 = new ReturnValue() { isSuccess = false };
             using (var Contex = new BugTrackerFinalEntities())
             {
-                try
-                {
-                    if (borrado == false)
-                    {
+                try {
+                    if (borrado == false){
                         var cursos1 = Contex.ObjetivosCursos.Where(x => x.id_curso == idcurso
                                                                    && x.id_objetivo == idobjetivo).FirstOrDefault();
-                        if (cursos1 != null)
-                        {
+                        if (cursos1 != null){
                             cursos1.borrado = true;
                             Contex.SaveChanges();
                             var1.isSuccess = true;
-
                         }
                     }
-                    else
-                    {
+                    else{
                         var cursos1 = Contex.ObjetivosCursos.Where(x => x.id_curso == idcurso
                                                                    && x.id_objetivo == idobjetivo).FirstOrDefault();
-
                         Contex.ObjetivosCursos.Remove(cursos1);
                         Contex.SaveChanges();
                         var1.isSuccess = true;
-
                     }
                 }
                 catch (Exception ex) { var1.ErrorMessage = ex.Message; }
 
             }
             return var1;
-
         }
         public static ReturnValue HabilitarObjetivoxCurso(int idobjetivo, int idcurso, bool borrado)
         {

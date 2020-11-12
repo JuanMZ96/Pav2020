@@ -380,6 +380,7 @@
           <Property Name="inicio" Type="datetime" Nullable="false" />
           <Property Name="fin" Type="datetime" />
           <Property Name="porc_avance" Type="int" />
+          <Property Name="borrado" Type="bit" />
         </EntityType>
         <Association Name="FK_Bugs_Criticidades">
           <End Role="Criticidades" Type="Self.Criticidades" Multiplicity="0..1" />
@@ -1634,6 +1635,7 @@
           <Property Name="fin" Type="DateTime" Precision="3" />
           <Property Name="porc_avance" Type="Int32" />
           <NavigationProperty Name="UsuariosCurso" Relationship="Self.FK_UsuariosCursoAvance_UsuariosCurso" FromRole="UsuariosCursoAvance" ToRole="UsuariosCurso" />
+          <Property Name="borrado" Type="Boolean" />
         </EntityType>
         <Association Name="fk_seldoAsig_asignacion">
           <End Role="Asignaciones" Type="Self.Asignacione" Multiplicity="1" />
@@ -2829,6 +2831,7 @@
           <EntitySetMapping Name="UsuariosCursoAvances">
             <EntityTypeMapping TypeName="BugTrackerFinalModel.UsuariosCursoAvance">
               <MappingFragment StoreEntitySet="UsuariosCursoAvance">
+                <ScalarProperty Name="borrado" ColumnName="borrado" />
                 <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
                 <ScalarProperty Name="id_curso" ColumnName="id_curso" />
                 <ScalarProperty Name="inicio" ColumnName="inicio" />
