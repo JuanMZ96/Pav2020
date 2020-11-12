@@ -156,13 +156,13 @@ namespace Pav2.Logica
         public static List<UsuarioxCursoCustom> MostrarGrilla(bool borrado, int param, string tipo)
         {
             using (var Contex = new BugTrackerFinalEntities())
-            { 
+            {
                 var result = from usucurso in Contex.UsuariosCursoes
                              select new UsuarioxCursoCustom();
                 // ----------------------
-                if(tipo == "Usuario")
+                if (tipo == "Usuario")
                 {
-                    result = from usuarioCurso in Contex.UsuariosCursoes
+                     result = from usuarioCurso in Contex.UsuariosCursoes
                                  join usuarios in Contex.Usuarios
                                  on usuarioCurso.id_usuario equals usuarios.id_usuario
                                  join cursos in Contex.Cursos
@@ -183,7 +183,7 @@ namespace Pav2.Logica
                 }
                 else if (tipo == "Curso")
                 {
-                    result = from usuarioCurso in Contex.UsuariosCursoes
+                     result = from usuarioCurso in Contex.UsuariosCursoes
                                  join usuarios in Contex.Usuarios
                                  on usuarioCurso.id_usuario equals usuarios.id_usuario
                                  join cursos in Contex.Cursos
@@ -204,7 +204,7 @@ namespace Pav2.Logica
                 }
                 if (!borrado) { result = result.Where(x => (bool)x.borrado == false); }
                 // ----------------------
-                
+
                 return result.ToList();
             }
 

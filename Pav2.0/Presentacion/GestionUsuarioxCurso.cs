@@ -108,17 +108,24 @@ namespace Pav2.Presentacion
 
         private void dgv_UsuarioCurso_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            DataGridView dgv = sender as DataGridView;
-            if (dgv == null) return;
-            UsuarioxCursoCustom var = (UsuarioxCursoCustom)dgv.CurrentRow.DataBoundItem;
-            cmb_Curso.SelectedValue = var.id_curso;
-            cmb_Usuario.SelectedValue = var.id_usuario; 
-            txt_puntuacion.Text = var.puntuacion.ToString();
-            txt_observaciones.Text = var.observaciones;
-            dtp_FechaInicio.Value = var.fecha_inicio;
-            dtp_FechaFin.Value = var.fecha_fin;
-            if (var.borrado == true) { btn_habilitar.Visible = true; btn_Modificar.Enabled = false; } 
-            else { btn_habilitar.Visible = false; btn_Modificar.Enabled = true; }  //Hacer visible "habilitar" deshabilita el modificar
+            try
+            {
+                DataGridView dgv = sender as DataGridView;
+                if (dgv == null) return;
+                UsuarioxCursoCustom var = (UsuarioxCursoCustom)dgv.CurrentRow.DataBoundItem;
+                cmb_Curso.SelectedValue = var.id_curso;
+                cmb_Usuario.SelectedValue = var.id_usuario;
+                txt_puntuacion.Text = var.puntuacion.ToString();
+                txt_observaciones.Text = var.observaciones;
+                dtp_FechaInicio.Value = var.fecha_inicio;
+                dtp_FechaFin.Value = var.fecha_fin;
+                if (var.borrado == true) { btn_habilitar.Visible = true; btn_Modificar.Enabled = false; }
+                else { btn_habilitar.Visible = false; btn_Modificar.Enabled = true; }  //Hacer visible "habilitar" deshabilita el modificar
+            }
+            catch (Exception x)
+            {
+                MessageBox.Show("Error: " + x);
+            }
             //-------------
             btn_Eliminar.Enabled = true;
             btn_Modificar.Enabled = true;

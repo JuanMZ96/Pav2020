@@ -34,9 +34,12 @@
             this.btn_eliminar = new System.Windows.Forms.Button();
             this.chk_IncluirBorrados = new System.Windows.Forms.CheckBox();
             this.txt_puntaje = new System.Windows.Forms.TextBox();
-            this.chk_estado = new System.Windows.Forms.CheckBox();
             this.cmb_objetivos = new System.Windows.Forms.ComboBox();
             this.chk_borrado = new System.Windows.Forms.CheckBox();
+            this.lbl_cursos = new System.Windows.Forms.Label();
+            this.lbl_objetivos = new System.Windows.Forms.Label();
+            this.lbl_puntaje = new System.Windows.Forms.Label();
+            this.btn_habilitar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_ObjetivosxCurso)).BeginInit();
             this.SuspendLayout();
             // 
@@ -44,9 +47,9 @@
             // 
             this.dgv_ObjetivosxCurso.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgv_ObjetivosxCurso.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_ObjetivosxCurso.Location = new System.Drawing.Point(12, 51);
+            this.dgv_ObjetivosxCurso.Location = new System.Drawing.Point(12, 78);
             this.dgv_ObjetivosxCurso.Name = "dgv_ObjetivosxCurso";
-            this.dgv_ObjetivosxCurso.Size = new System.Drawing.Size(568, 387);
+            this.dgv_ObjetivosxCurso.Size = new System.Drawing.Size(568, 321);
             this.dgv_ObjetivosxCurso.TabIndex = 0;
             this.dgv_ObjetivosxCurso.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_ObjetivosxCurso_CellClick);
             // 
@@ -56,7 +59,7 @@
             this.cmb_cursos.FormattingEnabled = true;
             this.cmb_cursos.Items.AddRange(new object[] {
             "-"});
-            this.cmb_cursos.Location = new System.Drawing.Point(44, 12);
+            this.cmb_cursos.Location = new System.Drawing.Point(15, 34);
             this.cmb_cursos.Name = "cmb_cursos";
             this.cmb_cursos.Size = new System.Drawing.Size(121, 21);
             this.cmb_cursos.TabIndex = 1;
@@ -86,7 +89,7 @@
             // chk_IncluirBorrados
             // 
             this.chk_IncluirBorrados.AutoSize = true;
-            this.chk_IncluirBorrados.Location = new System.Drawing.Point(586, 78);
+            this.chk_IncluirBorrados.Location = new System.Drawing.Point(15, 405);
             this.chk_IncluirBorrados.Name = "chk_IncluirBorrados";
             this.chk_IncluirBorrados.Size = new System.Drawing.Size(99, 17);
             this.chk_IncluirBorrados.TabIndex = 5;
@@ -96,28 +99,19 @@
             // 
             // txt_puntaje
             // 
-            this.txt_puntaje.Location = new System.Drawing.Point(355, 11);
+            this.txt_puntaje.Location = new System.Drawing.Point(349, 34);
             this.txt_puntaje.Name = "txt_puntaje";
             this.txt_puntaje.Size = new System.Drawing.Size(121, 20);
             this.txt_puntaje.TabIndex = 6;
             // 
-            // chk_estado
-            // 
-            this.chk_estado.AutoSize = true;
-            this.chk_estado.Location = new System.Drawing.Point(521, 12);
-            this.chk_estado.Name = "chk_estado";
-            this.chk_estado.Size = new System.Drawing.Size(59, 17);
-            this.chk_estado.TabIndex = 7;
-            this.chk_estado.Text = "Estado";
-            this.chk_estado.UseVisualStyleBackColor = true;
-            // 
             // cmb_objetivos
             // 
             this.cmb_objetivos.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmb_objetivos.Enabled = false;
             this.cmb_objetivos.FormattingEnabled = true;
             this.cmb_objetivos.Items.AddRange(new object[] {
             "-"});
-            this.cmb_objetivos.Location = new System.Drawing.Point(228, 11);
+            this.cmb_objetivos.Location = new System.Drawing.Point(170, 34);
             this.cmb_objetivos.Name = "cmb_objetivos";
             this.cmb_objetivos.Size = new System.Drawing.Size(121, 21);
             this.cmb_objetivos.TabIndex = 2;
@@ -125,20 +119,62 @@
             // chk_borrado
             // 
             this.chk_borrado.AutoSize = true;
-            this.chk_borrado.Location = new System.Drawing.Point(586, 110);
+            this.chk_borrado.Location = new System.Drawing.Point(610, 91);
             this.chk_borrado.Name = "chk_borrado";
             this.chk_borrado.Size = new System.Drawing.Size(69, 17);
             this.chk_borrado.TabIndex = 8;
             this.chk_borrado.Text = "BorrarDB";
             this.chk_borrado.UseVisualStyleBackColor = true;
             // 
+            // lbl_cursos
+            // 
+            this.lbl_cursos.AutoSize = true;
+            this.lbl_cursos.Location = new System.Drawing.Point(12, 18);
+            this.lbl_cursos.Name = "lbl_cursos";
+            this.lbl_cursos.Size = new System.Drawing.Size(42, 13);
+            this.lbl_cursos.TabIndex = 9;
+            this.lbl_cursos.Text = "Cursos:";
+            // 
+            // lbl_objetivos
+            // 
+            this.lbl_objetivos.AutoSize = true;
+            this.lbl_objetivos.Location = new System.Drawing.Point(167, 18);
+            this.lbl_objetivos.Name = "lbl_objetivos";
+            this.lbl_objetivos.Size = new System.Drawing.Size(54, 13);
+            this.lbl_objetivos.TabIndex = 10;
+            this.lbl_objetivos.Text = "Objetivos:";
+            // 
+            // lbl_puntaje
+            // 
+            this.lbl_puntaje.AutoSize = true;
+            this.lbl_puntaje.Location = new System.Drawing.Point(346, 18);
+            this.lbl_puntaje.Name = "lbl_puntaje";
+            this.lbl_puntaje.Size = new System.Drawing.Size(46, 13);
+            this.lbl_puntaje.TabIndex = 11;
+            this.lbl_puntaje.Text = "Puntaje:";
+            // 
+            // btn_habilitar
+            // 
+            this.btn_habilitar.Location = new System.Drawing.Point(395, 405);
+            this.btn_habilitar.Name = "btn_habilitar";
+            this.btn_habilitar.Size = new System.Drawing.Size(75, 23);
+            this.btn_habilitar.TabIndex = 12;
+            this.btn_habilitar.TabStop = false;
+            this.btn_habilitar.Text = "Habilitar ";
+            this.btn_habilitar.UseVisualStyleBackColor = true;
+            this.btn_habilitar.Visible = false;
+            this.btn_habilitar.Click += new System.EventHandler(this.btn_habilitar_Click);
+            // 
             // GestionObjetivoxCurso
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(697, 450);
+            this.Controls.Add(this.btn_habilitar);
+            this.Controls.Add(this.lbl_puntaje);
+            this.Controls.Add(this.lbl_objetivos);
+            this.Controls.Add(this.lbl_cursos);
             this.Controls.Add(this.chk_borrado);
-            this.Controls.Add(this.chk_estado);
             this.Controls.Add(this.txt_puntaje);
             this.Controls.Add(this.chk_IncluirBorrados);
             this.Controls.Add(this.btn_eliminar);
@@ -163,8 +199,11 @@
         private System.Windows.Forms.Button btn_eliminar;
         private System.Windows.Forms.CheckBox chk_IncluirBorrados;
         private System.Windows.Forms.TextBox txt_puntaje;
-        private System.Windows.Forms.CheckBox chk_estado;
         private System.Windows.Forms.ComboBox cmb_objetivos;
         private System.Windows.Forms.CheckBox chk_borrado;
+        private System.Windows.Forms.Label lbl_cursos;
+        private System.Windows.Forms.Label lbl_objetivos;
+        private System.Windows.Forms.Label lbl_puntaje;
+        private System.Windows.Forms.Button btn_habilitar;
     }
 }
