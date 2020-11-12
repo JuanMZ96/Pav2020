@@ -32,6 +32,13 @@
             this.lbl_usuario = new System.Windows.Forms.Label();
             this.dtp_FechaFin = new System.Windows.Forms.DateTimePicker();
             this.dgv_UsuarioCurso = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column7 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.lbl_curso = new System.Windows.Forms.Label();
             this.lbl_observaciones = new System.Windows.Forms.Label();
             this.lbl_FechaInicio = new System.Windows.Forms.Label();
@@ -82,12 +89,71 @@
             // 
             this.dgv_UsuarioCurso.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgv_UsuarioCurso.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_UsuarioCurso.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column1,
+            this.Column2,
+            this.Column3,
+            this.Column4,
+            this.Column5,
+            this.Column6,
+            this.Column7});
             this.dgv_UsuarioCurso.Location = new System.Drawing.Point(178, 21);
             this.dgv_UsuarioCurso.Name = "dgv_UsuarioCurso";
             this.dgv_UsuarioCurso.Size = new System.Drawing.Size(562, 309);
             this.dgv_UsuarioCurso.TabIndex = 4;
             this.dgv_UsuarioCurso.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_UsuarioCurso_CellContentClick);
             this.dgv_UsuarioCurso.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_UsuarioCurso_CellContentClick);
+            // 
+            // Column1
+            // 
+            this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Column1.DataPropertyName = "usuario";
+            this.Column1.HeaderText = "Usuario";
+            this.Column1.Name = "Column1";
+            this.Column1.Width = 68;
+            // 
+            // Column2
+            // 
+            this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Column2.DataPropertyName = "nombre";
+            this.Column2.HeaderText = "Curso";
+            this.Column2.Name = "Column2";
+            this.Column2.Width = 59;
+            // 
+            // Column3
+            // 
+            this.Column3.DataPropertyName = "puntuacion";
+            this.Column3.HeaderText = "Puntuación ";
+            this.Column3.Name = "Column3";
+            // 
+            // Column4
+            // 
+            this.Column4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column4.DataPropertyName = "observaciones";
+            this.Column4.HeaderText = "Observaciones";
+            this.Column4.Name = "Column4";
+            // 
+            // Column5
+            // 
+            this.Column5.DataPropertyName = "fecha_inicio";
+            this.Column5.HeaderText = "Fecha inicio";
+            this.Column5.Name = "Column5";
+            // 
+            // Column6
+            // 
+            this.Column6.DataPropertyName = "fecha_fin";
+            this.Column6.HeaderText = "Fecha fin";
+            this.Column6.Name = "Column6";
+            // 
+            // Column7
+            // 
+            this.Column7.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.Column7.DataPropertyName = "borrado";
+            this.Column7.HeaderText = "Borrado";
+            this.Column7.Name = "Column7";
+            this.Column7.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Column7.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Column7.Visible = false;
             // 
             // lbl_curso
             // 
@@ -299,5 +365,12 @@
         private System.Windows.Forms.Button btn_habilitar;
         private System.Windows.Forms.ComboBox cmb_TipoBusqueda;
         private System.Windows.Forms.Label lbl_tipoBusqueda;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Column7;
     }
 }

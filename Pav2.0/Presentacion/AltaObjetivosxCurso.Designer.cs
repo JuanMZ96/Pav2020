@@ -73,6 +73,7 @@
             this.btn_gestion.TabIndex = 3;
             this.btn_gestion.Text = "Gestion";
             this.btn_gestion.UseVisualStyleBackColor = true;
+            this.btn_gestion.Click += new System.EventHandler(this.btn_gestion_Click);
             // 
             // txt_puntaje
             // 
@@ -108,7 +109,7 @@
             this.label3.TabIndex = 7;
             this.label3.Text = "Puntaje";
             // 
-            // ObjetivosxCurso
+            // AltaObjetivosxCurso
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -121,7 +122,7 @@
             this.Controls.Add(this.btn_agregar);
             this.Controls.Add(this.cmb_objetivos);
             this.Controls.Add(this.cmb_cursos);
-            this.Name = "ObjetivosxCurso";
+            this.Name = "AltaObjetivosxCurso";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.ObjetivosxCurso_Load);
             this.ResumeLayout(false);

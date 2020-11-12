@@ -21,8 +21,8 @@ using System.Data.Entity.Infrastructure;
 public partial class BugTrackerFinalEntities : DbContext
 {
     public BugTrackerFinalEntities()
-        : base(@"metadata=res://*/BugTracker.csdl|res://*/BugTracker.ssdl|res://*/BugTracker.msl;provider=System.Data.SqlClient;provider connection string='data source=mysv.czrtvd3xk68s.sa-east-1.rds.amazonaws.com,1433;initial catalog=BugTrackerFinal;persist security info=True;user id=Lorjan;password=MousePadNegro;MultipleActiveResultSets=True;App=EntityFramework'")
-        {
+        : base("name=BugTrackerFinalEntities")
+    {
 
     }
 
@@ -100,7 +100,7 @@ public partial class BugTrackerFinalEntities : DbContext
 
     public virtual DbSet<Usuario> Usuarios { get; set; }
 
-    public virtual DbSet<UsuariosCurso> UsuariosCursoes { get; set; }
+    public virtual DbSet<UsuariosCurso> UsuariosCursos { get; set; }
 
     public virtual DbSet<UsuariosCursoAvance> UsuariosCursoAvances { get; set; }
 

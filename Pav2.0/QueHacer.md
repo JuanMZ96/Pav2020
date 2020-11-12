@@ -14,13 +14,15 @@ Acá vamos a ir anotando las cosas que tengamos que validar y vamos a resolviend
 10. - [ ] Parte logica de usuario tener cuidado de cuando uno crea, verficar por nombre si ya existe(No realizado)
 11. - [ ] Ver si se puede por atajos de teclado abrir un menu oculto
 12. - [ ] Cargar grillos según un checkbox si mostrar todo o no(Mostrar los que si están en borrado logico)(Cheked ver eso, bool)
-13. - [ ] Try cach en los dataGridView CellClick
+13. - [x] Try cach en los dataGridView CellClick
 14. - [ ] Solo la parte de eliminación de usuario está hecha(logica), falta implementar en la parte visual
 15. - [ ] Implementar la logica de modificación de usuarios(logica y visual)
 16. - [ ] Mejorar la interfaz de usuario desde principal hasta la parte de Gestión(Manejar la Gestion con un label y no con un boton)
 17. - [ ] GestiónUsuario Desing hacer que los botones modificar/eliminar solo se habiliten cuando toque la grilla
 18. - [ ] Juan mira Gestion de objetivos x curso diseño dgv click ERROR en el Header
-
+19. - [ ] Modificar la condición de carrera(Preguntar a mati).
+20.-  [ ] Verificar duplicados en las entidades
+21.-  [ ] Verfificar si en cursos se guardar solo alumnos y prefesores
 
 
 

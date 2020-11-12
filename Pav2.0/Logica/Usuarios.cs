@@ -9,6 +9,7 @@ using System.Data.Entity.Validation;
 using System.Data.Entity;
 using System.Windows.Forms;
 using static Pav2.Logica.CustomClass;
+using System.Data.Linq.SqlClient;
 
 namespace Pav2.Logica
 {
@@ -102,7 +103,16 @@ namespace Pav2.Logica
                 return lista.ToList();
             }
         }
-        ///
+        public static List<Usuario> FiltrarDataUsuario(string filtro)
+        {
+                var Contex = new BugTrackerFinalEntities();
+                 var lista = from Usuario in Contex.Usuarios
+                 where Usuario.borrado != true
+                 && Usuario.usuario1.IndexOf(filtro)>=0
+                 select Usuario;
+                  return lista.ToList();
+        }   
+        
         public static List<UsuarioCustom> MostarDatosUsuarioCustom(bool borrado)
         {
             using (var contex = new BugTrackerFinalEntities())

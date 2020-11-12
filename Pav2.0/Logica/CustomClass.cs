@@ -33,6 +33,18 @@ namespace Pav2.Logica
             public bool borrado { get; set; }
             
         }
+        public class UsuarioxCursoAvanceCustom
+        {
+            public int id_usuario { get; set; }
+            public int id_curso { get; set; }
+            public string Usuario { get; set; }
+            public string Curso { get; set; }
+            public int porcentaje { get; set; }
+            public DateTime fecha_inicio { get; set; }
+            public DateTime fecha_fin { get; set; }
+            public bool borrado { get; set; }
+        }
+
         public class ObjetivoxCursoCustom
         {
             public int id_objetivo { get; set; }
