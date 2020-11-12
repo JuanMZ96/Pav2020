@@ -46,16 +46,29 @@ namespace Pav2.Presentacion
 
         private void btn_agregar_Click(object sender, EventArgs e)
         {
-            int idCurso = (int)cmb_cursos.SelectedValue;
-            int idobjetivo = (int)cmb_objetivos.SelectedValue;
-            if(txt_puntaje.Text != "") 
+            try
             {
-                int puntaje = Int32.Parse(txt_puntaje.Text);
-                ReturnValue valido = Logica.ObjetivosxCurso.GuardarObjetivosxCurso(idCurso, idobjetivo, puntaje);
-                if (valido.isSuccess) { MessageBox.Show("Se creo correctamente"); }
-                else { MessageBox.Show(valido.ErrorMessage, "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
+                int idCurso = (int)cmb_cursos.SelectedValue;
+                int idobjetivo = (int)cmb_objetivos.SelectedValue;
+                if (txt_puntaje.Text != "")
+                {
+                    int puntaje = Int32.Parse(txt_puntaje.Text);
+                    ReturnValue valido = Logica.ObjetivosxCurso.GuardarObjetivosxCurso(idCurso, idobjetivo, puntaje);
+                    if (valido.isSuccess) { MessageBox.Show("Se creo correctamente"); }
+                    else { MessageBox.Show(valido.ErrorMessage, "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
+                }
+                else { MessageBox.Show("Complete el campo correspondiente"); }
             }
-            else { MessageBox.Show("Complete el campo correspondiente"); }
+            catch (Exception x)
+            {
+                MessageBox.Show("Error: "+ x);
+            }
+        }
+
+        private void btn_gestion_Click(object sender, EventArgs e)
+        {
+            GestionObjetivoxCurso gestion = new GestionObjetivoxCurso();
+            gestion.ShowDialog();
         }
     }   
 }

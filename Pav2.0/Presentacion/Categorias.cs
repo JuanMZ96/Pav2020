@@ -31,17 +31,24 @@ namespace Pav2.Presentacion
 
         private void btn_guardar_Click(object sender, EventArgs e)
         {
-            if (txt_name.Text != null && txt_descripcion.Text != null)
+            try
             {
-                if (Logica.Categorias.GuardarCategoria(txt_name.Text, txt_descripcion.Text) == false)
+                if (txt_name.Text != null && txt_descripcion.Text != null)
                 {
-                    MessageBox.Show("No se pudo guardar.");
+                    if (Logica.Categorias.GuardarCategoria(txt_name.Text, txt_descripcion.Text) == false)
+                    {
+                        MessageBox.Show("No se pudo guardar.");
+                    }
+                    CargarGrilla();
                 }
-                CargarGrilla();
+                else
+                {
+                    MessageBox.Show("Los campos no pueden estar vacios.");
+                }
             }
-            else
+            catch (Exception x)
             {
-                MessageBox.Show("Los campos no pueden estar vacios.");
+                MessageBox.Show("Error: "+ x);
             }
         }
 
@@ -52,49 +59,63 @@ namespace Pav2.Presentacion
 
         private void btn_modificar_Click(object sender, EventArgs e)
         {
-            
-            if (txt_name.Text != "" && txt_descripcion.Text != "")
+            try
             {
-                int id = Int32.Parse(txt_value.Text);
-                if (Logica.Categorias.ModificarCategoria(id, txt_name.Text, txt_descripcion.Text, chk_estado.Checked) == false)
+                if (txt_name.Text != "" && txt_descripcion.Text != "")
                 {
-                    MessageBox.Show("No se pudo modificar.");
+                    int id = Int32.Parse(txt_value.Text);
+                    if (Logica.Categorias.ModificarCategoria(id, txt_name.Text, txt_descripcion.Text, chk_estado.Checked) == false)
+                    {
+                        MessageBox.Show("No se pudo modificar.");
+                    }
+                    CargarGrilla();
+                    limpiarcampos();
                 }
-                CargarGrilla();
-                limpiarcampos();
+                else
+                {
+                    MessageBox.Show("Los campos no pueden estar vacios.");
+                }
             }
-            else
+            catch (Exception x)
             {
-                MessageBox.Show("Los campos no pueden estar vacios.");
+                MessageBox.Show("Error: " + x);
             }
+            
         }
 
         private void btn_borrar_Click(object sender, EventArgs e)
         {
-
-            if (txt_name.Text != "" && txt_descripcion.Text != "")
+            try
             {
-                int id = Int32.Parse(txt_value.Text);
-                if (Logica.Categorias.EliminarCategoria(id, chk_borrado.Checked) == false)
+                if (txt_name.Text != "" && txt_descripcion.Text != "")
                 {
-                    MessageBox.Show("No se pudo eliminar.");
+                    int id = Int32.Parse(txt_value.Text);
+                    if (Logica.Categorias.EliminarCategoria(id, chk_borrado.Checked) == false)
+                    {
+                        MessageBox.Show("No se pudo eliminar.");
+                    }
+                    CargarGrilla();
+                    limpiarcampos();
                 }
-                CargarGrilla();
-                limpiarcampos();
+                else
+                {
+                    MessageBox.Show("Los campos no pueden estar vacios.");
+                }
             }
-            else
+            catch (Exception x)
             {
-                MessageBox.Show("Los campos no pueden estar vacios.");
+                MessageBox.Show("Error: " + x);
             }
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            DataGridView dgv = sender as DataGridView;
-            if (dgv == null)
-                return;
-            
-            
+            try
+            {
+                DataGridView dgv = sender as DataGridView;
+                if (dgv == null)
+                    return;
+
                 Categoria var1 = (Categoria)dgv.CurrentRow.DataBoundItem;
                 txt_name.Text = var1.nombre;
                 txt_descripcion.Text = var1.descripcion;
@@ -103,29 +124,36 @@ namespace Pav2.Presentacion
                 btn_guardar.Enabled = false;
                 btn_borrar.Enabled = true;
                 btn_modificar.Enabled = true;
+            }
+            catch (Exception x)
+            {
+                MessageBox.Show("Error: "+ x);
+            }
         }
 
 
         private void CargarGrilla()
         {
             //dgv_categorias.Rows.Clear();
-
-            List<Categoria> T = Logica.Categorias.MostrarDataCategorias(chk_todo.Checked);
-            dgv_categorias.DataSource = T;
-            dgv_categorias.Columns[0].Visible = false;
-            dgv_categorias.Columns[3].Visible = false;
-            dgv_categorias.Columns[4].Visible = false;
-            dgv_categorias.Columns[5].Visible = false;
-            if (chk_todo.Checked)
+            try
             {
-             dgv_categorias.Columns[3].Visible = true;
-
+                List<Categoria> T = Logica.Categorias.MostrarDataCategorias(chk_todo.Checked);
+                dgv_categorias.DataSource = T;
+                dgv_categorias.Columns[0].Visible = false;
+                dgv_categorias.Columns[3].Visible = false;
+                dgv_categorias.Columns[4].Visible = false;
+                //dgv_categorias.Columns[5].Visible = false;
+                if (chk_todo.Checked)
+                {
+                    dgv_categorias.Columns[3].Visible = true;
+                }
             }
-
+            catch (Exception x)
+            {
+                MessageBox.Show("Error: "+ x);
+            }
             txt_name.Text = "";
             txt_descripcion.Text = "";
-           
-
         }
 
         private void lbl_x_Click(object sender, EventArgs e)

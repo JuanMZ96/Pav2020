@@ -31,107 +31,104 @@ namespace Pav2.Presentacion
 
         private void btn_guardar_Click(object sender, EventArgs e)
         {
-            if (Logica.Objetivos.GuardarObjetivo(txt_nombreCorto.Text, txt_nombreLargo.Text) == false)
+            try
             {
+                if (Logica.Objetivos.GuardarObjetivo(txt_nombreCorto.Text, txt_nombreLargo.Text) == false)
+                {
                     MessageBox.Show("Los campos no pueden estar vacios o el objetivo ya existe.", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                CargarGrilla();
             }
-            CargarGrilla();
-            
-            //if (txt_nombreLargo.TextLength < 101)
-            //{
-            //    if (txt_nombreCorto.Text != "" && txt_nombreLargo.Text != "")
-            //    {
-            //        if (Logica.Objetivos.GuardarObjetivo(txt_nombreCorto.Text, txt_nombreLargo.Text) == false)
-            //        {
-            //            MessageBox.Show("No se pudo guardar.");
-            //        }
-            //        CargarGrilla();
-            //    }
-            //    else
-            //    {
-            //        MessageBox.Show("Los campos no pueden estar vacios.","Alerta", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //    }
-            //}
-            //else
-            //{
-            //    MessageBox.Show("Nombre largo supera el tamaño permitido.", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            //}
-            
+            catch (Exception x){ MessageBox.Show("Error: "+ x); }
         }
 
         private void btn_Modificar_Click(object sender, EventArgs e)
         {
-
-            if (txt_nombreCorto.Text != "" && txt_nombreLargo.Text != "")
+            try
             {
-                int id = Int32.Parse(txt_value.Text);
-                if (Logica.Objetivos.ModificarObjetivo(id, txt_nombreCorto.Text, txt_nombreLargo.Text, chk_estado.Checked) == false)
+                if (txt_nombreCorto.Text != "" && txt_nombreLargo.Text != "")
                 {
-                    MessageBox.Show("No se pudo modificar.","Alerta", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    int id = Int32.Parse(txt_value.Text);
+                    if (Logica.Objetivos.ModificarObjetivo(id, txt_nombreCorto.Text, txt_nombreLargo.Text, chk_estado.Checked) == false)
+                    {
+                        MessageBox.Show("No se pudo modificar.", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    CargarGrilla();
+                    limpiarcampos();
                 }
-                CargarGrilla();
-                limpiarcampos();
+                else
+                {
+                    MessageBox.Show("Los campos no pueden estar vacios.", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
-            else
-            {
-                MessageBox.Show("Los campos no pueden estar vacios.", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            catch (Exception x) { MessageBox.Show("Error: " + x); }
+            
         }
 
         private void btn_Eliminar_Click(object sender, EventArgs e)
         {
-            if (txt_nombreCorto.Text != "" && txt_nombreLargo.Text != "")
+            try
             {
-                int id = Int32.Parse(txt_value.Text);
-                if (Logica.Objetivos.EliminarObjetivo(id, chk_borrado.Checked) == false)
+                if (txt_nombreCorto.Text != "" && txt_nombreLargo.Text != "")
                 {
-                    MessageBox.Show("No se pudo eliminar.");
+                    int id = Int32.Parse(txt_value.Text);
+                    if (Logica.Objetivos.EliminarObjetivo(id, chk_borrado.Checked) == false)
+                    {
+                        MessageBox.Show("No se pudo eliminar.");
+                    }
+                    CargarGrilla();
+                    limpiarcampos();
                 }
-                CargarGrilla();
-                limpiarcampos();
+                else
+                {
+                    MessageBox.Show("Los campos no pueden estar vacios.");
+                }
             }
-            else
-            {
-                MessageBox.Show("Los campos no pueden estar vacios.");
-            }
+            catch (Exception x) { MessageBox.Show("Error: " + x); }
+            
         }
 
         private void CargarGrilla()
         {
-
-            List<Objetivo> T = Logica.Objetivos.MostrarDataObjetivos(chk_todo.Checked);
-            datagridview.DataSource = T;
-            datagridview.Columns[0].Visible = false; //Oculta la columna id_objetivo
-            //dgv_objetivos.Columns[3].Visible = false;
-            datagridview.Columns[4].Visible = false;
-            if (chk_todo.Checked)
+            try
             {
-                datagridview.Columns[3].Visible = true;
-
+                List<Objetivo> T = Logica.Objetivos.MostrarDataObjetivos(chk_todo.Checked);
+                datagridview.DataSource = T;
+                datagridview.Columns[0].Visible = false; //Oculta la columna id_objetivo
+                                                         //dgv_objetivos.Columns[3].Visible = false;
+                datagridview.Columns[4].Visible = false;
+                if (chk_todo.Checked)
+                {
+                    datagridview.Columns[3].Visible = true;
+                }
             }
-
+            catch (Exception x) { MessageBox.Show("Error: " + x); }
+            
             txt_nombreCorto.Text = "";
             txt_nombreLargo.Text = "";
-
-
         }
 
         private void dgv_objetivos_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            DataGridView dgv = sender as DataGridView;
-            if (dgv == null)
-                return;
+            try
+            {
+                DataGridView dgv = sender as DataGridView;
+                if (dgv == null)
+                    return;
 
-
-            Objetivo var1 = (Objetivo)dgv.CurrentRow.DataBoundItem;
-            txt_nombreCorto.Text = var1.nombre_corto;
-            txt_nombreLargo.Text = var1.nombre_largo;
-            txt_value.Text = var1.id_objetivo.ToString();
-            chk_estado.Checked = (bool)var1.borrado;
-            btn_guardar.Enabled = false;
-            btn_Eliminar.Enabled = true;
-            btn_Modificar.Enabled = true;
-
+                Objetivo var1 = (Objetivo)dgv.CurrentRow.DataBoundItem;
+                txt_nombreCorto.Text = var1.nombre_corto;
+                txt_nombreLargo.Text = var1.nombre_largo;
+                txt_value.Text = var1.id_objetivo.ToString();
+                chk_estado.Checked = (bool)var1.borrado;
+                btn_guardar.Enabled = false;
+                btn_Eliminar.Enabled = true;
+                btn_Modificar.Enabled = true;
+            }
+            catch (Exception x)
+            {
+                MessageBox.Show("Error: "+ x);
+            }
         }
 
         private void chk_estado_CheckedChanged(object sender, EventArgs e)

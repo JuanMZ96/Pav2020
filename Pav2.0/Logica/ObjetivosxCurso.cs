@@ -75,7 +75,7 @@ namespace Pav2.Logica
 
         }
 
-        public static ReturnValue ModificarObjetivosxCurso(int idcurso, int idobjetivo, int puntaje, bool estado)
+        public static ReturnValue ModificarObjetivosxCurso(int idcurso, int idobjetivo, int puntaje)
         {
             ReturnValue validador = new ReturnValue() { isSuccess = false };
             using (var Contex = new BugTrackerFinalEntities())
@@ -93,7 +93,7 @@ namespace Pav2.Logica
                         {
                             //seteo OBJCURSO que es la entidad con los get y set
                             if (cursos1.puntos != puntaje) cursos1.puntos = puntaje;
-                            if (cursos1.borrado != estado) cursos1.borrado = estado;
+                            //if (cursos1.borrado != estado) cursos1.borrado = estado;
                             Contex.SaveChanges();
                             validador.isSuccess = true;
                         }
@@ -140,6 +140,36 @@ namespace Pav2.Logica
 
             }
             return var1;
+        }
+        public static ReturnValue HabilitarObjetivoxCurso(int idobjetivo, int idcurso, bool borrado)
+        {
+            ReturnValue validador = new ReturnValue() { isSuccess = false };
+            using (var Contex = new BugTrackerFinalEntities())
+            {
+                try
+                {
+                    var curso = Contex.Cursos.Where(x => x.id_curso == idcurso && x.borrado == false).FirstOrDefault();
+                    var objetivo = Contex.Objetivos.Where(x => x.id_objetivo == idobjetivo && x.borrado == false).FirstOrDefault();
+                    if (curso != null && objetivo != null)
+                    {
+                        var cursos1 = Contex.ObjetivosCursos.Where(x => x.id_objetivo == idobjetivo && x.id_curso == idcurso).FirstOrDefault();
+
+                        if (cursos1 != null)
+                        {
+                            if (cursos1.borrado != borrado) cursos1.borrado = borrado;
+                            Contex.SaveChanges();
+                            validador.isSuccess = true;
+                        }
+                        else { validador.ErrorMessage = "El Objetivo que quiere habilitar no existe."; }
+                    }
+                    else { validador.ErrorMessage = "Seleccionar el objetivo correcto."; }
+                }
+                catch (Exception ex)
+                {
+                    validador.ErrorMessage = ex.Message;
+                }
+            }
+            return validador;
         }
     }
 

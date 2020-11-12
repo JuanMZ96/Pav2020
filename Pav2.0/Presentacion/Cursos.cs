@@ -25,26 +25,47 @@ namespace Pav2.Presentacion
 
         private void btn_guardar_Click_1(object sender, EventArgs e)
         {
-            ReturnValue valido = Logica.Cursos.GuardarCursos(txt_name.Text, txt_descripcion.Text, (int)cmb_categoria.SelectedValue, dtp_datatime.Value);
-            if (valido.isSuccess) { MessageBox.Show("Se creo correctamente"); CargarGrilla(); }
-            else { MessageBox.Show(valido.ErrorMessage, "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
+            try
+            {
+                ReturnValue valido = Logica.Cursos.GuardarCursos(txt_name.Text, txt_descripcion.Text, (int)cmb_categoria.SelectedValue, dtp_datatime.Value);
+                if (valido.isSuccess) { MessageBox.Show("Se creo correctamente"); CargarGrilla(); }
+                else { MessageBox.Show(valido.ErrorMessage, "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
+            }
+            catch (Exception x)
+            {
+                MessageBox.Show("Error: "+ x);
+            }
+            
         }
 
         private void btn_modificar_Click_1(object sender, EventArgs e)
         {
-            int id = Int32.Parse(txt_value.Text);
-            ReturnValue valido = Logica.Cursos.ModificarCursos(id, txt_name.Text, txt_descripcion.Text,chk_estado.Checked, (int)cmb_categoria.SelectedValue, dtp_datatime.Value);
-            if (valido.isSuccess) { MessageBox.Show("Se creo correctamente"); CargarGrilla(); }
-            else { MessageBox.Show(valido.ErrorMessage, "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
-
+            try
+            {
+                int id = Int32.Parse(txt_value.Text);
+                ReturnValue valido = Logica.Cursos.ModificarCursos(id, txt_name.Text, txt_descripcion.Text, chk_estado.Checked, (int)cmb_categoria.SelectedValue, dtp_datatime.Value);
+                if (valido.isSuccess) { MessageBox.Show("Se modificó correctamente"); CargarGrilla(); }
+                else { MessageBox.Show(valido.ErrorMessage, "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
+            }
+            catch (Exception x)
+            {
+                MessageBox.Show("Error: " + x);
+            }
         }
 
         private void btn_borrar_Click_1(object sender, EventArgs e)
         {
-            int id = Int32.Parse(txt_value.Text);
-            ReturnValue valido = Logica.Cursos.EliminarCursos(id, chk_borrado.Checked);
-            if (valido.isSuccess) { MessageBox.Show("Se creo correctamente"); CargarGrilla(); }
-            else { MessageBox.Show(valido.ErrorMessage, "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
+            try
+            {
+                int id = Int32.Parse(txt_value.Text);
+                ReturnValue valido = Logica.Cursos.EliminarCursos(id, chk_borrado.Checked);
+                if (valido.isSuccess) { MessageBox.Show("Se borró correctamente"); CargarGrilla(); }
+                else { MessageBox.Show(valido.ErrorMessage, "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
+            }
+            catch (Exception x)
+            {
+                MessageBox.Show("Error: " + x);
+            }
         }
 
         private void Cursos_Load(object sender, EventArgs e)
@@ -80,16 +101,24 @@ namespace Pav2.Presentacion
         }
         private void dgv_cursos_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            DataGridView dgv = sender as DataGridView;
-            if (dgv == null)
-                return;
-            CursosCustomdgv var1 = (CursosCustomdgv)dgv.CurrentRow.DataBoundItem;
-            txt_value.Text = var1.id_curso.ToString();
-            txt_name.Text = var1.nombre;
-            txt_descripcion.Text = var1.descripcion;
-            dtp_datatime.Value = var1.fecha;
-            chk_estado.Checked = var1.borrado;
-            cmb_categoria.SelectedValue = var1.id_categoria;
+            try
+            {
+                DataGridView dgv = sender as DataGridView;
+                if (dgv == null)
+                    return;
+                CursosCustomdgv var1 = (CursosCustomdgv)dgv.CurrentRow.DataBoundItem;
+                txt_value.Text = var1.id_curso.ToString();
+                txt_name.Text = var1.nombre;
+                txt_descripcion.Text = var1.descripcion;
+                dtp_datatime.Value = var1.fecha;
+                chk_estado.Checked = var1.borrado;
+                cmb_categoria.SelectedValue = var1.id_categoria;
+            }
+            catch (Exception x)
+            {
+                MessageBox.Show("Error: " + x);
+            }
+            
 
 
         }

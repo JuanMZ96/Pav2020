@@ -36,27 +36,29 @@ namespace Pav2.Presentacion
 
         private void CargarGrilla()
         {
-            try 
+            try
             {
                 int curso = (int)cmb_cursos.SelectedValue;
                 List<ObjetivoxCursoCustom> T = ObjetivosxCurso.MostrarGrilla(chk_IncluirBorrados.Checked,curso);
                 dgv_ObjetivosxCurso.DataSource = T;
                 foreach (DataGridViewColumn columns in dgv_ObjetivosxCurso.Columns)
                 {
-                    if ((columns.Index < 2) && (columns.Index < 4))
+                    if (columns.Index < 2) //&& (columns.Index < 4))
                     {
                         columns.Visible = false;
                     }
                 }
+                if (chk_IncluirBorrados.Checked) { dgv_ObjetivosxCurso.Columns[5].Visible = true; }
+                else { dgv_ObjetivosxCurso.Columns[5].Visible = false; }
             }
             catch { }
-            
+
 
         }
         private void GestionObjetivoxCurso_Load(object sender, EventArgs e)
         {
             CargarComboObjetivos();
-            
+
         }
 
         private void cmb_cursos_ValueMemberChanged(object sender, EventArgs e)
@@ -71,12 +73,19 @@ namespace Pav2.Presentacion
 
         private void btn_modificar_Click(object sender, EventArgs e)
         {
-            int idCurso = (int)cmb_cursos.SelectedValue;
-            int idobjetivo = (int)cmb_objetivos.SelectedValue;
-            int puntaje = Int32.Parse(txt_puntaje.Text);
-            ReturnValue valido = Logica.ObjetivosxCurso.ModificarObjetivosxCurso(idCurso, idobjetivo, puntaje, chk_estado.Checked);
-            if (valido.isSuccess) { MessageBox.Show("Se modifico correctamente"); CargarGrilla(); }
-            else { MessageBox.Show(valido.ErrorMessage); }
+            try
+            {
+                int idCurso = (int)cmb_cursos.SelectedValue;
+                int idobjetivo = (int)cmb_objetivos.SelectedValue;
+                int puntaje = Int32.Parse(txt_puntaje.Text);
+                ReturnValue valido = Logica.ObjetivosxCurso.ModificarObjetivosxCurso(idCurso, idobjetivo, puntaje);
+                if (valido.isSuccess) { MessageBox.Show("Se modifico correctamente"); CargarGrilla(); }
+                else { MessageBox.Show(valido.ErrorMessage); }
+            }
+            catch (Exception x)
+            {
+                MessageBox.Show("Error: " + x);
+            }
         }
 
         private void dgv_ObjetivosxCurso_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -88,12 +97,11 @@ namespace Pav2.Presentacion
                 ObjetivoxCursoCustom var1 = (ObjetivoxCursoCustom)dgv.CurrentRow.DataBoundItem;
                 cmb_objetivos.SelectedValue = var1.id_objetivo;
                 txt_puntaje.Text = var1.puntos.ToString();
-                chk_estado.Checked = (bool)var1.borrado;
+                //chk_estado.Checked = (bool)var1.borrado;
+                if (var1.borrado == true) { btn_habilitar.Visible = true; btn_modificar.Enabled = false; }
+                else { btn_habilitar.Visible = false; btn_modificar.Enabled = true; }
             }
-            catch {
-            }
-            
-
+            catch (Exception x) { MessageBox.Show("Error: " + x); }
         }
 
         private void chk_borrado_CheckedChanged(object sender, EventArgs e)
@@ -103,12 +111,37 @@ namespace Pav2.Presentacion
 
         private void btn_eliminar_Click(object sender, EventArgs e)
         {
-            int idCurso = (int)cmb_cursos.SelectedValue;
-            int idobjetivo = (int)cmb_objetivos.SelectedValue;
-            ReturnValue valido = Logica.ObjetivosxCurso.EliminarObjetivosxCurso(idCurso, idobjetivo, chk_borrado.Checked);
-            if (valido.isSuccess) { MessageBox.Show("Se borro correctamente"); CargarGrilla(); }
-            else { MessageBox.Show(valido.ErrorMessage); }
-
+            try
+            {
+                int idCurso = (int)cmb_cursos.SelectedValue;
+                int idobjetivo = (int)cmb_objetivos.SelectedValue;
+                ReturnValue valido = Logica.ObjetivosxCurso.EliminarObjetivosxCurso(idCurso, idobjetivo, chk_borrado.Checked);
+                if (valido.isSuccess) { MessageBox.Show("Se borro correctamente"); CargarGrilla(); }
+                else { MessageBox.Show(valido.ErrorMessage); }
+            }
+            catch (Exception x)
+            {
+                MessageBox.Show("Error: " + x);
+            }
         }
+
+        private void btn_habilitar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int idCurso = (int)cmb_cursos.SelectedValue;
+                int idObjetivo = (int)cmb_objetivos.SelectedValue;
+                bool borrado = false;
+                ReturnValue valido = Logica.ObjetivosxCurso.HabilitarObjetivoxCurso(idObjetivo,idCurso, borrado);
+                if (valido.isSuccess) { MessageBox.Show("Objetivo habilitado.", "", MessageBoxButtons.OK, MessageBoxIcon.Information); CargarGrilla(); }
+                else { MessageBox.Show(valido.ErrorMessage); }
+                //limpiarCampos();
+            }
+            catch (Exception x)
+            {
+                MessageBox.Show("Error: " + x);
+            }
+        }
+        
     }
 }

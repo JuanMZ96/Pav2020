@@ -161,7 +161,7 @@ namespace Pav2.Logica
                 var result = from usucurso in Contex.UsuariosCursos
                              select new UsuarioxCursoCustom();
                 // ----------------------
-                if(tipo == "Usuario")
+                if (tipo == "Usuario")
                 {
                     result = from usuarioCurso in Contex.UsuariosCursos
                                  join usuarios in Contex.Usuarios
@@ -205,7 +205,7 @@ namespace Pav2.Logica
                 }
                 if (!borrado) { result = result.Where(x => (bool)x.borrado == false); }
                 // ----------------------
-                
+
                 return result.ToList();
             }
 
