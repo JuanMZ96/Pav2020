@@ -21,6 +21,7 @@ namespace Pav2.Presentacion
         {
             InitializeComponent();
             this.principal1 = data;
+            this.ActiveControl = label1;
         }
 
         private void btnIngresar_Click(object sender, EventArgs e)
@@ -72,7 +73,46 @@ namespace Pav2.Presentacion
 
         private void Login_Load(object sender, EventArgs e)
         {
+            
+        }
 
+        private void txt_nameid_Enter(object sender, EventArgs e)
+        {
+            if (txt_nameid.Text == "Usuario") {
+                txt_nameid.Text = "";
+                txt_nameid.ForeColor = Color.Black;
+            }
+        }
+
+        private void txt_nameid_Leave(object sender, EventArgs e)
+        {
+            if (txt_nameid.Text == "") {
+                txt_nameid.Text = "Usuario";
+                txt_nameid.ForeColor = Color.DimGray;
+            }
+        }
+
+        private void txt_pwd_Enter(object sender, EventArgs e)
+        {
+            if (txt_pwd.Text == "Contraseña") {
+                txt_pwd.Text = "";
+                txt_pwd.ForeColor = Color.Black;
+                txt_pwd.UseSystemPasswordChar = true;
+            }
+        }
+
+        private void txt_pwd_Leave(object sender, EventArgs e)
+        {
+            if (txt_pwd.Text == "") {
+                txt_pwd.Text = "Contraseña";
+                txt_pwd.ForeColor = Color.DimGray;
+                txt_pwd.UseSystemPasswordChar = false;
+            }
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            MessageBox.Show("Reestablecer su contraseña no es posible en este momento.", "Lo sentimos...");
         }
     }
     
