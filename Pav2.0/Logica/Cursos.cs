@@ -184,9 +184,9 @@ namespace Pav2.Logica
                 return lista.ToList();
             }
         }
-    }
+    
    
-}
+
         public static ReturnValue HabilitarCursos(int id, bool borrado)
         {
             ReturnValue validador = new ReturnValue() { isSuccess = false };
