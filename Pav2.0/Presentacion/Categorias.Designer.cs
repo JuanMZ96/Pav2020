@@ -34,17 +34,16 @@
             this.txt_name = new System.Windows.Forms.TextBox();
             this.txt_descripcion = new System.Windows.Forms.TextBox();
             this.dgv_categorias = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.txt_value = new System.Windows.Forms.TextBox();
             this.lbl_nombre = new System.Windows.Forms.Label();
             this.lbl_descripcion = new System.Windows.Forms.Label();
             this.lbl_x = new System.Windows.Forms.Label();
             this.chk_todo = new System.Windows.Forms.CheckBox();
-            this.lbl_estado = new System.Windows.Forms.Label();
-            this.chk_estado = new System.Windows.Forms.CheckBox();
             this.chk_borrado = new System.Windows.Forms.CheckBox();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.btn_Habilitar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_categorias)).BeginInit();
             this.SuspendLayout();
             // 
@@ -112,6 +111,33 @@
             this.dgv_categorias.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             this.dgv_categorias.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
+            // Column1
+            // 
+            this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Column1.DataPropertyName = "nombre";
+            this.Column1.HeaderText = "Nombre";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.Width = 69;
+            // 
+            // Column2
+            // 
+            this.Column2.DataPropertyName = "descripcion";
+            this.Column2.HeaderText = "Descripción ";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            // 
+            // Column3
+            // 
+            this.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Column3.DataPropertyName = "borrado";
+            this.Column3.HeaderText = "Borrado";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            this.Column3.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Column3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Column3.Width = 69;
+            // 
             // txt_value
             // 
             this.txt_value.Location = new System.Drawing.Point(12, 163);
@@ -152,31 +178,13 @@
             // chk_todo
             // 
             this.chk_todo.AutoSize = true;
-            this.chk_todo.Location = new System.Drawing.Point(12, 189);
+            this.chk_todo.Location = new System.Drawing.Point(12, 193);
             this.chk_todo.Name = "chk_todo";
             this.chk_todo.Size = new System.Drawing.Size(98, 17);
             this.chk_todo.TabIndex = 11;
             this.chk_todo.Text = "Incluir borrados";
             this.chk_todo.UseVisualStyleBackColor = true;
             this.chk_todo.CheckedChanged += new System.EventHandler(this.chk_estado_CheckedChanged);
-            // 
-            // lbl_estado
-            // 
-            this.lbl_estado.AutoSize = true;
-            this.lbl_estado.Location = new System.Drawing.Point(393, 65);
-            this.lbl_estado.Name = "lbl_estado";
-            this.lbl_estado.Size = new System.Drawing.Size(43, 13);
-            this.lbl_estado.TabIndex = 12;
-            this.lbl_estado.Text = "Estado:";
-            // 
-            // chk_estado
-            // 
-            this.chk_estado.AutoSize = true;
-            this.chk_estado.Location = new System.Drawing.Point(465, 65);
-            this.chk_estado.Name = "chk_estado";
-            this.chk_estado.Size = new System.Drawing.Size(15, 14);
-            this.chk_estado.TabIndex = 13;
-            this.chk_estado.UseVisualStyleBackColor = true;
             // 
             // chk_borrado
             // 
@@ -187,42 +195,26 @@
             this.chk_borrado.TabIndex = 14;
             this.chk_borrado.Text = "EliminarDB";
             this.chk_borrado.UseVisualStyleBackColor = true;
+            this.chk_borrado.Visible = false;
             // 
-            // Column1
+            // btn_Habilitar
             // 
-            this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Column1.DataPropertyName = "nombre";
-            this.Column1.HeaderText = "Nombre";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            this.Column1.Width = 69;
-            // 
-            // Column2
-            // 
-            this.Column2.DataPropertyName = "descripcion";
-            this.Column2.HeaderText = "Descripción ";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            // 
-            // Column3
-            // 
-            this.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Column3.DataPropertyName = "borrado";
-            this.Column3.HeaderText = "Borrado";
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            this.Column3.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Column3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.Column3.Width = 69;
+            this.btn_Habilitar.Location = new System.Drawing.Point(227, 189);
+            this.btn_Habilitar.Name = "btn_Habilitar";
+            this.btn_Habilitar.Size = new System.Drawing.Size(75, 23);
+            this.btn_Habilitar.TabIndex = 15;
+            this.btn_Habilitar.Text = "Habilitar";
+            this.btn_Habilitar.UseVisualStyleBackColor = true;
+            this.btn_Habilitar.Visible = false;
+            this.btn_Habilitar.Click += new System.EventHandler(this.btn_Habilitar_Click);
             // 
             // Categorias
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(602, 209);
+            this.ClientSize = new System.Drawing.Size(602, 222);
+            this.Controls.Add(this.btn_Habilitar);
             this.Controls.Add(this.chk_borrado);
-            this.Controls.Add(this.chk_estado);
-            this.Controls.Add(this.lbl_estado);
             this.Controls.Add(this.chk_todo);
             this.Controls.Add(this.lbl_x);
             this.Controls.Add(this.dgv_categorias);
@@ -257,11 +249,10 @@
         private System.Windows.Forms.Label lbl_descripcion;
         private System.Windows.Forms.Label lbl_x;
         private System.Windows.Forms.CheckBox chk_todo;
-        private System.Windows.Forms.Label lbl_estado;
-        private System.Windows.Forms.CheckBox chk_estado;
         private System.Windows.Forms.CheckBox chk_borrado;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Column3;
+        private System.Windows.Forms.Button btn_Habilitar;
     }
 }
