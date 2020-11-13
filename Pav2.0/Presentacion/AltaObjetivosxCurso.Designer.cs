@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AltaObjetivosxCurso));
             this.cmb_cursos = new System.Windows.Forms.ComboBox();
             this.cmb_objetivos = new System.Windows.Forms.ComboBox();
             this.btn_agregar = new System.Windows.Forms.Button();
@@ -122,6 +123,7 @@
             this.Controls.Add(this.btn_agregar);
             this.Controls.Add(this.cmb_objetivos);
             this.Controls.Add(this.cmb_cursos);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AltaObjetivosxCurso";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.ObjetivosxCurso_Load);

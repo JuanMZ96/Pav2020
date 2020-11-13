@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AltaUsuarioxCursoAvance));
             this.txt_Filtro = new System.Windows.Forms.TextBox();
             this.dgv_usuarios = new System.Windows.Forms.DataGridView();
             this.usuario1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -77,7 +78,6 @@
             this.dgv_usuarios.TabIndex = 3;
             this.dgv_usuarios.Visible = false;
             this.dgv_usuarios.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_usuarios_CellClick);
-           
             // 
             // usuario1
             // 
@@ -276,6 +276,7 @@
             this.ClientSize = new System.Drawing.Size(567, 392);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.groupBox1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "AltaUsuarioxCursoAvance";
             this.Text = "Progreso de Curso";

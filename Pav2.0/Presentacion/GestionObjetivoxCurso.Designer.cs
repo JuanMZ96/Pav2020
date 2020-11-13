@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GestionObjetivoxCurso));
             this.dgv_ObjetivosxCurso = new System.Windows.Forms.DataGridView();
             this.cmb_cursos = new System.Windows.Forms.ComboBox();
             this.btn_modificar = new System.Windows.Forms.Button();
@@ -183,6 +184,7 @@
             this.Controls.Add(this.cmb_objetivos);
             this.Controls.Add(this.cmb_cursos);
             this.Controls.Add(this.dgv_ObjetivosxCurso);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "GestionObjetivoxCurso";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.GestionObjetivoxCurso_Load);

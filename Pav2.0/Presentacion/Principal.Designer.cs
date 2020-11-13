@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Principal));
             this.btn_Perfiles = new System.Windows.Forms.Button();
             this.btn_categorias = new System.Windows.Forms.Button();
             this.btn_usuarios = new System.Windows.Forms.Button();
@@ -101,6 +102,7 @@
             this.Controls.Add(this.btn_usuarios);
             this.Controls.Add(this.btn_categorias);
             this.Controls.Add(this.btn_Perfiles);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Principal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Principal";

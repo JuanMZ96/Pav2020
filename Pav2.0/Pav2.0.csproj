@@ -204,6 +204,9 @@
       <DependentUpon>ReportUsuarioCursoAvance.cs</DependentUpon>
     </Compile>
     <Compile Include="SqlServerTypes\Loader.cs" />
+    <EmbeddedResource Include="Presentacion\AltaPerfil.resx">
+      <DependentUpon>AltaPerfil.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\AltaUsuariosxCurso.resx">
       <DependentUpon>AltaUsuariosxCurso.cs</DependentUpon>
     </EmbeddedResource>

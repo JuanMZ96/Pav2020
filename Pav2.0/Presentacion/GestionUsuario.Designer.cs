@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GestionUsuario));
             this.dgv_usuarios = new System.Windows.Forms.DataGridView();
             this.txt_name = new System.Windows.Forms.TextBox();
             this.txt_password = new System.Windows.Forms.TextBox();
@@ -163,6 +164,7 @@
             this.Controls.Add(this.txt_password);
             this.Controls.Add(this.txt_name);
             this.Controls.Add(this.dgv_usuarios);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "GestionUsuario";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.GestionUsuario_Load);

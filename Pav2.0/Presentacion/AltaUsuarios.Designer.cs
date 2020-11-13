@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AltaUsuarios));
             this.txt_nombre = new System.Windows.Forms.TextBox();
             this.txt_pw = new System.Windows.Forms.TextBox();
             this.cmb_perfiles = new System.Windows.Forms.ComboBox();
@@ -133,6 +134,7 @@
             this.Controls.Add(this.cmb_perfiles);
             this.Controls.Add(this.txt_pw);
             this.Controls.Add(this.txt_nombre);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AltaUsuarios";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Usuarios";
