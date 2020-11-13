@@ -99,10 +99,10 @@
     <Compile Include="Logica\Perfiles.cs" />
     <Compile Include="Logica\Usuarios.cs" />
     <Compile Include="Logica\UsuariosxCurso.cs" />
-    <Compile Include="Presentacion\AltaPerfil.cs">
+    <Compile Include="Fuera del dominio\AltaPerfil.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Presentacion\AltaPerfil.Designer.cs">
+    <Compile Include="Fuera del dominio\AltaPerfil.Designer.cs">
       <DependentUpon>AltaPerfil.cs</DependentUpon>
     </Compile>
     <Compile Include="Presentacion\Cursos.cs">
@@ -141,10 +141,10 @@
     <Compile Include="Presentacion\GestionPermisos.Designer.cs">
       <DependentUpon>GestionPermisos.cs</DependentUpon>
     </Compile>
-    <Compile Include="Presentacion\GestionUsuario.cs">
+    <Compile Include="Fuera del dominio\GestionUsuario.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Presentacion\GestionUsuario.Designer.cs">
+    <Compile Include="Fuera del dominio\GestionUsuario.Designer.cs">
       <DependentUpon>GestionUsuario.cs</DependentUpon>
     </Compile>
     <Compile Include="Presentacion\GestionUsuarioxCurso.cs">
@@ -165,10 +165,10 @@
     <Compile Include="Presentacion\AltaUsuarios.Designer.cs">
       <DependentUpon>AltaUsuarios.cs</DependentUpon>
     </Compile>
-    <Compile Include="Presentacion\GestionPerfiles.cs">
+    <Compile Include="Fuera del dominio\GestionPerfiles.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Presentacion\GestionPerfiles.Designer.cs">
+    <Compile Include="Fuera del dominio\GestionPerfiles.Designer.cs">
       <DependentUpon>GestionPerfiles.cs</DependentUpon>
     </Compile>
     <Compile Include="Presentacion\Principal.cs">
@@ -204,7 +204,7 @@
       <DependentUpon>ReportUsuarioCursoAvance.cs</DependentUpon>
     </Compile>
     <Compile Include="SqlServerTypes\Loader.cs" />
-    <EmbeddedResource Include="Presentacion\AltaPerfil.resx">
+    <EmbeddedResource Include="Fuera del dominio\AltaPerfil.resx">
       <DependentUpon>AltaPerfil.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\AltaUsuariosxCurso.resx">
@@ -225,13 +225,13 @@
     <EmbeddedResource Include="Presentacion\GestionObjetivoxCurso.resx">
       <DependentUpon>GestionObjetivoxCurso.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Presentacion\GestionPerfiles.resx">
+    <EmbeddedResource Include="Fuera del dominio\GestionPerfiles.resx">
       <DependentUpon>GestionPerfiles.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\GestionPermisos.resx">
       <DependentUpon>GestionPermisos.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Presentacion\GestionUsuario.resx">
+    <EmbeddedResource Include="Fuera del dominio\GestionUsuario.resx">
       <DependentUpon>GestionUsuario.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\GestionUsuarioxCurso.resx">

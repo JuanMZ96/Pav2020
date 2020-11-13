@@ -30,13 +30,13 @@
         {
             this.cmb_perfiles = new System.Windows.Forms.ComboBox();
             this.dgv_formularios = new System.Windows.Forms.DataGridView();
+            this.id_formulario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cheked = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.btn_agregar = new System.Windows.Forms.Button();
             this.btn_modificar = new System.Windows.Forms.Button();
             this.btn_eliminar = new System.Windows.Forms.Button();
             this.chk_todo = new System.Windows.Forms.CheckBox();
-            this.id_formulario = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cheked = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_formularios)).BeginInit();
             this.SuspendLayout();
             // 
@@ -60,6 +60,25 @@
             this.dgv_formularios.Name = "dgv_formularios";
             this.dgv_formularios.Size = new System.Drawing.Size(261, 242);
             this.dgv_formularios.TabIndex = 2;
+            // 
+            // id_formulario
+            // 
+            this.id_formulario.DataPropertyName = "id_formulario";
+            this.id_formulario.HeaderText = "Id";
+            this.id_formulario.Name = "id_formulario";
+            this.id_formulario.ReadOnly = true;
+            // 
+            // nombre
+            // 
+            this.nombre.DataPropertyName = "nombre";
+            this.nombre.HeaderText = "Nombre";
+            this.nombre.Name = "nombre";
+            this.nombre.ReadOnly = true;
+            // 
+            // cheked
+            // 
+            this.cheked.HeaderText = "Habilitado";
+            this.cheked.Name = "cheked";
             // 
             // btn_agregar
             // 
@@ -98,30 +117,11 @@
             this.chk_todo.Text = "checkBox1";
             this.chk_todo.UseVisualStyleBackColor = true;
             // 
-            // id_formulario
-            // 
-            this.id_formulario.DataPropertyName = "id_formulario";
-            this.id_formulario.HeaderText = "Id";
-            this.id_formulario.Name = "id_formulario";
-            this.id_formulario.ReadOnly = true;
-            // 
-            // nombre
-            // 
-            this.nombre.DataPropertyName = "nombre";
-            this.nombre.HeaderText = "Nombre";
-            this.nombre.Name = "nombre";
-            this.nombre.ReadOnly = true;
-            // 
-            // cheked
-            // 
-            this.cheked.HeaderText = "Habilitado";
-            this.cheked.Name = "cheked";
-            // 
             // GestionPermisos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(523, 316);
+            this.ClientSize = new System.Drawing.Size(418, 316);
             this.Controls.Add(this.chk_todo);
             this.Controls.Add(this.btn_eliminar);
             this.Controls.Add(this.btn_modificar);

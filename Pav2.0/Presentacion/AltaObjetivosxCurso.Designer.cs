@@ -42,7 +42,7 @@
             // cmb_cursos
             // 
             this.cmb_cursos.FormattingEnabled = true;
-            this.cmb_cursos.Location = new System.Drawing.Point(143, 29);
+            this.cmb_cursos.Location = new System.Drawing.Point(79, 30);
             this.cmb_cursos.Name = "cmb_cursos";
             this.cmb_cursos.Size = new System.Drawing.Size(121, 21);
             this.cmb_cursos.TabIndex = 0;
@@ -51,14 +51,14 @@
             // cmb_objetivos
             // 
             this.cmb_objetivos.FormattingEnabled = true;
-            this.cmb_objetivos.Location = new System.Drawing.Point(143, 55);
+            this.cmb_objetivos.Location = new System.Drawing.Point(79, 56);
             this.cmb_objetivos.Name = "cmb_objetivos";
             this.cmb_objetivos.Size = new System.Drawing.Size(121, 21);
             this.cmb_objetivos.TabIndex = 1;
             // 
             // btn_agregar
             // 
-            this.btn_agregar.Location = new System.Drawing.Point(284, 29);
+            this.btn_agregar.Location = new System.Drawing.Point(220, 30);
             this.btn_agregar.Name = "btn_agregar";
             this.btn_agregar.Size = new System.Drawing.Size(75, 23);
             this.btn_agregar.TabIndex = 2;
@@ -68,7 +68,7 @@
             // 
             // btn_gestion
             // 
-            this.btn_gestion.Location = new System.Drawing.Point(284, 80);
+            this.btn_gestion.Location = new System.Drawing.Point(220, 81);
             this.btn_gestion.Name = "btn_gestion";
             this.btn_gestion.Size = new System.Drawing.Size(75, 23);
             this.btn_gestion.TabIndex = 3;
@@ -78,7 +78,7 @@
             // 
             // txt_puntaje
             // 
-            this.txt_puntaje.Location = new System.Drawing.Point(143, 83);
+            this.txt_puntaje.Location = new System.Drawing.Point(79, 84);
             this.txt_puntaje.Name = "txt_puntaje";
             this.txt_puntaje.Size = new System.Drawing.Size(121, 20);
             this.txt_puntaje.TabIndex = 4;
@@ -86,7 +86,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(76, 37);
+            this.label1.Location = new System.Drawing.Point(12, 38);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(39, 13);
             this.label1.TabIndex = 5;
@@ -95,7 +95,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(76, 63);
+            this.label2.Location = new System.Drawing.Point(12, 64);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(51, 13);
             this.label2.TabIndex = 6;
@@ -104,7 +104,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(76, 90);
+            this.label3.Location = new System.Drawing.Point(12, 91);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(43, 13);
             this.label3.TabIndex = 7;
@@ -114,7 +114,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(418, 130);
+            this.ClientSize = new System.Drawing.Size(341, 130);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -125,7 +125,7 @@
             this.Controls.Add(this.cmb_cursos);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AltaObjetivosxCurso";
-            this.Text = "Form1";
+            this.Text = "Alta objetivo";
             this.Load += new System.EventHandler(this.ObjetivosxCurso_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

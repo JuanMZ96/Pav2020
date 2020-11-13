@@ -69,7 +69,7 @@
             // 
             // btn_modificar
             // 
-            this.btn_modificar.Location = new System.Drawing.Point(610, 8);
+            this.btn_modificar.Location = new System.Drawing.Point(438, 8);
             this.btn_modificar.Name = "btn_modificar";
             this.btn_modificar.Size = new System.Drawing.Size(75, 23);
             this.btn_modificar.TabIndex = 3;
@@ -79,7 +79,7 @@
             // 
             // btn_eliminar
             // 
-            this.btn_eliminar.Location = new System.Drawing.Point(610, 49);
+            this.btn_eliminar.Location = new System.Drawing.Point(438, 51);
             this.btn_eliminar.Name = "btn_eliminar";
             this.btn_eliminar.Size = new System.Drawing.Size(75, 23);
             this.btn_eliminar.TabIndex = 4;
@@ -101,7 +101,7 @@
             // 
             // txt_puntaje
             // 
-            this.txt_puntaje.Location = new System.Drawing.Point(349, 34);
+            this.txt_puntaje.Location = new System.Drawing.Point(310, 34);
             this.txt_puntaje.Name = "txt_puntaje";
             this.txt_puntaje.Size = new System.Drawing.Size(121, 20);
             this.txt_puntaje.TabIndex = 6;
@@ -113,7 +113,7 @@
             this.cmb_objetivos.FormattingEnabled = true;
             this.cmb_objetivos.Items.AddRange(new object[] {
             "-"});
-            this.cmb_objetivos.Location = new System.Drawing.Point(170, 34);
+            this.cmb_objetivos.Location = new System.Drawing.Point(155, 34);
             this.cmb_objetivos.Name = "cmb_objetivos";
             this.cmb_objetivos.Size = new System.Drawing.Size(121, 21);
             this.cmb_objetivos.TabIndex = 2;
@@ -121,7 +121,7 @@
             // chk_borrado
             // 
             this.chk_borrado.AutoSize = true;
-            this.chk_borrado.Location = new System.Drawing.Point(610, 91);
+            this.chk_borrado.Location = new System.Drawing.Point(519, 57);
             this.chk_borrado.Name = "chk_borrado";
             this.chk_borrado.Size = new System.Drawing.Size(69, 17);
             this.chk_borrado.TabIndex = 8;
@@ -140,7 +140,7 @@
             // lbl_objetivos
             // 
             this.lbl_objetivos.AutoSize = true;
-            this.lbl_objetivos.Location = new System.Drawing.Point(167, 18);
+            this.lbl_objetivos.Location = new System.Drawing.Point(152, 18);
             this.lbl_objetivos.Name = "lbl_objetivos";
             this.lbl_objetivos.Size = new System.Drawing.Size(54, 13);
             this.lbl_objetivos.TabIndex = 10;
@@ -149,7 +149,7 @@
             // lbl_puntaje
             // 
             this.lbl_puntaje.AutoSize = true;
-            this.lbl_puntaje.Location = new System.Drawing.Point(346, 18);
+            this.lbl_puntaje.Location = new System.Drawing.Point(307, 18);
             this.lbl_puntaje.Name = "lbl_puntaje";
             this.lbl_puntaje.Size = new System.Drawing.Size(46, 13);
             this.lbl_puntaje.TabIndex = 11;
@@ -171,7 +171,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(697, 450);
+            this.ClientSize = new System.Drawing.Size(589, 450);
             this.Controls.Add(this.btn_habilitar);
             this.Controls.Add(this.lbl_puntaje);
             this.Controls.Add(this.lbl_objetivos);
@@ -186,7 +186,7 @@
             this.Controls.Add(this.dgv_ObjetivosxCurso);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "GestionObjetivoxCurso";
-            this.Text = "Form1";
+            this.Text = "Gestion de Objetivo por Curso";
             this.Load += new System.EventHandler(this.GestionObjetivoxCurso_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_ObjetivosxCurso)).EndInit();
             this.ResumeLayout(false);
