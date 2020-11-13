@@ -8,7 +8,7 @@ namespace Pav2.Logica
 {
     class UsuarioxCursoAvance
     {
-        public static ReturnValue GuardarUsuarioxCursoAvance(int idusuario, int idcurso, DateTime fechainicio, DateTime fechafin, int porcentaje) {
+        public static ReturnValue GuardarUsuarioxCursoAvance(int idusuario, int idcurso, DateTime FechaAhora, DateTime fechafin, int porcentaje) {
             ReturnValue validador = new ReturnValue() { isSuccess = false };
             UsuariosCursoAvance AvanceNuevo = new UsuariosCursoAvance();
             using (var context = new BugTrackerFinalEntities())
@@ -22,14 +22,14 @@ namespace Pav2.Logica
                         var check = context.UsuariosCursoAvances.Where(x => x.id_usuario == idusuario &&
                                                                                      x.id_curso == idcurso).ToList();
                         ReturnValue check2 = validarPorcentaje(check, porcentaje);
-                        ReturnValue check3 = validarFechas(usuarioCurso, fechainicio);
+                        ReturnValue check3 = validarFechas(usuarioCurso, FechaAhora);
                         if (check3.isSuccess)
                         {
                             if (check2.isSuccess)
                             {
                                 AvanceNuevo.id_usuario = idusuario;
                                 AvanceNuevo.id_curso = idcurso;
-                                AvanceNuevo.inicio = fechainicio;
+                                AvanceNuevo.inicio = FechaAhora;
                                 AvanceNuevo.fin = fechafin;
                                 AvanceNuevo.porc_avance = porcentaje;
                                 AvanceNuevo.borrado = false;
@@ -49,15 +49,15 @@ namespace Pav2.Logica
         }
         public static ReturnValue validarPorcentaje( List<UsuariosCursoAvance> clase, int porcentaje)
         {
-
+            
             ReturnValue validador = new ReturnValue() { isSuccess = true };
-
             if (porcentaje > 100) 
             { validador.isSuccess = false; validador.ErrorMessage = "El porcentaje cargado es mayor a 100";
                 return validador;
             }
             foreach (var item in clase)
             {
+                if(item.porc_avance == porcentaje) { validador.isSuccess = false; validador.ErrorMessage = "Ese porcentaje ya esta cargado"; break; }
                 if(item.porc_avance > porcentaje) 
                 {
                     validador.isSuccess = false; validador.ErrorMessage = "El porcentaje cargado es menor a los que hay"; break;
@@ -67,9 +67,9 @@ namespace Pav2.Logica
 
         }
 
-        public static ReturnValue validarFechas(dynamic clase, DateTime fechainicio) {
+        public static ReturnValue validarFechas(dynamic clase, DateTime fechaAhora) {
             ReturnValue validador = new ReturnValue { isSuccess = true };
-            int resultado = DateTime.Compare(fechainicio, (DateTime)clase.fecha_fin);
+            int resultado = DateTime.Compare(fechaAhora, (DateTime)clase.fecha_fin);
             if(resultado >= 0)
             {
                 validador.isSuccess = false;

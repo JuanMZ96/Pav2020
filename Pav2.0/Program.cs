@@ -1,5 +1,6 @@
 ﻿
 using Pav2.Presentacion;
+using Pav2.Reports;
 using System;
 using System.Collections.Generic;
 using System.Linq;

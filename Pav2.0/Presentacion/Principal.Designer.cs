@@ -28,11 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Principal));
             this.btn_Perfiles = new System.Windows.Forms.Button();
             this.btn_categorias = new System.Windows.Forms.Button();
             this.btn_usuarios = new System.Windows.Forms.Button();
             this.lbl_perfil = new System.Windows.Forms.Label();
             this.lbl_usuario = new System.Windows.Forms.Label();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.SuspendLayout();
             // 
             // btn_Perfiles
@@ -100,6 +102,7 @@
             this.Controls.Add(this.btn_usuarios);
             this.Controls.Add(this.btn_categorias);
             this.Controls.Add(this.btn_Perfiles);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Principal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Principal";
@@ -118,5 +121,6 @@
         private System.Windows.Forms.Button btn_usuarios;
         private System.Windows.Forms.Label lbl_perfil;
         private System.Windows.Forms.Label lbl_usuario;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }

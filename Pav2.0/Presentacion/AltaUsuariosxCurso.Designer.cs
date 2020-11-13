@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AltaUsuariosxCurso));
             this.lbl_Usuario = new System.Windows.Forms.Label();
             this.lbl_Observaciones = new System.Windows.Forms.Label();
             this.lbl_Puntuación = new System.Windows.Forms.Label();
@@ -188,6 +189,7 @@
             this.Controls.Add(this.lbl_Puntuación);
             this.Controls.Add(this.lbl_Observaciones);
             this.Controls.Add(this.lbl_Usuario);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AltaUsuariosxCurso";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

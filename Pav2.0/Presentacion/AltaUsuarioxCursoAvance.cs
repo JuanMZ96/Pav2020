@@ -80,7 +80,7 @@ namespace Pav2.Presentacion
         {
             int idusuario = Int32.Parse(txt_usuario.Text);
             int idcurso = Int32.Parse(txt_curso.Text);
-            DateTime fechaInicio =DateTime.Parse(DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss"));
+            DateTime fechaInicio =DateTime.Parse(DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss"));
             DateTime fechaFin = dtp_fin.Value;
             int porcentaje = Int32.Parse(txt_porcentaje.Text);
             ReturnValue valido = Logica.UsuarioxCursoAvance.GuardarUsuarioxCursoAvance(idusuario, idcurso, fechaInicio, fechaFin, porcentaje);
@@ -97,7 +97,7 @@ namespace Pav2.Presentacion
             txt_curso.Text = var1.id_curso.ToString();
             dtp_fin.Value = var1.fecha_fin;
         }
-
+        
         public void accionCargarProgreso(bool accion)
         {
 
@@ -212,6 +212,8 @@ namespace Pav2.Presentacion
             }
             catch { }
         }
+
+        
     }
        
 }

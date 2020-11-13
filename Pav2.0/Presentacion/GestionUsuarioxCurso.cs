@@ -22,6 +22,7 @@ namespace Pav2.Presentacion
         {
             cmb_TipoBusqueda.Items.Add("Usuario");
             cmb_TipoBusqueda.Items.Add("Curso");
+            cmb_TipoBusqueda.Items.Add("Fecha");
         }
         private void CargarComboUsuarios()
         {
@@ -190,6 +191,7 @@ namespace Pav2.Presentacion
                 CargarComboCursos();
                 CargarComboUsuarios();
             }
+            
         }
         private void cmb_Curso_SelectedValueChanged(object sender, EventArgs e)
         {

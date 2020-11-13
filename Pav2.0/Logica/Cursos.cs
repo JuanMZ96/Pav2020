@@ -109,7 +109,7 @@ namespace Pav2.Logica
             return var1;
         }
 
-        public static List<CursosCustomdgv> CargarGrilla(bool borrado)
+        public static List<CursosCustomdgv> CargarGrillaCustom(bool borrado)
         {
 
             using (var contex = new BugTrackerFinalEntities())
@@ -152,6 +152,41 @@ namespace Pav2.Logica
                 return q;
             }
         }
+
+        public static List<Curso> FiltrarDataCurso(string filtro)
+        {
+            var Contex = new BugTrackerFinalEntities();
+            var lista = from Curso in Contex.Cursos
+                        where Curso.borrado != true
+                        && Curso.nombre.IndexOf(filtro) >= 0
+                        select Curso;
+            return lista.ToList();
+        }
+
+        public static List<Curso> MostrarDataCurso(bool estado)
+        {
+
+            if (estado == false)
+            {
+                var Contex = new BugTrackerFinalEntities();
+                var lista = from Curso in Contex.Cursos
+                            where Curso.borrado != true
+                            select Curso;
+                return lista.ToList();
+
+            }
+            else
+            {
+                var Contex = new BugTrackerFinalEntities();
+                var lista = from Curso in Contex.Cursos
+
+                            select Curso;
+                return lista.ToList();
+            }
+        }
+    }
+   
+}
         public static ReturnValue HabilitarCursos(int id, bool borrado)
         {
             ReturnValue validador = new ReturnValue() { isSuccess = false };

@@ -68,7 +68,7 @@ namespace Pav2.Presentacion
 
         private void cmb_cursos_Click(object sender, EventArgs e)
         {
-            CargarComboCursos();
+            if(cmb_cursos.SelectedValue == null) { CargarComboCursos(); chk_IncluirBorrados.Enabled = true;}
         }
 
         private void btn_modificar_Click(object sender, EventArgs e)
@@ -142,6 +142,7 @@ namespace Pav2.Presentacion
                 MessageBox.Show("Error: " + x);
             }
         }
-        
+
+       
     }
 }

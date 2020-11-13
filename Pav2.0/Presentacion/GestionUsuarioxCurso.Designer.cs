@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GestionUsuarioxCurso));
             this.btn_Modificar = new System.Windows.Forms.Button();
             this.lbl_usuario = new System.Windows.Forms.Label();
             this.dtp_FechaFin = new System.Windows.Forms.DateTimePicker();
@@ -332,6 +333,7 @@
             this.Controls.Add(this.dtp_FechaFin);
             this.Controls.Add(this.lbl_usuario);
             this.Controls.Add(this.btn_Modificar);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "GestionUsuarioxCurso";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

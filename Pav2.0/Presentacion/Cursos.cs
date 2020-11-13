@@ -85,7 +85,7 @@ namespace Pav2.Presentacion
         }
         private void CargarGrilla()
         {
-            List<CustomClass.CursosCustomdgv> T = Logica.Cursos.CargarGrilla(chk_todo.Checked);
+            List<CustomClass.CursosCustomdgv> T = Logica.Cursos.CargarGrillaCustom(chk_todo.Checked);
             dgv_cursos.DataSource = T;
             foreach (DataGridViewColumn columns in dgv_cursos.Columns)
             {
