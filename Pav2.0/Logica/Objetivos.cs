@@ -13,7 +13,7 @@ namespace Pav2.Logica
         {
             bool guardar = false;
             Objetivo obj1 = new Objetivo();
-            
+
 
             using (var Contex = new BugTrackerFinalEntities())
             {
@@ -45,7 +45,7 @@ namespace Pav2.Logica
             return guardar;
         }
 
-        public static bool ModificarObjetivo(int id, string nombreCorto, string nombreLargo, bool estado)
+        public static bool ModificarObjetivo(int id, string nombreCorto, string nombreLargo)
         {
             bool modificar = false;
 
@@ -63,11 +63,7 @@ namespace Pav2.Logica
                     {
                         q.nombre_largo = nombreLargo;
                     }
-                    if (q.borrado != estado)
-                    {
-                        q.borrado = estado;
-                    }
-
+                    
                     Contex.SaveChanges();
                     modificar = true;
                 }
@@ -155,6 +151,29 @@ namespace Pav2.Logica
                 return q.ToList();
             }
         }
+        public static ReturnValue habilitarObjetivo(int id, bool borrado)
+        {
+            ReturnValue validador = new ReturnValue() { isSuccess = false };
+            using (var Contex = new BugTrackerFinalEntities())
+            {
+                try
+                {
+                    var Obj = Contex.Objetivos.Where(x => x.id_objetivo == id && x.borrado == true).FirstOrDefault();
 
+                    if (Obj != null)
+                    {
+                        if (Obj.borrado != borrado) Obj.borrado = borrado;
+                        Contex.SaveChanges();
+                        validador.isSuccess = true;
+                    }
+                    else { validador.ErrorMessage = "Seleccionar el Objetivo correcto."; }
+                }
+                catch (Exception ex)
+                {
+                    validador.ErrorMessage = ex.Message;
+                }
+            }
+            return validador;
+        }
     }
 }

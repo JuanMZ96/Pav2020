@@ -25,7 +25,7 @@ namespace Pav2.Presentacion
             CargarGrilla();
             btn_Eliminar.Enabled = false;
             btn_Modificar.Enabled = false;
-            chk_estado.Visible = false;
+            
         }
 
 
@@ -49,7 +49,7 @@ namespace Pav2.Presentacion
                 if (txt_nombreCorto.Text != "" && txt_nombreLargo.Text != "")
                 {
                     int id = Int32.Parse(txt_value.Text);
-                    if (Logica.Objetivos.ModificarObjetivo(id, txt_nombreCorto.Text, txt_nombreLargo.Text, chk_estado.Checked) == false)
+                    if (Logica.Objetivos.ModificarObjetivo(id, txt_nombreCorto.Text, txt_nombreLargo.Text) == false)
                     {
                         MessageBox.Show("No se pudo modificar.", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
@@ -95,7 +95,7 @@ namespace Pav2.Presentacion
                 List<Objetivo> T = Logica.Objetivos.MostrarDataObjetivos(chk_todo.Checked);
                 datagridview.DataSource = T;
                 datagridview.Columns[0].Visible = false; //Oculta la columna id_objetivo
-                                                         //dgv_objetivos.Columns[3].Visible = false;
+                datagridview.Columns[3].Visible = false;
                 datagridview.Columns[4].Visible = false;
                 if (chk_todo.Checked)
                 {
@@ -120,10 +120,11 @@ namespace Pav2.Presentacion
                 txt_nombreCorto.Text = var1.nombre_corto;
                 txt_nombreLargo.Text = var1.nombre_largo;
                 txt_value.Text = var1.id_objetivo.ToString();
-                chk_estado.Checked = (bool)var1.borrado;
                 btn_guardar.Enabled = false;
                 btn_Eliminar.Enabled = true;
                 btn_Modificar.Enabled = true;
+                if (var1.borrado == true) { btn_habilitar.Visible = true; btn_Modificar.Enabled = false; }
+                else { btn_habilitar.Visible = false; btn_Modificar.Enabled = true; }
             }
             catch (Exception x)
             {
@@ -131,16 +132,16 @@ namespace Pav2.Presentacion
             }
         }
 
-        private void chk_estado_CheckedChanged(object sender, EventArgs e)
-        {
-            //CargarGrilla();
-            chk_estado.Visible = chk_todo.Checked;
-        }
+        //private void chk_estado_CheckedChanged(object sender, EventArgs e)
+        //{
+        //    //CargarGrilla();
+            
+        //}
 
         private void chk_todo_CheckedChanged(object sender, EventArgs e)
         {
             CargarGrilla();
-            chk_estado.Visible = chk_todo.Checked;
+            
         }
 
 
@@ -149,8 +150,10 @@ namespace Pav2.Presentacion
             txt_nombreCorto.Clear();
             txt_nombreLargo.Clear();
             txt_value.Clear();
-            chk_estado.Checked = false;
+            //chk_estado.Checked = false;
+            btn_habilitar.Visible = false;
         }
+
 
         private void lbl_equis_Click(object sender, EventArgs e)
         {
@@ -199,6 +202,29 @@ namespace Pav2.Presentacion
         private void btn_habilitar_MouseLeave(object sender, EventArgs e)
         {
             lbl_habilitar.Visible = false;
+        }
+
+        private void btn_habilitar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (txt_nombreCorto.Text != "" && txt_nombreLargo.Text != "")
+                {
+                    int id = Int32.Parse(txt_value.Text);
+                    bool borrado = false;
+                    if (Logica.Objetivos.habilitarObjetivo(id, borrado).isSuccess == false)
+                    {
+                        MessageBox.Show("No se pudo habilitar.");
+                    }
+                    else { MessageBox.Show("Objetivo habilitada."); }
+                    limpiarcampos();
+                    CargarGrilla();
+                }
+            }
+            catch (Exception x)
+            {
+                MessageBox.Show("Error: " + x);
+            }
         }
     } 
 }
