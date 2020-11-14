@@ -191,7 +191,6 @@
             this.Controls.Add(this.lbl_Usuario);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AltaUsuariosxCurso";
-            this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Alta de Usuario por Curso";
             this.Load += new System.EventHandler(this.AltaUsuariosxCurso_Load);

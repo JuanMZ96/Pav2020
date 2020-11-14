@@ -34,10 +34,6 @@
             this.txt_nombreCorto = new System.Windows.Forms.TextBox();
             this.txt_nombreLargo = new System.Windows.Forms.TextBox();
             this.datagridview = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.txt_value = new System.Windows.Forms.TextBox();
             this.chk_borrado = new System.Windows.Forms.CheckBox();
             this.chk_todo = new System.Windows.Forms.CheckBox();
@@ -55,6 +51,11 @@
             this.lbl_habilitar = new System.Windows.Forms.Label();
             this.btn_Modificar = new System.Windows.Forms.PictureBox();
             this.btn_habilitar = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.datagridview)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -64,6 +65,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.btn_Eliminar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btn_Modificar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btn_habilitar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -122,46 +124,6 @@
             this.datagridview.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_objetivos_CellContentClick);
             this.datagridview.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_objetivos_CellContentClick);
             // 
-            // Column1
-            // 
-            this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.Column1.DataPropertyName = "id_objetivo";
-            this.Column1.Frozen = true;
-            this.Column1.HeaderText = "ID ";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            this.Column1.Width = 208;
-            // 
-            // Column2
-            // 
-            this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Column2.DataPropertyName = "nombre_corto";
-            this.Column2.Frozen = true;
-            this.Column2.HeaderText = "Nombre corto";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            this.Column2.Width = 96;
-            // 
-            // Column3
-            // 
-            this.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column3.DataPropertyName = "nombre_largo";
-            this.Column3.HeaderText = "Nombre largo";
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            this.Column3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            // 
-            // Column4
-            // 
-            this.Column4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.Column4.DataPropertyName = "borrado";
-            this.Column4.FalseValue = "false";
-            this.Column4.HeaderText = "Borrado";
-            this.Column4.Name = "Column4";
-            this.Column4.ReadOnly = true;
-            this.Column4.TrueValue = "true";
-            this.Column4.Width = 50;
-            // 
             // txt_value
             // 
             this.txt_value.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
@@ -181,6 +143,7 @@
             this.chk_borrado.TabIndex = 11;
             this.chk_borrado.Text = "Eliminar DB";
             this.chk_borrado.UseVisualStyleBackColor = true;
+            this.chk_borrado.Visible = false;
             // 
             // chk_todo
             // 
@@ -197,11 +160,12 @@
             // lbl_equis
             // 
             this.lbl_equis.AutoSize = true;
+            this.lbl_equis.Image = global::Pav2.Properties.Resources.Clear;
             this.lbl_equis.Location = new System.Drawing.Point(272, 93);
             this.lbl_equis.Name = "lbl_equis";
-            this.lbl_equis.Size = new System.Drawing.Size(14, 13);
+            this.lbl_equis.Size = new System.Drawing.Size(16, 13);
             this.lbl_equis.TabIndex = 13;
-            this.lbl_equis.Text = "X";
+            this.lbl_equis.Text = "   ";
             this.lbl_equis.Click += new System.EventHandler(this.lbl_equis_Click);
             // 
             // dataGridViewTextBoxColumn1
@@ -262,6 +226,7 @@
             this.splitContainer1.Panel2.Controls.Add(this.chk_todo);
             this.splitContainer1.Panel2.Controls.Add(this.datagridview);
             this.splitContainer1.Panel2.Controls.Add(this.txt_value);
+            this.splitContainer1.Panel2.Controls.Add(this.pictureBox1);
             this.splitContainer1.Size = new System.Drawing.Size(970, 564);
             this.splitContainer1.SplitterDistance = 323;
             this.splitContainer1.TabIndex = 14;
@@ -358,9 +323,60 @@
             this.btn_habilitar.Size = new System.Drawing.Size(37, 38);
             this.btn_habilitar.TabIndex = 39;
             this.btn_habilitar.TabStop = false;
+            this.btn_habilitar.Visible = false;
             this.btn_habilitar.Click += new System.EventHandler(this.btn_habilitar_Click);
             this.btn_habilitar.MouseLeave += new System.EventHandler(this.btn_habilitar_MouseLeave);
             this.btn_habilitar.MouseHover += new System.EventHandler(this.btn_habilitar_MouseHover);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::Pav2.Properties.Resources.Add_grey;
+            this.pictureBox1.Location = new System.Drawing.Point(166, 482);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(38, 38);
+            this.pictureBox1.TabIndex = 44;
+            this.pictureBox1.TabStop = false;
+            // 
+            // Column1
+            // 
+            this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.Column1.DataPropertyName = "id_objetivo";
+            this.Column1.Frozen = true;
+            this.Column1.HeaderText = "ID ";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.Width = 208;
+            // 
+            // Column2
+            // 
+            this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Column2.DataPropertyName = "nombre_corto";
+            this.Column2.Frozen = true;
+            this.Column2.HeaderText = "Nombre corto";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            this.Column2.Width = 96;
+            // 
+            // Column3
+            // 
+            this.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column3.DataPropertyName = "nombre_largo";
+            this.Column3.HeaderText = "Nombre largo";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            this.Column3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            // 
+            // Column4
+            // 
+            this.Column4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.Column4.DataPropertyName = "borrado";
+            this.Column4.FalseValue = "false";
+            this.Column4.HeaderText = "Borrado";
+            this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
+            this.Column4.TrueValue = "true";
+            this.Column4.Visible = false;
+            this.Column4.Width = 50;
             // 
             // Objetivos
             // 
@@ -384,6 +400,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.btn_Eliminar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btn_Modificar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btn_habilitar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -402,10 +419,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn Column4;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.Label lbl_guardar;
         private System.Windows.Forms.PictureBox btn_guardar;
@@ -415,5 +428,10 @@
         private System.Windows.Forms.Label lbl_habilitar;
         private System.Windows.Forms.PictureBox btn_Modificar;
         private System.Windows.Forms.PictureBox btn_habilitar;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Column4;
     }
 }

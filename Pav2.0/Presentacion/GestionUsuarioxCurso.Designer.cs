@@ -408,7 +408,6 @@
             this.Controls.Add(this.splitContainer1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "GestionUsuarioxCurso";
-            this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Gestión de Usuarios por Curso";
             this.Load += new System.EventHandler(this.GestionUsuarioxCurso_Load);

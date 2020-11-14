@@ -38,7 +38,7 @@ namespace Pav2.Presentacion
                     {
                         MessageBox.Show("No se pudo guardar.");
                     }
-                    else { MessageBox.Show("Se creó correctamente.", "", MessageBoxButtons.OK, MessageBoxIcon.Information); }
+                    else { MessageBox.Show("Se creó correctamente.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information); }
                     CargarGrilla();
                 }
                 else
@@ -68,7 +68,7 @@ namespace Pav2.Presentacion
                     {
                         MessageBox.Show("No se pudo modificar.");
                     }
-                    else { MessageBox.Show("Se modificó correctamente.", "", MessageBoxButtons.OK, MessageBoxIcon.Information); }
+                    else { MessageBox.Show("Se modificó correctamente.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information); }
                     CargarGrilla();
                     limpiarcampos();
                 }
@@ -99,7 +99,7 @@ namespace Pav2.Presentacion
                         {
                             MessageBox.Show("No se pudo eliminar.");
                         }
-                        else { MessageBox.Show("Se eliminó correctamente.", "", MessageBoxButtons.OK, MessageBoxIcon.Information); }
+                        else { MessageBox.Show("Se eliminó correctamente.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information); }
                     }
                     
                     CargarGrilla();

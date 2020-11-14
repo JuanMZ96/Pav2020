@@ -37,6 +37,8 @@ namespace Pav2.Presentacion
                 {
                     MessageBox.Show("Los campos no pueden estar vacios o el objetivo ya existe.", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+                else { MessageBox.Show("Se creó correctamente.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information); }
+
                 CargarGrilla();
             }
             catch (Exception x){ MessageBox.Show("Error: "+ x); }
@@ -53,6 +55,8 @@ namespace Pav2.Presentacion
                     {
                         MessageBox.Show("No se pudo modificar.", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
+                    else { MessageBox.Show("Se modificó correctamente.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information); }
+
                     CargarGrilla();
                     limpiarcampos();
                 }
@@ -71,11 +75,18 @@ namespace Pav2.Presentacion
             {
                 if (txt_nombreCorto.Text != "" && txt_nombreLargo.Text != "")
                 {
-                    int id = Int32.Parse(txt_value.Text);
-                    if (Logica.Objetivos.EliminarObjetivo(id, chk_borrado.Checked) == false)
+                    DialogResult result = MessageBox.Show("¿Está seguro que desea eliminar? ", "Alerta", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                    if (result == DialogResult.OK)
                     {
-                        MessageBox.Show("No se pudo eliminar.");
+                        int id = Int32.Parse(txt_value.Text);
+                        if (Logica.Objetivos.EliminarObjetivo(id, chk_borrado.Checked) == false)
+                        {
+                            MessageBox.Show("No se pudo eliminar.", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        else { MessageBox.Show("Se eliminó correctamente.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information); }
+
                     }
+
                     CargarGrilla();
                     limpiarcampos();
                 }

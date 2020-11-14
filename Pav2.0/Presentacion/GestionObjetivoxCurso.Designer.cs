@@ -45,6 +45,10 @@
             this.btn_habilitar = new System.Windows.Forms.PictureBox();
             this.btn_modificar = new System.Windows.Forms.PictureBox();
             this.btn_eliminar = new System.Windows.Forms.PictureBox();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_ObjetivosxCurso)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -59,6 +63,11 @@
             // 
             this.dgv_ObjetivosxCurso.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgv_ObjetivosxCurso.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_ObjetivosxCurso.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column1,
+            this.Column2,
+            this.Column3,
+            this.Column4});
             this.dgv_ObjetivosxCurso.Location = new System.Drawing.Point(46, 57);
             this.dgv_ObjetivosxCurso.Name = "dgv_ObjetivosxCurso";
             this.dgv_ObjetivosxCurso.Size = new System.Drawing.Size(542, 321);
@@ -249,6 +258,33 @@
             this.btn_eliminar.MouseLeave += new System.EventHandler(this.btn_eliminar_MouseLeave);
             this.btn_eliminar.MouseHover += new System.EventHandler(this.btn_eliminar_MouseHover);
             // 
+            // Column1
+            // 
+            this.Column1.DataPropertyName = "objetivo_corto";
+            this.Column1.HeaderText = "Objetivo corto";
+            this.Column1.Name = "Column1";
+            // 
+            // Column2
+            // 
+            this.Column2.DataPropertyName = "objetivo_largo";
+            this.Column2.HeaderText = "Objetivo largo";
+            this.Column2.Name = "Column2";
+            // 
+            // Column3
+            // 
+            this.Column3.DataPropertyName = "puntos";
+            this.Column3.HeaderText = "Puntos";
+            this.Column3.Name = "Column3";
+            // 
+            // Column4
+            // 
+            this.Column4.DataPropertyName = "borrado";
+            this.Column4.HeaderText = "Borrado";
+            this.Column4.Name = "Column4";
+            this.Column4.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Column4.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Column4.Visible = false;
+            // 
             // GestionObjetivoxCurso
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -292,5 +328,9 @@
         private System.Windows.Forms.Label lbl_eliminar;
         private System.Windows.Forms.Label lbl_modificar;
         private System.Windows.Forms.Label lbl_habilitar;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Column4;
     }
 }

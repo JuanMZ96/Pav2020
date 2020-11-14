@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Pav2.Logica;
+using Pav2.Reports;
 
 namespace Pav2.Presentacion
 {
@@ -103,6 +104,18 @@ namespace Pav2.Presentacion
         {
             AltaUsuarioxCursoAvance ventana2 = new AltaUsuarioxCursoAvance();
             ventana2.ShowDialog();
+        }
+
+        private void cursosToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            ReportUsuarioCurso reporte = new ReportUsuarioCurso();
+            reporte.ShowDialog();
+        }
+
+        private void avancesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ReportUsuarioCursoAvance reporte = new ReportUsuarioCursoAvance();
+            reporte.ShowDialog();
         }
     }
 }

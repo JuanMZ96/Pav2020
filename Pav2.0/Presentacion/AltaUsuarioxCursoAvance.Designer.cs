@@ -263,9 +263,9 @@
             this.lbl_seleccionarCurso.AutoSize = true;
             this.lbl_seleccionarCurso.Location = new System.Drawing.Point(163, 22);
             this.lbl_seleccionarCurso.Name = "lbl_seleccionarCurso";
-            this.lbl_seleccionarCurso.Size = new System.Drawing.Size(93, 13);
+            this.lbl_seleccionarCurso.Size = new System.Drawing.Size(96, 13);
             this.lbl_seleccionarCurso.TabIndex = 21;
-            this.lbl_seleccionarCurso.Text = "Seleccionar Curso";
+            this.lbl_seleccionarCurso.Text = "Seleccionar Curso:";
             this.lbl_seleccionarCurso.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.lbl_seleccionarCurso.Visible = false;
             // 

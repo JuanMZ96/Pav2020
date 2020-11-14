@@ -28,7 +28,7 @@ namespace Pav2.Presentacion
             try
             {
                 ReturnValue valido = Logica.Cursos.GuardarCursos(txt_name.Text, txt_descripcion.Text, (int)cmb_categoria.SelectedValue, dtp_datatime.Value);
-                if (valido.isSuccess) { MessageBox.Show("Se creó correctamente"); CargarGrilla(); }
+                if (valido.isSuccess) { MessageBox.Show("Se creó correctamente.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information); CargarGrilla(); }
                 else { MessageBox.Show(valido.ErrorMessage, "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
             }
             catch (Exception x)
@@ -44,7 +44,7 @@ namespace Pav2.Presentacion
             {
                 int id = Int32.Parse(txt_value.Text);
                 ReturnValue valido = Logica.Cursos.ModificarCursos(id, txt_name.Text, txt_descripcion.Text, (int)cmb_categoria.SelectedValue, dtp_datatime.Value);
-                if (valido.isSuccess) { MessageBox.Show("Se modificó correctamente"); CargarGrilla(); }
+                if (valido.isSuccess) { MessageBox.Show("Se modificó correctamente.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information); CargarGrilla(); }
                 else { MessageBox.Show(valido.ErrorMessage, "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
             }
             catch (Exception x)
@@ -57,10 +57,15 @@ namespace Pav2.Presentacion
         {
             try
             {
-                int id = Int32.Parse(txt_value.Text);
-                ReturnValue valido = Logica.Cursos.EliminarCursos(id, chk_borrado.Checked);
-                if (valido.isSuccess) { MessageBox.Show("Se eliminó correctamente"); CargarGrilla(); }
-                else { MessageBox.Show(valido.ErrorMessage, "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
+                DialogResult result = MessageBox.Show("¿Está seguro que desea eliminar? ", "Alerta", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                if (result == DialogResult.OK)
+                {
+                    int id = Int32.Parse(txt_value.Text);
+                    ReturnValue valido = Logica.Cursos.EliminarCursos(id, chk_borrado.Checked);
+                    if (valido.isSuccess) { MessageBox.Show("Se eliminó correctamente.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information); CargarGrilla(); }
+                    else { MessageBox.Show(valido.ErrorMessage, "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
+                }
+                    
             }
             catch (Exception x)
             {

@@ -37,7 +37,6 @@
             this.txt_value = new System.Windows.Forms.TextBox();
             this.lbl_nombre = new System.Windows.Forms.Label();
             this.lbl_descripcion = new System.Windows.Forms.Label();
-            this.lbl_x = new System.Windows.Forms.Label();
             this.chk_todo = new System.Windows.Forms.CheckBox();
             this.chk_borrado = new System.Windows.Forms.CheckBox();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
@@ -45,21 +44,22 @@
             this.lbl_eliminar = new System.Windows.Forms.Label();
             this.lbl_modificar = new System.Windows.Forms.Label();
             this.lbl_habilitar = new System.Windows.Forms.Label();
-            this.btn_HabilitarGris = new System.Windows.Forms.PictureBox();
+            this.lbl_x = new System.Windows.Forms.Label();
             this.btn_guardar = new System.Windows.Forms.PictureBox();
             this.btn_borrar = new System.Windows.Forms.PictureBox();
             this.btn_modificar = new System.Windows.Forms.PictureBox();
             this.btn_Habilitar = new System.Windows.Forms.PictureBox();
+            this.btn_HabilitarGris = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_categorias)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.btn_HabilitarGris)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btn_guardar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btn_borrar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btn_modificar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btn_Habilitar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btn_HabilitarGris)).BeginInit();
             this.SuspendLayout();
             // 
             // txt_name
@@ -150,16 +150,6 @@
             this.lbl_descripcion.Size = new System.Drawing.Size(66, 13);
             this.lbl_descripcion.TabIndex = 8;
             this.lbl_descripcion.Text = "Descripción:";
-            // 
-            // lbl_x
-            // 
-            this.lbl_x.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_x.Location = new System.Drawing.Point(276, 79);
-            this.lbl_x.Name = "lbl_x";
-            this.lbl_x.Size = new System.Drawing.Size(26, 20);
-            this.lbl_x.TabIndex = 10;
-            this.lbl_x.Text = "X";
-            this.lbl_x.Click += new System.EventHandler(this.lbl_x_Click);
             // 
             // chk_todo
             // 
@@ -265,14 +255,15 @@
             this.lbl_habilitar.Text = "Habilitar";
             this.lbl_habilitar.Visible = false;
             // 
-            // btn_HabilitarGris
+            // lbl_x
             // 
-            this.btn_HabilitarGris.Image = global::Pav2.Properties.Resources.Add_grey;
-            this.btn_HabilitarGris.Location = new System.Drawing.Point(166, 483);
-            this.btn_HabilitarGris.Name = "btn_HabilitarGris";
-            this.btn_HabilitarGris.Size = new System.Drawing.Size(35, 38);
-            this.btn_HabilitarGris.TabIndex = 44;
-            this.btn_HabilitarGris.TabStop = false;
+            this.lbl_x.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_x.Image = global::Pav2.Properties.Resources.Clear;
+            this.lbl_x.Location = new System.Drawing.Point(276, 79);
+            this.lbl_x.Name = "lbl_x";
+            this.lbl_x.Size = new System.Drawing.Size(26, 20);
+            this.lbl_x.TabIndex = 10;
+            this.lbl_x.Click += new System.EventHandler(this.lbl_x_Click);
             // 
             // btn_guardar
             // 
@@ -322,6 +313,15 @@
             this.btn_Habilitar.MouseLeave += new System.EventHandler(this.btn_Habilitar_MouseLeave);
             this.btn_Habilitar.MouseHover += new System.EventHandler(this.btn_Habilitar_MouseHover);
             // 
+            // btn_HabilitarGris
+            // 
+            this.btn_HabilitarGris.Image = global::Pav2.Properties.Resources.Add_grey;
+            this.btn_HabilitarGris.Location = new System.Drawing.Point(166, 483);
+            this.btn_HabilitarGris.Name = "btn_HabilitarGris";
+            this.btn_HabilitarGris.Size = new System.Drawing.Size(35, 38);
+            this.btn_HabilitarGris.TabIndex = 44;
+            this.btn_HabilitarGris.TabStop = false;
+            // 
             // Categorias
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -339,11 +339,11 @@
             this.splitContainer1.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.btn_HabilitarGris)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btn_guardar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btn_borrar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btn_modificar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btn_Habilitar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btn_HabilitarGris)).EndInit();
             this.ResumeLayout(false);
 
         }
