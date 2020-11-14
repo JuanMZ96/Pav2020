@@ -20,7 +20,7 @@ namespace Pav2
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Principal());
+            Application.Run(new ReportUsuarioCurso());
         }
     }
 }

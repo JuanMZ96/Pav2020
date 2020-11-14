@@ -39,7 +39,6 @@
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.txt_value = new System.Windows.Forms.TextBox();
-            this.chk_estado = new System.Windows.Forms.CheckBox();
             this.chk_borrado = new System.Windows.Forms.CheckBox();
             this.chk_todo = new System.Windows.Forms.CheckBox();
             this.lbl_equis = new System.Windows.Forms.Label();
@@ -172,18 +171,6 @@
             this.txt_value.TabIndex = 8;
             this.txt_value.Visible = false;
             // 
-            // chk_estado
-            // 
-            this.chk_estado.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.chk_estado.AutoSize = true;
-            this.chk_estado.Location = new System.Drawing.Point(512, 532);
-            this.chk_estado.Name = "chk_estado";
-            this.chk_estado.Size = new System.Drawing.Size(59, 17);
-            this.chk_estado.TabIndex = 9;
-            this.chk_estado.Text = "Estado";
-            this.chk_estado.UseVisualStyleBackColor = true;
-            this.chk_estado.CheckedChanged += new System.EventHandler(this.chk_estado_CheckedChanged);
-            // 
             // chk_borrado
             // 
             this.chk_borrado.Anchor = System.Windows.Forms.AnchorStyles.Top;
@@ -265,7 +252,6 @@
             // 
             this.splitContainer1.Panel2.Controls.Add(this.chk_borrado);
             this.splitContainer1.Panel2.Controls.Add(this.lbl_guardar);
-            this.splitContainer1.Panel2.Controls.Add(this.chk_estado);
             this.splitContainer1.Panel2.Controls.Add(this.btn_guardar);
             this.splitContainer1.Panel2.Controls.Add(this.lbl_eliminar);
             this.splitContainer1.Panel2.Controls.Add(this.lbl_modificar);
@@ -372,6 +358,7 @@
             this.btn_habilitar.Size = new System.Drawing.Size(37, 38);
             this.btn_habilitar.TabIndex = 39;
             this.btn_habilitar.TabStop = false;
+            this.btn_habilitar.Click += new System.EventHandler(this.btn_habilitar_Click);
             this.btn_habilitar.MouseLeave += new System.EventHandler(this.btn_habilitar_MouseLeave);
             this.btn_habilitar.MouseHover += new System.EventHandler(this.btn_habilitar_MouseHover);
             // 
@@ -408,7 +395,6 @@
         private System.Windows.Forms.TextBox txt_nombreLargo;
         private System.Windows.Forms.DataGridView datagridview;
         private System.Windows.Forms.TextBox txt_value;
-        private System.Windows.Forms.CheckBox chk_estado;
         private System.Windows.Forms.CheckBox chk_borrado;
         private System.Windows.Forms.CheckBox chk_todo;
         private System.Windows.Forms.Label lbl_equis;

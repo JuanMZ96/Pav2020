@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
             this.usuarioxCursoCustomBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.label1 = new System.Windows.Forms.Label();
@@ -68,15 +68,15 @@
             // 
             // reportViewer1
             // 
-            reportDataSource2.Name = "DataSet1";
-            reportDataSource2.Value = this.usuarioxCursoCustomBindingSource;
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource2);
+            reportDataSource1.Name = "DataSet1";
+            reportDataSource1.Value = this.usuarioxCursoCustomBindingSource;
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "Pav2.Reports.UsuarioCurso.rdlc";
-            this.reportViewer1.Location = new System.Drawing.Point(571, 35);
+            this.reportViewer1.Location = new System.Drawing.Point(384, 15);
             this.reportViewer1.Name = "reportViewer1";
             this.reportViewer1.ServerReport.BearerToken = null;
             this.reportViewer1.ShowBackButton = false;
-            this.reportViewer1.Size = new System.Drawing.Size(653, 540);
+            this.reportViewer1.Size = new System.Drawing.Size(677, 562);
             this.reportViewer1.TabIndex = 0;
             this.reportViewer1.Load += new System.EventHandler(this.reportViewer1_Load);
             // 
@@ -266,7 +266,7 @@
             this.gp_fechas.Controls.Add(this.lbl_fecha);
             this.gp_fechas.Controls.Add(this.dtp_inicio);
             this.gp_fechas.Controls.Add(this.dtp_fin);
-            this.gp_fechas.Location = new System.Drawing.Point(356, 59);
+            this.gp_fechas.Location = new System.Drawing.Point(12, 292);
             this.gp_fechas.Name = "gp_fechas";
             this.gp_fechas.Size = new System.Drawing.Size(209, 217);
             this.gp_fechas.TabIndex = 13;
@@ -304,7 +304,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1236, 625);
+            this.ClientSize = new System.Drawing.Size(1083, 680);
             this.Controls.Add(this.reportViewer1);
             this.Controls.Add(this.gp_cursos);
             this.Controls.Add(this.btn_report);
