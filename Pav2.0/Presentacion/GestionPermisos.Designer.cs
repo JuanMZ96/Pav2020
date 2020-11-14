@@ -129,7 +129,8 @@
             this.Controls.Add(this.dgv_formularios);
             this.Controls.Add(this.cmb_perfiles);
             this.Name = "GestionPermisos";
-            this.Text = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Gestión de Permisos";
             this.Load += new System.EventHandler(this.GestionPermisos_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_formularios)).EndInit();
             this.ResumeLayout(false);

@@ -210,7 +210,7 @@
             // lbl_equis
             // 
             this.lbl_equis.AutoSize = true;
-            this.lbl_equis.Location = new System.Drawing.Point(276, 91);
+            this.lbl_equis.Location = new System.Drawing.Point(272, 93);
             this.lbl_equis.Name = "lbl_equis";
             this.lbl_equis.Size = new System.Drawing.Size(14, 13);
             this.lbl_equis.TabIndex = 13;

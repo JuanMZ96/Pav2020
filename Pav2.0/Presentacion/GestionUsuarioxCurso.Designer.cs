@@ -54,12 +54,12 @@
             this.cmb_TipoBusqueda = new System.Windows.Forms.ComboBox();
             this.lbl_tipoBusqueda = new System.Windows.Forms.Label();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.lbl_eliminar = new System.Windows.Forms.Label();
+            this.lbl_modificar = new System.Windows.Forms.Label();
+            this.lbl_habilitar = new System.Windows.Forms.Label();
             this.btn_habilitar = new System.Windows.Forms.PictureBox();
             this.btn_Eliminar = new System.Windows.Forms.PictureBox();
             this.btn_Modificar = new System.Windows.Forms.PictureBox();
-            this.lbl_habilitar = new System.Windows.Forms.Label();
-            this.lbl_modificar = new System.Windows.Forms.Label();
-            this.lbl_eliminar = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_UsuarioCurso)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -156,7 +156,6 @@
             this.Column7.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.Column7.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.Column7.Visible = false;
-            this.Column7.Width = 69;
             // 
             // lbl_curso
             // 
@@ -329,50 +328,17 @@
             this.splitContainer1.SplitterWidth = 5;
             this.splitContainer1.TabIndex = 22;
             // 
-            // btn_habilitar
+            // lbl_eliminar
             // 
-            this.btn_habilitar.Image = global::Pav2.Properties.Resources.Add;
-            this.btn_habilitar.Location = new System.Drawing.Point(161, 468);
-            this.btn_habilitar.Name = "btn_habilitar";
-            this.btn_habilitar.Size = new System.Drawing.Size(32, 39);
-            this.btn_habilitar.TabIndex = 23;
-            this.btn_habilitar.TabStop = false;
-            this.btn_habilitar.MouseLeave += new System.EventHandler(this.btn_habilitar_MouseLeave);
-            this.btn_habilitar.MouseHover += new System.EventHandler(this.btn_habilitar_MouseHover);
-            // 
-            // btn_Eliminar
-            // 
-            this.btn_Eliminar.Image = global::Pav2.Properties.Resources.Delete;
-            this.btn_Eliminar.Location = new System.Drawing.Point(110, 467);
-            this.btn_Eliminar.Name = "btn_Eliminar";
-            this.btn_Eliminar.Size = new System.Drawing.Size(32, 40);
-            this.btn_Eliminar.TabIndex = 22;
-            this.btn_Eliminar.TabStop = false;
-            this.btn_Eliminar.MouseLeave += new System.EventHandler(this.Eliminar_MouseLeave);
-            this.btn_Eliminar.MouseHover += new System.EventHandler(this.Eliminar_MouseHover);
-            // 
-            // btn_Modificar
-            // 
-            this.btn_Modificar.Image = global::Pav2.Properties.Resources.Edit1;
-            this.btn_Modificar.Location = new System.Drawing.Point(57, 467);
-            this.btn_Modificar.Name = "btn_Modificar";
-            this.btn_Modificar.Size = new System.Drawing.Size(35, 39);
-            this.btn_Modificar.TabIndex = 21;
-            this.btn_Modificar.TabStop = false;
-            this.btn_Modificar.MouseLeave += new System.EventHandler(this.Modificar_MouseLeave);
-            this.btn_Modificar.MouseHover += new System.EventHandler(this.Modificar_MouseHover);
-            // 
-            // lbl_habilitar
-            // 
-            this.lbl_habilitar.AutoSize = true;
-            this.lbl_habilitar.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.lbl_habilitar.ForeColor = System.Drawing.Color.DimGray;
-            this.lbl_habilitar.Location = new System.Drawing.Point(154, 510);
-            this.lbl_habilitar.Name = "lbl_habilitar";
-            this.lbl_habilitar.Size = new System.Drawing.Size(45, 13);
-            this.lbl_habilitar.TabIndex = 22;
-            this.lbl_habilitar.Text = "Habilitar";
-            this.lbl_habilitar.Visible = false;
+            this.lbl_eliminar.AutoSize = true;
+            this.lbl_eliminar.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.lbl_eliminar.ForeColor = System.Drawing.Color.DimGray;
+            this.lbl_eliminar.Location = new System.Drawing.Point(107, 510);
+            this.lbl_eliminar.Name = "lbl_eliminar";
+            this.lbl_eliminar.Size = new System.Drawing.Size(43, 13);
+            this.lbl_eliminar.TabIndex = 25;
+            this.lbl_eliminar.Text = "Eliminar";
+            this.lbl_eliminar.Visible = false;
             // 
             // lbl_modificar
             // 
@@ -386,17 +352,53 @@
             this.lbl_modificar.Text = "Modificar";
             this.lbl_modificar.Visible = false;
             // 
-            // lbl_eliminar
+            // lbl_habilitar
             // 
-            this.lbl_eliminar.AutoSize = true;
-            this.lbl_eliminar.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.lbl_eliminar.ForeColor = System.Drawing.Color.DimGray;
-            this.lbl_eliminar.Location = new System.Drawing.Point(107, 510);
-            this.lbl_eliminar.Name = "lbl_eliminar";
-            this.lbl_eliminar.Size = new System.Drawing.Size(43, 13);
-            this.lbl_eliminar.TabIndex = 25;
-            this.lbl_eliminar.Text = "Eliminar";
-            this.lbl_eliminar.Visible = false;
+            this.lbl_habilitar.AutoSize = true;
+            this.lbl_habilitar.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.lbl_habilitar.ForeColor = System.Drawing.Color.DimGray;
+            this.lbl_habilitar.Location = new System.Drawing.Point(154, 510);
+            this.lbl_habilitar.Name = "lbl_habilitar";
+            this.lbl_habilitar.Size = new System.Drawing.Size(45, 13);
+            this.lbl_habilitar.TabIndex = 22;
+            this.lbl_habilitar.Text = "Habilitar";
+            this.lbl_habilitar.Visible = false;
+            // 
+            // btn_habilitar
+            // 
+            this.btn_habilitar.Image = global::Pav2.Properties.Resources.Add;
+            this.btn_habilitar.Location = new System.Drawing.Point(161, 468);
+            this.btn_habilitar.Name = "btn_habilitar";
+            this.btn_habilitar.Size = new System.Drawing.Size(32, 39);
+            this.btn_habilitar.TabIndex = 23;
+            this.btn_habilitar.TabStop = false;
+            this.btn_habilitar.Click += new System.EventHandler(this.btn_habilitar_Click);
+            this.btn_habilitar.MouseLeave += new System.EventHandler(this.btn_habilitar_MouseLeave);
+            this.btn_habilitar.MouseHover += new System.EventHandler(this.btn_habilitar_MouseHover);
+            // 
+            // btn_Eliminar
+            // 
+            this.btn_Eliminar.Image = global::Pav2.Properties.Resources.Delete;
+            this.btn_Eliminar.Location = new System.Drawing.Point(110, 467);
+            this.btn_Eliminar.Name = "btn_Eliminar";
+            this.btn_Eliminar.Size = new System.Drawing.Size(32, 40);
+            this.btn_Eliminar.TabIndex = 22;
+            this.btn_Eliminar.TabStop = false;
+            this.btn_Eliminar.Click += new System.EventHandler(this.btn_Eliminar_Click);
+            this.btn_Eliminar.MouseLeave += new System.EventHandler(this.Eliminar_MouseLeave);
+            this.btn_Eliminar.MouseHover += new System.EventHandler(this.Eliminar_MouseHover);
+            // 
+            // btn_Modificar
+            // 
+            this.btn_Modificar.Image = global::Pav2.Properties.Resources.Edit1;
+            this.btn_Modificar.Location = new System.Drawing.Point(57, 467);
+            this.btn_Modificar.Name = "btn_Modificar";
+            this.btn_Modificar.Size = new System.Drawing.Size(35, 39);
+            this.btn_Modificar.TabIndex = 21;
+            this.btn_Modificar.TabStop = false;
+            this.btn_Modificar.Click += new System.EventHandler(this.btn_Modificar_Click);
+            this.btn_Modificar.MouseLeave += new System.EventHandler(this.Modificar_MouseLeave);
+            this.btn_Modificar.MouseHover += new System.EventHandler(this.Modificar_MouseHover);
             // 
             // GestionUsuarioxCurso
             // 

@@ -86,5 +86,23 @@ namespace Pav2.Presentacion
             Objetivos ventana2 = new Objetivos();
             ventana2.ShowDialog();
         }
+
+        private void objetivosPorCursoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AltaObjetivosxCurso ventana2 = new AltaObjetivosxCurso();
+            ventana2.ShowDialog();
+        }
+
+        private void usuariosPorCursoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AltaUsuariosxCurso ventana2 = new AltaUsuariosxCurso();
+            ventana2.ShowDialog();
+        }
+
+        private void avancesPorCursoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AltaUsuarioxCursoAvance ventana2 = new AltaUsuarioxCursoAvance();
+            ventana2.ShowDialog();
+        }
     }
 }
