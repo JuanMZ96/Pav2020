@@ -49,6 +49,7 @@
             this.btn_borrar = new System.Windows.Forms.PictureBox();
             this.btn_modificar = new System.Windows.Forms.PictureBox();
             this.btn_habilitar = new System.Windows.Forms.PictureBox();
+            this.btn_habilitarGris = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_cursos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -58,6 +59,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.btn_borrar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btn_modificar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btn_habilitar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btn_habilitarGris)).BeginInit();
             this.SuspendLayout();
             // 
             // dgv_cursos
@@ -248,6 +250,7 @@
             this.splitContainer1.Panel2.Controls.Add(this.lbl_habilitar);
             this.splitContainer1.Panel2.Controls.Add(this.btn_modificar);
             this.splitContainer1.Panel2.Controls.Add(this.btn_habilitar);
+            this.splitContainer1.Panel2.Controls.Add(this.btn_habilitarGris);
             this.splitContainer1.Size = new System.Drawing.Size(970, 564);
             this.splitContainer1.SplitterDistance = 322;
             this.splitContainer1.TabIndex = 35;
@@ -304,6 +307,15 @@
             this.btn_habilitar.TabStop = false;
             this.btn_habilitar.Click += new System.EventHandler(this.btn_habilitar_Click);
             // 
+            // btn_habilitarGris
+            // 
+            this.btn_habilitarGris.Image = global::Pav2.Properties.Resources.Add_grey;
+            this.btn_habilitarGris.Location = new System.Drawing.Point(173, 450);
+            this.btn_habilitarGris.Name = "btn_habilitarGris";
+            this.btn_habilitarGris.Size = new System.Drawing.Size(37, 38);
+            this.btn_habilitarGris.TabIndex = 36;
+            this.btn_habilitarGris.TabStop = false;
+            // 
             // Cursos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -325,6 +337,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.btn_borrar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btn_modificar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btn_habilitar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btn_habilitarGris)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -352,5 +365,6 @@
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.PictureBox btn_guardar;
         private System.Windows.Forms.Label lbl_guardar;
+        private System.Windows.Forms.PictureBox btn_habilitarGris;
     }
 }

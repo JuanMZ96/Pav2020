@@ -71,12 +71,12 @@ namespace Pav2.Logica
                                 var1.isSuccess = true;
                                 var1.Data = temp;
                             }
-                            else { var1.ErrorMessage = "Contraseña Incorrecta"; }
+                            else { var1.ErrorMessage = "Contraseña Incorrecta."; }
                         }
                         else
-                        { var1.ErrorMessage = "Usuario no habilitado"; }
+                        { var1.ErrorMessage = "Usuario no habilitado."; }
                     }
-                    else { var1.ErrorMessage = "Usuario no encontrado"; }
+                    else { var1.ErrorMessage = "Usuario no encontrado."; }
                 }
                 catch (Exception ex)
                 {
@@ -107,12 +107,12 @@ namespace Pav2.Logica
                         Contex.Usuarios.Add(user1);
                         Contex.SaveChanges();
                         validador.isSuccess = true;
-                        validador.ErrorMessage = "Creado Correctamente";
+                        validador.ErrorMessage = "Creado correctamente.";
 
                     }
-                    else { validador.isSuccess = false; validador.ErrorMessage = "Ese usuario ya existe"; }
+                    else { validador.isSuccess = false; validador.ErrorMessage = "Ese usuario ya existe."; }
                 }
-                else { validador.isSuccess = false; validador.ErrorMessage = "Campos vacios"; }
+                else { validador.isSuccess = false; validador.ErrorMessage = "Campos vacíos."; }
 
             }
             return validador;

@@ -80,7 +80,7 @@ namespace Pav2.Presentacion
                 int idobjetivo = (int)cmb_objetivos.SelectedValue;
                 int puntaje = Int32.Parse(txt_puntaje.Text);
                 ReturnValue valido = Logica.ObjetivosxCurso.ModificarObjetivosxCurso(idCurso, idobjetivo, puntaje);
-                if (valido.isSuccess) { MessageBox.Show("Se modifico correctamente"); CargarGrilla(); }
+                if (valido.isSuccess) { MessageBox.Show("Se modificó correctamente."); CargarGrilla(); }
                 else { MessageBox.Show(valido.ErrorMessage); }
             }
             catch (Exception x)
@@ -117,7 +117,7 @@ namespace Pav2.Presentacion
                 int idCurso = (int)cmb_cursos.SelectedValue;
                 int idobjetivo = (int)cmb_objetivos.SelectedValue;
                 ReturnValue valido = Logica.ObjetivosxCurso.EliminarObjetivosxCurso(idCurso, idobjetivo, chk_borrado.Checked);
-                if (valido.isSuccess) { MessageBox.Show("Se borro correctamente"); CargarGrilla(); }
+                if (valido.isSuccess) { MessageBox.Show("Se eliminó correctamente."); CargarGrilla(); }
                 else { MessageBox.Show(valido.ErrorMessage); }
             }
             catch (Exception x)

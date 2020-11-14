@@ -42,11 +42,12 @@
             this.chk_borrado = new System.Windows.Forms.CheckBox();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.lbl_guardar = new System.Windows.Forms.Label();
-            this.btn_guardar = new System.Windows.Forms.PictureBox();
             this.lbl_eliminar = new System.Windows.Forms.Label();
             this.lbl_modificar = new System.Windows.Forms.Label();
-            this.btn_borrar = new System.Windows.Forms.PictureBox();
             this.lbl_habilitar = new System.Windows.Forms.Label();
+            this.btn_HabilitarGris = new System.Windows.Forms.PictureBox();
+            this.btn_guardar = new System.Windows.Forms.PictureBox();
+            this.btn_borrar = new System.Windows.Forms.PictureBox();
             this.btn_modificar = new System.Windows.Forms.PictureBox();
             this.btn_Habilitar = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_categorias)).BeginInit();
@@ -54,6 +55,7 @@
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btn_HabilitarGris)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btn_guardar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btn_borrar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btn_modificar)).BeginInit();
@@ -209,6 +211,7 @@
             this.splitContainer1.Panel2.Controls.Add(this.btn_Habilitar);
             this.splitContainer1.Panel2.Controls.Add(this.dgv_categorias);
             this.splitContainer1.Panel2.Controls.Add(this.chk_todo);
+            this.splitContainer1.Panel2.Controls.Add(this.btn_HabilitarGris);
             this.splitContainer1.Panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainer1_Panel2_Paint);
             this.splitContainer1.Size = new System.Drawing.Size(970, 564);
             this.splitContainer1.SplitterDistance = 323;
@@ -225,18 +228,6 @@
             this.lbl_guardar.TabIndex = 43;
             this.lbl_guardar.Text = "Guardar";
             this.lbl_guardar.Visible = false;
-            // 
-            // btn_guardar
-            // 
-            this.btn_guardar.Image = global::Pav2.Properties.Resources.Save;
-            this.btn_guardar.Location = new System.Drawing.Point(34, 483);
-            this.btn_guardar.Name = "btn_guardar";
-            this.btn_guardar.Size = new System.Drawing.Size(38, 38);
-            this.btn_guardar.TabIndex = 36;
-            this.btn_guardar.TabStop = false;
-            this.btn_guardar.Click += new System.EventHandler(this.btn_guardar_Click);
-            this.btn_guardar.MouseLeave += new System.EventHandler(this.btn_guardar_MouseLeave);
-            this.btn_guardar.MouseHover += new System.EventHandler(this.btn_guardar_MouseHover);
             // 
             // lbl_eliminar
             // 
@@ -262,18 +253,6 @@
             this.lbl_modificar.Text = "Modificar";
             this.lbl_modificar.Visible = false;
             // 
-            // btn_borrar
-            // 
-            this.btn_borrar.Image = global::Pav2.Properties.Resources.Delete;
-            this.btn_borrar.Location = new System.Drawing.Point(120, 483);
-            this.btn_borrar.Name = "btn_borrar";
-            this.btn_borrar.Size = new System.Drawing.Size(36, 38);
-            this.btn_borrar.TabIndex = 37;
-            this.btn_borrar.TabStop = false;
-            this.btn_borrar.Click += new System.EventHandler(this.btn_borrar_Click);
-            this.btn_borrar.MouseLeave += new System.EventHandler(this.btn_borrar_MouseLeave);
-            this.btn_borrar.MouseHover += new System.EventHandler(this.btn_borrar_MouseHover);
-            // 
             // lbl_habilitar
             // 
             this.lbl_habilitar.AutoSize = true;
@@ -285,6 +264,39 @@
             this.lbl_habilitar.TabIndex = 40;
             this.lbl_habilitar.Text = "Habilitar";
             this.lbl_habilitar.Visible = false;
+            // 
+            // btn_HabilitarGris
+            // 
+            this.btn_HabilitarGris.Image = global::Pav2.Properties.Resources.Add_grey;
+            this.btn_HabilitarGris.Location = new System.Drawing.Point(166, 483);
+            this.btn_HabilitarGris.Name = "btn_HabilitarGris";
+            this.btn_HabilitarGris.Size = new System.Drawing.Size(35, 38);
+            this.btn_HabilitarGris.TabIndex = 44;
+            this.btn_HabilitarGris.TabStop = false;
+            // 
+            // btn_guardar
+            // 
+            this.btn_guardar.Image = global::Pav2.Properties.Resources.Save;
+            this.btn_guardar.Location = new System.Drawing.Point(34, 483);
+            this.btn_guardar.Name = "btn_guardar";
+            this.btn_guardar.Size = new System.Drawing.Size(38, 38);
+            this.btn_guardar.TabIndex = 36;
+            this.btn_guardar.TabStop = false;
+            this.btn_guardar.Click += new System.EventHandler(this.btn_guardar_Click);
+            this.btn_guardar.MouseLeave += new System.EventHandler(this.btn_guardar_MouseLeave);
+            this.btn_guardar.MouseHover += new System.EventHandler(this.btn_guardar_MouseHover);
+            // 
+            // btn_borrar
+            // 
+            this.btn_borrar.Image = global::Pav2.Properties.Resources.Delete;
+            this.btn_borrar.Location = new System.Drawing.Point(120, 483);
+            this.btn_borrar.Name = "btn_borrar";
+            this.btn_borrar.Size = new System.Drawing.Size(36, 38);
+            this.btn_borrar.TabIndex = 37;
+            this.btn_borrar.TabStop = false;
+            this.btn_borrar.Click += new System.EventHandler(this.btn_borrar_Click);
+            this.btn_borrar.MouseLeave += new System.EventHandler(this.btn_borrar_MouseLeave);
+            this.btn_borrar.MouseHover += new System.EventHandler(this.btn_borrar_MouseHover);
             // 
             // btn_modificar
             // 
@@ -327,6 +339,7 @@
             this.splitContainer1.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.btn_HabilitarGris)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btn_guardar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btn_borrar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btn_modificar)).EndInit();
@@ -357,5 +370,6 @@
         private System.Windows.Forms.Label lbl_habilitar;
         private System.Windows.Forms.PictureBox btn_modificar;
         private System.Windows.Forms.PictureBox btn_Habilitar;
+        private System.Windows.Forms.PictureBox btn_HabilitarGris;
     }
 }

@@ -295,6 +295,7 @@
     <None Include="Resources\Delete.png" />
     <None Include="Resources\Add.png" />
     <None Include="Resources\Save.png" />
+    <None Include="Resources\Add_grey.png" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

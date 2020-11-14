@@ -54,10 +54,10 @@ namespace Pav2.Presentacion
                 {
                     int puntaje = Int32.Parse(txt_puntaje.Text);
                     ReturnValue valido = Logica.ObjetivosxCurso.GuardarObjetivosxCurso(idCurso, idobjetivo, puntaje);
-                    if (valido.isSuccess) { MessageBox.Show("Se creo correctamente"); }
+                    if (valido.isSuccess) { MessageBox.Show("Se creó correctamente."); }
                     else { MessageBox.Show(valido.ErrorMessage, "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
                 }
-                else { MessageBox.Show("Complete el campo correspondiente"); }
+                else { MessageBox.Show("Complete el campo correspondiente."); }
             }
             catch (Exception x)
             {

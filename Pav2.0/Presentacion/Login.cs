@@ -28,7 +28,7 @@ namespace Pav2.Presentacion
         {
             if (txt_nameid.Text == "Usuario" || txt_pwd.Text == "Contraseña")
             {
-                MessageBox.Show("Complete los campos", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Complete los campos.", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -50,7 +50,7 @@ namespace Pav2.Presentacion
             }
             else
             {
-                MessageBox.Show("Complete los campos","Alerta", MessageBoxButtons.OK ,MessageBoxIcon.Warning);
+                MessageBox.Show("Complete los campos.","Alerta", MessageBoxButtons.OK ,MessageBoxIcon.Warning);
             }
 
         }

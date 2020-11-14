@@ -28,7 +28,7 @@ namespace Pav2.Presentacion
             try
             {
                 ReturnValue valido = Logica.Cursos.GuardarCursos(txt_name.Text, txt_descripcion.Text, (int)cmb_categoria.SelectedValue, dtp_datatime.Value);
-                if (valido.isSuccess) { MessageBox.Show("Se creo correctamente"); CargarGrilla(); }
+                if (valido.isSuccess) { MessageBox.Show("Se creó correctamente"); CargarGrilla(); }
                 else { MessageBox.Show(valido.ErrorMessage, "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
             }
             catch (Exception x)
@@ -59,7 +59,7 @@ namespace Pav2.Presentacion
             {
                 int id = Int32.Parse(txt_value.Text);
                 ReturnValue valido = Logica.Cursos.EliminarCursos(id, chk_borrado.Checked);
-                if (valido.isSuccess) { MessageBox.Show("Se borró correctamente"); CargarGrilla(); }
+                if (valido.isSuccess) { MessageBox.Show("Se eliminó correctamente"); CargarGrilla(); }
                 else { MessageBox.Show(valido.ErrorMessage, "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
             }
             catch (Exception x)

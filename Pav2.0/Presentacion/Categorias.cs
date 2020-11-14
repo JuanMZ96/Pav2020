@@ -43,7 +43,7 @@ namespace Pav2.Presentacion
                 }
                 else
                 {
-                    MessageBox.Show("Los campos no pueden estar vacios.");
+                    MessageBox.Show("Los campos no pueden estar vacíos.");
                 }
             }
             catch (Exception x)
@@ -74,7 +74,7 @@ namespace Pav2.Presentacion
                 }
                 else
                 {
-                    MessageBox.Show("Los campos no pueden estar vacios.");
+                    MessageBox.Show("Los campos no pueden estar vacíos.");
                 }
             }
             catch (Exception x)
@@ -91,7 +91,7 @@ namespace Pav2.Presentacion
                 
                 if (txt_name.Text != "" && txt_descripcion.Text != "")
                 {
-                    DialogResult result = MessageBox.Show("¿Esta seguro que desea eliminar ? ", "Alerta", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                    DialogResult result = MessageBox.Show("¿Está seguro que desea eliminar? ", "Alerta", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
                     if (result == DialogResult.OK)
                     {
                         int id = Int32.Parse(txt_value.Text);
@@ -107,7 +107,7 @@ namespace Pav2.Presentacion
                 }
                 else
                 {
-                    MessageBox.Show("Los campos no pueden estar vacios.","",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                    MessageBox.Show("Los campos no pueden estar vacíos.","",MessageBoxButtons.OK,MessageBoxIcon.Warning);
                 }
             }
             catch (Exception x)
@@ -201,7 +201,7 @@ namespace Pav2.Presentacion
                     {
                         MessageBox.Show("No se pudo habilitar.");
                     }
-                    else { MessageBox.Show("Categoria habilitada."); }
+                    else { MessageBox.Show("Categoría habilitada."); }
                     limpiarcampos();
                     CargarGrilla();
                 }

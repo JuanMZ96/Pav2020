@@ -73,6 +73,16 @@ namespace Pav2.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Add_grey {
+            get {
+                object obj = ResourceManager.GetObject("Add_grey", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap barr2a {
             get {
                 object obj = ResourceManager.GetObject("barr2a", resourceCulture);

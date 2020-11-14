@@ -84,7 +84,7 @@ namespace Pav2.Presentacion
             DateTime fechaFin = dtp_fin.Value;
             int porcentaje = Int32.Parse(txt_porcentaje.Text);
             ReturnValue valido = Logica.UsuarioxCursoAvance.GuardarUsuarioxCursoAvance(idusuario, idcurso, fechaInicio, fechaFin, porcentaje);
-            if (valido.isSuccess) { MessageBox.Show("Se guardo correctamente"); }
+            if (valido.isSuccess) { MessageBox.Show("Se guardó correctamente"); }
             else { MessageBox.Show(valido.ErrorMessage); }
         }
 
@@ -200,7 +200,7 @@ namespace Pav2.Presentacion
             DateTime fechaFin = dtp_fin.Value;
             int porcentaje = Int32.Parse(txt_porcentaje.Text);
             ReturnValue valido = UsuarioxCursoAvance.ModificiarUsuarioxCursoAvance(idusuario, idcurso, fechaInicio, fechaFin, porcentaje);
-            if (valido.isSuccess) { MessageBox.Show("Se modifico correctamente"); cargarGrillaAvance(idusuario, (int)cmb_cursos.SelectedValue);}
+            if (valido.isSuccess) { MessageBox.Show("Se modificó correctamente"); cargarGrillaAvance(idusuario, (int)cmb_cursos.SelectedValue);}
             else { MessageBox.Show(valido.ErrorMessage); }
         }
 
