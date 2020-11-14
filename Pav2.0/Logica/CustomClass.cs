@@ -53,6 +53,7 @@ namespace Pav2.Logica
             public string objetivo_largo { get; set; }
             public int puntos { get; set; }
             public bool borrado { get; set; }
+            public string nombre { get; set; }
         }
         public class PerfilCustom
         {

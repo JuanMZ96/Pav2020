@@ -35,7 +35,7 @@ namespace Pav2.Logica
                                             mail = usuario.email,
                                             borrado = (bool)usuario.borrado
                                         }).FirstOrDefault();
-                    if (user != null)
+                    if (temp != null)
                     {
                         if (!(bool)temp.borrado)
                         {
@@ -66,13 +66,10 @@ namespace Pav2.Logica
             {
                 if (name != String.Empty && pw != String.Empty && mail != String.Empty) 
                 {
-                    var check = from Usuario in Contex.Usuarios
-                                where Usuario.borrado != true
-                                && Usuario.usuario1.IndexOf(name) >= 0
-                                select Usuario;
+                    var check = Contex.Usuarios.Where(x => x.usuario1 == name.ToLower()).FirstOrDefault();
                     if (check == null)
                     {
-                        user1.usuario1 = name;
+                        user1.usuario1 = name.ToLower();
                         user1.password = pw;
                         user1.id_perfil = perfil;
                         user1.email = mail;
