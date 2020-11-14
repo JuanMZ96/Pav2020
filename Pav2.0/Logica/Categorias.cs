@@ -38,7 +38,7 @@ namespace Pav2.Logica
         }
 
 
-        public static bool ModificarCategoria(int id, string name, string descripcion, bool estado)
+        public static bool ModificarCategoria(int id, string name, string descripcion)
         {
             bool modificar = false;
 
@@ -54,11 +54,6 @@ namespace Pav2.Logica
                 {
                     q.descripcion = descripcion;
                 }
-                if(q.borrado != estado)
-                {
-                    q.borrado = estado;
-                }
-
                 Contex.SaveChanges();
                 modificar = true;
             }
@@ -140,6 +135,31 @@ namespace Pav2.Logica
 
 
             }
+        }
+        public static ReturnValue HabilitarCategoria(int id, bool borrado)
+        {
+            ReturnValue validador = new ReturnValue() { isSuccess = false };
+            using (var Contex = new BugTrackerFinalEntities())
+            {
+                try
+                {
+                    var cat = Contex.Categorias.Where(x => x.id_categoria == id && x.borrado == true).FirstOrDefault();
+                    
+                    if (cat != null)
+                    {
+                        if (cat.borrado != borrado) cat.borrado = borrado;
+                        Contex.SaveChanges();
+                        validador.isSuccess = true;
+                    }
+                    else { validador.ErrorMessage = "Seleccionar la categoria correcta."; }
+                }
+                catch (Exception ex)
+                {
+                    validador.ErrorMessage = ex.Message;
+                }
+            }
+            return validador;
+            
         }
     }
 }

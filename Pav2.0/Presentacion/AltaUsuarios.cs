@@ -42,7 +42,7 @@ namespace Pav2.Presentacion
         private void btn_guardar_Click_1(object sender, EventArgs e)
         {
             int id = (int)cmb_perfiles.SelectedValue;
-            ReturnValue validador = Usuarios.CrearUsuarios(id, txt_nombre.Text, txt_pw.Text, txt_mail.Text);
+            ReturnValue validador = Usuarios.CrearUsuarios(id, txt_nombre.Text.Replace(" ",""), txt_pw.Text, txt_mail.Text);
             if (validador.isSuccess) MessageBox.Show(validador.ErrorMessage);
             else { MessageBox.Show(validador.ErrorMessage); }
         }

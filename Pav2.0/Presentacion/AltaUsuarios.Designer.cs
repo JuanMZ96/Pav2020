@@ -42,14 +42,14 @@
             // 
             // txt_nombre
             // 
-            this.txt_nombre.Location = new System.Drawing.Point(91, 13);
+            this.txt_nombre.Location = new System.Drawing.Point(115, 53);
             this.txt_nombre.Name = "txt_nombre";
             this.txt_nombre.Size = new System.Drawing.Size(100, 20);
             this.txt_nombre.TabIndex = 0;
             // 
             // txt_pw
             // 
-            this.txt_pw.Location = new System.Drawing.Point(91, 39);
+            this.txt_pw.Location = new System.Drawing.Point(115, 79);
             this.txt_pw.Name = "txt_pw";
             this.txt_pw.Size = new System.Drawing.Size(100, 20);
             this.txt_pw.TabIndex = 1;
@@ -57,7 +57,7 @@
             // cmb_perfiles
             // 
             this.cmb_perfiles.FormattingEnabled = true;
-            this.cmb_perfiles.Location = new System.Drawing.Point(91, 92);
+            this.cmb_perfiles.Location = new System.Drawing.Point(115, 132);
             this.cmb_perfiles.Name = "cmb_perfiles";
             this.cmb_perfiles.Size = new System.Drawing.Size(137, 21);
             this.cmb_perfiles.TabIndex = 3;
@@ -65,7 +65,7 @@
             // 
             // txt_mail
             // 
-            this.txt_mail.Location = new System.Drawing.Point(91, 66);
+            this.txt_mail.Location = new System.Drawing.Point(115, 106);
             this.txt_mail.Name = "txt_mail";
             this.txt_mail.Size = new System.Drawing.Size(100, 20);
             this.txt_mail.TabIndex = 4;
@@ -73,49 +73,48 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(16, 16);
+            this.label1.Location = new System.Drawing.Point(40, 56);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(44, 13);
+            this.label1.Size = new System.Drawing.Size(47, 13);
             this.label1.TabIndex = 5;
-            this.label1.Text = "Nombre";
+            this.label1.Text = "Nombre:";
             // 
             // lbl_pw
             // 
             this.lbl_pw.AutoSize = true;
-            this.lbl_pw.Location = new System.Drawing.Point(16, 42);
+            this.lbl_pw.Location = new System.Drawing.Point(40, 82);
             this.lbl_pw.Name = "lbl_pw";
-            this.lbl_pw.Size = new System.Drawing.Size(61, 13);
+            this.lbl_pw.Size = new System.Drawing.Size(64, 13);
             this.lbl_pw.TabIndex = 6;
-            this.lbl_pw.Text = "Contraseña";
+            this.lbl_pw.Text = "Contraseña:";
             // 
             // lbl_mail
             // 
             this.lbl_mail.AutoSize = true;
-            this.lbl_mail.Location = new System.Drawing.Point(16, 69);
+            this.lbl_mail.Location = new System.Drawing.Point(40, 109);
             this.lbl_mail.Name = "lbl_mail";
-            this.lbl_mail.Size = new System.Drawing.Size(26, 13);
+            this.lbl_mail.Size = new System.Drawing.Size(38, 13);
             this.lbl_mail.TabIndex = 7;
-            this.lbl_mail.Text = "Mail";
+            this.lbl_mail.Text = "E-mail:";
             // 
             // lbl_perfiles
             // 
             this.lbl_perfiles.AutoSize = true;
-            this.lbl_perfiles.Location = new System.Drawing.Point(16, 95);
+            this.lbl_perfiles.Location = new System.Drawing.Point(40, 135);
             this.lbl_perfiles.Name = "lbl_perfiles";
-            this.lbl_perfiles.Size = new System.Drawing.Size(41, 13);
+            this.lbl_perfiles.Size = new System.Drawing.Size(33, 13);
             this.lbl_perfiles.TabIndex = 8;
-            this.lbl_perfiles.Text = "Perfiles";
+            this.lbl_perfiles.Text = "Perfil:";
             // 
             // btn_guardar
             // 
             this.btn_guardar.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.btn_guardar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_guardar.Location = new System.Drawing.Point(312, 90);
+            this.btn_guardar.Location = new System.Drawing.Point(115, 177);
             this.btn_guardar.Name = "btn_guardar";
             this.btn_guardar.Size = new System.Drawing.Size(75, 23);
             this.btn_guardar.TabIndex = 9;
             this.btn_guardar.Text = "Guardar";
-            this.btn_guardar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btn_guardar.UseVisualStyleBackColor = true;
             this.btn_guardar.Click += new System.EventHandler(this.btn_guardar_Click_1);
             // 
@@ -124,7 +123,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.ClientSize = new System.Drawing.Size(411, 124);
+            this.ClientSize = new System.Drawing.Size(328, 237);
             this.Controls.Add(this.btn_guardar);
             this.Controls.Add(this.lbl_perfiles);
             this.Controls.Add(this.lbl_mail);

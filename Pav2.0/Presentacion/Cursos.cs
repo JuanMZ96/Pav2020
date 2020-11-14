@@ -43,7 +43,7 @@ namespace Pav2.Presentacion
             try
             {
                 int id = Int32.Parse(txt_value.Text);
-                ReturnValue valido = Logica.Cursos.ModificarCursos(id, txt_name.Text, txt_descripcion.Text, chk_estado.Checked, (int)cmb_categoria.SelectedValue, dtp_datatime.Value);
+                ReturnValue valido = Logica.Cursos.ModificarCursos(id, txt_name.Text, txt_descripcion.Text, (int)cmb_categoria.SelectedValue, dtp_datatime.Value);
                 if (valido.isSuccess) { MessageBox.Show("Se modificó correctamente"); CargarGrilla(); }
                 else { MessageBox.Show(valido.ErrorMessage, "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
             }
@@ -73,7 +73,6 @@ namespace Pav2.Presentacion
             CargarCombo();
             CargarGrilla();
 
-
         }
 
         private void CargarCombo()
@@ -94,6 +93,10 @@ namespace Pav2.Presentacion
                 {
                     columns.Visible = false;
                 }
+                if (chk_todo.Checked) {dgv_cursos.Columns[6].Visible = true;}
+                else { dgv_cursos.Columns[6].Visible = false; }
+                btn_habilitar.Visible = false;
+                btn_guardar.Enabled = true;
             }
 
 
@@ -111,8 +114,13 @@ namespace Pav2.Presentacion
                 txt_name.Text = var1.nombre;
                 txt_descripcion.Text = var1.descripcion;
                 dtp_datatime.Value = var1.fecha;
-                chk_estado.Checked = var1.borrado;
                 cmb_categoria.SelectedValue = var1.id_categoria;
+                if (var1.borrado == true) { btn_habilitar.Visible = true; 
+                                            btn_modificar.Enabled = false;
+                                            btn_guardar.Enabled = false;}
+                else { btn_habilitar.Visible = false; 
+                        btn_modificar.Enabled = true;
+                        btn_guardar.Enabled = true; }
             }
             catch (Exception x)
             {
@@ -122,10 +130,38 @@ namespace Pav2.Presentacion
 
 
         }
-
         private void chk_todo_CheckedChanged(object sender, EventArgs e)
         {
             CargarGrilla();
+        }
+
+        private void btn_habilitar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+             
+                 int id = Int32.Parse(txt_value.Text);
+                 bool borrado = false;
+                 if (Logica.Cursos.HabilitarCursos(id, borrado).isSuccess == false)
+                 {
+                     MessageBox.Show("No se pudo habilitar.");
+                 }
+                 else { MessageBox.Show("Curso habilitado."); }
+                 limpiarcampos();
+                 CargarGrilla();
+                
+            }
+            catch (Exception x)
+            {
+                MessageBox.Show("Error: " + x);
+            }
+        }
+        private void limpiarcampos()
+        {
+            txt_descripcion.Clear();
+            txt_name.Clear();
+            txt_value.Clear();
+            
         }
     }
 

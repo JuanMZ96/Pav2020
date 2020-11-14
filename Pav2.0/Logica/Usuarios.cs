@@ -15,12 +15,39 @@ namespace Pav2.Logica
 {
     public class Usuarios
     {
+        //public static ReturnValue<CustomClass.UsuarioCustom> ValidarCredenciales(string nameUsuario, string pwdUsuario)
+        //{
+        //    ReturnValue<CustomClass.UsuarioCustom> validador = new ReturnValue<CustomClass.UsuarioCustom>() { isSuccess = false };
+        //    using (var Contex = new BugTrackerFinalEntities())
+        //    {
+        //        try
+        //        {
+        //            var usuario = Contex.Usuarios.Where(x => x.usuario1 == nameUsuario && x.borrado == false).FirstOrDefault();
+
+        //            if (usuario != null)
+        //            {
+        //                if (usuario.password == pwdUsuario)
+        //                { validador.isSuccess = true;                        
+        //                }
+        //                else { validador.ErrorMessage = "Contraseña incorrecta"; }
+        //            }
+        //            else { validador.ErrorMessage = "Usuario incorrecto"; }
+        //        }
+
+        //        catch (Exception ex)
+        //        {
+        //            validador.ErrorMessage = ex.Message;
+        //        }
+        //    }
+        //    return validador;
+        //}
         public static ReturnValue<CustomClass.UsuarioCustom> ValidarCredenciales(string nameUsuario, string pwdUsuario)
         {
-            ReturnValue<CustomClass.UsuarioCustom> var1 = new ReturnValue<CustomClass.UsuarioCustom>() {isSuccess=false};
+            ReturnValue<CustomClass.UsuarioCustom> var1 = new ReturnValue<CustomClass.UsuarioCustom>() { isSuccess = false };
             using (var Contex = new BugTrackerFinalEntities())
             {
-                try {
+                try
+                {
                     var user = Contex.Usuarios.Where(x => x.usuario1 == nameUsuario);
                     var temp = user.Join(Contex.Perfiles,
                                         usuario => usuario.id_perfil,
@@ -35,11 +62,11 @@ namespace Pav2.Logica
                                             mail = usuario.email,
                                             borrado = (bool)usuario.borrado
                                         }).FirstOrDefault();
-                    if (user != null)
+                    if (temp != null)
                     {
                         if (!(bool)temp.borrado)
                         {
-                            if (temp.passw== pwdUsuario)
+                            if (temp.passw == pwdUsuario)
                             {
                                 var1.isSuccess = true;
                                 var1.Data = temp;
@@ -47,24 +74,26 @@ namespace Pav2.Logica
                             else { var1.ErrorMessage = "Contraseña Incorrecta"; }
                         }
                         else
-                        { var1.ErrorMessage = "Usuario no habilitado";}
+                        { var1.ErrorMessage = "Usuario no habilitado"; }
                     }
-                    else { var1.ErrorMessage = "Usuario no encontrado";}
+                    else { var1.ErrorMessage = "Usuario no encontrado"; }
                 }
-                catch(Exception ex) {
+                catch (Exception ex)
+                {
                     var1.ErrorMessage = ex.Message;
                 }
             }
             return var1;
         }
 
-        public static ReturnValue CrearUsuarios(int perfil, string name, string pw, String mail) 
+
+        public static ReturnValue CrearUsuarios(int perfil, string name, string pw, String mail)
         {
-            ReturnValue validador = new ReturnValue() { isSuccess = false};
+            ReturnValue validador = new ReturnValue() { isSuccess = false };
             Usuario user1 = new Usuario();
             using (var Contex = new BugTrackerFinalEntities())
             {
-                if (name != String.Empty && pw != String.Empty && mail != String.Empty) 
+                if (name != String.Empty && pw != String.Empty && mail != String.Empty)
                 {
                     var check = from Usuario in Contex.Usuarios
                                 where Usuario.borrado != true
@@ -87,7 +116,7 @@ namespace Pav2.Logica
                     else { validador.isSuccess = false; validador.ErrorMessage = "Ese usuario ya existe"; }
                 }
                 else { validador.isSuccess = false; validador.ErrorMessage = "Campos vacios"; }
-                
+
             }
             return validador;
         }
@@ -114,14 +143,14 @@ namespace Pav2.Logica
         }
         public static List<Usuario> FiltrarDataUsuario(string filtro)
         {
-                var Contex = new BugTrackerFinalEntities();
-                 var lista = from Usuario in Contex.Usuarios
-                 where Usuario.borrado != true
-                 && Usuario.usuario1.IndexOf(filtro)>=0
-                 select Usuario;
-                  return lista.ToList();
-        }   
-        
+            var Contex = new BugTrackerFinalEntities();
+            var lista = from Usuario in Contex.Usuarios
+                        where Usuario.borrado != true
+                        && Usuario.usuario1.IndexOf(filtro) >= 0
+                        select Usuario;
+            return lista.ToList();
+        }
+
         public static List<UsuarioCustom> MostarDatosUsuarioCustom(bool borrado)
         {
             using (var contex = new BugTrackerFinalEntities())
@@ -135,14 +164,15 @@ namespace Pav2.Logica
                 var temp = lista.Join(contex.Perfiles,
                     usuario => usuario.id_perfil,
                     perfil => perfil.id_perfil,
-                    (usuario,perfil) => new UsuarioCustom() {
-                        id_perfil = perfil.id_perfil, 
+                    (usuario, perfil) => new UsuarioCustom()
+                    {
+                        id_perfil = perfil.id_perfil,
                         id_usuario = usuario.id_usuario,
                         perfil = perfil.nombre,
-                        usuario= usuario.usuario1, 
-                        passw = usuario.password, 
-                        mail = usuario.email, 
-                        borrado = (bool)usuario.borrado 
+                        usuario = usuario.usuario1,
+                        passw = usuario.password,
+                        mail = usuario.email,
+                        borrado = (bool)usuario.borrado
                     });
                 return temp.ToList();
             }
@@ -186,7 +216,7 @@ namespace Pav2.Logica
 
                 if (q.usuario1 != name)
                     q.usuario1 = name;
-               
+
                 if (q.password != password)
                     q.password = password;
 

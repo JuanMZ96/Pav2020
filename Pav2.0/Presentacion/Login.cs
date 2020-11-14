@@ -26,6 +26,11 @@ namespace Pav2.Presentacion
 
         private void btnIngresar_Click(object sender, EventArgs e)
         {
+            if (txt_nameid.Text == "Usuario" || txt_pwd.Text == "Contraseña")
+            {
+                MessageBox.Show("Complete los campos", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
             if (txt_nameid.Text != String.Empty && txt_pwd.Text != String.Empty)
             {

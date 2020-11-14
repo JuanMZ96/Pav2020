@@ -20,7 +20,8 @@ namespace Pav2.Logica
             Curso cur1 = new Curso();
             using (var Contex = new BugTrackerFinalEntities())
             {
-                try {
+                try
+                {
                     if (name != String.Empty && descripcion != String.Empty)
                     {
                         cur1.nombre = name;
@@ -46,19 +47,20 @@ namespace Pav2.Logica
         }
 
 
-        public static ReturnValue ModificarCursos(int id, string name, string descripcion, bool estado, int categoria, DateTime fecha)
+        public static ReturnValue ModificarCursos(int id, string name, string descripcion, int categoria, DateTime fecha)
         {
 
             ReturnValue var1 = new ReturnValue() { isSuccess = false };
             using (var Contex = new BugTrackerFinalEntities())
             {
-                try {
+                try
+                {
                     var q = Contex.Cursos.Where(x => x.id_curso == id).FirstOrDefault();
                     if (q != null)
                     {
                         if (q.nombre != name) q.nombre = name;
                         if (q.descripcion != descripcion) q.descripcion = descripcion;
-                        if (q.borrado != estado) q.borrado = estado;
+                        //if (q.borrado != estado) q.borrado = estado;
                         if (q.id_categoria != categoria) q.id_categoria = categoria;
                         if (q.fecha_vigencia != fecha) q.fecha_vigencia = fecha;
                         Contex.SaveChanges();
@@ -78,7 +80,8 @@ namespace Pav2.Logica
             ReturnValue var1 = new ReturnValue() { isSuccess = false };
             using (var Contex = new BugTrackerFinalEntities())
             {
-                try {
+                try
+                {
                     if (borrado == false)
                     {
                         var q = Contex.Cursos.Where(x => x.id_curso == id).FirstOrDefault();
@@ -181,8 +184,35 @@ namespace Pav2.Logica
                 return lista.ToList();
             }
         }
-    }
+    
    
+
+        public static ReturnValue HabilitarCursos(int id, bool borrado)
+        {
+            ReturnValue validador = new ReturnValue() { isSuccess = false };
+            using (var Contex = new BugTrackerFinalEntities())
+            {
+                try
+                {
+                    var curso = Contex.Cursos.Where(x => x.id_curso == id && x.borrado == true).FirstOrDefault();
+
+                    if (curso != null)
+                    {
+                        if (curso.borrado != borrado) curso.borrado = borrado;
+                        Contex.SaveChanges();
+                        validador.isSuccess = true;
+                    }
+                    else { validador.ErrorMessage = "Seleccionar el curso correcta."; }
+                }
+                catch (Exception ex)
+                {
+                    validador.ErrorMessage = ex.Message;
+                }
+            }
+            return validador;
+        }
+
+    }
 }
 
 

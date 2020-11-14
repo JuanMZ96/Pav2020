@@ -288,6 +288,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="QUEHACER.txt" />
+    <None Include="Resources\Usario logueado.png" />
+    <None Include="Resources\Password.png" />
+    <None Include="Resources\User.png" />
+    <None Include="Resources\Edit1.png" />
+    <None Include="Resources\Delete.png" />
+    <None Include="Resources\Add.png" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
