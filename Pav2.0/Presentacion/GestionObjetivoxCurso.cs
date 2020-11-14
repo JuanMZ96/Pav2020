@@ -48,6 +48,7 @@ namespace Pav2.Presentacion
                         columns.Visible = false;
                     }
                 }
+                dgv_ObjetivosxCurso.Columns[6].Visible = false;
                 if (chk_IncluirBorrados.Checked) { dgv_ObjetivosxCurso.Columns[5].Visible = true; }
                 else { dgv_ObjetivosxCurso.Columns[5].Visible = false; }
             }
@@ -143,6 +144,34 @@ namespace Pav2.Presentacion
             }
         }
 
-       
+        private void btn_modificar_MouseHover(object sender, EventArgs e)
+        {
+            lbl_modificar.Visible = true;
+        }
+
+        private void btn_modificar_MouseLeave(object sender, EventArgs e)
+        {
+            lbl_modificar.Visible = false;
+        }
+
+        private void btn_eliminar_MouseHover(object sender, EventArgs e)
+        {
+            lbl_eliminar.Visible = true;
+        }
+
+        private void btn_eliminar_MouseLeave(object sender, EventArgs e)
+        {
+            lbl_eliminar.Visible = false;
+        }
+
+        private void btn_habilitar_MouseHover(object sender, EventArgs e)
+        {
+            lbl_habilitar.Visible = true;
+        }
+
+        private void btn_habilitar_MouseLeave(object sender, EventArgs e)
+        {
+            lbl_habilitar.Visible = false;
+        }
     }
 }

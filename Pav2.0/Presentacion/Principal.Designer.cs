@@ -42,16 +42,16 @@
             this.lbl_Dominio = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.menuStrip2 = new System.Windows.Forms.MenuStrip();
+            this.gestionarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.categoríasToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.cursosToolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
+            this.objetivosToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.usuariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cursosToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.avancesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.usuariosToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.altaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ayudaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.gestionarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.categoríasToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.cursosToolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
-            this.objetivosToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -66,7 +66,7 @@
             this.lbl_perfil.AutoSize = true;
             this.lbl_perfil.Font = new System.Drawing.Font("Gadugi", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_perfil.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.lbl_perfil.Location = new System.Drawing.Point(367, 49);
+            this.lbl_perfil.Location = new System.Drawing.Point(355, 45);
             this.lbl_perfil.Name = "lbl_perfil";
             this.lbl_perfil.Size = new System.Drawing.Size(59, 25);
             this.lbl_perfil.TabIndex = 4;
@@ -80,7 +80,7 @@
             this.lbl_usuario.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lbl_usuario.AutoSize = true;
             this.lbl_usuario.Font = new System.Drawing.Font("Corbel", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_usuario.Location = new System.Drawing.Point(691, 54);
+            this.lbl_usuario.Location = new System.Drawing.Point(667, 54);
             this.lbl_usuario.Name = "lbl_usuario";
             this.lbl_usuario.Size = new System.Drawing.Size(96, 18);
             this.lbl_usuario.TabIndex = 5;
@@ -131,7 +131,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.splitContainer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.splitContainer1.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer1.Location = new System.Drawing.Point(12, 12);
             this.splitContainer1.Name = "splitContainer1";
             this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
@@ -148,8 +148,8 @@
             this.splitContainer1.Panel2.Controls.Add(this.menuStrip2);
             this.splitContainer1.Panel2.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.splitContainer1.Panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainer1_Panel2_Paint);
-            this.splitContainer1.Size = new System.Drawing.Size(800, 449);
-            this.splitContainer1.SplitterDistance = 75;
+            this.splitContainer1.Size = new System.Drawing.Size(776, 426);
+            this.splitContainer1.SplitterDistance = 71;
             this.splitContainer1.SplitterWidth = 3;
             this.splitContainer1.TabIndex = 9;
             // 
@@ -157,7 +157,7 @@
             // 
             this.lbl_Dominio.AutoSize = true;
             this.lbl_Dominio.Font = new System.Drawing.Font("Corbel", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_Dominio.Location = new System.Drawing.Point(12, 22);
+            this.lbl_Dominio.Location = new System.Drawing.Point(3, 12);
             this.lbl_Dominio.Name = "lbl_Dominio";
             this.lbl_Dominio.Size = new System.Drawing.Size(455, 33);
             this.lbl_Dominio.TabIndex = 9;
@@ -167,7 +167,7 @@
             // 
             this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox1.Image = global::Pav2.Properties.Resources.Usario_logueado;
-            this.pictureBox1.Location = new System.Drawing.Point(710, 3);
+            this.pictureBox1.Location = new System.Drawing.Point(686, 3);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(63, 48);
             this.pictureBox1.TabIndex = 8;
@@ -176,6 +176,8 @@
             // menuStrip2
             // 
             this.menuStrip2.Dock = System.Windows.Forms.DockStyle.Left;
+            this.menuStrip2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.menuStrip2.GripMargin = new System.Windows.Forms.Padding(5, 5, 0, 2);
             this.menuStrip2.GripStyle = System.Windows.Forms.ToolStripGripStyle.Visible;
             this.menuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.gestionarToolStripMenuItem,
@@ -184,54 +186,9 @@
             this.ayudaToolStripMenuItem});
             this.menuStrip2.Location = new System.Drawing.Point(0, 0);
             this.menuStrip2.Name = "menuStrip2";
-            this.menuStrip2.Size = new System.Drawing.Size(123, 369);
+            this.menuStrip2.Size = new System.Drawing.Size(79, 350);
             this.menuStrip2.TabIndex = 8;
             this.menuStrip2.Text = "menuStrip2";
-            // 
-            // usuariosToolStripMenuItem
-            // 
-            this.usuariosToolStripMenuItem.BackColor = System.Drawing.Color.Gainsboro;
-            this.usuariosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.cursosToolStripMenuItem2,
-            this.avancesToolStripMenuItem});
-            this.usuariosToolStripMenuItem.Name = "usuariosToolStripMenuItem";
-            this.usuariosToolStripMenuItem.Size = new System.Drawing.Size(116, 19);
-            this.usuariosToolStripMenuItem.Text = "Reportes";
-            // 
-            // cursosToolStripMenuItem2
-            // 
-            this.cursosToolStripMenuItem2.Name = "cursosToolStripMenuItem2";
-            this.cursosToolStripMenuItem2.Size = new System.Drawing.Size(180, 22);
-            this.cursosToolStripMenuItem2.Text = "Cursos";
-            // 
-            // avancesToolStripMenuItem
-            // 
-            this.avancesToolStripMenuItem.Name = "avancesToolStripMenuItem";
-            this.avancesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.avancesToolStripMenuItem.Text = "Avances";
-            // 
-            // usuariosToolStripMenuItem1
-            // 
-            this.usuariosToolStripMenuItem1.BackColor = System.Drawing.Color.Gainsboro;
-            this.usuariosToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.altaToolStripMenuItem});
-            this.usuariosToolStripMenuItem1.Name = "usuariosToolStripMenuItem1";
-            this.usuariosToolStripMenuItem1.Size = new System.Drawing.Size(116, 19);
-            this.usuariosToolStripMenuItem1.Text = "Usuarios";
-            // 
-            // altaToolStripMenuItem
-            // 
-            this.altaToolStripMenuItem.Name = "altaToolStripMenuItem";
-            this.altaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.altaToolStripMenuItem.Text = "Alta";
-            this.altaToolStripMenuItem.Click += new System.EventHandler(this.altaToolStripMenuItem_Click);
-            // 
-            // ayudaToolStripMenuItem
-            // 
-            this.ayudaToolStripMenuItem.BackColor = System.Drawing.Color.Gainsboro;
-            this.ayudaToolStripMenuItem.Name = "ayudaToolStripMenuItem";
-            this.ayudaToolStripMenuItem.Size = new System.Drawing.Size(116, 19);
-            this.ayudaToolStripMenuItem.Text = "Ayuda";
             // 
             // gestionarToolStripMenuItem
             // 
@@ -241,7 +198,7 @@
             this.cursosToolStripMenuItem3,
             this.objetivosToolStripMenuItem2});
             this.gestionarToolStripMenuItem.Name = "gestionarToolStripMenuItem";
-            this.gestionarToolStripMenuItem.Size = new System.Drawing.Size(116, 19);
+            this.gestionarToolStripMenuItem.Size = new System.Drawing.Size(72, 21);
             this.gestionarToolStripMenuItem.Text = "Gestionar";
             // 
             // categoríasToolStripMenuItem1
@@ -256,12 +213,59 @@
             this.cursosToolStripMenuItem3.Name = "cursosToolStripMenuItem3";
             this.cursosToolStripMenuItem3.Size = new System.Drawing.Size(180, 22);
             this.cursosToolStripMenuItem3.Text = "Cursos";
+            this.cursosToolStripMenuItem3.Click += new System.EventHandler(this.cursosToolStripMenuItem3_Click);
             // 
             // objetivosToolStripMenuItem2
             // 
             this.objetivosToolStripMenuItem2.Name = "objetivosToolStripMenuItem2";
             this.objetivosToolStripMenuItem2.Size = new System.Drawing.Size(180, 22);
             this.objetivosToolStripMenuItem2.Text = "Objetivos";
+            this.objetivosToolStripMenuItem2.Click += new System.EventHandler(this.objetivosToolStripMenuItem2_Click);
+            // 
+            // usuariosToolStripMenuItem
+            // 
+            this.usuariosToolStripMenuItem.BackColor = System.Drawing.Color.Gainsboro;
+            this.usuariosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.cursosToolStripMenuItem2,
+            this.avancesToolStripMenuItem});
+            this.usuariosToolStripMenuItem.Name = "usuariosToolStripMenuItem";
+            this.usuariosToolStripMenuItem.Size = new System.Drawing.Size(72, 21);
+            this.usuariosToolStripMenuItem.Text = "Reportes";
+            // 
+            // cursosToolStripMenuItem2
+            // 
+            this.cursosToolStripMenuItem2.Name = "cursosToolStripMenuItem2";
+            this.cursosToolStripMenuItem2.Size = new System.Drawing.Size(123, 22);
+            this.cursosToolStripMenuItem2.Text = "Cursos";
+            // 
+            // avancesToolStripMenuItem
+            // 
+            this.avancesToolStripMenuItem.Name = "avancesToolStripMenuItem";
+            this.avancesToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
+            this.avancesToolStripMenuItem.Text = "Avances";
+            // 
+            // usuariosToolStripMenuItem1
+            // 
+            this.usuariosToolStripMenuItem1.BackColor = System.Drawing.Color.Gainsboro;
+            this.usuariosToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.altaToolStripMenuItem});
+            this.usuariosToolStripMenuItem1.Name = "usuariosToolStripMenuItem1";
+            this.usuariosToolStripMenuItem1.Size = new System.Drawing.Size(72, 21);
+            this.usuariosToolStripMenuItem1.Text = "Usuarios";
+            // 
+            // altaToolStripMenuItem
+            // 
+            this.altaToolStripMenuItem.Name = "altaToolStripMenuItem";
+            this.altaToolStripMenuItem.Size = new System.Drawing.Size(98, 22);
+            this.altaToolStripMenuItem.Text = "Alta";
+            this.altaToolStripMenuItem.Click += new System.EventHandler(this.altaToolStripMenuItem_Click);
+            // 
+            // ayudaToolStripMenuItem
+            // 
+            this.ayudaToolStripMenuItem.BackColor = System.Drawing.Color.Gainsboro;
+            this.ayudaToolStripMenuItem.Name = "ayudaToolStripMenuItem";
+            this.ayudaToolStripMenuItem.Size = new System.Drawing.Size(72, 21);
+            this.ayudaToolStripMenuItem.Text = "Ayuda";
             // 
             // Principal
             // 

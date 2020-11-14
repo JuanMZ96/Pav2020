@@ -96,7 +96,7 @@ namespace Pav2.Presentacion
                 if (chk_todo.Checked) {dgv_cursos.Columns[6].Visible = true;}
                 else { dgv_cursos.Columns[6].Visible = false; }
                 btn_habilitar.Visible = false;
-                btn_guardar.Enabled = true;
+                btn_habilitar.Enabled = true;
             }
 
 
@@ -117,10 +117,10 @@ namespace Pav2.Presentacion
                 cmb_categoria.SelectedValue = var1.id_categoria;
                 if (var1.borrado == true) { btn_habilitar.Visible = true; 
                                             btn_modificar.Enabled = false;
-                                            btn_guardar.Enabled = false;}
+                                            btn_habilitar.Enabled = false;}
                 else { btn_habilitar.Visible = false; 
                         btn_modificar.Enabled = true;
-                        btn_guardar.Enabled = true; }
+                        btn_habilitar.Enabled = true; }
             }
             catch (Exception x)
             {

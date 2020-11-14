@@ -211,6 +211,51 @@ namespace Pav2.Presentacion
                 MessageBox.Show("Error: " + x);
             }
         }
+
+        private void splitContainer1_Panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void btn_guardar_MouseHover(object sender, EventArgs e)
+        {
+            lbl_guardar.Visible = true;
+        }
+
+        private void btn_guardar_MouseLeave(object sender, EventArgs e)
+        {
+            lbl_guardar.Visible = false;
+        }
+
+        private void btn_modificar_MouseHover(object sender, EventArgs e)
+        {
+            lbl_modificar.Visible = true;
+        }
+
+        private void btn_modificar_MouseLeave(object sender, EventArgs e)
+        {
+            lbl_modificar.Visible = false;
+        }
+
+        private void btn_borrar_MouseHover(object sender, EventArgs e)
+        {
+            lbl_eliminar.Visible = true;
+        }
+
+        private void btn_borrar_MouseLeave(object sender, EventArgs e)
+        {
+            lbl_eliminar.Visible = false;
+        }
+
+        private void btn_Habilitar_MouseHover(object sender, EventArgs e)
+        {
+            lbl_habilitar.Visible = true;
+        }
+
+        private void btn_Habilitar_MouseLeave(object sender, EventArgs e)
+        {
+            lbl_habilitar.Visible = false;
+        }
     }   
 
 }

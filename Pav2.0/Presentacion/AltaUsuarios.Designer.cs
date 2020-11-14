@@ -59,7 +59,7 @@
             this.cmb_perfiles.FormattingEnabled = true;
             this.cmb_perfiles.Location = new System.Drawing.Point(115, 132);
             this.cmb_perfiles.Name = "cmb_perfiles";
-            this.cmb_perfiles.Size = new System.Drawing.Size(137, 21);
+            this.cmb_perfiles.Size = new System.Drawing.Size(100, 21);
             this.cmb_perfiles.TabIndex = 3;
             this.cmb_perfiles.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 

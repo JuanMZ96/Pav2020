@@ -143,10 +143,6 @@ namespace Pav2.Presentacion
             chk_estado.Visible = chk_todo.Checked;
         }
 
-        private void btn_cancelar_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
 
         private void limpiarcampos()
         {
@@ -165,9 +161,45 @@ namespace Pav2.Presentacion
 
         }
 
-       
+        private void btn_guardar_MouseHover(object sender, EventArgs e)
+        {
+            lbl_guardar.Visible = true;
+        }
 
-   
+        private void btn_guardar_MouseLeave(object sender, EventArgs e)
+        {
+            lbl_guardar.Visible = false;
+        }
+
+        private void btn_Modificar_MouseHover(object sender, EventArgs e)
+        {
+            lbl_modificar.Visible = true;
+        }
+
+        private void btn_Modificar_MouseLeave(object sender, EventArgs e)
+        {
+            lbl_modificar.Visible = false;
+        }
+
+        private void btn_Eliminar_MouseHover(object sender, EventArgs e)
+        {
+            lbl_eliminar.Visible = true;
+        }
+
+        private void btn_Eliminar_MouseLeave(object sender, EventArgs e)
+        {
+            lbl_eliminar.Visible = false;
+        }
+
+        private void btn_habilitar_MouseHover(object sender, EventArgs e)
+        {
+            lbl_habilitar.Visible = true;
+        }
+
+        private void btn_habilitar_MouseLeave(object sender, EventArgs e)
+        {
+            lbl_habilitar.Visible = false;
+        }
     } 
 }
 

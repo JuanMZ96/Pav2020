@@ -31,8 +31,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GestionObjetivoxCurso));
             this.dgv_ObjetivosxCurso = new System.Windows.Forms.DataGridView();
             this.cmb_cursos = new System.Windows.Forms.ComboBox();
-            this.btn_modificar = new System.Windows.Forms.Button();
-            this.btn_eliminar = new System.Windows.Forms.Button();
             this.chk_IncluirBorrados = new System.Windows.Forms.CheckBox();
             this.txt_puntaje = new System.Windows.Forms.TextBox();
             this.cmb_objetivos = new System.Windows.Forms.ComboBox();
@@ -40,19 +38,21 @@
             this.lbl_cursos = new System.Windows.Forms.Label();
             this.lbl_objetivos = new System.Windows.Forms.Label();
             this.lbl_puntaje = new System.Windows.Forms.Label();
-            this.btn_habilitar = new System.Windows.Forms.Button();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.btn_habilitar = new System.Windows.Forms.PictureBox();
+            this.btn_modificar = new System.Windows.Forms.PictureBox();
+            this.btn_eliminar = new System.Windows.Forms.PictureBox();
+            this.lbl_eliminar = new System.Windows.Forms.Label();
+            this.lbl_modificar = new System.Windows.Forms.Label();
+            this.lbl_habilitar = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_ObjetivosxCurso)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btn_habilitar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btn_modificar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btn_eliminar)).BeginInit();
             this.SuspendLayout();
             // 
             // dgv_ObjetivosxCurso
@@ -77,26 +77,6 @@
             this.cmb_cursos.TabIndex = 1;
             this.cmb_cursos.SelectedValueChanged += new System.EventHandler(this.cmb_cursos_ValueMemberChanged);
             this.cmb_cursos.Click += new System.EventHandler(this.cmb_cursos_Click);
-            // 
-            // btn_modificar
-            // 
-            this.btn_modificar.Location = new System.Drawing.Point(178, 413);
-            this.btn_modificar.Name = "btn_modificar";
-            this.btn_modificar.Size = new System.Drawing.Size(75, 23);
-            this.btn_modificar.TabIndex = 3;
-            this.btn_modificar.Text = "Modificar";
-            this.btn_modificar.UseVisualStyleBackColor = true;
-            this.btn_modificar.Click += new System.EventHandler(this.btn_modificar_Click);
-            // 
-            // btn_eliminar
-            // 
-            this.btn_eliminar.Location = new System.Drawing.Point(259, 413);
-            this.btn_eliminar.Name = "btn_eliminar";
-            this.btn_eliminar.Size = new System.Drawing.Size(75, 23);
-            this.btn_eliminar.TabIndex = 4;
-            this.btn_eliminar.Text = "Eliminar";
-            this.btn_eliminar.UseVisualStyleBackColor = true;
-            this.btn_eliminar.Click += new System.EventHandler(this.btn_eliminar_Click);
             // 
             // chk_IncluirBorrados
             // 
@@ -138,6 +118,7 @@
             this.chk_borrado.TabIndex = 8;
             this.chk_borrado.Text = "BorrarDB";
             this.chk_borrado.UseVisualStyleBackColor = true;
+            this.chk_borrado.Visible = false;
             // 
             // lbl_cursos
             // 
@@ -166,21 +147,10 @@
             this.lbl_puntaje.TabIndex = 11;
             this.lbl_puntaje.Text = "Puntaje:";
             // 
-            // btn_habilitar
-            // 
-            this.btn_habilitar.Location = new System.Drawing.Point(64, 413);
-            this.btn_habilitar.Name = "btn_habilitar";
-            this.btn_habilitar.Size = new System.Drawing.Size(75, 23);
-            this.btn_habilitar.TabIndex = 12;
-            this.btn_habilitar.TabStop = false;
-            this.btn_habilitar.Text = "Habilitar ";
-            this.btn_habilitar.UseVisualStyleBackColor = true;
-            this.btn_habilitar.Visible = false;
-            this.btn_habilitar.Click += new System.EventHandler(this.btn_habilitar_Click);
-            // 
             // splitContainer1
             // 
-            this.splitContainer1.Location = new System.Drawing.Point(12, 18);
+            this.splitContainer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.splitContainer1.Location = new System.Drawing.Point(12, 12);
             this.splitContainer1.Name = "splitContainer1";
             // 
             // splitContainer1.Panel1
@@ -194,42 +164,90 @@
             // 
             // splitContainer1.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.pictureBox3);
-            this.splitContainer1.Panel2.Controls.Add(this.pictureBox2);
-            this.splitContainer1.Panel2.Controls.Add(this.pictureBox1);
-            this.splitContainer1.Panel2.Controls.Add(this.dgv_ObjetivosxCurso);
+            this.splitContainer1.Panel2.Controls.Add(this.lbl_eliminar);
+            this.splitContainer1.Panel2.Controls.Add(this.lbl_modificar);
+            this.splitContainer1.Panel2.Controls.Add(this.lbl_habilitar);
             this.splitContainer1.Panel2.Controls.Add(this.btn_habilitar);
-            this.splitContainer1.Panel2.Controls.Add(this.chk_IncluirBorrados);
             this.splitContainer1.Panel2.Controls.Add(this.btn_modificar);
             this.splitContainer1.Panel2.Controls.Add(this.btn_eliminar);
+            this.splitContainer1.Panel2.Controls.Add(this.dgv_ObjetivosxCurso);
+            this.splitContainer1.Panel2.Controls.Add(this.chk_IncluirBorrados);
             this.splitContainer1.Panel2.Controls.Add(this.chk_borrado);
-            this.splitContainer1.Size = new System.Drawing.Size(954, 558);
-            this.splitContainer1.SplitterDistance = 318;
+            this.splitContainer1.Size = new System.Drawing.Size(970, 564);
+            this.splitContainer1.SplitterDistance = 323;
             this.splitContainer1.TabIndex = 13;
             // 
-            // pictureBox1
+            // btn_habilitar
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(92, 479);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(100, 50);
-            this.pictureBox1.TabIndex = 13;
-            this.pictureBox1.TabStop = false;
+            this.btn_habilitar.Image = global::Pav2.Properties.Resources.Add;
+            this.btn_habilitar.Location = new System.Drawing.Point(154, 396);
+            this.btn_habilitar.Name = "btn_habilitar";
+            this.btn_habilitar.Size = new System.Drawing.Size(37, 38);
+            this.btn_habilitar.TabIndex = 15;
+            this.btn_habilitar.TabStop = false;
+            this.btn_habilitar.Click += new System.EventHandler(this.btn_habilitar_Click);
+            this.btn_habilitar.MouseLeave += new System.EventHandler(this.btn_habilitar_MouseLeave);
+            this.btn_habilitar.MouseHover += new System.EventHandler(this.btn_habilitar_MouseHover);
             // 
-            // pictureBox2
+            // btn_modificar
             // 
-            this.pictureBox2.Location = new System.Drawing.Point(344, 479);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(36, 50);
-            this.pictureBox2.TabIndex = 14;
-            this.pictureBox2.TabStop = false;
+            this.btn_modificar.Image = global::Pav2.Properties.Resources.Edit1;
+            this.btn_modificar.Location = new System.Drawing.Point(66, 396);
+            this.btn_modificar.Name = "btn_modificar";
+            this.btn_modificar.Size = new System.Drawing.Size(36, 38);
+            this.btn_modificar.TabIndex = 14;
+            this.btn_modificar.TabStop = false;
+            this.btn_modificar.Click += new System.EventHandler(this.btn_modificar_Click);
+            this.btn_modificar.MouseLeave += new System.EventHandler(this.btn_modificar_MouseLeave);
+            this.btn_modificar.MouseHover += new System.EventHandler(this.btn_modificar_MouseHover);
             // 
-            // pictureBox3
+            // btn_eliminar
             // 
-            this.pictureBox3.Location = new System.Drawing.Point(216, 479);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(37, 50);
-            this.pictureBox3.TabIndex = 15;
-            this.pictureBox3.TabStop = false;
+            this.btn_eliminar.Image = global::Pav2.Properties.Resources.Delete;
+            this.btn_eliminar.Location = new System.Drawing.Point(108, 396);
+            this.btn_eliminar.Name = "btn_eliminar";
+            this.btn_eliminar.Size = new System.Drawing.Size(36, 38);
+            this.btn_eliminar.TabIndex = 13;
+            this.btn_eliminar.TabStop = false;
+            this.btn_eliminar.Click += new System.EventHandler(this.btn_eliminar_Click);
+            this.btn_eliminar.MouseLeave += new System.EventHandler(this.btn_eliminar_MouseLeave);
+            this.btn_eliminar.MouseHover += new System.EventHandler(this.btn_eliminar_MouseHover);
+            // 
+            // lbl_eliminar
+            // 
+            this.lbl_eliminar.AutoSize = true;
+            this.lbl_eliminar.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.lbl_eliminar.ForeColor = System.Drawing.Color.DimGray;
+            this.lbl_eliminar.Location = new System.Drawing.Point(105, 437);
+            this.lbl_eliminar.Name = "lbl_eliminar";
+            this.lbl_eliminar.Size = new System.Drawing.Size(43, 13);
+            this.lbl_eliminar.TabIndex = 28;
+            this.lbl_eliminar.Text = "Eliminar";
+            this.lbl_eliminar.Visible = false;
+            // 
+            // lbl_modificar
+            // 
+            this.lbl_modificar.AutoSize = true;
+            this.lbl_modificar.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.lbl_modificar.ForeColor = System.Drawing.Color.DimGray;
+            this.lbl_modificar.Location = new System.Drawing.Point(63, 437);
+            this.lbl_modificar.Name = "lbl_modificar";
+            this.lbl_modificar.Size = new System.Drawing.Size(50, 13);
+            this.lbl_modificar.TabIndex = 27;
+            this.lbl_modificar.Text = "Modificar";
+            this.lbl_modificar.Visible = false;
+            // 
+            // lbl_habilitar
+            // 
+            this.lbl_habilitar.AutoSize = true;
+            this.lbl_habilitar.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.lbl_habilitar.ForeColor = System.Drawing.Color.DimGray;
+            this.lbl_habilitar.Location = new System.Drawing.Point(150, 437);
+            this.lbl_habilitar.Name = "lbl_habilitar";
+            this.lbl_habilitar.Size = new System.Drawing.Size(45, 13);
+            this.lbl_habilitar.TabIndex = 26;
+            this.lbl_habilitar.Text = "Habilitar";
+            this.lbl_habilitar.Visible = false;
             // 
             // GestionObjetivoxCurso
             // 
@@ -239,7 +257,7 @@
             this.Controls.Add(this.splitContainer1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "GestionObjetivoxCurso";
-            this.Text = "Gestión de Objetivo por Curso";
+            this.Text = "Gestión de Objetivos por Curso";
             this.Load += new System.EventHandler(this.GestionObjetivoxCurso_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_ObjetivosxCurso)).EndInit();
             this.splitContainer1.Panel1.ResumeLayout(false);
@@ -248,9 +266,9 @@
             this.splitContainer1.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btn_habilitar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btn_modificar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btn_eliminar)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -259,8 +277,6 @@
 
         private System.Windows.Forms.DataGridView dgv_ObjetivosxCurso;
         private System.Windows.Forms.ComboBox cmb_cursos;
-        private System.Windows.Forms.Button btn_modificar;
-        private System.Windows.Forms.Button btn_eliminar;
         private System.Windows.Forms.CheckBox chk_IncluirBorrados;
         private System.Windows.Forms.TextBox txt_puntaje;
         private System.Windows.Forms.ComboBox cmb_objetivos;
@@ -268,10 +284,12 @@
         private System.Windows.Forms.Label lbl_cursos;
         private System.Windows.Forms.Label lbl_objetivos;
         private System.Windows.Forms.Label lbl_puntaje;
-        private System.Windows.Forms.Button btn_habilitar;
         private System.Windows.Forms.SplitContainer splitContainer1;
-        private System.Windows.Forms.PictureBox pictureBox3;
-        private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox btn_habilitar;
+        private System.Windows.Forms.PictureBox btn_modificar;
+        private System.Windows.Forms.PictureBox btn_eliminar;
+        private System.Windows.Forms.Label lbl_eliminar;
+        private System.Windows.Forms.Label lbl_modificar;
+        private System.Windows.Forms.Label lbl_habilitar;
     }
 }

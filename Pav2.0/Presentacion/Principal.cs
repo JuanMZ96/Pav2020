@@ -74,5 +74,17 @@ namespace Pav2.Presentacion
             ventana2.ShowDialog();
 
         }
+
+        private void cursosToolStripMenuItem3_Click(object sender, EventArgs e)
+        {
+            Cursos ventana2 = new Cursos();
+            ventana2.ShowDialog();
+        }
+
+        private void objetivosToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            Objetivos ventana2 = new Objetivos();
+            ventana2.ShowDialog();
+        }
     }
 }
