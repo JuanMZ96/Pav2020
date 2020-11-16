@@ -74,5 +74,43 @@ namespace Pav2.Presentacion
             ventana2.ShowDialog();
 
         }
+
+        private void cursosToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            Reports.ReportUsuarioCurso ventana = new Reports.ReportUsuarioCurso();
+            ventana.ShowDialog();
+        }
+
+        private void avancesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Reports.ReportUsuarioCursoAvance ventana = new Reports.ReportUsuarioCursoAvance();
+            ventana.ShowDialog();
+        }
+
+      
+
+        private void cursosToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            AltaUsuariosxCurso ventana = new AltaUsuariosxCurso();
+            ventana.Show();
+        }
+
+        private void objetivosToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            AltaObjetivosxCurso ventana = new AltaObjetivosxCurso();
+            ventana.ShowDialog();
+        }
+
+        private void cursosToolStripMenuItem3_Click(object sender, EventArgs e)
+        {
+            GestionUsuarioxCurso ventana = new GestionUsuarioxCurso();
+            ventana.ShowDialog();
+        }
+
+        private void objetivosToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            GestionObjetivoxCurso ventana = new GestionObjetivoxCurso();
+            ventana.ShowDialog();
+        }
     }
 }

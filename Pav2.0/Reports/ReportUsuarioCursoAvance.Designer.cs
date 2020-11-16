@@ -29,7 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            this.usuarioxCursoAvanceCustomBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.gp_cursos = new System.Windows.Forms.GroupBox();
             this.dgv_curso = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -55,16 +56,19 @@
             this.label3 = new System.Windows.Forms.Label();
             this.cmb_tipo = new System.Windows.Forms.ComboBox();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.usuarioxCursoAvanceCustomBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.usuarioxCursoAvanceCustomBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.usuarioxCursoAvanceCustomBindingSource)).BeginInit();
             this.gp_cursos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_curso)).BeginInit();
             this.gp_usuarios.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_usuarios)).BeginInit();
             this.gp_fechas.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.usuarioxCursoAvanceCustomBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.usuarioxCursoAvanceCustomBindingSource1)).BeginInit();
             this.SuspendLayout();
+            // 
+            // usuarioxCursoAvanceCustomBindingSource
+            // 
+            this.usuarioxCursoAvanceCustomBindingSource.DataSource = typeof(Pav2.Logica.CustomClass.UsuarioxCursoAvanceCustom);
             // 
             // gp_cursos
             // 
@@ -310,19 +314,15 @@
             // 
             // reportViewer1
             // 
-            reportDataSource2.Name = "Custom";
-            reportDataSource2.Value = this.usuarioxCursoAvanceCustomBindingSource;
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource2);
+            reportDataSource1.Name = "Custom";
+            reportDataSource1.Value = this.usuarioxCursoAvanceCustomBindingSource;
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "Pav2.Reports.Report1.rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(356, 7);
             this.reportViewer1.Name = "reportViewer1";
             this.reportViewer1.ServerReport.BearerToken = null;
             this.reportViewer1.Size = new System.Drawing.Size(941, 566);
             this.reportViewer1.TabIndex = 24;
-            // 
-            // usuarioxCursoAvanceCustomBindingSource
-            // 
-            this.usuarioxCursoAvanceCustomBindingSource.DataSource = typeof(Pav2.Logica.CustomClass.UsuarioxCursoAvanceCustom);
             // 
             // usuarioxCursoAvanceCustomBindingSource1
             // 
@@ -343,8 +343,10 @@
             this.Controls.Add(this.gp_usuarios);
             this.Controls.Add(this.gp_fechas);
             this.Name = "ReportUsuarioCursoAvance";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "ReportUsuarioCursoAvance";
             this.Load += new System.EventHandler(this.ReportUsuarioCursoAvance_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.usuarioxCursoAvanceCustomBindingSource)).EndInit();
             this.gp_cursos.ResumeLayout(false);
             this.gp_cursos.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_curso)).EndInit();
@@ -353,7 +355,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgv_usuarios)).EndInit();
             this.gp_fechas.ResumeLayout(false);
             this.gp_fechas.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.usuarioxCursoAvanceCustomBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.usuarioxCursoAvanceCustomBindingSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
