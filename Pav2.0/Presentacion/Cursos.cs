@@ -122,7 +122,7 @@ namespace Pav2.Presentacion
                 cmb_categoria.SelectedValue = var1.id_categoria;
                 if (var1.borrado == true) { btn_habilitar.Visible = true; 
                                             btn_modificar.Enabled = false;
-                                            btn_habilitar.Enabled = false;}
+                                            btn_habilitar.Enabled = true;}
                 else { btn_habilitar.Visible = false; 
                         btn_modificar.Enabled = true;
                         btn_habilitar.Enabled = true; }

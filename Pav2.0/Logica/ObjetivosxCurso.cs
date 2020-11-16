@@ -17,6 +17,7 @@ namespace Pav2.Logica
         {
 
             ReturnValue  validador = new ReturnValue() {isSuccess=false};
+            ObjetivosCurso objetivosCurso = new ObjetivosCurso();
             using (var Contex = new BugTrackerFinalEntities())
             {
                 try {
@@ -26,13 +27,13 @@ namespace Pav2.Logica
                     {
                         var objcurso = Contex.ObjetivosCursos.Where(x => x.id_curso == idcurso
                                                                    && x.id_objetivo == idobjetivo).FirstOrDefault();
-                        if(objcurso == null) { 
+                        if(objcurso == null) {
                             //seteo OBJCURSO que es la entidad con los get y set
-                            objcurso.id_curso = idcurso;
-                            objcurso.id_objetivo = idobjetivo;
-                            objcurso.puntos = puntaje;
-                            objcurso.borrado = false;
-                            Contex.ObjetivosCursos.Add(objcurso);
+                            objetivosCurso.id_curso = idcurso;
+                            objetivosCurso.id_objetivo = idobjetivo;
+                            objetivosCurso.puntos = puntaje;
+                            objetivosCurso.borrado = false;
+                            Contex.ObjetivosCursos.Add(objetivosCurso);
                             Contex.SaveChanges();
                             validador.isSuccess = true;
                         }
