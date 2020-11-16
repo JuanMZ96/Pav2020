@@ -28,7 +28,7 @@ namespace Pav2.Presentacion
             try
             {
                 ReturnValue valido = Logica.Cursos.GuardarCursos(txt_name.Text, txt_descripcion.Text, (int)cmb_categoria.SelectedValue, dtp_datatime.Value);
-                if (valido.isSuccess) { MessageBox.Show("Se creo correctamente"); CargarGrilla(); }
+                if (valido.isSuccess) { MessageBox.Show("Se creó correctamente.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information); CargarGrilla(); }
                 else { MessageBox.Show(valido.ErrorMessage, "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
             }
             catch (Exception x)
@@ -44,7 +44,7 @@ namespace Pav2.Presentacion
             {
                 int id = Int32.Parse(txt_value.Text);
                 ReturnValue valido = Logica.Cursos.ModificarCursos(id, txt_name.Text, txt_descripcion.Text, (int)cmb_categoria.SelectedValue, dtp_datatime.Value);
-                if (valido.isSuccess) { MessageBox.Show("Se modificó correctamente"); CargarGrilla(); }
+                if (valido.isSuccess) { MessageBox.Show("Se modificó correctamente.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information); CargarGrilla(); }
                 else { MessageBox.Show(valido.ErrorMessage, "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
             }
             catch (Exception x)
@@ -57,10 +57,15 @@ namespace Pav2.Presentacion
         {
             try
             {
-                int id = Int32.Parse(txt_value.Text);
-                ReturnValue valido = Logica.Cursos.EliminarCursos(id, chk_borrado.Checked);
-                if (valido.isSuccess) { MessageBox.Show("Se borró correctamente"); CargarGrilla(); }
-                else { MessageBox.Show(valido.ErrorMessage, "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
+                DialogResult result = MessageBox.Show("¿Está seguro que desea eliminar? ", "Alerta", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                if (result == DialogResult.OK)
+                {
+                    int id = Int32.Parse(txt_value.Text);
+                    ReturnValue valido = Logica.Cursos.EliminarCursos(id, chk_borrado.Checked);
+                    if (valido.isSuccess) { MessageBox.Show("Se eliminó correctamente.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information); CargarGrilla(); }
+                    else { MessageBox.Show(valido.ErrorMessage, "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
+                }
+                    
             }
             catch (Exception x)
             {
@@ -96,7 +101,7 @@ namespace Pav2.Presentacion
                 if (chk_todo.Checked) {dgv_cursos.Columns[6].Visible = true;}
                 else { dgv_cursos.Columns[6].Visible = false; }
                 btn_habilitar.Visible = false;
-                btn_guardar.Enabled = true;
+                btn_habilitar.Enabled = true;
             }
 
 
@@ -117,10 +122,10 @@ namespace Pav2.Presentacion
                 cmb_categoria.SelectedValue = var1.id_categoria;
                 if (var1.borrado == true) { btn_habilitar.Visible = true; 
                                             btn_modificar.Enabled = false;
-                                            btn_guardar.Enabled = false;}
+                                            btn_habilitar.Enabled = false;}
                 else { btn_habilitar.Visible = false; 
                         btn_modificar.Enabled = true;
-                        btn_guardar.Enabled = true; }
+                        btn_habilitar.Enabled = true; }
             }
             catch (Exception x)
             {

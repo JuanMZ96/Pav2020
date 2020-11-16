@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Pav2.Logica;
+using Pav2.Reports;
 
 namespace Pav2.Presentacion
 {
@@ -73,6 +74,48 @@ namespace Pav2.Presentacion
             AltaUsuarios ventana2 = new AltaUsuarios();
             ventana2.ShowDialog();
 
+        }
+
+        private void cursosToolStripMenuItem3_Click(object sender, EventArgs e)
+        {
+            Cursos ventana2 = new Cursos();
+            ventana2.ShowDialog();
+        }
+
+        private void objetivosToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            Objetivos ventana2 = new Objetivos();
+            ventana2.ShowDialog();
+        }
+
+        private void objetivosPorCursoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AltaObjetivosxCurso ventana2 = new AltaObjetivosxCurso();
+            ventana2.ShowDialog();
+        }
+
+        private void usuariosPorCursoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AltaUsuariosxCurso ventana2 = new AltaUsuariosxCurso();
+            ventana2.ShowDialog();
+        }
+
+        private void avancesPorCursoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AltaUsuarioxCursoAvance ventana2 = new AltaUsuarioxCursoAvance();
+            ventana2.ShowDialog();
+        }
+
+        private void cursosToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            ReportUsuarioCurso reporte = new ReportUsuarioCurso();
+            reporte.ShowDialog();
+        }
+
+        private void avancesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ReportUsuarioCursoAvance reporte = new ReportUsuarioCursoAvance();
+            reporte.ShowDialog();
         }
     }
 }

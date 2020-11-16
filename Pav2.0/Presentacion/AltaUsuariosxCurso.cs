@@ -31,7 +31,7 @@ namespace Pav2.Presentacion
                     int puntuacion = Int32.Parse(txt_Puntuacion.Text);
                     string observaciones = txt_Observaciones.Text;
                     ReturnValue valido = UsuariosxCurso.GuardarUsuariosxCurso(idCurso, idUsuario, puntuacion, observaciones, dtp_FechaInicio.Value, dtp_FechaFin.Value);
-                    if (valido.isSuccess) { MessageBox.Show("Se creo correctamente.", "", MessageBoxButtons.OK, MessageBoxIcon.Information); }
+                    if (valido.isSuccess) { MessageBox.Show("Se creó correctamente.", "", MessageBoxButtons.OK, MessageBoxIcon.Information); }
                     else { MessageBox.Show(valido.ErrorMessage, "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
                 }
                 else { MessageBox.Show("Complete el campo correspondiente.", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Exclamation); }

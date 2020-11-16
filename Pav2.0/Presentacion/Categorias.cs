@@ -38,12 +38,12 @@ namespace Pav2.Presentacion
                     {
                         MessageBox.Show("No se pudo guardar.");
                     }
-                    else { MessageBox.Show("Se creó correctamente.", "", MessageBoxButtons.OK, MessageBoxIcon.Information); }
+                    else { MessageBox.Show("Se creó correctamente.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information); }
                     CargarGrilla();
                 }
                 else
                 {
-                    MessageBox.Show("Los campos no pueden estar vacios.");
+                    MessageBox.Show("Los campos no pueden estar vacíos.");
                 }
             }
             catch (Exception x)
@@ -68,13 +68,13 @@ namespace Pav2.Presentacion
                     {
                         MessageBox.Show("No se pudo modificar.");
                     }
-                    else { MessageBox.Show("Se modificó correctamente.", "", MessageBoxButtons.OK, MessageBoxIcon.Information); }
+                    else { MessageBox.Show("Se modificó correctamente.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information); }
                     CargarGrilla();
                     limpiarcampos();
                 }
                 else
                 {
-                    MessageBox.Show("Los campos no pueden estar vacios.");
+                    MessageBox.Show("Los campos no pueden estar vacíos.");
                 }
             }
             catch (Exception x)
@@ -91,7 +91,7 @@ namespace Pav2.Presentacion
                 
                 if (txt_name.Text != "" && txt_descripcion.Text != "")
                 {
-                    DialogResult result = MessageBox.Show("¿Esta seguro que desea eliminar ? ", "Alerta", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                    DialogResult result = MessageBox.Show("¿Está seguro que desea eliminar? ", "Alerta", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
                     if (result == DialogResult.OK)
                     {
                         int id = Int32.Parse(txt_value.Text);
@@ -99,7 +99,7 @@ namespace Pav2.Presentacion
                         {
                             MessageBox.Show("No se pudo eliminar.");
                         }
-                        else { MessageBox.Show("Se eliminó correctamente.", "", MessageBoxButtons.OK, MessageBoxIcon.Information); }
+                        else { MessageBox.Show("Se eliminó correctamente.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information); }
                     }
                     
                     CargarGrilla();
@@ -107,7 +107,7 @@ namespace Pav2.Presentacion
                 }
                 else
                 {
-                    MessageBox.Show("Los campos no pueden estar vacios.","",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                    MessageBox.Show("Los campos no pueden estar vacíos.","",MessageBoxButtons.OK,MessageBoxIcon.Warning);
                 }
             }
             catch (Exception x)
@@ -201,7 +201,7 @@ namespace Pav2.Presentacion
                     {
                         MessageBox.Show("No se pudo habilitar.");
                     }
-                    else { MessageBox.Show("Categoria habilitada."); }
+                    else { MessageBox.Show("Categoría habilitada."); }
                     limpiarcampos();
                     CargarGrilla();
                 }
@@ -210,6 +210,51 @@ namespace Pav2.Presentacion
             {
                 MessageBox.Show("Error: " + x);
             }
+        }
+
+        private void splitContainer1_Panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void btn_guardar_MouseHover(object sender, EventArgs e)
+        {
+            lbl_guardar.Visible = true;
+        }
+
+        private void btn_guardar_MouseLeave(object sender, EventArgs e)
+        {
+            lbl_guardar.Visible = false;
+        }
+
+        private void btn_modificar_MouseHover(object sender, EventArgs e)
+        {
+            lbl_modificar.Visible = true;
+        }
+
+        private void btn_modificar_MouseLeave(object sender, EventArgs e)
+        {
+            lbl_modificar.Visible = false;
+        }
+
+        private void btn_borrar_MouseHover(object sender, EventArgs e)
+        {
+            lbl_eliminar.Visible = true;
+        }
+
+        private void btn_borrar_MouseLeave(object sender, EventArgs e)
+        {
+            lbl_eliminar.Visible = false;
+        }
+
+        private void btn_Habilitar_MouseHover(object sender, EventArgs e)
+        {
+            lbl_habilitar.Visible = true;
+        }
+
+        private void btn_Habilitar_MouseLeave(object sender, EventArgs e)
+        {
+            lbl_habilitar.Visible = false;
         }
     }   
 

@@ -42,23 +42,23 @@
             // cmb_cursos
             // 
             this.cmb_cursos.FormattingEnabled = true;
-            this.cmb_cursos.Location = new System.Drawing.Point(79, 30);
+            this.cmb_cursos.Location = new System.Drawing.Point(141, 68);
             this.cmb_cursos.Name = "cmb_cursos";
-            this.cmb_cursos.Size = new System.Drawing.Size(121, 21);
+            this.cmb_cursos.Size = new System.Drawing.Size(134, 21);
             this.cmb_cursos.TabIndex = 0;
             this.cmb_cursos.SelectedIndexChanged += new System.EventHandler(this.cmb_cursos_SelectedIndexChanged);
             // 
             // cmb_objetivos
             // 
             this.cmb_objetivos.FormattingEnabled = true;
-            this.cmb_objetivos.Location = new System.Drawing.Point(79, 56);
+            this.cmb_objetivos.Location = new System.Drawing.Point(141, 109);
             this.cmb_objetivos.Name = "cmb_objetivos";
-            this.cmb_objetivos.Size = new System.Drawing.Size(121, 21);
+            this.cmb_objetivos.Size = new System.Drawing.Size(134, 21);
             this.cmb_objetivos.TabIndex = 1;
             // 
             // btn_agregar
             // 
-            this.btn_agregar.Location = new System.Drawing.Point(220, 30);
+            this.btn_agregar.Location = new System.Drawing.Point(119, 215);
             this.btn_agregar.Name = "btn_agregar";
             this.btn_agregar.Size = new System.Drawing.Size(75, 23);
             this.btn_agregar.TabIndex = 2;
@@ -68,53 +68,53 @@
             // 
             // btn_gestion
             // 
-            this.btn_gestion.Location = new System.Drawing.Point(220, 81);
+            this.btn_gestion.Location = new System.Drawing.Point(210, 215);
             this.btn_gestion.Name = "btn_gestion";
             this.btn_gestion.Size = new System.Drawing.Size(75, 23);
             this.btn_gestion.TabIndex = 3;
-            this.btn_gestion.Text = "Gestion";
+            this.btn_gestion.Text = "Gestionar";
             this.btn_gestion.UseVisualStyleBackColor = true;
             this.btn_gestion.Click += new System.EventHandler(this.btn_gestion_Click);
             // 
             // txt_puntaje
             // 
-            this.txt_puntaje.Location = new System.Drawing.Point(79, 84);
+            this.txt_puntaje.Location = new System.Drawing.Point(141, 152);
             this.txt_puntaje.Name = "txt_puntaje";
-            this.txt_puntaje.Size = new System.Drawing.Size(121, 20);
+            this.txt_puntaje.Size = new System.Drawing.Size(134, 20);
             this.txt_puntaje.TabIndex = 4;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 38);
+            this.label1.Location = new System.Drawing.Point(87, 71);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(39, 13);
+            this.label1.Size = new System.Drawing.Size(37, 13);
             this.label1.TabIndex = 5;
-            this.label1.Text = "Cursos";
+            this.label1.Text = "Curso:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 64);
+            this.label2.Location = new System.Drawing.Point(87, 112);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(51, 13);
+            this.label2.Size = new System.Drawing.Size(49, 13);
             this.label2.TabIndex = 6;
-            this.label2.Text = "Objetivos";
+            this.label2.Text = "Objetivo:";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 91);
+            this.label3.Location = new System.Drawing.Point(87, 155);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(43, 13);
+            this.label3.Size = new System.Drawing.Size(46, 13);
             this.label3.TabIndex = 7;
-            this.label3.Text = "Puntaje";
+            this.label3.Text = "Puntaje:";
             // 
             // AltaObjetivosxCurso
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(341, 130);
+            this.ClientSize = new System.Drawing.Size(385, 329);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -125,7 +125,8 @@
             this.Controls.Add(this.cmb_cursos);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AltaObjetivosxCurso";
-            this.Text = "Alta objetivo";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Alta Objetivo por Curso";
             this.Load += new System.EventHandler(this.ObjetivosxCurso_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

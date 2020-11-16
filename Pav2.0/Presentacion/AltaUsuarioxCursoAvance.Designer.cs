@@ -173,7 +173,7 @@
             this.modificarProgresoToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(567, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(568, 24);
             this.menuStrip1.TabIndex = 17;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -263,9 +263,9 @@
             this.lbl_seleccionarCurso.AutoSize = true;
             this.lbl_seleccionarCurso.Location = new System.Drawing.Point(163, 22);
             this.lbl_seleccionarCurso.Name = "lbl_seleccionarCurso";
-            this.lbl_seleccionarCurso.Size = new System.Drawing.Size(93, 13);
+            this.lbl_seleccionarCurso.Size = new System.Drawing.Size(96, 13);
             this.lbl_seleccionarCurso.TabIndex = 21;
-            this.lbl_seleccionarCurso.Text = "Seleccionar Curso";
+            this.lbl_seleccionarCurso.Text = "Seleccionar Curso:";
             this.lbl_seleccionarCurso.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.lbl_seleccionarCurso.Visible = false;
             // 
@@ -273,12 +273,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(567, 392);
+            this.ClientSize = new System.Drawing.Size(568, 338);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.groupBox1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "AltaUsuarioxCursoAvance";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Progreso de Curso";
             ((System.ComponentModel.ISupportInitialize)(this.dgv_usuarios)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_cursos)).EndInit();

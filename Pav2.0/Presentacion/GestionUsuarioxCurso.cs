@@ -94,7 +94,7 @@ namespace Pav2.Presentacion
             {
                 int idCurso = (int)cmb_Curso.SelectedValue;
                 int idUsuario = (int)cmb_Usuario.SelectedValue;
-                DialogResult result = MessageBox.Show("¿Esta seguro que desea eliminar ? ", "Alerta", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                DialogResult result = MessageBox.Show("¿Está seguro que desea eliminar? ", "Alerta", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
                 if (result == DialogResult.OK)
                 {
                     ReturnValue valido = Logica.UsuariosxCurso.EliminarUsuariosxCurso(idCurso, idUsuario, chk_BorrarDB.Checked);
@@ -140,7 +140,7 @@ namespace Pav2.Presentacion
                 int idUsuario = (int)cmb_Usuario.SelectedValue;
                 int puntuacion = Int32.Parse(txt_puntuacion.Text);
                 ReturnValue valido = Logica.UsuariosxCurso.ModificarUsuariosxCurso(idCurso, idUsuario, puntuacion, txt_observaciones.Text, dtp_FechaInicio.Value, dtp_FechaFin.Value);
-                if (valido.isSuccess) { MessageBox.Show("Se modifico correctamente", "", MessageBoxButtons.OK, MessageBoxIcon.Information); CargarGrilla(); }
+                if (valido.isSuccess) { MessageBox.Show("Se modificó correctamente.", "", MessageBoxButtons.OK, MessageBoxIcon.Information); CargarGrilla(); }
                 else { MessageBox.Show(valido.ErrorMessage); }
                 limpiarCampos();
             }

@@ -42,14 +42,14 @@
             // 
             // txt_nombre
             // 
-            this.txt_nombre.Location = new System.Drawing.Point(115, 53);
+            this.txt_nombre.Location = new System.Drawing.Point(139, 57);
             this.txt_nombre.Name = "txt_nombre";
             this.txt_nombre.Size = new System.Drawing.Size(100, 20);
             this.txt_nombre.TabIndex = 0;
             // 
             // txt_pw
             // 
-            this.txt_pw.Location = new System.Drawing.Point(115, 79);
+            this.txt_pw.Location = new System.Drawing.Point(139, 95);
             this.txt_pw.Name = "txt_pw";
             this.txt_pw.Size = new System.Drawing.Size(100, 20);
             this.txt_pw.TabIndex = 1;
@@ -57,15 +57,15 @@
             // cmb_perfiles
             // 
             this.cmb_perfiles.FormattingEnabled = true;
-            this.cmb_perfiles.Location = new System.Drawing.Point(115, 132);
+            this.cmb_perfiles.Location = new System.Drawing.Point(139, 173);
             this.cmb_perfiles.Name = "cmb_perfiles";
-            this.cmb_perfiles.Size = new System.Drawing.Size(137, 21);
+            this.cmb_perfiles.Size = new System.Drawing.Size(100, 21);
             this.cmb_perfiles.TabIndex = 3;
             this.cmb_perfiles.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // txt_mail
             // 
-            this.txt_mail.Location = new System.Drawing.Point(115, 106);
+            this.txt_mail.Location = new System.Drawing.Point(139, 134);
             this.txt_mail.Name = "txt_mail";
             this.txt_mail.Size = new System.Drawing.Size(100, 20);
             this.txt_mail.TabIndex = 4;
@@ -73,7 +73,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(40, 56);
+            this.label1.Location = new System.Drawing.Point(64, 60);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(47, 13);
             this.label1.TabIndex = 5;
@@ -82,7 +82,7 @@
             // lbl_pw
             // 
             this.lbl_pw.AutoSize = true;
-            this.lbl_pw.Location = new System.Drawing.Point(40, 82);
+            this.lbl_pw.Location = new System.Drawing.Point(64, 98);
             this.lbl_pw.Name = "lbl_pw";
             this.lbl_pw.Size = new System.Drawing.Size(64, 13);
             this.lbl_pw.TabIndex = 6;
@@ -91,7 +91,7 @@
             // lbl_mail
             // 
             this.lbl_mail.AutoSize = true;
-            this.lbl_mail.Location = new System.Drawing.Point(40, 109);
+            this.lbl_mail.Location = new System.Drawing.Point(64, 137);
             this.lbl_mail.Name = "lbl_mail";
             this.lbl_mail.Size = new System.Drawing.Size(38, 13);
             this.lbl_mail.TabIndex = 7;
@@ -100,7 +100,7 @@
             // lbl_perfiles
             // 
             this.lbl_perfiles.AutoSize = true;
-            this.lbl_perfiles.Location = new System.Drawing.Point(40, 135);
+            this.lbl_perfiles.Location = new System.Drawing.Point(64, 176);
             this.lbl_perfiles.Name = "lbl_perfiles";
             this.lbl_perfiles.Size = new System.Drawing.Size(33, 13);
             this.lbl_perfiles.TabIndex = 8;
@@ -110,7 +110,7 @@
             // 
             this.btn_guardar.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.btn_guardar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_guardar.Location = new System.Drawing.Point(115, 177);
+            this.btn_guardar.Location = new System.Drawing.Point(149, 221);
             this.btn_guardar.Name = "btn_guardar";
             this.btn_guardar.Size = new System.Drawing.Size(75, 23);
             this.btn_guardar.TabIndex = 9;
@@ -123,7 +123,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.ClientSize = new System.Drawing.Size(328, 237);
+            this.ClientSize = new System.Drawing.Size(328, 287);
             this.Controls.Add(this.btn_guardar);
             this.Controls.Add(this.lbl_perfiles);
             this.Controls.Add(this.lbl_mail);

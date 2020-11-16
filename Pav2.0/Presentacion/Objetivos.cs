@@ -25,7 +25,7 @@ namespace Pav2.Presentacion
             CargarGrilla();
             btn_Eliminar.Enabled = false;
             btn_Modificar.Enabled = false;
-            chk_estado.Visible = false;
+            
         }
 
 
@@ -37,6 +37,8 @@ namespace Pav2.Presentacion
                 {
                     MessageBox.Show("Los campos no pueden estar vacios o el objetivo ya existe.", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+                else { MessageBox.Show("Se creó correctamente.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information); }
+
                 CargarGrilla();
             }
             catch (Exception x){ MessageBox.Show("Error: "+ x); }
@@ -49,10 +51,12 @@ namespace Pav2.Presentacion
                 if (txt_nombreCorto.Text != "" && txt_nombreLargo.Text != "")
                 {
                     int id = Int32.Parse(txt_value.Text);
-                    if (Logica.Objetivos.ModificarObjetivo(id, txt_nombreCorto.Text, txt_nombreLargo.Text, chk_estado.Checked) == false)
+                    if (Logica.Objetivos.ModificarObjetivo(id, txt_nombreCorto.Text, txt_nombreLargo.Text) == false)
                     {
                         MessageBox.Show("No se pudo modificar.", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
+                    else { MessageBox.Show("Se modificó correctamente.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information); }
+
                     CargarGrilla();
                     limpiarcampos();
                 }
@@ -71,11 +75,18 @@ namespace Pav2.Presentacion
             {
                 if (txt_nombreCorto.Text != "" && txt_nombreLargo.Text != "")
                 {
-                    int id = Int32.Parse(txt_value.Text);
-                    if (Logica.Objetivos.EliminarObjetivo(id, chk_borrado.Checked) == false)
+                    DialogResult result = MessageBox.Show("¿Está seguro que desea eliminar? ", "Alerta", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                    if (result == DialogResult.OK)
                     {
-                        MessageBox.Show("No se pudo eliminar.");
+                        int id = Int32.Parse(txt_value.Text);
+                        if (Logica.Objetivos.EliminarObjetivo(id, chk_borrado.Checked) == false)
+                        {
+                            MessageBox.Show("No se pudo eliminar.", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        else { MessageBox.Show("Se eliminó correctamente.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information); }
+
                     }
+
                     CargarGrilla();
                     limpiarcampos();
                 }
@@ -95,7 +106,7 @@ namespace Pav2.Presentacion
                 List<Objetivo> T = Logica.Objetivos.MostrarDataObjetivos(chk_todo.Checked);
                 datagridview.DataSource = T;
                 datagridview.Columns[0].Visible = false; //Oculta la columna id_objetivo
-                                                         //dgv_objetivos.Columns[3].Visible = false;
+                datagridview.Columns[3].Visible = false;
                 datagridview.Columns[4].Visible = false;
                 if (chk_todo.Checked)
                 {
@@ -120,10 +131,11 @@ namespace Pav2.Presentacion
                 txt_nombreCorto.Text = var1.nombre_corto;
                 txt_nombreLargo.Text = var1.nombre_largo;
                 txt_value.Text = var1.id_objetivo.ToString();
-                chk_estado.Checked = (bool)var1.borrado;
                 btn_guardar.Enabled = false;
                 btn_Eliminar.Enabled = true;
                 btn_Modificar.Enabled = true;
+                if (var1.borrado == true) { btn_habilitar.Visible = true; btn_Modificar.Enabled = false; }
+                else { btn_habilitar.Visible = false; btn_Modificar.Enabled = true; }
             }
             catch (Exception x)
             {
@@ -131,30 +143,28 @@ namespace Pav2.Presentacion
             }
         }
 
-        private void chk_estado_CheckedChanged(object sender, EventArgs e)
-        {
-            //CargarGrilla();
-            chk_estado.Visible = chk_todo.Checked;
-        }
+        //private void chk_estado_CheckedChanged(object sender, EventArgs e)
+        //{
+        //    //CargarGrilla();
+            
+        //}
 
         private void chk_todo_CheckedChanged(object sender, EventArgs e)
         {
             CargarGrilla();
-            chk_estado.Visible = chk_todo.Checked;
+            
         }
 
-        private void btn_cancelar_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
 
         private void limpiarcampos()
         {
             txt_nombreCorto.Clear();
             txt_nombreLargo.Clear();
             txt_value.Clear();
-            chk_estado.Checked = false;
+            //chk_estado.Checked = false;
+            btn_habilitar.Visible = false;
         }
+
 
         private void lbl_equis_Click(object sender, EventArgs e)
         {
@@ -165,9 +175,68 @@ namespace Pav2.Presentacion
 
         }
 
-       
+        private void btn_guardar_MouseHover(object sender, EventArgs e)
+        {
+            lbl_guardar.Visible = true;
+        }
 
-   
+        private void btn_guardar_MouseLeave(object sender, EventArgs e)
+        {
+            lbl_guardar.Visible = false;
+        }
+
+        private void btn_Modificar_MouseHover(object sender, EventArgs e)
+        {
+            lbl_modificar.Visible = true;
+        }
+
+        private void btn_Modificar_MouseLeave(object sender, EventArgs e)
+        {
+            lbl_modificar.Visible = false;
+        }
+
+        private void btn_Eliminar_MouseHover(object sender, EventArgs e)
+        {
+            lbl_eliminar.Visible = true;
+        }
+
+        private void btn_Eliminar_MouseLeave(object sender, EventArgs e)
+        {
+            lbl_eliminar.Visible = false;
+        }
+
+        private void btn_habilitar_MouseHover(object sender, EventArgs e)
+        {
+            lbl_habilitar.Visible = true;
+        }
+
+        private void btn_habilitar_MouseLeave(object sender, EventArgs e)
+        {
+            lbl_habilitar.Visible = false;
+        }
+
+        private void btn_habilitar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (txt_nombreCorto.Text != "" && txt_nombreLargo.Text != "")
+                {
+                    int id = Int32.Parse(txt_value.Text);
+                    bool borrado = false;
+                    if (Logica.Objetivos.habilitarObjetivo(id, borrado).isSuccess == false)
+                    {
+                        MessageBox.Show("No se pudo habilitar.");
+                    }
+                    else { MessageBox.Show("Objetivo habilitada."); }
+                    limpiarcampos();
+                    CargarGrilla();
+                }
+            }
+            catch (Exception x)
+            {
+                MessageBox.Show("Error: " + x);
+            }
+        }
     } 
 }
 

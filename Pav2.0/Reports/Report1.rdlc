@@ -94,7 +94,10 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>Usuario</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>White</Color>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -106,6 +109,7 @@
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
+                            <BackgroundColor>Maroon</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -124,7 +128,10 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>Curso</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>White</Color>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -136,6 +143,7 @@
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
+                            <BackgroundColor>Maroon</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -154,7 +162,10 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>Avance</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>White</Color>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -163,7 +174,10 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value />
-                                  <Style />
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>White</Color>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -175,6 +189,7 @@
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
+                            <BackgroundColor>Maroon</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -192,8 +207,11 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>fecha inicio</Value>
-                                  <Style />
+                                  <Value>Fecha inicio</Value>
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>White</Color>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -205,6 +223,7 @@
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
+                            <BackgroundColor>Maroon</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -222,11 +241,16 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>fecha fin</Value>
-                                  <Style />
+                                  <Value>Fecha fin</Value>
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>White</Color>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Left</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox9</rd:DefaultName>
@@ -235,6 +259,7 @@
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
+                            <BackgroundColor>Maroon</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -427,7 +452,7 @@
               </TablixMembers>
             </TablixRowHierarchy>
             <DataSetName>Custom</DataSetName>
-            <Top>1.08162cm</Top>
+            <Top>1.94031cm</Top>
             <Left>1.00224cm</Left>
             <Height>1.2cm</Height>
             <Width>12.5cm</Width>
@@ -733,14 +758,13 @@
             </ChartAreas>
             <ChartTitles>
               <ChartTitle Name="Default">
-                <Caption>Chart Title</Caption>
+                <Caption>Cantidad de cursos completados por usuario</Caption>
                 <Style>
                   <BackgroundGradientType>None</BackgroundGradientType>
                   <FontSize>9pt</FontSize>
-                  <FontWeight>Normal</FontWeight>
+                  <FontWeight>Bold</FontWeight>
                   <TextAlign>Left</TextAlign>
                   <VerticalAlign>Top</VerticalAlign>
-                  <Color>#a6a6a6</Color>
                 </Style>
                 <Position>TopLeft</Position>
               </ChartTitle>
@@ -763,10 +787,10 @@
               </Style>
             </ChartNoDataMessage>
             <DataSetName>Custom</DataSetName>
-            <Top>1.08162cm</Top>
-            <Left>14.39016cm</Left>
+            <Top>6.31503cm</Top>
+            <Left>0.47307cm</Left>
             <Height>5cm</Height>
-            <Width>7.5cm</Width>
+            <Width>8.02917cm</Width>
             <ZIndex>1</ZIndex>
             <Style>
               <Border>
@@ -1073,14 +1097,13 @@
             </ChartAreas>
             <ChartTitles>
               <ChartTitle Name="Default">
-                <Caption>Chart Title</Caption>
+                <Caption>Cantidad cursos completados</Caption>
                 <Style>
                   <BackgroundGradientType>None</BackgroundGradientType>
                   <FontSize>9pt</FontSize>
-                  <FontWeight>Normal</FontWeight>
+                  <FontWeight>Bold</FontWeight>
                   <TextAlign>Left</TextAlign>
                   <VerticalAlign>Top</VerticalAlign>
-                  <Color>#a6a6a6</Color>
                 </Style>
                 <Position>TopLeft</Position>
               </ChartTitle>
@@ -1103,8 +1126,8 @@
               </Style>
             </ChartNoDataMessage>
             <DataSetName>Custom</DataSetName>
-            <Top>7.23696cm</Top>
-            <Left>14.39016cm</Left>
+            <Top>6.31503cm</Top>
+            <Left>8.86037cm</Left>
             <Height>5cm</Height>
             <Width>7.5cm</Width>
             <ZIndex>2</ZIndex>
@@ -1125,14 +1148,17 @@
                 <TextRuns>
                   <TextRun>
                     <Value>Listado de avances </Value>
-                    <Style />
+                    <Style>
+                      <FontSize>9pt</FontSize>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
                   </TextRun>
                 </TextRuns>
                 <Style />
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox11</rd:DefaultName>
-            <Top>0.30523cm</Top>
+            <Top>1.16392cm</Top>
             <Left>1.00224cm</Left>
             <Height>0.6cm</Height>
             <Width>5.09229cm</Width>
@@ -1147,87 +1173,80 @@
               <PaddingBottom>2pt</PaddingBottom>
             </Style>
           </Textbox>
-          <Textbox Name="Textbox12">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>Cantidad de cursos completado por usuario</Value>
-                    <Style />
-                  </TextRun>
-                </TextRuns>
-                <Style />
-              </Paragraph>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value />
-                    <Style />
-                  </TextRun>
-                </TextRuns>
-                <Style />
-              </Paragraph>
-            </Paragraphs>
-            <rd:DefaultName>Textbox11</rd:DefaultName>
-            <Top>0.30523cm</Top>
-            <Left>14.39016cm</Left>
-            <Height>0.6cm</Height>
-            <Width>7.12958cm</Width>
-            <ZIndex>4</ZIndex>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
-            </Style>
-          </Textbox>
-          <Textbox Name="Textbox13">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>Cantidad cursos completados</Value>
-                    <Style />
-                  </TextRun>
-                </TextRuns>
-                <Style />
-              </Paragraph>
-            </Paragraphs>
-            <rd:DefaultName>Textbox11</rd:DefaultName>
-            <Top>6.35237cm</Top>
-            <Left>14.39016cm</Left>
-            <Height>0.6cm</Height>
-            <Width>5.09229cm</Width>
-            <ZIndex>5</ZIndex>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
-            </Style>
-          </Textbox>
         </ReportItems>
-        <Height>5.23809in</Height>
+        <Height>18cm</Height>
         <Style />
       </Body>
-      <Width>11.26042in</Width>
+      <Width>21cm</Width>
       <Page>
+        <PageHeader>
+          <Height>3cm</Height>
+          <PrintOnFirstPage>true</PrintOnFirstPage>
+          <PrintOnLastPage>true</PrintOnLastPage>
+          <ReportItems>
+            <Textbox Name="Textbox4">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>Reportes estadísticos</Value>
+                      <Style>
+                        <FontStyle>Normal</FontStyle>
+                        <FontFamily>Corbel</FontFamily>
+                        <FontSize>30pt</FontSize>
+                        <Color>White</Color>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style />
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>Textbox4</rd:DefaultName>
+              <Top>0.70168cm</Top>
+              <Left>4.81207cm</Left>
+              <Height>1.68839cm</Height>
+              <Width>9.72313cm</Width>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+            <Image Name="reports">
+              <Source>Embedded</Source>
+              <Value>reports</Value>
+              <Sizing>FitProportional</Sizing>
+              <Top>0.3609cm</Top>
+              <Left>2.18791cm</Left>
+              <Height>2.02917cm</Height>
+              <Width>1.89688cm</Width>
+              <ZIndex>1</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+              </Style>
+            </Image>
+          </ReportItems>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <BackgroundColor>Maroon</BackgroundColor>
+          </Style>
+        </PageHeader>
         <PageHeight>29.7cm</PageHeight>
         <PageWidth>21cm</PageWidth>
-        <LeftMargin>2cm</LeftMargin>
-        <RightMargin>2cm</RightMargin>
-        <TopMargin>2cm</TopMargin>
-        <BottomMargin>2cm</BottomMargin>
+        <LeftMargin>0cm</LeftMargin>
+        <RightMargin>0cm</RightMargin>
+        <TopMargin>0cm</TopMargin>
+        <BottomMargin>0cm</BottomMargin>
         <ColumnSpacing>0.13cm</ColumnSpacing>
         <Style />
       </Page>
@@ -1239,6 +1258,13 @@
       <NumberOfRows>2</NumberOfRows>
     </GridLayoutDefinition>
   </ReportParametersLayout>
+  <EmbeddedImages>
+    <EmbeddedImage Name="reports">
+      <MIMEType>image/png</MIMEType>
+      <ImageData>iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAACXBIWXMAAAsTAAALEwEAmpwYAAAE+ElEQVR4nO2aa4gVVRzAf2dXck03s0xULCHKKFIsSAILlBAKoodfzKIkk6BIlx5gBaV9WCNTixAM1FDIgpQeuhXRl6h89aBSKrUMSyulxEJiRctfH2YuOzve3Xuvd+bebbu/L3fuefxfc+ac/8w50KBBgwYNGtQVdVS9bagL6qXqG+qmettSU9Qx6ir1byM66m1TTVCHqYvVTrvTvwOgDlLnq0dSjh/v1wFQm9U56oGU4x+qV6uf9dsAqLeq36Yc36nemGjTPwOgvply/Ed1ltqUaldVANSr1KeysTpD1F2xY0fUh9WBPbQ7rQCo49T1cd8PqrF1QDWdy+C9EMLSrISpo4EFwGwysj3vAGSCOhSYD7QBZ2Ypu6l0k/qhtqiPAD8Aj9Hl/CZgVxY6+mQA4uVzNrAHeBY4J67aDFwbQrgJOJSFrj73CKg3AEuAyxLFXwOPhxA2Zq2vL46ABXQ5vx+4G5iQh/PQB0dAgu3AlBDCsTyV9MURUOD3vJ2Hvh2AmtAIQBZC1Enq3Cxk1ZqqAhDn5BuIJqzJ2ZhUW05rFTD6iLmQDHPyelGR8Xnm5PWirEdAHag+BOyle06+ETiYk201odcAqE3qLKKcfClwbly1GbgmhHAz8Ge+JuZLj49AnJMvBi5PFOeWk9eL3uaAFcDY+Ho/UY6+NoRwMnerakg5k+C7wPRapKX1oJxJ8Kf+6jz8x9fwYqhnAGeVaNYZQvgL+lkA1CuAj4DBJZqeVO8JIazJ62Voa/y7JSf5PTGO0s5D9OhfCfmNgNlAewjh+5zkA5j6BXgd2A1cEv9/EjgSXwegHWgFjgHLIKfX4RCCOTsP0AH8Q/SFuKD3BPBgos3wEMLyEMJy4CiR8wBLQwj7IJsA7Ix/v8pAVtnEGy6tIYRlqaoddH0xvt/oEEYr8HRc9nPi
+OpNH4E6iNPmTDGRVRAihs3CtDiB6SVsIDImLBxAN9S+BkXHZ/MIKUGhQrRHHgG0JQ5qAuUBzkbuTC+pkosx1fFx0kmgkTASuB6bF5VtCCOuSfTOdBNUJwEpgUvx/UAihPUsdKX3nEb2vzCKa5AA+B+4DviF6iRsNNBNNlm2VCN8X776+WEbbFnWResJT6XH7utjusLqt1I6xGtR71cMJPX+oDyS34NW7EvUvle183LmsAKhT1T0JRcfV59RfEmWLKgjAy3HZ8z30mZgIUoF16sgibYO6XH1HHV5pAHbEwp/poX6YujplyHZ1fFx/sbo/UbekiIztcd1bibKzjU6XDE61HaIus+tkmepu9bqKHCsXdZq6Uh1bpG6GejBhyFF1nqeeALnQrpGk+kKqvs1o6N5ewpZbUsHsVJ8wyvtrh3q+2pG66x3qBb30GavuTbRfoYZEfeil7wi7ToIUeF+9KGvfesXo09i8+E4XOKjOKLP/GLvPE6vSo6VIn5nqb4k+h40+z9UWdbynTjqr1WEVyhll91Nja4sFQR1pdHw2yWvqiOy8Ks/gFrXdrsOMqt+pU6uQOcLoqFyBV9TmRP0ddl/aflWnZ+NRZYZOSQ3ZE0brfEsGsoerXyRkr1dHqxtSd31NpaOsaux5aZuQg55PUwEucMDoi3RtsfjS1maJyaoKfUPVralgv1rzux4bMydlyNv2srRlqLdV/dgoF5iZt77eDHk0dvyQeluNdQ+2SLJVU4yOpU012vxs0KBBgwYN/if8C2a/as3YAGKLAAAAAElFTkSuQmCC</ImageData>
+    </EmbeddedImage>
+  </EmbeddedImages>
   <rd:ReportUnitType>Cm</rd:ReportUnitType>
   <rd:ReportID>1e02d933-4f84-478b-aee7-8518f12b68a8</rd:ReportID>
 </Report>
