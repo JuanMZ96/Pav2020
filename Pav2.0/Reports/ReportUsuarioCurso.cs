@@ -243,8 +243,8 @@ namespace Pav2.Reports
                     gp_fechas.Enabled = true;
                     dgv_curso.Visible = false;
                     dgv_usuarios.Visible = false;
-                    btn_report.Enabled = false;
-                    btn_report.Enabled = false;
+                    btn_report.Enabled = true;
+                    
                     break;
                 case "Todo":
                     gp_cursos.Enabled = false;

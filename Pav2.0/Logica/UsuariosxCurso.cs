@@ -168,7 +168,9 @@ namespace Pav2.Logica
                                  on usuarioCurso.id_usuario equals usuarios.id_usuario
                                  join cursos in Contex.Cursos
                                  on usuarioCurso.id_curso equals cursos.id_curso
-                                 where usuarioCurso.id_usuario == param
+                                 where usuarioCurso.id_usuario == param &&
+                                 usuarios.borrado == false &&
+                                 cursos.borrado == false
                                  select new UsuarioxCursoCustom()
                                  {
                                      id_usuario = usuarioCurso.id_usuario,
@@ -189,8 +191,10 @@ namespace Pav2.Logica
                                  on usuarioCurso.id_usuario equals usuarios.id_usuario
                                  join cursos in Contex.Cursos
                                  on usuarioCurso.id_curso equals cursos.id_curso
-                                 where usuarioCurso.id_curso == param
-                                 select new UsuarioxCursoCustom()
+                                 where usuarioCurso.id_curso == param &&
+                                 usuarios.borrado == false &&
+                                 cursos.borrado == false
+                             select new UsuarioxCursoCustom()
                                  {
                                      id_usuario = usuarioCurso.id_usuario,
                                      id_curso = usuarioCurso.id_curso,
